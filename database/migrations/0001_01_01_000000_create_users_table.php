@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->string('photo')->nullable();
             $table->string('name');
             $table->enum('gender', ['Laki-laki', 'Perempuan'])->nullable();
             $table->string('place_of_birth')->nullable();
             $table->date('birth_date')->nullable();
-            $table->string('phone')->unique();
+            $table->string('phone')->nullable();
             $table->string('address')->nullable();
             $table->enum('keanggotaan', ['Kader Muhammadiyah', 'Warga Muhammadiyah', 'Simpatisan Muhammadiyah'])->default('Warga Muhammadiyah');
             $table->string('job')->nullable();
@@ -25,6 +26,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->boolean('status')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

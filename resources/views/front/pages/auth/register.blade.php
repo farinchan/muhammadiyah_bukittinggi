@@ -6,11 +6,29 @@
         <div class="container ">
             <div class="row">
                 <div class="col-md-9">
-                    <form method="POST" action="{{ route('register.process') }}">
+                    <form method="POST" action="{{ route('register.process') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="text-center pb-5">
                             <h2>Pendaftaran</h2>
                         </div>
+
+                        <div class="form-group row">
+                            <label for="name" class="col-md-3 col-form-label text-md-right">{{ __('Foto') }}
+                            </label>
+                            <div class="col-md-8">
+                                <image class="shadow-sm" src="{{ asset('front/img/image_placeholder.jpg') }}" height="150px"
+                                    alt="" id="photo_preview" style="cursor: pointer">
+                                    <input type="file" accept="image/*" class="form-control" name="photo"
+                                        id="photo" style="display: none"><br>
+                                    <small class="text-muted">Klik pada gambar untuk mengganti foto</small>
+                                    @error('photo')
+                                        <span class="text-danger" role="alert">
+                                            <small>{{ $message }}</small>
+                                        </span>
+                                    @enderror
+                            </div>
+                        </div>
+
                         <div class="form-group row">
                             <label for="name" class="col-md-3 col-form-label text-md-right">{{ __('Nama Lengkap') }}
                                 <span class="text-danger">*</span>
@@ -39,10 +57,11 @@
                             <div class="col-md-8">
                                 <div class="input-group-icon">
                                     <div class="icon"><i class="fa-regular fa-venus-mars"></i></div>
-                                    <select name="gender" id="jenis_kelamin" class="single-input form-select required">
+                                    <select name="gender" id="gender" class="single-input form-select required">
                                         <option value="" disabled selected>Pilih Jenis Kelamin</option>
-                                        <option value="Laki-laki">Laki-laki</option>
-                                        <option value="Perempuan">Perempuan</option>
+                                        <option value="Laki-laki" @if (old('gender') == 'Laki-laki') selected @endif>
+                                            Laki-laki</option>
+                                        <option value="Perempuan" @if (old('gender') == 'Perempuan') selected @endif> Perempuan </option>
                                     </select>
                                 </div>
                             </div>
@@ -113,7 +132,7 @@
                                     <div class="icon"><i class="fa-regular fa-location-arrow"></i></div>
                                     <textarea type="text" placeholder="Alamat" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Alamat'"
                                         required="" class="single-input @error('address') is-invalid @enderror" name="address"
-                                        value="{{ old('address') }}" autocomplete="address" rows="3"></textarea>
+                                         autocomplete="address" rows="3">{{ old('address') }}</textarea>
                                 </div>
                                 @error('address')
                                     <span class="text-danger" role="alert">
@@ -130,41 +149,41 @@
                             <div class="col-md-8">
                                 <div class="input-group-icon">
                                     <div class="icon"><i class="fa-regular fa-briefcase"></i></div>
-                                    <select name="job" id="job" class="reset-style select2" name="categories[]"
-                                        multiple="multiple" required>
-                                        <option value="Ustadz">Ustadz</option>
-                                        <option value="Dosen">Dosen</option>
-                                        <option value="Guru">Guru</option>
-                                        <option value="Arsitek">Arsitek</option>
-                                        <option value="Nelayan">Nelayan</option>
-                                        <option value="Perawat">Perawat</option>
-                                        <option value="Dokter">Dokter</option>
-                                        <option value="Bidan">Bidan</option>
-                                        <option value="Pemadam Kebakaran">Pemadam Kebakaran</option>
-                                        <option value="Kondektur">Kondektur</option>
-                                        <option value="Pilot">Pilot</option>
-                                        <option value="Masinis">Masinis</option>
-                                        <option value="Wartawan">Wartawan</option>
-                                        <option value="Penulis">Penulis</option>
-                                        <option value="Insinyur Mesin">Insinyur Mesin</option>
-                                        <option value="Ahli Gizi">Ahli Gizi</option>
-                                        <option value="Pustakawan">Pustakawan</option>
-                                        <option value="Hakim">Hakim</option>
-                                        <option value="Notaris">Notaris</option>
-                                        <option value="Teller Bank">Teller Bank</option>
-                                        <option value="Koki">Koki</option>
-                                        <option value="Artis">Artis</option>
-                                        <option value="Penerjemah">Penerjemah</option>
-                                        <option value="Tentara">Tentara</option>
-                                        <option value="Tukang Cukur">Tukang Cukur</option>
-                                        <option value="Petani">Petani</option>
-                                        <option value="Akuntan">Akuntan</option>
-                                        <option value="Pengacara">Pengacara</option>
-                                        <option value="Polisi">Polisi</option>
-                                        <option value="Pegawai Negeri">Pegawai Negeri</option>
-                                        <option value="Pegawai Swasta">Pegawai Swasta</option>
-                                        <option value="Wiraswasta">Wiraswasta</option>
-                                        <option value="Lainnya">Lainnya</option>
+                                    <select name="job" id="job" class="reset-style select2"
+                                        name="categories[]" multiple="multiple" required>
+                                        <option value="Ustadz"@if (old('job') == 'Ustadz') selected @endif >Ustadz</option>
+                                        <option value="Dosen"@if (old('job') == 'Dosen')>Dosen</option>
+                                        <option value="Guru"@if (old('job') == 'Guru')>Guru</option>
+                                        <option value="Arsitek"@if (old('job') == 'Arsitek')>Arsitek</option>
+                                        <option value="Nelayan"@if (old('job') == 'Nelayan')>Nelayan</option>
+                                        <option value="Perawat"@if (old('job') == 'Perawat')>Perawat</option>
+                                        <option value="Dokter"@if (old('job') == 'Dokter')>Dokter</option>
+                                        <option value="Bidan"@if (old('job') == 'Bidan')>Bidan</option>
+                                        <option value="Pemadam Kebakaran"@if (old('job') == 'Pemadam Kebakaran')>Pemadam Kebakaran</option>
+                                        <option value="Kondektur"@if (old('job') == 'Kondektur')>Kondektur</option>
+                                        <option value="Pilot"@if (old('job') == 'Pilot')>Pilot</option>
+                                        <option value="Masinis"@if (old('job') == 'Masinis')>Masinis</option>
+                                        <option value="Wartawan"@if (old('job') == 'Wartawan')>Wartawan</option>
+                                        <option value="Penulis"@if (old('job') == 'Penulis')>Penulis</option>
+                                        <option value="Insinyur Mesin"@if (old('job') == 'Insinyur Mesin')>Insinyur Mesin</option>
+                                        <option value="Ahli Gizi"@if (old('job') == 'Ahli Gizi')>Ahli Gizi</option>
+                                        <option value="Pustakawan"@if (old('job') == 'Pustakawan')>Pustakawan</option>
+                                        <option value="Hakim"@if (old('job') == 'Hakim')>Hakim</option>
+                                        <option value="Notaris"@if (old('job') == 'Notaris')>Notaris</option>
+                                        <option value="Teller Bank"@if (old('job') == 'Teller Bank')>Teller Bank</option>
+                                        <option value="Koki"@if (old('job') == 'Koki')>Koki</option>
+                                        <option value="Artis"@if (old('job') == 'Artis')>Artis</option>
+                                        <option value="Penerjemah"@if (old('job') == 'Penerjemah')>Penerjemah</option>
+                                        <option value="Tentara"@if (old('job') == 'Tentara')>Tentara</option>
+                                        <option value="Tukang Cukur"@if (old('job') == 'Tukang Cukur')>Tukang Cukur</option>
+                                        <option value="Petani"@if (old('job') == 'Petani')>Petani</option>
+                                        <option value="Akuntan"@if (old('job') == 'Akuntan')>Akuntan</option>
+                                        <option value="Pengacara"@if (old('job') == 'Pengacara')>Pengacara</option>
+                                        <option value="Polisi"@if (old('job') == 'Polisi')>Polisi</option>
+                                        <option value="Pegawai Negeri"@if (old('job') == 'Pegawai Negeri')>Pegawai Negeri</option>
+                                        <option value="Pegawai Swasta"@if (old('job') == 'Pegawai Swasta')>Pegawai Swasta</option>
+                                        <option value="Wiraswasta"@if (old('job') == 'Wiraswasta')>Wiraswasta</option>
+                                        <option value="Lainnya"@if (old('job') == 'Lainnya')>Lainnya</option>
                                     </select>
                                 </div>
                                 @error('job')
@@ -186,11 +205,15 @@
                                 <div class="input-group-icon">
                                     <div class="icon"><i class="fa-regular fa-user"></i></div>
                                     <select name="keanggotaan" id="keanggotaan"
-                                        class="single-input form-select @error('keanggotaan') is-invalid @enderror" required>
+                                        class="single-input form-select @error('keanggotaan') is-invalid @enderror"
+                                        required>
                                         <option value="" disabled selected>Pilih Keanggotaan</option>
-                                        <option value="Kader Muhammadiyah">Kader Muhammadiyah</option>
-                                        <option value="Warga Muhammadiyah">Warga Muhammadiyah</option>
-                                        <option value="Simpatisan Muhammadiyah">Simpatisan Muhammadiyah</option>
+                                        <option value="Kader Muhammadiyah" @if (old('keanggotaan') == 'Kader Muhammadiyah') selected @endif>
+                                            Kader Muhammadiyah</option>
+                                        <option value="Warga Muhammadiyah" @if (old('keanggotaan') == 'Warga Muhammadiyah') selected @endif>
+                                            Warga Muhammadiyah</option>
+                                        <option value="Simpatisan Muhammadiyah" @if (old('keanggotaan') == 'Simpatisan Muhammadiyah') selected @endif>
+                                            Simpatisan Muhammadiyah</option>
                                     </select>
                                 </div>
                                 @error('keanggotaan')
@@ -261,7 +284,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-3">
                                 <button type="submit" class="genric-btn primary circle ">
-                                    {{ __('Login') }}
+                                    {{ __('Register') }}
                                 </button>
                             </div>
                         </div>
@@ -285,8 +308,24 @@
 @section('scripts')
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
+        $('#photo_preview').click(function() {
+            $('#photo').click();
+        });
+
+        $('#photo').change(function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#photo_preview').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+    <script>
         $('#job').select2({
-            placeholder: "Pilih Pekerjaan / Kepakaran",
+            placeholder: "Pilih Pekerjaan",
             // theme: 'bootstrap4'
         });
 
@@ -319,6 +358,8 @@
                         </div>
                     </div>
                 `);
+            } else {
+                $('#kepakaran').html('');
             }
         });
     </script>
