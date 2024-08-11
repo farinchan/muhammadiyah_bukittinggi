@@ -22,13 +22,13 @@ class AuthController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|min:6',
+            'gender' => 'required',
+            'place_of_birth' => 'required',
+            'date_of_birth' => 'required',
+            'address' => 'required',
+            'phone' => 'required',
+            
         ]);
-
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
     }
 
 }

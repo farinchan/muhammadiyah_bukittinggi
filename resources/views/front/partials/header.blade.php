@@ -37,7 +37,7 @@
                                         alt=""></a>
                             </div>
                         </div>
-                        <div class="col-xl-9 col-lg-9 col-md-9 text-right">
+                        <div class="col-xl-9 col-lg-9 col-md-9 text-right" id="login1">
                             <a href="{{ route('login') }}" class="genric-btn primary-border circle">
                                 <i class="fa-regular fa-right-to-bracket"></i> &nbsp; &nbsp;
                                 Login
@@ -74,6 +74,7 @@
                                                 <li><a href="details.html">Categori Details</a></li>
                                             </ul>
                                         </li>
+                                        <li  id="login_mobile" ><a href="#">Login</a></li>
                                     </ul>
                                 </nav>
                             </div>

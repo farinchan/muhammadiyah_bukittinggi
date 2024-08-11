@@ -14,8 +14,14 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->enum('gender', ['Laki-laki', 'Perempuan'])->nullable();
+            $table->string('place_of_birth')->nullable();
+            $table->date('birth_date')->nullable();
+            $table->string('phone')->unique();
+            $table->string('address')->nullable();
             $table->enum('keanggotaan', ['Kader Muhammadiyah', 'Warga Muhammadiyah', 'Simpatisan Muhammadiyah'])->default('Warga Muhammadiyah');
-            $table->string('pekerjaan')->nullable();
+            $table->string('job')->nullable();
+            $table->string('kepakaran')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

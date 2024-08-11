@@ -25,6 +25,12 @@
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta3/css/all.css">
+
+    <!-- Select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    
+
 </head>
 
 <body>
@@ -79,10 +85,22 @@
     <script src="{{ asset('front/js/plugins.js') }}"></script>
     <script src="{{ asset('front/js/main.js') }}"></script>
 
+    <!-- Select2 -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script>
+        
+        if ($(window).width() < 768) {
+            $('#login_mobile').show();
+        } else {
+            $('#login_mobile').hide();
+        }
+    </script>
+
     @include('sweetalert::alert')
 
     @yield('scripts')
-    
+
 
 </body>
 
