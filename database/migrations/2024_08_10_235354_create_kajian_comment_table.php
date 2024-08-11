@@ -11,13 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('news_comment', function (Blueprint $table) {
+        Schema::create('kajian_comment', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('news_id')->constrained('news')->onDelete('cascade');
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->text('content');
+            $table->foreignId('kajian_id')->constrained('kajian')->onDelete('cascade');
+            $table->string('name');
+            $table->string('email');
+            $table->text('comment');
+            $table->boolean('is_active')->default(true);
+            $table->foreignId('parent_id')->nullable()->constrained('kajian_comment')->onDelete('cascade');
             $table->enum('status', ['pending', 'approved', 'spam'])->default('pending');
-            $table->foreignId('parent_id')->nullable()->constrained('news_comment')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('news_comment');
+        Schema::dropIfExists('kajian_comment');
     }
 };

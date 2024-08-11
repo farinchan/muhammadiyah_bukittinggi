@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->enum('keanggotaan', ['Kader Muhammadiyah', 'Warga Muhammadiyah', 'Simpatisan Muhammadiyah'])->default('Warga Muhammadiyah');
+            $table->string('pekerjaan')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
