@@ -22,6 +22,9 @@
     <link rel="stylesheet" href="{{ asset('front/css/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('front/css/nice-select.css') }}">
     <link rel="stylesheet" href="{{ asset('front/css/style.css') }}">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta3/css/all.css">
 </head>
 
 <body>
@@ -76,7 +79,10 @@
     <script src="{{ asset('front/js/plugins.js') }}"></script>
     <script src="{{ asset('front/js/main.js') }}"></script>
 
+    @include('sweetalert::alert')
+
     @yield('scripts')
+    
 
 </body>
 

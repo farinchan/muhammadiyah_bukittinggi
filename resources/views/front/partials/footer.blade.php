@@ -9,7 +9,7 @@
                             <!-- logo -->
                             <div class="footer-logo">
                                 <a href="index.html"><img src="{{ asset('front/img/logo/logo2_footer.png') }}"
-                                        alt=""></a>
+                                        width="400px" alt=""></a>
                             </div>
                             <div class="footer-tittle">
                                 <div class="footer-pera">
@@ -36,17 +36,18 @@
                             <!-- Form -->
                             <div class="footer-form">
                                 <div id="mc_embed_signup">
-                                    <form target="_blank"
-                                        action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                                        method="get" class="subscribe_form relative mail_part">
-                                        <input type="email" name="email" id="newsletter-form-email"
+                                    <form target="_blank" action="" method="get"
+
+                                        class="subscribe_form relative mail_part">
+                                        <input  type="email" name="email" id="newsletter-form-email" style="color: #fffl; background-color: #fff; border: 1px solid #fff; border-radius: 5px; padding: 5px 10px; width: 100%; "
                                             placeholder="Email Address" class="placeholder hide-on-focus"
                                             onfocus="this.placeholder = ''"
                                             onblur="this.placeholder = ' Email Address '">
                                         <div class="form-icon">
                                             <button type="submit" name="submit" id="newsletter-submit"
                                                 class="email_icon newsletter-submit button-contactForm"><img
-                                                    src="{{ asset('front/img/logo/form-iocn.png') }}" alt=""></button>
+                                                    src="{{ asset('front/img/logo/form-iocn.png') }}"
+                                                    alt=""></button>
                                         </div>
                                         <div class="mt-10 info"></div>
                                     </form>
@@ -58,22 +59,36 @@
                 <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6">
                     <div class="single-footer-caption mb-50 mt-60">
                         <div class="footer-tittle">
-                            <h4>Instagram Feed</h4>
+                            <h4>Navigation</h4>
                         </div>
                         <div class="instagram-gellay">
                             <ul class="insta-feed">
-                                <li><a href="#"><img src="{{ asset('front/img/post/instra1.jpg') }}" alt=""></a>
+                                <li>
+                                    <a href="#">
+                                        Home
+                                    </a>
                                 </li>
-                                <li><a href="#"><img src="{{ asset('front/img/post/instra2.jpg') }}" alt=""></a>
+                                <li>
+                                    <a href="#">
+                                        Features
+                                    </a>
                                 </li>
-                                <li><a href="#"><img src="{{ asset('front/img/post/instra3.jpg') }}" alt=""></a>
+                                <li>
+                                    <a href="#">
+                                        Services
+                                    </a>
                                 </li>
-                                <li><a href="#"><img src="{{ asset('front/img/post/instra4.jpg') }}" alt=""></a>
+                                <li>
+                                    <a href="#">
+                                        Portfolio
+                                    </a>
                                 </li>
-                                <li><a href="#"><img src="{{ asset('front/img/post/instra5.jpg') }}" alt=""></a>
+                                <li>
+                                    <a href="#">
+                                        Contact
+                                    </a>
                                 </li>
-                                <li><a href="#"><img src="{{ asset('front/img/post/instra6.jpg') }}" alt=""></a>
-                                </li>
+
                             </ul>
                         </div>
                     </div>
