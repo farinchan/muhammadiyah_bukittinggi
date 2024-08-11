@@ -18,8 +18,8 @@
 	<!--end::Mobile logo-->
 <!--begin::Header wrapper-->
 <div class="d-flex align-items-stretch justify-content-between flex-lg-grow-1" id="kt_app_header_wrapper">
-@include('layout/partials/header/_menu/_menu')
-@include('layout/partials/header/_navbar')
+@include('back/layout/partials/header/_menu/_menu')
+@include('back/layout/partials/header/_navbar')
 </div>
 <!--end::Header wrapper-->            </div>
             <!--end::Header container-->

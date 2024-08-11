@@ -158,11 +158,11 @@
                     <div class="flex-row-fluid py-lg-5 px-lg-15">
                         <!--begin::Form-->
                         <form class="form" novalidate="novalidate" id="kt_modal_create_app_form">
-@include('partials/modals/create-app/steps/_step-1')
-@include('partials/modals/create-app/steps/_step-2')
-@include('partials/modals/create-app/steps/_step-3')
-@include('partials/modals/create-app/steps/_step-4')
-@include('partials/modals/create-app/steps/_step-5')
+@include('back/partials/modals/create-app/steps/_step-1')
+@include('back/partials/modals/create-app/steps/_step-2')
+@include('back/partials/modals/create-app/steps/_step-3')
+@include('back/partials/modals/create-app/steps/_step-4')
+@include('back/partials/modals/create-app/steps/_step-5')
                             <!--begin::Actions-->
                             <div class="d-flex flex-stack pt-10">
                                 <!--begin::Wrapper-->
