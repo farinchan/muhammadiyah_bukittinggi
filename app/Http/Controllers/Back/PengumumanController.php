@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Back;
 use App\Http\Controllers\Controller;
 use App\Models\Pengumuman;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Str;
 
 class PengumumanController extends Controller
 {
@@ -29,5 +33,49 @@ class PengumumanController extends Controller
         ];
 
         return view('back.pages.pengumuman.create', $data);
+    }
+
+    public function store(Request $request)
+    {
+        // dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'title' => 'required',
+            'content' => 'required',
+            'meta_keywords' => 'nullable',
+            'is_active' => 'required',
+        ],[
+            'required' => ':attribute harus diisi',
+            'image' => 'File harus berupa gambar',
+            'mimes' => 'File harus berupa gambar',
+            'max' => 'Ukuran file maksimal 2MB',
+        ]);
+
+        if ($validator->fails()) {
+            Alert::error('Error', $validator->errors()->all());
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $pengumuman = new Pengumuman();
+        $pengumuman->title = $request->title;
+        $pengumuman->slug = Str::slug($request->title).'-'.rand(1000, 9999);
+        $pengumuman->content = $request->content;
+        $pengumuman->meta_title = $request->title;
+        $pengumuman->meta_description = Str::limit(strip_tags($request->content), 150);
+        $pengumuman->meta_keywords = $request->meta_keywords;
+        $pengumuman->is_active = $request->is_active;
+        $pengumuman->user_id = Auth::user()->id;
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imagePath = $image->storeAs('public/pengumuman', date('YmdHis') . '_' . Str::slug($request->title) . '.' . $image->getClientOriginalExtension());
+            $pengumuman->image = str_replace('public/', '', $imagePath);
+        }
+
+        $pengumuman->save();
+
+        Alert::success('Sukses', 'Pengumuman berhasil ditambahkan');
+        return redirect()->route('admin.pengumuman.index');
+
     }
 }

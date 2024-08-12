@@ -15,7 +15,7 @@
                         </div>
                     </div>
                     <div class="card-toolbar">
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#add_category" class="btn btn-primary">
+                        <a href="{{ route("admin.pengumuman.create") }}"  class="btn btn-primary">
                             <i class="ki-duotone ki-plus fs-2"></i>
                             Buat Pengumuman
                         </a>
@@ -51,7 +51,7 @@
                                         <div class="d-flex">
                                             <a href="#" class="symbol symbol-50px">
                                                 <span class="symbol-label"
-                                                    style="background-image:url({{ $pengumuman->image ? storage::url($pengumuman->image) : asset('back/media/pengumuman.png') }});"></span>
+                                                    style="background-image:url({{ $pengumuman->image ? Storage::url($pengumuman->image) : asset('back/media/pengumuman.png') }});"></span>
                                             </a>
                                             <div class="ms-5">
                                                 <a href="#" class="text-gray-800 text-hover-primary fs-5 fw-bold mb-1"
