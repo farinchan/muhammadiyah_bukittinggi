@@ -37,8 +37,8 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->grou
     Route::prefix('news')->name('news.')->group(function () {
         Route::get('/category', [BackNewsController::class, 'category'])->name('category');
         Route::post('/category', [BackNewsController::class, 'categoryStore'])->name('category.store');
-        Route::post('/category/edit/{id}', [BackNewsController::class, 'categoryUpdate'])->name('category.update');
-        Route::get('/category/delete/{id}', [BackNewsController::class, 'categoryDestroy'])->name('category.destroy');
+        Route::put('/category/edit/{id}', [BackNewsController::class, 'categoryUpdate'])->name('category.update');
+        Route::delete('/category/delete/{id}', [BackNewsController::class, 'categoryDestroy'])->name('category.destroy');
 
         Route::get('/', [BackNewsController::class, 'index'])->name('index');
         Route::get('/create', [BackNewsController::class, 'create'])->name('create');
@@ -49,7 +49,7 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->grou
 
         Route::get('/comment', [BackNewsController::class, 'comment'])->name('comment');
         Route::get('/comment/delete/{id}', [BackNewsController::class, 'commentDestroy'])->name('comment.destroy');
-        
+
     });
 
 
