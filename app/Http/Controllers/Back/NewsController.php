@@ -89,4 +89,16 @@ class NewsController extends Controller
         Alert::success('Sukses', 'Kategori Berita berhasil dihapus');
         return redirect()->route('admin.news.category');
     }
+
+    public function index()
+    {
+        $data = [
+            'title' => 'Berita',
+            'menu' => 'Berita',
+            'sub_menu' => 'Berita',
+            
+        ];
+
+        return view('back.pages.news.index', $data);
+    }
 }

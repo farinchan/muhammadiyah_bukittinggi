@@ -44,7 +44,7 @@ class PengumumanController extends Controller
             'content' => 'required',
             'meta_keywords' => 'nullable',
             'is_active' => 'required',
-        ],[
+        ], [
             'required' => ':attribute harus diisi',
             'image' => 'File harus berupa gambar',
             'mimes' => 'File harus berupa gambar',
@@ -58,11 +58,11 @@ class PengumumanController extends Controller
 
         $pengumuman = new Pengumuman();
         $pengumuman->title = $request->title;
-        $pengumuman->slug = Str::slug($request->title).'-'.rand(1000, 9999);
+        $pengumuman->slug = Str::slug($request->title) . '-' . rand(1000, 9999);
         $pengumuman->content = $request->content;
         $pengumuman->meta_title = $request->title;
         $pengumuman->meta_description = Str::limit(strip_tags($request->content), 150);
-        $pengumuman->meta_keywords = $request->meta_keywords;
+        $pengumuman->meta_keywords = implode(", ", array_column(json_decode($request->meta_keywords), 'value'));
         $pengumuman->is_active = $request->is_active;
         $pengumuman->user_id = Auth::user()->id;
 
@@ -76,6 +76,68 @@ class PengumumanController extends Controller
 
         Alert::success('Sukses', 'Pengumuman berhasil ditambahkan');
         return redirect()->route('admin.pengumuman.index');
+    }
 
+    public function edit($id)
+    {
+        $data = [
+            'title' => 'Edit Pengumuman',
+            'menu' => 'Pengumuman',
+            'sub_menu' => 'Pengumuman',
+            'pengumuman' => Pengumuman::find($id)
+        ];
+
+        return view('back.pages.pengumuman.edit', $data);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'title' => 'required',
+            'content' => 'required',
+            'meta_keywords' => 'nullable',
+            'is_active' => 'required',
+        ], [
+            'required' => ':attribute harus diisi',
+            'image' => 'File harus berupa gambar',
+            'mimes' => 'File harus berupa gambar',
+            'max' => 'Ukuran file maksimal 2MB',
+        ]);
+
+        if ($validator->fails()) {
+            Alert::error('Error', $validator->errors()->all());
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $pengumuman = Pengumuman::find($id);
+        $pengumuman->title = $request->title;
+        $pengumuman->slug = Str::slug($request->title) . '-' . rand(1000, 9999);
+        $pengumuman->content = $request->content;
+        $pengumuman->meta_title = $request->title;
+        $pengumuman->meta_description = Str::limit(strip_tags($request->content), 150);
+        $pengumuman->meta_keywords = implode(", ", array_column(json_decode($request->meta_keywords), 'value'));
+        $pengumuman->is_active = $request->is_active;
+        $pengumuman->user_id = Auth::user()->id;
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imagePath = $image->storeAs('public/pengumuman', date('YmdHis') . '_' . Str::slug($request->title) . '.' . $image->getClientOriginalExtension());
+            $pengumuman->image = str_replace('public/', '', $imagePath);
+        }
+
+        $pengumuman->save();
+
+        Alert::success('Sukses', 'Pengumuman berhasil di update');
+        return redirect()->route('admin.pengumuman.index');
+    }
+
+    public function destroy($id)
+    {
+        $pengumuman = Pengumuman::find($id);
+        $pengumuman->delete();
+
+        Alert::success('Sukses', 'Pengumuman berhasil dihapus');
+        return redirect()->route('admin.pengumuman.index');
     }
 }

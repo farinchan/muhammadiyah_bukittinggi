@@ -2,7 +2,8 @@
 @section('content')
     <div id="kt_app_content" class="app-content flex-column-fluid">
         <div id="kt_app_content_container" class="app-container container-xxl">
-            <form id="kt_ecommerce_add_category_form" class="form d-flex flex-column flex-lg-row" action="{{ route("admin.pengumuman.store") }}" method="POST" enctype="multipart/form-data">
+            <form id="kt_ecommerce_add_category_form" class="form d-flex flex-column flex-lg-row" action="{{ route("admin.pengumuman.update", $pengumuman->id) }}" method="POST" enctype="multipart/form-data">
+                @method('PUT')
                 @csrf
                 <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
                     <div class="card card-flush py-4">
@@ -14,11 +15,7 @@
                         <div class="card-body text-center pt-0">
                             <style>
                                 .image-input-placeholder {
-                                    background-image: url('{{ asset('back/media/svg/files/blank-image.svg') }}');
-                                }
-
-                                [data-bs-theme="dark"] .image-input-placeholder {
-                                    background-image: url('{{ asset('back/media/svg/files/blank-image-dark.svg') }}');
+                                    background-image: url('@if($pengumuman->image) {{ Storage::url($pengumuman->image) }} @else {{ asset('back/media/svg/files/blank-image.svg') }} @endif');'
                                 }
                             </style>
                             <div class="image-input image-input-empty image-input-outline image-input-placeholder mb-3"
@@ -67,8 +64,8 @@
                             <select name="is_active" class="form-select mb-2" data-control="select2" data-hide-search="true"
                                 data-placeholder="Select an option" id="kt_ecommerce_add_category_status_select" required>
                                 <option></option>
-                                <option value="1" {{ old('is_active') == 1 ? 'selected' : '' }}>Aktif</option>
-                                <option value="0" {{ old('is_active') == 0 ? 'selected' : '' }}>Tidak Aktif</option>
+                                <option value="1" {{ $pengumuman->is_active == 1 ? 'selected' : '' }}>Aktif</option>
+                                <option value="0" {{ $pengumuman->is_active == 0 ? 'selected' : '' }}>Tidak Aktif</option>
                             </select>
                             @error('is_active')
                                 <div class="text-danger fs-7">{{ $message }}</div>
@@ -90,7 +87,7 @@
                             <div class="mb-10 fv-row">
                                 <label class="required form-label">Judul</label>
                                 <input type="text" name="title" class="form-control mb-2"
-                                    placeholder="Judul Pengumuman" value="{{ old("title") }}" required />
+                                    placeholder="Judul Pengumuman" value="{{ $pengumuman->title }}" required />
                                 @error('title')
                                     <div class="text-danger fs-7">{{ $message }}</div>
                                 @enderror
@@ -99,7 +96,7 @@
                                 <label class="form-label">Content</label>
                                 <div id="quill_content" name="kt_ecommerce_add_category_description"
                                     class="min-h-300px mb-2">
-                                    {!! old('content') !!}
+                                    {!! $pengumuman->content !!}
                                 </div>
                                 <input type="hidden" name="content" id="content" required>
                                 @error('content')
@@ -109,7 +106,7 @@
                             <div>
                                 <label class="form-label">Meta Tag Keywords</label>
                                 <input id="keyword_tagify" name="meta_keywords"
-                                    class="form-control mb-2" value="{{ old("meta_keywords") }}" />
+                                    class="form-control mb-2" value="{{ $pengumuman->meta_keywords }}" />
                                 @error('meta_keywords')
                                     <div class="text-danger fs-7">{{ $message }}</div>
                                 @enderror
