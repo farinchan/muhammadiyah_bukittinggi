@@ -113,6 +113,8 @@
     <script src="{{ asset('back/js/custom/utilities/modals/users-search.js')}}"></script>
     <!--end::Custom Javascript-->
     <!--end::Javascript-->
+    @yield('scripts')
+    @include('sweetalert::alert')
 </body>
 <!--end::Body-->
 

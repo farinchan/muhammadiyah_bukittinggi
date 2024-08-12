@@ -149,41 +149,41 @@
                             <div class="col-md-8">
                                 <div class="input-group-icon">
                                     <div class="icon"><i class="fa-regular fa-briefcase"></i></div>
-                                    <select name="job" id="job" class="reset-style select2"
-                                        name="categories[]" multiple="multiple" required>
+                                    <select id="job" class="reset-style select2"
+                                        name="job[]" multiple="multiple" required>
                                         <option value="Ustadz"@if (old('job') == 'Ustadz') selected @endif >Ustadz</option>
-                                        <option value="Dosen"@if (old('job') == 'Dosen')>Dosen</option>
-                                        <option value="Guru"@if (old('job') == 'Guru')>Guru</option>
-                                        <option value="Arsitek"@if (old('job') == 'Arsitek')>Arsitek</option>
-                                        <option value="Nelayan"@if (old('job') == 'Nelayan')>Nelayan</option>
-                                        <option value="Perawat"@if (old('job') == 'Perawat')>Perawat</option>
-                                        <option value="Dokter"@if (old('job') == 'Dokter')>Dokter</option>
-                                        <option value="Bidan"@if (old('job') == 'Bidan')>Bidan</option>
-                                        <option value="Pemadam Kebakaran"@if (old('job') == 'Pemadam Kebakaran')>Pemadam Kebakaran</option>
-                                        <option value="Kondektur"@if (old('job') == 'Kondektur')>Kondektur</option>
-                                        <option value="Pilot"@if (old('job') == 'Pilot')>Pilot</option>
-                                        <option value="Masinis"@if (old('job') == 'Masinis')>Masinis</option>
-                                        <option value="Wartawan"@if (old('job') == 'Wartawan')>Wartawan</option>
-                                        <option value="Penulis"@if (old('job') == 'Penulis')>Penulis</option>
-                                        <option value="Insinyur Mesin"@if (old('job') == 'Insinyur Mesin')>Insinyur Mesin</option>
-                                        <option value="Ahli Gizi"@if (old('job') == 'Ahli Gizi')>Ahli Gizi</option>
-                                        <option value="Pustakawan"@if (old('job') == 'Pustakawan')>Pustakawan</option>
-                                        <option value="Hakim"@if (old('job') == 'Hakim')>Hakim</option>
-                                        <option value="Notaris"@if (old('job') == 'Notaris')>Notaris</option>
-                                        <option value="Teller Bank"@if (old('job') == 'Teller Bank')>Teller Bank</option>
-                                        <option value="Koki"@if (old('job') == 'Koki')>Koki</option>
-                                        <option value="Artis"@if (old('job') == 'Artis')>Artis</option>
-                                        <option value="Penerjemah"@if (old('job') == 'Penerjemah')>Penerjemah</option>
-                                        <option value="Tentara"@if (old('job') == 'Tentara')>Tentara</option>
-                                        <option value="Tukang Cukur"@if (old('job') == 'Tukang Cukur')>Tukang Cukur</option>
-                                        <option value="Petani"@if (old('job') == 'Petani')>Petani</option>
-                                        <option value="Akuntan"@if (old('job') == 'Akuntan')>Akuntan</option>
-                                        <option value="Pengacara"@if (old('job') == 'Pengacara')>Pengacara</option>
-                                        <option value="Polisi"@if (old('job') == 'Polisi')>Polisi</option>
-                                        <option value="Pegawai Negeri"@if (old('job') == 'Pegawai Negeri')>Pegawai Negeri</option>
-                                        <option value="Pegawai Swasta"@if (old('job') == 'Pegawai Swasta')>Pegawai Swasta</option>
-                                        <option value="Wiraswasta"@if (old('job') == 'Wiraswasta')>Wiraswasta</option>
-                                        <option value="Lainnya"@if (old('job') == 'Lainnya')>Lainnya</option>
+                                        <option value="Dosen"@if (old('job') == 'Dosen') selected @endif>Dosen</option>
+                                        <option value="Guru"@if (old('job') == 'Guru') selected @endif>Guru</option>
+                                        <option value="Arsitek"@if (old('job') == 'Arsitek') selected @endif>Arsitek</option>
+                                        <option value="Nelayan"@if (old('job') == 'Nelayan') selected @endif>Nelayan</option>
+                                        <option value="Perawat"@if (old('job') == 'Perawat') selected @endif>Perawat</option>
+                                        <option value="Dokter"@if (old('job') == 'Dokter') selected @endif>Dokter</option>
+                                        <option value="Bidan"@if (old('job') == 'Bidan') selected @endif>Bidan</option>
+                                        <option value="Pemadam Kebakaran"@if (old('job') == 'Pemadam Kebakaran') selected @endif>Pemadam Kebakaran</option>
+                                        <option value="Kondektur"@if (old('job') == 'Kondektur') selected @endif>Kondektur</option>
+                                        <option value="Pilot"@if (old('job') == 'Pilot') selected @endif>Pilot</option>
+                                        <option value="Masinis"@if (old('job') == 'Masinis') selected @endif>Masinis</option>
+                                        <option value="Wartawan"@if (old('job') == 'Wartawan') selected @endif>Wartawan</option>
+                                        <option value="Penulis"@if (old('job') == 'Penulis') selected @endif>Penulis</option>
+                                        <option value="Insinyur Mesin"@if (old('job') == 'Insinyur Mesin') selected @endif>Insinyur Mesin</option>
+                                        <option value="Ahli Gizi"@if (old('job') == 'Ahli Gizi') selected @endif>Ahli Gizi</option>
+                                        <option value="Pustakawan"@if (old('job') == 'Pustakawan') selected @endif>Pustakawan</option>
+                                        <option value="Hakim"@if (old('job') == 'Hakim') selected @endif>Hakim</option>
+                                        <option value="Notaris"@if (old('job') == 'Notaris') selected @endif>Notaris</option>
+                                        <option value="Teller Bank"@if (old('job') == 'Teller Bank') selected @endif>Teller Bank</option>
+                                        <option value="Koki"@if (old('job') == 'Koki') selected @endif>Koki</option>
+                                        <option value="Artis"@if (old('job') == 'Artis') selected @endif>Artis</option>
+                                        <option value="Penerjemah"@if (old('job') == 'Penerjemah') selected @endif>Penerjemah</option>
+                                        <option value="Tentara"@if (old('job') == 'Tentara') selected @endif>Tentara</option>
+                                        <option value="Tukang Cukur"@if (old('job') == 'Tukang Cukur') selected @endif>Tukang Cukur</option>
+                                        <option value="Petani"@if (old('job') == 'Petani') selected @endif>Petani</option>
+                                        <option value="Akuntan"@if (old('job') == 'Akuntan') selected @endif>Akuntan</option>
+                                        <option value="Pengacara"@if (old('job') == 'Pengacara') selected @endif>Pengacara</option>
+                                        <option value="Polisi"@if (old('job') == 'Polisi') selected @endif>Polisi</option>
+                                        <option value="Pegawai Negeri"@if (old('job') == 'Pegawai Negeri') selected @endif>Pegawai Negeri</option>
+                                        <option value="Pegawai Swasta"@if (old('job') == 'Pegawai Swasta') selected @endif>Pegawai Swasta</option>
+                                        <option value="Wiraswasta"@if (old('job') == 'Wiraswasta') selected @endif>Wiraswasta</option>
+                                        <option value="Lainnya"@if (old('job') == 'Lainnya') selected @endif>Lainnya</option>
                                     </select>
                                 </div>
                                 @error('job')

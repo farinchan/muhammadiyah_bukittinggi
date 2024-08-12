@@ -93,7 +93,7 @@ class AuthController extends Controller
 
         if ($request->hasFile('photo')) {
             $photo = $request->file('photo');
-            $photoPath = $photo->storeAs('public/photos', date('YmdHis') . '_' . Str::slug($request->name) . '.' . $photo->getClientOriginalExtension());
+            $photoPath = $photo->storeAs('public/anggota', date('YmdHis') . '_' . Str::slug($request->name) . '.' . $photo->getClientOriginalExtension());
             $user->photo = str_replace('public/', '', $photoPath);
         }
 
@@ -105,7 +105,7 @@ class AuthController extends Controller
         $user->phone = $request->phone;
         $user->address = $request->address;
         $user->keanggotaan = $request->keanggotaan;
-        $user->job = $request->job;
+        $user->job = json_encode($request->job);
         $user->kepakaran = $request->kepakaran;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
@@ -120,6 +120,12 @@ class AuthController extends Controller
 
         Alert::success('Success', 'Pendaftaran berhasil, Permintaan pendaftaran anda sedang diproses oleh admin kami, silahkan cek email anda untuk informasi lebih lanjut');
         return redirect()->route('login');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('home');
     }
 
 }
