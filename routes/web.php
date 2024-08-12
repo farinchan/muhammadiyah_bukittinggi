@@ -6,6 +6,7 @@ use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Back\DashboardController as BackDashboardController;
 use App\Http\Controllers\Back\UserController as BackUserController;
 use App\Http\Controllers\Back\NewsController as BackNewsController;
+use App\Http\Controllers\Back\PengumumanController as BackPengumumanController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -27,11 +28,20 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->grou
         Route::get('/create', [BackUserController::class, 'create'])->name('create');
         Route::post('/create', [BackUserController::class, 'store'])->name('store');
         Route::get('/edit/{id}', [BackUserController::class, 'edit'])->name('edit');
-        Route::post('/edit/{id}', [BackUserController::class, 'update'])->name('update');
-        Route::get('/delete/{id}', [BackUserController::class, 'destroy'])->name('destroy');
+        Route::put('/edit/{id}', [BackUserController::class, 'update'])->name('update');
+        Route::delete('/delete/{id}', [BackUserController::class, 'destroy'])->name('destroy');
 
         Route::get('/register', [BackUserController::class, 'register'])->name('register');
         Route::post('/register/approve/{id}', [BackUserController::class, 'registerApprove'])->name('register.approve');
+    });
+
+    Route::prefix('pengumuman')->name('pengumuman.')->group(function () {
+        Route::get('/', [BackPengumumanController::class, 'index'])->name('index');
+        Route::get('/create', [BackPengumumanController::class, 'create'])->name('create');
+        Route::post('/create', [BackPengumumanController::class, 'store'])->name('store');
+        Route::get('/edit/{id}', [BackPengumumanController::class, 'edit'])->name('edit');
+        Route::put('/edit/{id}', [BackPengumumanController::class, 'update'])->name('update');
+        Route::delete('/delete/{id}', [BackPengumumanController::class, 'destroy'])->name('destroy');
     });
 
     Route::prefix('news')->name('news.')->group(function () {
@@ -44,8 +54,8 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->grou
         Route::get('/create', [BackNewsController::class, 'create'])->name('create');
         Route::post('/create', [BackNewsController::class, 'store'])->name('store');
         Route::get('/edit/{id}', [BackNewsController::class, 'edit'])->name('edit');
-        Route::post('/edit/{id}', [BackNewsController::class, 'update'])->name('update');
-        Route::get('/delete/{id}', [BackNewsController::class, 'destroy'])->name('destroy');
+        Route::put('/edit/{id}', [BackNewsController::class, 'update'])->name('update');
+        Route::delete('/delete/{id}', [BackNewsController::class, 'destroy'])->name('destroy');
 
         Route::get('/comment', [BackNewsController::class, 'comment'])->name('comment');
         Route::get('/comment/delete/{id}', [BackNewsController::class, 'commentDestroy'])->name('comment.destroy');

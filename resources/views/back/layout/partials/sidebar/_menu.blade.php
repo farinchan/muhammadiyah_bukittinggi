@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="menu-item">
-                    <a class="menu-link" href="#">
+                    <a class="menu-link" href="{{ route("admin.pengumuman.index") }}">
                         <span class="menu-icon">
                             <i class="ki-duotone ki-calendar-8 fs-2">
                                 <span class="path1"></span>

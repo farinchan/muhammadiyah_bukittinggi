@@ -30,7 +30,8 @@ class DatabaseSeeder extends Seeder
         $user->assignRole('admin');
 
         $this->call([
-            NewsSeeder::class
+            NewsSeeder::class,
+            PengumumanSeeder::class,
         ]);
     }
 }
