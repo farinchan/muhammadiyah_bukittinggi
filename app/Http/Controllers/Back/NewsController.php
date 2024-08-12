@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
+use App\Models\News;
 use App\Models\NewsCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Str;
@@ -28,7 +30,7 @@ class NewsController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|unique:news_category,name',
             'description' => 'nullable',
-        ],[
+        ], [
             'name.required' => 'Nama kategori harus diisi',
             'name.unique' => 'Nama kategori sudah ada'
         ]);
@@ -49,15 +51,14 @@ class NewsController extends Controller
 
         Alert::success('Sukses', 'Kategori Berita berhasil ditambahkan');
         return redirect()->route('admin.news.category');
-        
     }
 
     public function categoryUpdate(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|unique:news_category,name,'.$id,
+            'name' => 'required|unique:news_category,name,' . $id,
             'description' => 'nullable',
-        ],[
+        ], [
             'name.required' => 'Nama kategori harus diisi',
             'name.unique' => 'Nama kategori sudah ada'
         ]);
@@ -96,9 +97,134 @@ class NewsController extends Controller
             'title' => 'Berita',
             'menu' => 'Berita',
             'sub_menu' => 'Berita',
-            
+            'list_news' => News::all()
         ];
 
         return view('back.pages.news.index', $data);
+    }
+
+    public function create()
+    {
+        $data = [
+            'title' => 'Tambah Berita',
+            'menu' => 'Berita',
+            'sub_menu' => 'Berita',
+            'categories' => NewsCategory::all(),
+            'news' => News::all()
+        ];
+
+        return view('back.pages.news.create', $data);
+    }
+
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'title' => 'required',
+            'content' => 'required',
+            'category_id' => 'required',
+            'status' => 'required',
+            'meta_keywords' => 'nullable',
+        ],[
+            'image' => 'File harus berupa gambar',
+            'mimes' => 'Format file harus :values',
+            'max' => 'Ukuran file maksimal :max KB',
+            'required' => 'Kolom :attribute harus diisi'            
+        ]
+    );
+
+        if ($validator->fails()) {
+            Alert::error('Error', $validator->errors()->all());
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $news = new News();
+        $news->title = $request->title;
+        $news->slug = Str::slug($request->title) . '-' . rand(1000, 9999);
+        $news->content = $request->content;
+        $news->category_id = $request->category_id;
+        $news->user_id = Auth::user()->id;
+        $news->status = $request->status;
+        $news->meta_title = $request->title;
+        $news->meta_description = Str::limit(strip_tags($request->content), 150);
+        $news->meta_keywords = implode(", ", array_column(json_decode($request->meta_keywords), 'value'));;
+
+        if ($request->hasFile('thumbnail')) {
+            $thumbnail = $request->file('thumbnail');
+            $thumbnailPath = $thumbnail->storeAs('public/news', date('YmdHis') . '_' . Str::slug($request->title) . '.' . $thumbnail->getClientOriginalExtension());
+            $news->thumbnail = str_replace('public/', '', $thumbnailPath);
+        }
+
+        $news->save();
+
+        Alert::success('Sukses', 'Berita berhasil ditambahkan');
+        return redirect()->route('admin.news.index');
+    }
+
+    public function edit($id)
+    {
+        $data = [
+            'title' => 'Edit Berita',
+            'menu' => 'Berita',
+            'sub_menu' => 'Berita',
+            'categories' => NewsCategory::all(),
+            'news' => News::find($id)
+        ];
+
+        return view('back.pages.news.edit', $data);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'title' => 'required',
+            'content' => 'required',
+            'category_id' => 'required',
+            'status' => 'required',
+            'meta_keywords' => 'nullable',
+        ],[
+            'image' => 'File harus berupa gambar',
+            'mimes' => 'Format file harus :values',
+            'max' => 'Ukuran file maksimal :max KB',
+            'required' => 'Kolom :attribute harus diisi'            
+        ]
+    );
+
+        if ($validator->fails()) {
+            Alert::error('Error', $validator->errors()->all());
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $news = News::find($id);
+        $news->title = $request->title;
+        $news->slug = Str::slug($request->title) . '-' . rand(1000, 9999);
+        $news->content = $request->content;
+        $news->category_id = $request->category_id;
+        $news->user_id = Auth::user()->id;
+        $news->status = $request->status;
+        $news->meta_title = $request->title;
+        $news->meta_description = Str::limit(strip_tags($request->content), 150);
+        $news->meta_keywords = implode(", ", array_column(json_decode($request->meta_keywords), 'value'));;
+
+        if ($request->hasFile('thumbnail')) {
+            $thumbnail = $request->file('thumbnail');
+            $thumbnailPath = $thumbnail->storeAs('public/news', date('YmdHis') . '_' . Str::slug($request->title) . '.' . $thumbnail->getClientOriginalExtension());
+            $news->thumbnail = str_replace('public/', '', $thumbnailPath);
+        }
+
+        $news->save();
+
+        Alert::success('Sukses', 'Berita berhasil diubah');
+        return redirect()->route('admin.news.index');
+    }
+
+    public function destroy($id)
+    {
+        $news = News::find($id);
+        $news->delete();
+
+        Alert::success('Sukses', 'Berita berhasil dihapus');
+        return redirect()->route('admin.news.index');
     }
 }

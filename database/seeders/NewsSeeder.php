@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\News;
 use App\Models\NewsCategory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -38,6 +39,32 @@ class NewsSeeder extends Seeder
             'meta_title' => 'Putusan PDM Kota Bukittinggi',
             'meta_description' => 'Putusan-putusan Pimpinan Daerah Muhammadiyah (PDM) Kota Bukittinggi',
             'meta_keywords' => 'putusan, putusan pdm, putusan pdm kota bukittinggi',
+        ]);
+
+        News::create([
+            'title' => 'PDM Kota Bukittinggi Gelar Rapat Koordinasi',
+            'slug' => 'pdm-kota-bukittinggi-gelar-rapat-koordinasi',
+            'content' => 'Pimpinan Daerah Muhammadiyah (PDM) Kota Bukittinggi menggelar rapat koordinasi untuk membahas program kerja tahun 2022. Rapat koordinasi ini dihadiri oleh seluruh pengurus PDM Kota Bukittinggi.',
+            'thumbnail' => 'news-thumbnail-1.jpg',
+            'category_id' => 1,
+            'user_id' => 1,
+            'status' => 'published',
+            'meta_title' => 'PDM Kota Bukittinggi Gelar Rapat Koordinasi',
+            'meta_description' => 'Pimpinan Daerah Muhammadiyah (PDM) Kota Bukittinggi menggelar rapat koordinasi untuk membahas program kerja tahun 2022',
+            'meta_keywords' => 'pdm kota bukittinggi, rapat koordinasi, program kerja',
+        ]);
+
+        News::create([
+            'title' => 'ORTOM Kota Bukittinggi Gelar Lomba Mewarnai',
+            'slug' => 'ortom-kota-bukittinggi-gelar-lomba-mewarnai',
+            'content' => 'Organisasi Otonom Muhammadiyah (ORTOM) Kota Bukittinggi menggelar lomba mewarnai untuk anak-anak usia dini. Lomba mewarnai ini diikuti oleh ratusan anak dari berbagai sekolah di Kota Bukittinggi.',
+            'thumbnail' => 'news-thumbnail-2.jpg',
+            'category_id' => 2,
+            'user_id' => 1,
+            'status' => 'published',
+            'meta_title' => 'ORTOM Kota Bukittinggi Gelar Lomba Mewarnai',
+            'meta_description' => 'Organisasi Otonom Muhammadiyah (ORTOM) Kota Bukittinggi menggelar lomba mewarnai untuk anak-anak usia dini',
+            'meta_keywords' => 'ortom kota bukittinggi, lomba mewarnai, anak usia dini',
         ]);
     }
 }
