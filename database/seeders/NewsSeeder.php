@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\News;
 use App\Models\NewsCategory;
+use App\Models\NewsComment;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -65,6 +66,40 @@ class NewsSeeder extends Seeder
             'meta_title' => 'ORTOM Kota Bukittinggi Gelar Lomba Mewarnai',
             'meta_description' => 'Organisasi Otonom Muhammadiyah (ORTOM) Kota Bukittinggi menggelar lomba mewarnai untuk anak-anak usia dini',
             'meta_keywords' => 'ortom kota bukittinggi, lomba mewarnai, anak usia dini',
+        ]);
+
+        NewsComment::create([
+            'name' => 'User Test 1',
+            'email' => 'test1@example.com',
+            'comment' => 'Berita yang sangat menarik, semoga PDM Kota Bukittinggi semakin maju',
+            'status' => 'approved',
+            'news_id' => 1,
+        ]);
+
+        NewsComment::create([
+            'name' => 'User Test 2',
+            'email' => 'test2@example.com',
+            'comment' => 'Aamiiin, semoga PDM Kota Bukittinggi semakin maju dan sukses',
+            'status' => 'approved',
+            'parent_id' => 1,
+            'news_id' => 1,
+        ]);
+
+        NewsComment::create([
+            'name' => 'User Test 2',
+            'email' => 'test2@example.com',
+            'comment' => 'Semoga ORTOM Kota Bukittinggi semakin sukses dan semakin banyak kegiatan positif',
+            'status' => 'approved',
+            'news_id' => 2,
+        ]);
+
+        NewsComment::create([
+            'name' => 'Office Gariskode',
+            'email' => 'office@gariskode.com',
+            'comment' => 'Semoga PDM Kota Bukittinggi Semakin Maju dan semakin sukses',
+            'status' => 'approved',
+            'news_id' => 1,
+            'user_id' => 1,
         ]);
     }
 }

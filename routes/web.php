@@ -58,7 +58,7 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->grou
         Route::delete('/delete/{id}', [BackNewsController::class, 'destroy'])->name('destroy');
 
         Route::get('/comment', [BackNewsController::class, 'comment'])->name('comment');
-        Route::get('/comment/delete/{id}', [BackNewsController::class, 'commentDestroy'])->name('comment.destroy');
+        Route::post('/comment/spam/{id}', [BackNewsController::class, 'commentSpam'])->name('comment.spam');
 
     });
 

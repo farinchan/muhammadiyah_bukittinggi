@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Back;
 use App\Http\Controllers\Controller;
 use App\Models\News;
 use App\Models\NewsCategory;
+use App\Models\NewsComment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -226,5 +227,27 @@ class NewsController extends Controller
 
         Alert::success('Sukses', 'Berita berhasil dihapus');
         return redirect()->route('admin.news.index');
+    }
+
+    public function comment()
+    {
+        $data = [
+            'title' => 'Komentar Berita',
+            'menu' => 'Berita',
+            'sub_menu' => 'Komentar',
+            'comments' => NewsComment::with('news')->get()
+        ];
+
+        return view('back.pages.news.comment', $data);
+    }
+
+    public function commentSpam($id)
+    {
+        $comment = NewsComment::find($id);
+        $comment->status = 'spam';
+        $comment->save();
+
+        Alert::success('Sukses', 'Komentar berhasil diubah menjadi spam');
+        return redirect()->route('admin.news.comment');
     }
 }
