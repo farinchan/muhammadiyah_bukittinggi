@@ -148,7 +148,7 @@ class NewsController extends Controller
         $news->status = $request->status;
         $news->meta_title = $request->title;
         $news->meta_description = Str::limit(strip_tags($request->content), 150);
-        $news->meta_keywords = implode(", ", array_column(json_decode($request->meta_keywords), 'value'));;
+        $news->meta_keywords = implode(", ", array_column(json_decode($request->meta_keywords), 'value'));
 
         if ($request->hasFile('thumbnail')) {
             $thumbnail = $request->file('thumbnail');

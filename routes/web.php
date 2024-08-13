@@ -10,6 +10,7 @@ use App\Http\Controllers\Back\DashboardController as BackDashboardController;
 use App\Http\Controllers\Back\UserController as BackUserController;
 use App\Http\Controllers\Back\NewsController as BackNewsController;
 use App\Http\Controllers\Back\PengumumanController as BackPengumumanController;
+use App\Http\Controllers\Back\KajianController as BackKajianController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -72,6 +73,18 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->grou
         Route::get('/comment', [BackNewsController::class, 'comment'])->name('comment');
         Route::post('/comment/spam/{id}', [BackNewsController::class, 'commentSpam'])->name('comment.spam');
 
+    });
+
+    Route::prefix('kajian')->name('kajian.')->group(function () {
+        Route::get('/', [BackKajianController::class, 'index'])->name('index');
+        Route::get('/create', [BackKajianController::class, 'create'])->name('create');
+        Route::post('/create', [BackKajianController::class, 'store'])->name('store');
+        Route::get('/edit/{id}', [BackKajianController::class, 'edit'])->name('edit');
+        Route::put('/edit/{id}', [BackKajianController::class, 'update'])->name('update');
+        Route::delete('/delete/{id}', [BackKajianController::class, 'destroy'])->name('destroy');
+
+        Route::get('/comment', [BackKajianController::class, 'comment'])->name('comment');
+        Route::post('/comment/spam/{id}', [BackKajianController::class, 'commentSpam'])->name('comment.spam');
     });
 
 

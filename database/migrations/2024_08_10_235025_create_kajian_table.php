@@ -16,11 +16,11 @@ return new class extends Migration
             $table->string('title');
             $table->text('content');
             $table->string('tags')->nullable();
-            $table->string('image')->nullable();
+            $table->string('thumbnail')->nullable();
             $table->string('slug');
             $table->enum('status', ['draft', 'published', 'archived'])->default('draft');
             $table->string('meta_title')->nullable();
-            $table->string('meta_description')->nullable();
+            $table->text('meta_description')->nullable();
             $table->string('meta_keywords')->nullable();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();

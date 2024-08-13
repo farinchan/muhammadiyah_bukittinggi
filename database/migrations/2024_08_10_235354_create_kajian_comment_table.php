@@ -17,9 +17,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->text('comment');
-            $table->boolean('is_active')->default(true);
-            $table->foreignId('parent_id')->nullable()->constrained('kajian_comment')->onDelete('cascade');
-            $table->enum('status', ['pending', 'approved', 'spam'])->default('pending');
+            $table->enum('status', ['approved', 'spam'])->default('approved');
+            $table->foreignId('parent_id')->nullable()->constrained('news_comment')->onDelete('cascade');
+            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('set null');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
