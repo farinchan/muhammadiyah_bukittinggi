@@ -62,19 +62,28 @@
                                 <nav>
                                     <ul id="navigation">
                                         <li><a href="{{ route("home") }}">Home</a></li>
-                                        <li><a href="categori.html">Category</a></li>
-                                        <li><a href="about.html">About</a></li>
-                                        <li><a href="latest_news.html">Latest News</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
-                                        <li><a href="#">Pages</a>
+                                        <li><a href="#">Profile</a>
                                             <ul class="submenu">
-                                                <li><a href="elements.html">Element</a></li>
-                                                <li><a href="blog.html">Blog</a></li>
-                                                <li><a href="single-blog.html">Blog Details</a></li>
-                                                <li><a href="details.html">Categori Details</a></li>
+                                                <li><a href="#">Sejarah</a></li>
+                                                <li><a href="#">Visi Misi</a></li>
+                                                <li><a href="#">Struktur Organisasi</a></li>
                                             </ul>
                                         </li>
-                                        <li  id="login_mobile" ><a href="#">Login</a></li>
+                                        <li><a href="{{ route("news") }}">Berita</a>
+                                            <ul class="submenu">
+                                                @php
+                                                    $categories = \App\Models\NewsCategory::all();
+                                                @endphp
+                                                @foreach ($categories as $category)
+                                                    <li><a href="{{ route('news.category', $category->slug) }}">{{ $category->name }}</a></li>
+                                                @endforeach
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Asset</a></li>
+                                        <li><a href="#">Keanggotaan</a></li>
+                                        <li><a href="#">Ortom</a></li>
+                                        
+                                        <li id="login_mobile" ><a href="#">Login</a></li>
                                     </ul>
                                 </nav>
                             </div>

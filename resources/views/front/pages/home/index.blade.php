@@ -41,104 +41,69 @@
                             <!-- Trending Top -->
                             <div class="trending-top mb-30">
                                 <div class="trend-top-img">
-                                    <img src="{{ asset('front/img/trending/trending_top.jpg') }}" alt="">
+                                    <img src="{{ Storage::url($news->first()->thumbnail) }}" height="400px"
+                                        style="object-fit: cover;" alt="">
                                     <div class="trend-top-cap">
-                                        <span>Appetizers</span>
-                                        <h2><a href="details.html">Welcome To The Best Model Winner<br> Contest At Look
-                                                of the year</a></h2>
+                                        <span>{{ $news->first()->category->name }}</span>
+                                        <h2><a class="mr-5" href="{{ route('news.detail', $news->first()->slug) }}">
+                                                {{ $news->first()->title }}
+                                            </a></h2>
                                     </div>
                                 </div>
                             </div>
                             <!-- Trending Bottom -->
                             <div class="trending-bottom">
                                 <div class="row">
-                                    <div class="col-lg-4">
-                                        <div class="single-bottom mb-35">
-                                            <div class="trend-bottom-img mb-30">
-                                                <img src="{{ asset('front/img/trending/trending_bottom1.jpg') }}" alt="">
+                                    @foreach ($news as $key => $item)
+                                        @if ($key != 0)
+                                            <div class="col-lg-4">
+                                                <div class="single-bottom mb-35">
+                                                    <div class="trend-bottom-img mb-30">
+                                                        <img src="{{ Storage::url($item->thumbnail) }}" width="100%"
+                                                            height="150px" style="object-fit: cover;" alt="">
+                                                    </div>
+                                                    <div class="trend-bottom-cap">
+                                                        <span class="color1"> {{ $item->category->name }}</span>
+                                                        <h4><a href="{{ route('news.detail', $item->slug) }}">
+                                                                {{ Str::limit($item->title, 60) }}
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="trend-bottom-cap">
-                                                <span class="color1">Lifestyple</span>
-                                                <h4><a href="details.html">Get the Illusion of Fuller Lashes by
-                                                        “Mascng.”</a></h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="single-bottom mb-35">
-                                            <div class="trend-bottom-img mb-30">
-                                                <img src="{{ asset('front/img/trending/trending_bottom2.jpg') }}" alt="">
-                                            </div>
-                                            <div class="trend-bottom-cap">
-                                                <span class="color2">Sports</span>
-                                                <h4>
-                                                    <h4><a href="details.html">Get the Illusion of Fuller Lashes by
-                                                            “Mascng.”</a></h4>
-                                                </h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="single-bottom mb-35">
-                                            <div class="trend-bottom-img mb-30">
-                                                <img src="{{ asset('front/img/trending/trending_bottom3.jpg') }}" alt="">
-                                            </div>
-                                            <div class="trend-bottom-cap">
-                                                <span class="color3">Travels</span>
-                                                <h4><a href="details.html"> Welcome To The Best Model Winner Contest</a>
-                                                </h4>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        @endif
+                                    @endforeach
                                 </div>
+
                             </div>
                         </div>
                         <!-- Riht content -->
                         <div class="col-lg-4">
-                            <div class="trand-right-single d-flex">
-                                <div class="trand-right-img">
-                                    <img src="{{ asset('front/img/trending/right1.jpg') }}" alt="">
+                            <h4
+                                style="font-weight: bold; color: #333; background-color: #e7ffe6; padding: 10px; border-radius: 5px;">
+                                Pengumuman
+                            </h4>
+                            <hr>
+                            @foreach ($pengumumans as $pengumuman)
+                                <div class="trand-right-single d-flex">
+                                    <div class="trand-right-img ">
+                                        <img src="{{ $pengumuman->image ? Storage::url($pengumuman->image) : 'https://file.iainpare.ac.id/wp-content/uploads/2019/07/pengumuman.png' }}"
+                                            height="70px" alt="">
+                                    </div>
+                                    <div class="trand-right-cap">
+                                        {{-- <span class="color4">Pengumuman</span> --}}
+                                        <div style="font-size: 12px; color: #333;">
+                                            {{ $pengumuman->created_at->diffForHumans() }} </div>
+                                        <h4 style=" font-size: 16px;"><a href="#">
+                                                {{ Str::limit($pengumuman->title, 80) }}
+                                            </a></h4>
+                                    </div>
                                 </div>
-                                <div class="trand-right-cap">
-                                    <span class="color1">Concert</span>
-                                    <h4><a href="details.html">Welcome To The Best Model Winner Contest</a></h4>
-                                </div>
-                            </div>
-                            <div class="trand-right-single d-flex">
-                                <div class="trand-right-img">
-                                    <img src="{{ asset('front/img/trending/right2.jpg') }}" alt="">
-                                </div>
-                                <div class="trand-right-cap">
-                                    <span class="color3">sea beach</span>
-                                    <h4><a href="details.html">Welcome To The Best Model Winner Contest</a></h4>
-                                </div>
-                            </div>
-                            <div class="trand-right-single d-flex">
-                                <div class="trand-right-img">
-                                    <img src="{{ asset('front/img/trending/right3.jpg') }}" alt="">
-                                </div>
-                                <div class="trand-right-cap">
-                                    <span class="color2">Bike Show</span>
-                                    <h4><a href="details.html">Welcome To The Best Model Winner Contest</a></h4>
-                                </div>
-                            </div>
-                            <div class="trand-right-single d-flex">
-                                <div class="trand-right-img">
-                                    <img src="{{ asset('front/img/trending/right4.jpg') }}" alt="">
-                                </div>
-                                <div class="trand-right-cap">
-                                    <span class="color4">See beach</span>
-                                    <h4><a href="details.html">Welcome To The Best Model Winner Contest</a></h4>
-                                </div>
-                            </div>
-                            <div class="trand-right-single d-flex">
-                                <div class="trand-right-img">
-                                    <img src="{{ asset('front/img/trending/right5.jpg') }}" alt="">
-                                </div>
-                                <div class="trand-right-cap">
-                                    <span class="color1">Skeping</span>
-                                    <h4><a href="details.html">Welcome To The Best Model Winner Contest</a></h4>
-                                </div>
+                            @endforeach
+                            <div class="text-right">
+                                <a class="text-info " href="">
+                                    Lihat Selengkapnya >
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -146,6 +111,43 @@
             </div>
         </div>
         <!-- Trending Area End -->
+
+        <!--   Weekly2-News start -->
+        <div class="weekly2-news-area  weekly2-pading gray-bg">
+            <div class="container">
+                <div class="weekly2-wrapper">
+                    <!-- section Tittle -->
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="{{ asset('front/img/logo/logo_muhammadiyah.png') }}" alt=""
+                                class="img-fluid">
+                        </div>
+                        <div class="col-md-8 mt-sm-20">
+                            <h1 style="color: #08652F; font-weight: bold;">
+                                Pimpinan Daerah Muhammadiyah (PDM)
+                            </h1>
+                            <h2 style="color: #08652F; ">Kota Bukittinggi</h2>
+                            <div class="mt-3">
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis magni provident
+                                    asperiores, aliquam iusto quae labore blanditiis quis libero vero dicta quod et sunt
+                                    laboriosam modi quam. Sapiente, libero omnis minus distinctio eveniet ut sed
+                                    perspiciatis vitae aspernatur id laborum expedita ex aliquid corporis officia, quae
+                                    labore ab tempora facilis impedit similique? In provident est reprehenderit mollitia
+                                    omnis deleniti aliquid quia beatae ullam doloremque non perferendis amet ipsum nam
+                                    fugit, sint minus placeat sapiente sit molestiae pariatur. Recusandae libero soluta...
+                                </p>
+                            </div>
+                            <a href="" class="btn btn-success mt-3">Selengkapnya</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Weekly-News -->
+
+
+
         <!--   Weekly-News start -->
         <div class="weekly-news-area pt-50">
             <div class="container">
@@ -204,6 +206,7 @@
             </div>
         </div>
         <!-- End Weekly-News -->
+
         <!-- Whats New Start -->
         <section class="whats-news-area pt-50 pb-20">
             <div class="container">
@@ -256,7 +259,8 @@
                                                 <div class="col-lg-6 col-md-6">
                                                     <div class="single-what-news mb-100">
                                                         <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews1.jpg') }}" alt="">
+                                                            <img src="{{ asset('front/img/news/whatNews1.jpg') }}"
+                                                                alt="">
                                                         </div>
                                                         <div class="what-cap">
                                                             <span class="color1">Night party</span>
@@ -268,7 +272,8 @@
                                                 <div class="col-lg-6 col-md-6">
                                                     <div class="single-what-news mb-100">
                                                         <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews2.jpg') }}" alt="">
+                                                            <img src="{{ asset('front/img/news/whatNews2.jpg') }}"
+                                                                alt="">
                                                         </div>
                                                         <div class="what-cap">
                                                             <span class="color1">Night party</span>
@@ -280,7 +285,8 @@
                                                 <div class="col-lg-6 col-md-6">
                                                     <div class="single-what-news mb-100">
                                                         <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews3.jpg') }}" alt="">
+                                                            <img src="{{ asset('front/img/news/whatNews3.jpg') }}"
+                                                                alt="">
                                                         </div>
                                                         <div class="what-cap">
                                                             <span class="color1">Night party</span>
@@ -292,7 +298,8 @@
                                                 <div class="col-lg-6 col-md-6">
                                                     <div class="single-what-news mb-100">
                                                         <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews4.jpg') }}" alt="">
+                                                            <img src="{{ asset('front/img/news/whatNews4.jpg') }}"
+                                                                alt="">
                                                         </div>
                                                         <div class="what-cap">
                                                             <span class="color1">Night party</span>
@@ -312,7 +319,8 @@
                                                 <div class="col-lg-6 col-md-6">
                                                     <div class="single-what-news mb-100">
                                                         <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews1.jpg') }}" alt="">
+                                                            <img src="{{ asset('front/img/news/whatNews1.jpg') }}"
+                                                                alt="">
                                                         </div>
                                                         <div class="what-cap">
                                                             <span class="color1">Night party</span>
@@ -324,7 +332,8 @@
                                                 <div class="col-lg-6 col-md-6">
                                                     <div class="single-what-news mb-100">
                                                         <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews2.jpg') }}" alt="">
+                                                            <img src="{{ asset('front/img/news/whatNews2.jpg') }}"
+                                                                alt="">
                                                         </div>
                                                         <div class="what-cap">
                                                             <span class="color1">Night party</span>
@@ -336,7 +345,8 @@
                                                 <div class="col-lg-6 col-md-6">
                                                     <div class="single-what-news mb-100">
                                                         <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews3.jpg') }}" alt="">
+                                                            <img src="{{ asset('front/img/news/whatNews3.jpg') }}"
+                                                                alt="">
                                                         </div>
                                                         <div class="what-cap">
                                                             <span class="color1">Night party</span>
@@ -348,7 +358,8 @@
                                                 <div class="col-lg-6 col-md-6">
                                                     <div class="single-what-news mb-100">
                                                         <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews4.jpg') }}" alt="">
+                                                            <img src="{{ asset('front/img/news/whatNews4.jpg') }}"
+                                                                alt="">
                                                         </div>
                                                         <div class="what-cap">
                                                             <span class="color1">Night party</span>
@@ -368,7 +379,8 @@
                                                 <div class="col-lg-6 col-md-6">
                                                     <div class="single-what-news mb-100">
                                                         <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews1.jpg') }}" alt="">
+                                                            <img src="{{ asset('front/img/news/whatNews1.jpg') }}"
+                                                                alt="">
                                                         </div>
                                                         <div class="what-cap">
                                                             <span class="color1">Night party</span>
@@ -380,7 +392,8 @@
                                                 <div class="col-lg-6 col-md-6">
                                                     <div class="single-what-news mb-100">
                                                         <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews2.jpg') }}" alt="">
+                                                            <img src="{{ asset('front/img/news/whatNews2.jpg') }}"
+                                                                alt="">
                                                         </div>
                                                         <div class="what-cap">
                                                             <span class="color1">Night party</span>
@@ -392,7 +405,8 @@
                                                 <div class="col-lg-6 col-md-6">
                                                     <div class="single-what-news mb-100">
                                                         <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews3.jpg') }}" alt="">
+                                                            <img src="{{ asset('front/img/news/whatNews3.jpg') }}"
+                                                                alt="">
                                                         </div>
                                                         <div class="what-cap">
                                                             <span class="color1">Night party</span>
@@ -404,7 +418,8 @@
                                                 <div class="col-lg-6 col-md-6">
                                                     <div class="single-what-news mb-100">
                                                         <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews4.jpg') }}" alt="">
+                                                            <img src="{{ asset('front/img/news/whatNews4.jpg') }}"
+                                                                alt="">
                                                         </div>
                                                         <div class="what-cap">
                                                             <span class="color1">Night party</span>
@@ -424,7 +439,8 @@
                                                 <div class="col-lg-6 col-md-6">
                                                     <div class="single-what-news mb-100">
                                                         <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews1.jpg') }}" alt="">
+                                                            <img src="{{ asset('front/img/news/whatNews1.jpg') }}"
+                                                                alt="">
                                                         </div>
                                                         <div class="what-cap">
                                                             <span class="color1">Night party</span>
@@ -436,7 +452,8 @@
                                                 <div class="col-lg-6 col-md-6">
                                                     <div class="single-what-news mb-100">
                                                         <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews2.jpg') }}" alt="">
+                                                            <img src="{{ asset('front/img/news/whatNews2.jpg') }}"
+                                                                alt="">
                                                         </div>
                                                         <div class="what-cap">
                                                             <span class="color1">Night party</span>
@@ -448,7 +465,8 @@
                                                 <div class="col-lg-6 col-md-6">
                                                     <div class="single-what-news mb-100">
                                                         <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews3.jpg') }}" alt="">
+                                                            <img src="{{ asset('front/img/news/whatNews3.jpg') }}"
+                                                                alt="">
                                                         </div>
                                                         <div class="what-cap">
                                                             <span class="color1">Night party</span>
@@ -460,7 +478,8 @@
                                                 <div class="col-lg-6 col-md-6">
                                                     <div class="single-what-news mb-100">
                                                         <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews4.jpg') }}" alt="">
+                                                            <img src="{{ asset('front/img/news/whatNews4.jpg') }}"
+                                                                alt="">
                                                         </div>
                                                         <div class="what-cap">
                                                             <span class="color1">Night party</span>
@@ -480,7 +499,8 @@
                                                 <div class="col-lg-6 col-md-6">
                                                     <div class="single-what-news mb-100">
                                                         <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews1.jpg') }}" alt="">
+                                                            <img src="{{ asset('front/img/news/whatNews1.jpg') }}"
+                                                                alt="">
                                                         </div>
                                                         <div class="what-cap">
                                                             <span class="color1">Night party</span>
@@ -492,7 +512,8 @@
                                                 <div class="col-lg-6 col-md-6">
                                                     <div class="single-what-news mb-100">
                                                         <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews2.jpg') }}" alt="">
+                                                            <img src="{{ asset('front/img/news/whatNews2.jpg') }}"
+                                                                alt="">
                                                         </div>
                                                         <div class="what-cap">
                                                             <span class="color1">Night party</span>
@@ -504,7 +525,8 @@
                                                 <div class="col-lg-6 col-md-6">
                                                     <div class="single-what-news mb-100">
                                                         <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews3.jpg') }}" alt="">
+                                                            <img src="{{ asset('front/img/news/whatNews3.jpg') }}"
+                                                                alt="">
                                                         </div>
                                                         <div class="what-cap">
                                                             <span class="color1">Night party</span>
@@ -516,7 +538,8 @@
                                                 <div class="col-lg-6 col-md-6">
                                                     <div class="single-what-news mb-100">
                                                         <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews4.jpg') }}" alt="">
+                                                            <img src="{{ asset('front/img/news/whatNews4.jpg') }}"
+                                                                alt="">
                                                         </div>
                                                         <div class="what-cap">
                                                             <span class="color1">Night party</span>
@@ -536,7 +559,8 @@
                                                 <div class="col-lg-6 col-md-6">
                                                     <div class="single-what-news mb-100">
                                                         <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews1.jpg') }}" alt="">
+                                                            <img src="{{ asset('front/img/news/whatNews1.jpg') }}"
+                                                                alt="">
                                                         </div>
                                                         <div class="what-cap">
                                                             <span class="color1">Night party</span>
@@ -548,7 +572,8 @@
                                                 <div class="col-lg-6 col-md-6">
                                                     <div class="single-what-news mb-100">
                                                         <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews2.jpg') }}" alt="">
+                                                            <img src="{{ asset('front/img/news/whatNews2.jpg') }}"
+                                                                alt="">
                                                         </div>
                                                         <div class="what-cap">
                                                             <span class="color1">Night party</span>
@@ -560,7 +585,8 @@
                                                 <div class="col-lg-6 col-md-6">
                                                     <div class="single-what-news mb-100">
                                                         <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews3.jpg') }}" alt="">
+                                                            <img src="{{ asset('front/img/news/whatNews3.jpg') }}"
+                                                                alt="">
                                                         </div>
                                                         <div class="what-cap">
                                                             <span class="color1">Night party</span>
@@ -572,7 +598,8 @@
                                                 <div class="col-lg-6 col-md-6">
                                                     <div class="single-what-news mb-100">
                                                         <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews4.jpg') }}" alt="">
+                                                            <img src="{{ asset('front/img/news/whatNews4.jpg') }}"
+                                                                alt="">
                                                         </div>
                                                         <div class="what-cap">
                                                             <span class="color1">Night party</span>
@@ -599,7 +626,8 @@
                             <div class="single-box">
                                 <div class="follow-us d-flex align-items-center">
                                     <div class="follow-social">
-                                        <a href="#"><img src="{{ asset('front/img/news/icon-fb.png') }}" alt=""></a>
+                                        <a href="#"><img src="{{ asset('front/img/news/icon-fb.png') }}"
+                                                alt=""></a>
                                     </div>
                                     <div class="follow-count">
                                         <span>8,045</span>
@@ -608,7 +636,8 @@
                                 </div>
                                 <div class="follow-us d-flex align-items-center">
                                     <div class="follow-social">
-                                        <a href="#"><img src="{{ asset('front/img/news/icon-tw.png') }}" alt=""></a>
+                                        <a href="#"><img src="{{ asset('front/img/news/icon-tw.png') }}"
+                                                alt=""></a>
                                     </div>
                                     <div class="follow-count">
                                         <span>8,045</span>
@@ -617,7 +646,8 @@
                                 </div>
                                 <div class="follow-us d-flex align-items-center">
                                     <div class="follow-social">
-                                        <a href="#"><img src="{{ asset('front/img/news/icon-ins.png') }}" alt=""></a>
+                                        <a href="#"><img src="{{ asset('front/img/news/icon-ins.png') }}"
+                                                alt=""></a>
                                     </div>
                                     <div class="follow-count">
                                         <span>8,045</span>
@@ -626,7 +656,8 @@
                                 </div>
                                 <div class="follow-us d-flex align-items-center">
                                     <div class="follow-social">
-                                        <a href="#"><img src="{{ asset('front/img/news/icon-yo.png') }}" alt=""></a>
+                                        <a href="#"><img src="{{ asset('front/img/news/icon-yo.png') }}"
+                                                alt=""></a>
                                     </div>
                                     <div class="follow-count">
                                         <span>8,045</span>
@@ -644,6 +675,7 @@
             </div>
         </section>
         <!-- Whats New End -->
+
         <!--   Weekly2-News start -->
         <div class="weekly2-news-area  weekly2-pading gray-bg">
             <div class="container">
@@ -716,6 +748,8 @@
             </div>
         </div>
         <!-- End Weekly-News -->
+
+
         <!-- Start Youtube -->
         <div class="youtube-area video-padding">
             <div class="container">

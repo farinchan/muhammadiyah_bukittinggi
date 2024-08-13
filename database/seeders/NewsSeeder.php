@@ -43,30 +43,58 @@ class NewsSeeder extends Seeder
         ]);
 
         News::create([
-            'title' => 'PDM Kota Bukittinggi Gelar Rapat Koordinasi',
-            'slug' => 'pdm-kota-bukittinggi-gelar-rapat-koordinasi',
-            'content' => 'Pimpinan Daerah Muhammadiyah (PDM) Kota Bukittinggi menggelar rapat koordinasi untuk membahas program kerja tahun 2022. Rapat koordinasi ini dihadiri oleh seluruh pengurus PDM Kota Bukittinggi.',
-            'thumbnail' => 'news-thumbnail-1.jpg',
-            'category_id' => 1,
+            'title' => 'Muhammadiyah Tetapkan Idul Adha 1445 Jatuh Pada Senin, 17 Juni 2024. inilah Penjelasannya',
+            'slug' => 'muhammadiyah-tetapkan-idul-adha-1445-jatuh-pada-senin-17-juni-2024-inilah-penjelasannya',
+            'content' => 'Pimpinan Pusat Muhammadiyah telah menetapkan Idul Adha 1445 jatuh pada Senin, 17 Juni 2024. Penetapan ini berdasarkan hasil hisab dan rukyat yang dilakukan oleh Pimpinan Pusat Muhammadiyah.',
+            'thumbnail' => 'news/example.png',
+            'category_id' => 3,
             'user_id' => 1,
             'status' => 'published',
-            'meta_title' => 'PDM Kota Bukittinggi Gelar Rapat Koordinasi',
-            'meta_description' => 'Pimpinan Daerah Muhammadiyah (PDM) Kota Bukittinggi menggelar rapat koordinasi untuk membahas program kerja tahun 2022',
-            'meta_keywords' => 'pdm kota bukittinggi, rapat koordinasi, program kerja',
+            'meta_title' => 'Muhammadiyah Tetapkan Idul Adha 1445 Jatuh Pada Senin, 17 Juni 2024. inilah Penjelasannya',
+            'meta_description' => 'Pimpinan Pusat Muhammadiyah telah menetapkan Idul Adha 1445 jatuh pada Senin, 17 Juni 2024',
+            'meta_keywords' => 'muhammadiyah, idul adha, 1445, senin, 17 juni 2024',
         ]);
 
         News::create([
-            'title' => 'ORTOM Kota Bukittinggi Gelar Lomba Mewarnai',
-            'slug' => 'ortom-kota-bukittinggi-gelar-lomba-mewarnai',
-            'content' => 'Organisasi Otonom Muhammadiyah (ORTOM) Kota Bukittinggi menggelar lomba mewarnai untuk anak-anak usia dini. Lomba mewarnai ini diikuti oleh ratusan anak dari berbagai sekolah di Kota Bukittinggi.',
-            'thumbnail' => 'news-thumbnail-2.jpg',
+            'title' => 'Pimpinan Daerah Muhammadiyah (PDM) Kota Bukittinggi Gelar Rapat Kerja Tahunan',
+            'slug' => 'pimpinan-daerah-muhammadiyah-pdm-kota-bukittinggi-gelar-rapat-kerja-tahunan',
+            'content' => 'Pimpinan Daerah Muhammadiyah (PDM) Kota Bukittinggi menggelar rapat kerja tahunan di kantor PDM Kota Bukittinggi. Rapat kerja tahunan ini dihadiri oleh seluruh pengurus PDM Kota Bukittinggi.',
+            'thumbnail' => 'news/example.png',
+            'category_id' => 1,
+            'user_id' => 1,
+            'status' => 'published',
+            'meta_title' => 'Pimpinan Daerah Muhammadiyah (PDM) Kota Bukittinggi Gelar Rapat Kerja Tahunan',
+            'meta_description' => 'Pimpinan Daerah Muhammadiyah (PDM) Kota Bukittinggi menggelar rapat kerja tahunan di kantor PDM Kota Bukittinggi',
+            'meta_keywords' => 'pdm kota bukittinggi, rapat kerja tahunan',
+        ]);
+
+        News::create([
+            'title' => 'Ikatan Mahasiswa Muhammadiyah (IMM) Kota Bukittinggi Gelar Kegiatan Donor Darah dan Bakti Sosial',
+            'slug' => 'imm-kota-bukittinggi-gelar-kegiatan-donor-darah-dan-bakti-sosial',
+            'content' => 'Ikatan Mahasiswa Muhammadiyah (IMM) Kota Bukittinggi menggelar kegiatan donor darah dan bakti sosial di kampus IMM Kota Bukittinggi. Kegiatan ini dihadiri oleh seluruh mahasiswa IMM Kota Bukittinggi.',
+            'thumbnail' => 'news/example.png',
             'category_id' => 2,
             'user_id' => 1,
             'status' => 'published',
-            'meta_title' => 'ORTOM Kota Bukittinggi Gelar Lomba Mewarnai',
-            'meta_description' => 'Organisasi Otonom Muhammadiyah (ORTOM) Kota Bukittinggi menggelar lomba mewarnai untuk anak-anak usia dini',
-            'meta_keywords' => 'ortom kota bukittinggi, lomba mewarnai, anak usia dini',
+            'meta_title' => 'IMM Kota Bukittinggi Gelar Kegiatan Donor Darah dan Bakti Sosial',
+            'meta_description' => 'Ikatan Mahasiswa Muhammadiyah (IMM) Kota Bukittinggi menggelar kegiatan donor darah dan bakti sosial di kampus IMM Kota Bukittinggi',
+            'meta_keywords' => 'imm kota bukittinggi, donor darah, bakti sosial',
         ]);
+
+        News::create([
+            'title' => 'Pemuda Muhammadiyah Kota Bukittinggi Gelar Kegiatan Kemanusiaan di Daerah Terpencil',
+            'slug' => 'pemuda-muhammadiyah-kota-bukittinggi-gelar-kegiatan-kemanusiaan-di-daerah-terpencil',
+            'content' => 'Pemuda Muhammadiyah Kota Bukittinggi menggelar kegiatan kemanusiaan di daerah terpencil. Kegiatan ini dihadiri oleh seluruh anggota Pemuda Muhammadiyah Kota Bukittinggi.',
+            'thumbnail' => 'news/example.png',
+            'category_id' => 2,
+            'user_id' => 1,
+            'status' => 'published',
+            'meta_title' => 'Pemuda Muhammadiyah Kota Bukittinggi Gelar Kegiatan Kemanusiaan di Daerah Terpencil',
+            'meta_description' => 'Pemuda Muhammadiyah Kota Bukittinggi menggelar kegiatan kemanusiaan di daerah terpencil',
+            'meta_keywords' => 'pemuda muhammadiyah kota bukittinggi, kemanusiaan, daerah terpencil',
+        ]);
+
+        
 
         NewsComment::create([
             'name' => 'User Test 1',

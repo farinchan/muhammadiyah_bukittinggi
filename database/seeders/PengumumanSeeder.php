@@ -13,24 +13,36 @@ class PengumumanSeeder extends Seeder
      */
     public function run(): void
     {
+
+        pengumuman::create([
+            'title' => 'Pemberitahuan Rapat Kerja Tahunan Pimpinan Daerah Muhammadiyah (PDM) Kota Bukittinggi 2024',
+            'slug' => 'pemberitahuan-rapat-kerja-tahunan-pimpinan-daerah-muhammadiyah-pdm-kota-bukittinggi-2024',
+            'content' => 'Pemberitahuan Rapat Kerja Tahunan Pimpinan Daerah Muhammadiyah (PDM) Kota Bukittinggi 2024. Rapat Kerja Tahunan ini diadakan pada 17 Juni 2024 di Gedung PDM Kota Bukittinggi.',
+            'meta_title' => 'Pemberitahuan Rapat Kerja Tahunan Pimpinan Daerah Muhammadiyah (PDM) Kota Bukittinggi 2024',
+            'meta_description' => 'Pemberitahuan Rapat Kerja Tahunan Pimpinan Daerah Muhammadiyah (PDM) Kota Bukittinggi 2024',
+            'meta_keywords' => 'pemberitahuan, rapat kerja tahunan, rapat kerja tahunan pdm, rapat kerja tahunan pdm kota bukittinggi',
+            'user_id' => 1,
+        ]);
+        
         Pengumuman::create([
-            'title' => 'Pengumuman 1',
-            'slug' => 'pengumuman-1',
-            'content' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-            'meta_title' => 'Pengumuman 1',
-            'meta_description' => 'Pengumuman 1',
-            'meta_keywords' => 'pengumuman, pengumuman 1',
+            'title' => 'Pemberitahuan Pendataan Ulang Anggota Muhammadiyah Kota Bukittinggi Pada website resmi PDM Kota Bukittinggi',
+            'slug' => 'pemberitahuan-pendataan-ulang-anggota-muhammadiyah-kota-bukittinggi-pada-website-resmi-pdm-kota-bukittinggi',
+            'content' => 'Pemberitahuan Pendataan Ulang Anggota Muhammadiyah Kota Bukittinggi Pada website resmi PDM Kota Bukittinggi. Pendataan ulang ini dilakukan untuk memperbaharui data anggota Muhammadiyah Kota Bukittinggi.',
+            'meta_title' => 'Pemberitahuan Pendataan Ulang Anggota Muhammadiyah Kota Bukittinggi Pada website resmi PDM Kota Bukittinggi',
+            'meta_description' => 'Pemberitahuan Pendataan Ulang Anggota Muhammadiyah Kota Bukittinggi Pada website resmi PDM Kota Bukittinggi',
+            'meta_keywords' => 'pemberitahuan, pendataan ulang, anggota muhammadiyah, pdm kota bukittinggi',
             'user_id' => 1,
         ]);
 
         Pengumuman::create([
-            'title' => 'Pengumuman 2',
-            'slug' => 'pengumuman-2',
-            'content' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-            'meta_title' => 'Pengumuman 2',
-            'meta_description' => 'Pengumuman 2',
-            'meta_keywords' => 'pengumuman, pengumuman 2',
+            'title' => 'Pemberitahuan Pendaftaran Anggota Baru Muhammadiyah Kota Bukittinggi',
+            'slug' => 'pemberitahuan-pendaftaran-anggota-baru-muhammadiyah-kota-bukittinggi',
+            'content' => 'Pemberitahuan Pendaftaran Anggota Baru Muhammadiyah Kota Bukittinggi. Pendaftaran anggota baru Muhammadiyah Kota Bukittinggi dapat dilakukan melalui website resmi PDM Kota Bukittinggi.',
+            'meta_title' => 'Pemberitahuan Pendaftaran Anggota Baru Muhammadiyah Kota Bukittinggi',
+            'meta_description' => 'Pemberitahuan Pendaftaran Anggota Baru Muhammadiyah Kota Bukittinggi',
+            'meta_keywords' => 'pemberitahuan, pendaftaran anggota baru, anggota baru muhammadiyah, pdm kota bukittinggi',
             'user_id' => 1,
         ]);
+
     }
 }
