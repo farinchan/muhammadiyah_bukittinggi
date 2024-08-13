@@ -38,10 +38,24 @@
                             </div>
                         </div>
                         <div class="col-xl-9 col-lg-9 col-md-9 text-right" id="login1">
+                            @auth
+                            <a href="#" class="genric-btn primary-border circle">
+                                <i class="far fa-user"></i> &nbsp; &nbsp;
+                                {{ Auth::user()->name }}
+                            </a>
+                            <a href="#" class="genric-btn primary-border circle">
+                                <i class="fas fa-sign-out"></i> &nbsp; &nbsp;
+                                Logout
+                            </a>
+                            
+                                
+                            @else
                             <a href="{{ route('login') }}" class="genric-btn primary-border circle">
                                 <i class="fa-regular fa-right-to-bracket"></i> &nbsp; &nbsp;
                                 Login
                             </a>
+                            @endauth
+                            
 
                         </div>
                     </div>
@@ -83,7 +97,20 @@
                                         <li><a href="#">Keanggotaan</a></li>
                                         <li><a href="#">Ortom</a></li>
                                         
-                                        <li id="login_mobile" ><a href="#">Login</a></li>
+                                        <li id="login_mobile" >
+                                            @auth
+                                            <a href="#" class="genric-btn primary-border circle">
+                                                <i class="fas fa-sign-out"></i> &nbsp; &nbsp;
+                                                Logout
+                                            </a>
+                                                
+                                            @else
+                                            <a href="{{ route('login') }}" class="genric-btn primary-border circle">
+                                                <i class="fa-regular fa-right-to-bracket"></i> &nbsp; &nbsp;
+                                                Login
+                                            </a>
+                                            @endauth
+                                        </li>
                                     </ul>
                                 </nav>
                             </div>
