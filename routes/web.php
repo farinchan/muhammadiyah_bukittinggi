@@ -4,12 +4,12 @@ use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\NewsController;
+use App\Http\Controllers\Front\AssetController;
 
 use App\Http\Controllers\Back\DashboardController as BackDashboardController;
 use App\Http\Controllers\Back\UserController as BackUserController;
 use App\Http\Controllers\Back\NewsController as BackNewsController;
 use App\Http\Controllers\Back\PengumumanController as BackPengumumanController;
-use App\Models\News;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -27,6 +27,8 @@ Route::get('/news', [NewsController::class, 'news'])->name('news');
 Route::get('/news/{slug}', [NewsController::class, 'detail'])->name('news.detail');
 Route::post('/news/comment/{id}', [NewsController::class, 'comment'])->name('news.comment');
 Route::get('/news/category/{slug}', [NewsController::class, 'category'])->name('news.category');
+
+Route::get('/asset', [AssetController::class, 'asset'])->name('asset');
 
 
 

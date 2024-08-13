@@ -79,7 +79,7 @@
                                                 @endforeach
                                             </ul>
                                         </li>
-                                        <li><a href="#">Asset</a></li>
+                                        <li><a href="{{ route("asset") }}">Asset</a></li>
                                         <li><a href="#">Keanggotaan</a></li>
                                         <li><a href="#">Ortom</a></li>
                                         

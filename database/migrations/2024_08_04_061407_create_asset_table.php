@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('asset', function (Blueprint $table) {
             $table->id();
+            $table->enum('type', ['Sekolah', 'Universitas', 'Rumah Sakit', 'Panti Asuhan']);
             $table->string('name');
             $table->string('image')->nullable();
             $table->text('description')->nullable();
