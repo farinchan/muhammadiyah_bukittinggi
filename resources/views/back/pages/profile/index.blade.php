@@ -18,37 +18,42 @@
                     </div>
                 </div>
             </div>
-            @foreach ($list_profile as $profile)
-                <div class="col-md-6">
-                    <div class="card card-md-stretch me-xl-3 mb-md-0 mt-6">
-                        <div class="card-body p-10 p-lg-15">
-                            <div class="d-flex flex-stack mb-3">
-                                <a href="">
-                                    <h1 class="fw-bold text-gray-900 text-hover-primary">
-                                        {{ $profile->name }}
-                                    </h1>
+            <div class="row">
+
+                @foreach ($list_profile as $profile)
+                    <div class="col-md-6">
+                        <div class="card card-md-stretch me-xl-3 mb-md-0 mt-6">
+                            <div class="card-body p-10 p-lg-15">
+                                <div class="d-flex flex-stack mb-3">
+                                    <a href="">
+                                        <h1 class="fw-bold text-gray-900 text-hover-primary">
+                                            {{ $profile->name }}
+                                        </h1>
                                     </a>
-                                <div class="d-flex align-items-center">
-                                    <a href="" class="text-danger fw-bold me-4">Hapus</a>
-                                    <a href="{{ route('admin.profile.edit', $profile->id)
-                                     }}" class="text-primary fw-bold me-1">Edit</a>
-                                    <i class="ki-duotone ki-arrow-right fs-2 text-primary"><span class="path1"></span><span
-                                            class="path2"></span></i>
+                                    <div class="d-flex align-items-center">
+                                        <a href="" class="text-danger fw-bold me-4">Hapus</a>
+                                        <a href="{{ route('admin.profile.edit', $profile->id) }}"
+                                            class="text-primary fw-bold me-1">Edit</a>
+                                        <i class="ki-duotone ki-arrow-right fs-2 text-primary"><span
+                                                class="path1"></span><span class="path2"></span></i>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="m-0">
-                                <span class="text-muted">Dibuat Pada :
-                                    <span class="fw-bold text-muted"> {{ $profile->created_at->format('d F Y H:i') }}</span>
-                                </span>
-                                <br>
-                                <span class="text-muted">Diedit Pada :
-                                    <span class="fw-bold text-muted"> {{ $profile->updated_at->format('d F Y H:i') }}</span>
-                                </span>
+                                <div class="m-0">
+                                    <span class="text-muted">Dibuat Pada :
+                                        <span class="fw-bold text-muted">
+                                            {{ $profile->created_at->format('d F Y H:i') }}</span>
+                                    </span>
+                                    <br>
+                                    <span class="text-muted">Diedit Pada :
+                                        <span class="fw-bold text-muted">
+                                            {{ $profile->updated_at->format('d F Y H:i') }}</span>
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
 
         </div>
     </div>

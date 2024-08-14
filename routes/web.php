@@ -3,9 +3,10 @@
 use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\HomeController;
+use App\Http\Controllers\Front\ProfileController;
 use App\Http\Controllers\Front\NewsController;
 use App\Http\Controllers\Front\AssetController;
-use App\Http\Controllers\front\KajianController;
+use App\Http\Controllers\Front\KajianController;
 
 use App\Http\Controllers\Back\DashboardController as BackDashboardController;
 use App\Http\Controllers\Back\UserController as BackUserController;
@@ -27,6 +28,8 @@ Route::get('/forgot-password', [AuthController::class, 'forgotPassword'])->name(
 Route::post('/forgot-password', [AuthController::class, 'forgotPasswordProcess'])->name('forgot.password.process');
 Route::get('/reset-password/{token}', [AuthController::class, 'resetPassword'])->name('reset.password');
 Route::post('/reset-password/{token}', [AuthController::class, 'resetPasswordProcess'])->name('reset.password.process');
+
+Route::get('/profile/{slug}', [ProfileController::class, 'profile'])->name('profile');
 
 Route::get('/news', [NewsController::class, 'news'])->name('news');
 Route::get('/news/{slug}', [NewsController::class, 'detail'])->name('news.detail');

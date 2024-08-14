@@ -78,9 +78,12 @@
                                         <li><a href="{{ route("home") }}">Home</a></li>
                                         <li><a href="#">Profile</a>
                                             <ul class="submenu">
-                                                <li><a href="#">Sejarah</a></li>
-                                                <li><a href="#">Visi Misi</a></li>
-                                                <li><a href="#">Struktur Organisasi</a></li>
+                                                @php
+                                                    $profiles = \App\Models\Profile::all();
+                                                @endphp
+                                                @foreach ($profiles as $profile)
+                                                    <li><a href="{{ route('profile', $profile->slug) }}">{{ $profile->name }}</a></li>
+                                                @endforeach
                                             </ul>
                                         </li>
                                         <li><a href="{{ route("news") }}">Berita</a>
