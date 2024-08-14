@@ -13,6 +13,8 @@ use App\Http\Controllers\Back\NewsController as BackNewsController;
 use App\Http\Controllers\Back\PengumumanController as BackPengumumanController;
 use App\Http\Controllers\Back\KajianController as BackKajianController;
 use App\Http\Controllers\Back\SettingController as BackSettingController;
+use App\Http\Controllers\Back\ProfileController as BackProfileController;
+
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -96,6 +98,14 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->grou
     Route::prefix('setting')->name('setting.')->group(function () {
         Route::get('/website', [BackSettingController::class, 'website'])->name('website');
         Route::put('/website', [BackSettingController::class, 'websiteUpdate'])->name('website.update');
+    });
+
+    Route::prefix('profile')->name('profile.')->group(function () {
+        Route::get('/', [BackProfileController::class, 'index'])->name('index');
+        Route::post('/create', [BackProfileController::class, 'store'])->name('store');
+        Route::get('/edit/{id}', [BackProfileController::class, 'edit'])->name('edit');
+        Route::put('/edit/{id}', [BackProfileController::class, 'update'])->name('update');
+        Route::delete('/delete/{id}', [BackProfileController::class, 'destroy'])->name('destroy');
     });
 
 

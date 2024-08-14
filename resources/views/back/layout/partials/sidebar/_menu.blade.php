@@ -180,6 +180,7 @@
                             class="menu-heading fw-bold text-uppercase fs-7">Administrator</span>
                     </div>
                 </div>
+                
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
@@ -219,6 +220,8 @@
                         </div>
                     </div>
                 </div>
+
+                
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
@@ -250,6 +253,23 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="menu-item">
+                    <a class="menu-link" href="{{ route("admin.profile.index") }}">
+                        <span class="menu-icon">
+                            <i class="ki-duotone ki-calendar-8 fs-2">
+                                <span class="path1"></span>
+                                <span class="path2"></span>
+                                <span class="path3"></span>
+                                <span class="path4"></span>
+                                <span class="path5"></span>
+                                <span class="path6"></span>
+                            </i>
+                        </span>
+                        <span class="menu-title">Profile</span>
+                    </a>
+                </div>
+
             </div>
         </div>
     </div>
