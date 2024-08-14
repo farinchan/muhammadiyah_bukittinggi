@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Kajian;
 use App\Models\News;
 use App\Models\Pengumuman;
 use Illuminate\Http\Request;
@@ -20,6 +21,7 @@ class HomeController extends Controller
 
             'news' => news::with('category')->latest()->limit(4)->get(),
             'pengumumans' => Pengumuman::latest()->limit(5)->get(),
+            'kajians' => Kajian::latest()->limit(8)->get(),
 
         ];
         return view('front.pages.home.index', $data);

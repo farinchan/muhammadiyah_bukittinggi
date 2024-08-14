@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\NewsController;
 use App\Http\Controllers\Front\AssetController;
+use App\Http\Controllers\front\KajianController;
 
 use App\Http\Controllers\Back\DashboardController as BackDashboardController;
 use App\Http\Controllers\Back\UserController as BackUserController;
@@ -28,6 +29,10 @@ Route::get('/news', [NewsController::class, 'news'])->name('news');
 Route::get('/news/{slug}', [NewsController::class, 'detail'])->name('news.detail');
 Route::post('/news/comment/{id}', [NewsController::class, 'comment'])->name('news.comment');
 Route::get('/news/category/{slug}', [NewsController::class, 'category'])->name('news.category');
+
+Route::get('/kajian', [KajianController::class, 'kajian'])->name('kajian');
+Route::get('/kajian/{slug}', [KajianController::class, 'detail'])->name('kajian.detail');
+Route::post('/kajian/comment/{id}', [KajianController::class, 'comment'])->name('kajian.comment');
 
 Route::get('/asset', [AssetController::class, 'asset'])->name('asset');
 

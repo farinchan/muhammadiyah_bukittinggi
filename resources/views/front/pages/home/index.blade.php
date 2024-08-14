@@ -43,8 +43,16 @@
                                 <div class="trend-top-img">
                                     <img src="{{ Storage::url($news->first()->thumbnail) }}" height="400px"
                                         style="object-fit: cover;" alt="">
+
                                     <div class="trend-top-cap">
                                         <span>{{ $news->first()->category->name }}</span>
+                                        <ul class="blog-info-link">
+                                            <li><a class="text-white" href="#"><i class="fa fa-user"></i>
+                                                    {{ $news->first()->user->name }}</a></li>
+                                            <li><a class="text-white" href="#"><i class="fa fa-comments"></i>
+                                                    {{ $news->first()->comments->count() }}
+                                                    Komentar</a></li>
+                                        </ul>
                                         <h2><a class="mr-5" href="{{ route('news.detail', $news->first()->slug) }}">
                                                 {{ $news->first()->title }}
                                             </a></h2>
@@ -62,8 +70,15 @@
                                                         <img src="{{ Storage::url($item->thumbnail) }}" width="100%"
                                                             height="150px" style="object-fit: cover;" alt="">
                                                     </div>
+
                                                     <div class="trend-bottom-cap">
                                                         <span class="color1"> {{ $item->category->name }}</span>
+                                                        <ul class="blog-info-link">
+                                                            {{-- <li><a class="text-white" href="#"><i class="fa fa-user"></i> {{ $item->user->name }}</a></li> --}}
+                                                            <li><a href="#"><i class="fa fa-comments"></i>
+                                                                    {{ $item->comments->count() }}
+                                                                    Komentar</a></li>
+                                                        </ul>
                                                         <h4><a href="{{ route('news.detail', $item->slug) }}">
                                                                 {{ Str::limit($item->title, 60) }}
                                                             </a>
@@ -90,6 +105,7 @@
                                         <img src="{{ $pengumuman->image ? Storage::url($pengumuman->image) : 'https://file.iainpare.ac.id/wp-content/uploads/2019/07/pengumuman.png' }}"
                                             height="70px" alt="">
                                     </div>
+
                                     <div class="trand-right-cap">
                                         {{-- <span class="color4">Pengumuman</span> --}}
                                         <div style="font-size: 12px; color: #333;">
@@ -146,68 +162,7 @@
         </div>
         <!-- End Weekly-News -->
 
-
-
-        <!--   Weekly-News start -->
-        <div class="weekly-news-area pt-50">
-            <div class="container">
-                <div class="weekly-wrapper">
-                    <!-- section Tittle -->
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="section-tittle mb-30">
-                                <h3>Weekly Top News</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="weekly-news-active dot-style d-flex dot-style">
-                                <div class="weekly-single">
-                                    <div class="weekly-img">
-                                        <img src="{{ asset('front/img/news/weeklyNews2.jpg') }}" alt="">
-                                    </div>
-                                    <div class="weekly-caption">
-                                        <span class="color1">Strike</span>
-                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                    </div>
-                                </div>
-                                <div class="weekly-single active">
-                                    <div class="weekly-img">
-                                        <img src="{{ asset('front/img/news/weeklyNews1.jpg') }}" alt="">
-                                    </div>
-                                    <div class="weekly-caption">
-                                        <span class="color1">Strike</span>
-                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                    </div>
-                                </div>
-                                <div class="weekly-single">
-                                    <div class="weekly-img">
-                                        <img src="{{ asset('front/img/news/weeklyNews3.jpg') }}" alt="">
-                                    </div>
-                                    <div class="weekly-caption">
-                                        <span class="color1">Strike</span>
-                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                    </div>
-                                </div>
-                                <div class="weekly-single">
-                                    <div class="weekly-img">
-                                        <img src="{{ asset('front/img/news/weeklyNews1.jpg') }}" alt="">
-                                    </div>
-                                    <div class="weekly-caption">
-                                        <span class="color1">Strike</span>
-                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Weekly-News -->
-
-        <!-- Whats New Start -->
+        <!-- Kajian Start -->
         <section class="whats-news-area pt-50 pb-20">
             <div class="container">
                 <div class="row">
@@ -215,13 +170,13 @@
                         <div class="row d-flex justify-content-between">
                             <div class="col-lg-3 col-md-3">
                                 <div class="section-tittle mb-30">
-                                    <h3>Whats New</h3>
+                                    <h3>Kajian</h3>
                                 </div>
                             </div>
                             <div class="col-lg-9 col-md-9">
                                 <div class="properties__button">
                                     <!--Nav Button  -->
-                                    <nav>
+                                    {{-- <nav>
                                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                             <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab"
                                                 href="#nav-home" role="tab" aria-controls="nav-home"
@@ -242,7 +197,7 @@
                                                 href="#nav-techno" role="tab" aria-controls="nav-contact"
                                                 aria-selected="false">Technology</a>
                                         </div>
-                                    </nav>
+                                    </nav> --}}
                                     <!--End Nav Button  -->
                                 </div>
                             </div>
@@ -252,363 +207,30 @@
                                 <!-- Nav Card -->
                                 <div class="tab-content" id="nav-tabContent">
                                     <!-- card one -->
-                                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
-                                        aria-labelledby="nav-home-tab">
-                                        <div class="whats-news-caption">
-                                            <div class="row">
+                                    <div class="whats-news-caption">
+                                        <div class="row">
+                                            @foreach ($kajians as $kajian)
                                                 <div class="col-lg-6 col-md-6">
                                                     <div class="single-what-news mb-100">
                                                         <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews1.jpg') }}"
-                                                                alt="">
+                                                            <img src="{{ Storage::url($kajian->thumbnail) }}"
+                                                                alt="" height="230px" style="object-fit: cover;">
                                                         </div>
                                                         <div class="what-cap">
-                                                            <span class="color1">Night party</span>
-                                                            <h4><a href="#">Welcome To The Best Model Winner
-                                                                    Contest</a></h4>
+                                                            <span class="color3">Ustadz {{ $kajian->user->name }}</span>
+                                                            <ul class="blog-info-link">
+                                                                {{-- <li><a class="text-white" href="#"><i class="fa fa-user"></i> {{ $kajian->user->name }}</a></li> --}}
+                                                                <li><a href="#"><i class="fa fa-comments"></i>
+                                                                        {{ $kajian->kajianComment->count() }}
+                                                                        Komentar</a></li>
+                                                            </ul>
+                                                            <h4><a href="">
+                                                                    {{ Str::limit($kajian->title, 60) }}
+                                                                </a></h4>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-6 col-md-6">
-                                                    <div class="single-what-news mb-100">
-                                                        <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews2.jpg') }}"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="what-cap">
-                                                            <span class="color1">Night party</span>
-                                                            <h4><a href="#">Welcome To The Best Model Winner
-                                                                    Contest</a></h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6">
-                                                    <div class="single-what-news mb-100">
-                                                        <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews3.jpg') }}"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="what-cap">
-                                                            <span class="color1">Night party</span>
-                                                            <h4><a href="#">Welcome To The Best Model Winner
-                                                                    Contest</a></h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6">
-                                                    <div class="single-what-news mb-100">
-                                                        <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews4.jpg') }}"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="what-cap">
-                                                            <span class="color1">Night party</span>
-                                                            <h4><a href="#">Welcome To The Best Model Winner
-                                                                    Contest</a></h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Card two -->
-                                    <div class="tab-pane fade" id="nav-profile" role="tabpanel"
-                                        aria-labelledby="nav-profile-tab">
-                                        <div class="whats-news-caption">
-                                            <div class="row">
-                                                <div class="col-lg-6 col-md-6">
-                                                    <div class="single-what-news mb-100">
-                                                        <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews1.jpg') }}"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="what-cap">
-                                                            <span class="color1">Night party</span>
-                                                            <h4><a href="#">Welcome To The Best Model Winner
-                                                                    Contest</a></h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6">
-                                                    <div class="single-what-news mb-100">
-                                                        <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews2.jpg') }}"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="what-cap">
-                                                            <span class="color1">Night party</span>
-                                                            <h4><a href="#">Welcome To The Best Model Winner
-                                                                    Contest</a></h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6">
-                                                    <div class="single-what-news mb-100">
-                                                        <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews3.jpg') }}"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="what-cap">
-                                                            <span class="color1">Night party</span>
-                                                            <h4><a href="#">Welcome To The Best Model Winner
-                                                                    Contest</a></h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6">
-                                                    <div class="single-what-news mb-100">
-                                                        <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews4.jpg') }}"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="what-cap">
-                                                            <span class="color1">Night party</span>
-                                                            <h4><a href="#">Welcome To The Best Model Winner
-                                                                    Contest</a></h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Card three -->
-                                    <div class="tab-pane fade" id="nav-contact" role="tabpanel"
-                                        aria-labelledby="nav-contact-tab">
-                                        <div class="whats-news-caption">
-                                            <div class="row">
-                                                <div class="col-lg-6 col-md-6">
-                                                    <div class="single-what-news mb-100">
-                                                        <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews1.jpg') }}"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="what-cap">
-                                                            <span class="color1">Night party</span>
-                                                            <h4><a href="#">Welcome To The Best Model Winner
-                                                                    Contest</a></h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6">
-                                                    <div class="single-what-news mb-100">
-                                                        <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews2.jpg') }}"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="what-cap">
-                                                            <span class="color1">Night party</span>
-                                                            <h4><a href="#">Welcome To The Best Model Winner
-                                                                    Contest</a></h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6">
-                                                    <div class="single-what-news mb-100">
-                                                        <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews3.jpg') }}"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="what-cap">
-                                                            <span class="color1">Night party</span>
-                                                            <h4><a href="#">Welcome To The Best Model Winner
-                                                                    Contest</a></h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6">
-                                                    <div class="single-what-news mb-100">
-                                                        <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews4.jpg') }}"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="what-cap">
-                                                            <span class="color1">Night party</span>
-                                                            <h4><a href="#">Welcome To The Best Model Winner
-                                                                    Contest</a></h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- card fure -->
-                                    <div class="tab-pane fade" id="nav-last" role="tabpanel"
-                                        aria-labelledby="nav-last-tab">
-                                        <div class="whats-news-caption">
-                                            <div class="row">
-                                                <div class="col-lg-6 col-md-6">
-                                                    <div class="single-what-news mb-100">
-                                                        <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews1.jpg') }}"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="what-cap">
-                                                            <span class="color1">Night party</span>
-                                                            <h4><a href="#">Welcome To The Best Model Winner
-                                                                    Contest</a></h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6">
-                                                    <div class="single-what-news mb-100">
-                                                        <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews2.jpg') }}"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="what-cap">
-                                                            <span class="color1">Night party</span>
-                                                            <h4><a href="#">Welcome To The Best Model Winner
-                                                                    Contest</a></h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6">
-                                                    <div class="single-what-news mb-100">
-                                                        <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews3.jpg') }}"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="what-cap">
-                                                            <span class="color1">Night party</span>
-                                                            <h4><a href="#">Welcome To The Best Model Winner
-                                                                    Contest</a></h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6">
-                                                    <div class="single-what-news mb-100">
-                                                        <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews4.jpg') }}"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="what-cap">
-                                                            <span class="color1">Night party</span>
-                                                            <h4><a href="#">Welcome To The Best Model Winner
-                                                                    Contest</a></h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- card Five -->
-                                    <div class="tab-pane fade" id="nav-nav-Sport" role="tabpanel"
-                                        aria-labelledby="nav-Sports">
-                                        <div class="whats-news-caption">
-                                            <div class="row">
-                                                <div class="col-lg-6 col-md-6">
-                                                    <div class="single-what-news mb-100">
-                                                        <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews1.jpg') }}"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="what-cap">
-                                                            <span class="color1">Night party</span>
-                                                            <h4><a href="#">Welcome To The Best Model Winner
-                                                                    Contest</a></h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6">
-                                                    <div class="single-what-news mb-100">
-                                                        <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews2.jpg') }}"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="what-cap">
-                                                            <span class="color1">Night party</span>
-                                                            <h4><a href="#">Welcome To The Best Model Winner
-                                                                    Contest</a></h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6">
-                                                    <div class="single-what-news mb-100">
-                                                        <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews3.jpg') }}"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="what-cap">
-                                                            <span class="color1">Night party</span>
-                                                            <h4><a href="#">Welcome To The Best Model Winner
-                                                                    Contest</a></h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6">
-                                                    <div class="single-what-news mb-100">
-                                                        <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews4.jpg') }}"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="what-cap">
-                                                            <span class="color1">Night party</span>
-                                                            <h4><a href="#">Welcome To The Best Model Winner
-                                                                    Contest</a></h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- card Six -->
-                                    <div class="tab-pane fade" id="nav-techno" role="tabpanel"
-                                        aria-labelledby="nav-technology">
-                                        <div class="whats-news-caption">
-                                            <div class="row">
-                                                <div class="col-lg-6 col-md-6">
-                                                    <div class="single-what-news mb-100">
-                                                        <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews1.jpg') }}"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="what-cap">
-                                                            <span class="color1">Night party</span>
-                                                            <h4><a href="#">Welcome To The Best Model Winner
-                                                                    Contest</a></h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6">
-                                                    <div class="single-what-news mb-100">
-                                                        <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews2.jpg') }}"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="what-cap">
-                                                            <span class="color1">Night party</span>
-                                                            <h4><a href="#">Welcome To The Best Model Winner
-                                                                    Contest</a></h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6">
-                                                    <div class="single-what-news mb-100">
-                                                        <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews3.jpg') }}"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="what-cap">
-                                                            <span class="color1">Night party</span>
-                                                            <h4><a href="#">Welcome To The Best Model Winner
-                                                                    Contest</a></h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6">
-                                                    <div class="single-what-news mb-100">
-                                                        <div class="what-img">
-                                                            <img src="{{ asset('front/img/news/whatNews4.jpg') }}"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="what-cap">
-                                                            <span class="color1">Night party</span>
-                                                            <h4><a href="#">Welcome To The Best Model Winner
-                                                                    Contest</a></h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -619,7 +241,7 @@
                     <div class="col-lg-4">
                         <!-- Section Tittle -->
                         <div class="section-tittle mb-40">
-                            <h3>Follow Us</h3>
+                            <h3>Ikuti Kami</h3>
                         </div>
                         <!-- Flow Socail -->
                         <div class="single-follow mb-45">
@@ -667,17 +289,30 @@
                             </div>
                         </div>
                         <!-- New Poster -->
-                        <div class="news-poster d-none d-lg-block">
-                            <img src="{{ asset('front/img/news/news_card.jpg') }}" alt="">
+                        <div class="blog_right_sidebar">
+
+                            <aside class="single_sidebar_widget newsletter_widget">
+                                <h4 class="widget_title">Subscribe</h4>
+                                <form action="#">
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" onfocus="this.placeholder = ''"
+                                            onblur="this.placeholder = 'Enter email'" placeholder="Enter email"
+                                            required="">
+                                    </div>
+                                    <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                                        type="submit">Subscribe</button>
+                                </form>
+                            </aside>
                         </div>
                     </div>
                 </div>
+                <hr>
             </div>
         </section>
-        <!-- Whats New End -->
+        <!-- Kajian End -->
 
         <!--   Weekly2-News start -->
-        <div class="weekly2-news-area  weekly2-pading gray-bg">
+        <div class="weekly2-news-area  weekly2-pading">
             <div class="container">
                 <div class="weekly2-wrapper">
                     <!-- section Tittle -->
@@ -749,157 +384,49 @@
         </div>
         <!-- End Weekly-News -->
 
-
-        <!-- Start Youtube -->
-        <div class="youtube-area video-padding">
+        <!--   Weekly2-News start -->
+        <div class="weekly2-news-area  weekly2-pading gray-bg">
             <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="video-items-active">
-                            <div class="video-items text-center">
-                                <iframe src="https://www.youtube.com/embed/CicQIuG8hBo" frameborder="0"
-                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
-                            </div>
-                            <div class="video-items text-center">
-                                <iframe src="https://www.youtube.com/embed/rIz00N40bag" frameborder="0"
-                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
-                            </div>
-                            <div class="video-items text-center">
-                                <iframe src="https://www.youtube.com/embed/CONfhrASy44" frameborder="0"
-                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
-
-                            </div>
-                            <div class="video-items text-center">
-                                <iframe src="https://www.youtube.com/embed/lq6fL2ROWf8" frameborder="0"
-                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
-
-                            </div>
-                            <div class="video-items text-center">
-                                <iframe src="https://www.youtube.com/embed/0VxlQlacWV4" frameborder="0"
-                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="video-info">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="video-caption">
-                                <div class="top-caption">
-                                    <span class="color1">Politics</span>
-                                </div>
-                                <div class="bottom-caption">
-                                    <h2>Welcome To The Best Model Winner Contest At Look of the year</h2>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod ipsum
-                                        dolor sit. Lorem ipsum dolor sit amet consectetur adipisicing elit sed do
-                                        eiusmod ipsum dolor sit. Lorem ipsum dolor sit amet consectetur adipisicing elit
-                                        sed do eiusmod ipsum dolor sit lorem ipsum dolor sit.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="testmonial-nav text-center">
-                                <div class="single-video">
-                                    <iframe src="https://www.youtube.com/embed/CicQIuG8hBo" frameborder="0"
-                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                        allowfullscreen></iframe>
-                                    <div class="video-intro">
-                                        <h4>Welcotme To The Best Model Winner Contest</h4>
-                                    </div>
-                                </div>
-                                <div class="single-video">
-                                    <iframe src="https://www.youtube.com/embed/rIz00N40bag" frameborder="0"
-                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                        allowfullscreen></iframe>
-                                    <div class="video-intro">
-                                        <h4>Welcotme To The Best Model Winner Contest</h4>
-                                    </div>
-                                </div>
-                                <div class="single-video">
-                                    <iframe src="https://www.youtube.com/embed/CONfhrASy44" frameborder="0"
-                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                        allowfullscreen></iframe>
-                                    <div class="video-intro">
-                                        <h4>Welcotme To The Best Model Winner Contest</h4>
-                                    </div>
-                                </div>
-                                <div class="single-video">
-                                    <iframe src="https://www.youtube.com/embed/lq6fL2ROWf8" frameborder="0"
-                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                        allowfullscreen></iframe>
-                                    <div class="video-intro">
-                                        <h4>Welcotme To The Best Model Winner Contest</h4>
-                                    </div>
-                                </div>
-                                <div class="single-video">
-                                    <iframe src="https://www.youtube.com/embed/0VxlQlacWV4" frameborder="0"
-                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                        allowfullscreen></iframe>
-                                    <div class="video-intro">
-                                        <h4>Welcotme To The Best Model Winner Contest</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Start youtube -->
-        <!--  Recent Articles start -->
-        <div class="recent-articles">
-            <div class="container">
-                <div class="recent-wrapper">
+                <div class="weekly2-wrapper">
                     <!-- section Tittle -->
                     <div class="row">
-                        <div class="col-lg-12">
-                            <div class="section-tittle mb-30">
-                                <h3>Recent Articles</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
                         <div class="col-12">
-                            <div class="recent-active dot-style d-flex dot-style">
-                                <div class="single-recent mb-100">
-                                    <div class="what-img">
-                                        <img src="{{ asset('front/img/news/recent1.jpg') }}" alt="">
-                                    </div>
-                                    <div class="what-cap">
-                                        <span class="color1">Night party</span>
-                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                    </div>
-                                </div>
-                                <div class="single-recent mb-100">
-                                    <div class="what-img">
-                                        <img src="{{ asset('front/img/news/recent2.jpg') }}" alt="">
-                                    </div>
-                                    <div class="what-cap">
-                                        <span class="color1">Night party</span>
-                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                    </div>
-                                </div>
-                                <div class="single-recent mb-100">
-                                    <div class="what-img">
-                                        <img src="{{ asset('front/img/news/recent3.jpg') }}" alt="">
-                                    </div>
-                                    <div class="what-cap">
-                                        <span class="color1">Night party</span>
-                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                    </div>
-                                </div>
-                                <div class="single-recent mb-100">
-                                    <div class="what-img">
-                                        <img src="{{ asset('front/img/news/recent2.jpg') }}" alt="">
-                                    </div>
-                                    <div class="what-cap">
-                                        <span class="color1">Night party</span>
-                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
+                            <div class="card shadow-lg" style="border-radius: 20px;">
+                                <div class="card-body p-5">
+                                    <h5 class="card-title mb-5" style="font-weight: bold; color: #333;">Hubungi Kami</h5>
+                                    <div class="row">
+                                        <div class="col-md-7">
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <input type="text" name="name" placeholder="Nama Lengkap"
+                                                        onfocus="this.placeholder = ''"
+                                                        onblur="this.placeholder = 'Nama Lengkap'" required=""
+                                                        class="single-input">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input type="text" name="email" placeholder="Email"
+                                                        onfocus="this.placeholder = ''"
+                                                        onblur="this.placeholder = 'Email'" required=""
+                                                        class="single-input">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <input type="text" name="subject" placeholder="Subjek"
+                                                    onfocus="this.placeholder = ''"
+                                                    onblur="this.placeholder = 'Subjek'" required=""
+                                                    class="single-input">
+                                            </div>
+                                            <div class="mb-3">
+                                                <textarea class="single-textarea" placeholder="Message" onfocus="this.placeholder = ''"
+                                                    onblur="this.placeholder = 'Message'" required="" style="height: 200px;"></textarea>
+                                            </div>
+                                            <button type="submit" class="btn btn-success">Kirim</button>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3354.9760992550064!2d100.37117380889596!3d-0.3059232862215682!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2fd538bd1ff164a7%3A0xcea33881870dc19!2sJam%20Gadang%20Bukittinggi!5e0!3m2!1sid!2sid!4v1723600608898!5m2!1sid!2sid"  height="450" 
+                                            style="border:0; width: 100%; border-radius: 20px;"
+                                            " allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -908,29 +435,7 @@
                 </div>
             </div>
         </div>
-        <!--Recent Articles End -->
-        <!--Start pagination -->
-        <div class="pagination-area pb-45 text-center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="single-wrap d-flex justify-content-center">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination justify-content-start">
-                                    <li class="page-item"><a class="page-link" href="#"><span
-                                                class="flaticon-arrow roted"></span></a></li>
-                                    <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">02</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">03</a></li>
-                                    <li class="page-item"><a class="page-link" href="#"><span
-                                                class="flaticon-arrow right-arrow"></span></a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End pagination  -->
+        <!-- End Weekly-News -->
+
     </main>
 @endsection

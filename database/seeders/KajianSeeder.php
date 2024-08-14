@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Kajian;
+use App\Models\KajianComment;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -38,5 +39,30 @@ class KajianSeeder extends Seeder
             'meta_keywords' => 'dzalim, maksiat, tolong',
             'user_id' => 1,
         ]);
+
+        for ($i = 1; $i <= 10; $i++) {
+            Kajian::create([
+                'title' => 'Data Dummy Kajian ke-'.$i . 'yang dibuat oleh faker',
+                'content' => 'Data Dummy Kajian ke-'.$i . 'yang dibuat oleh faker',
+                'tags' => 'dummy',
+                'slug' => 'data-dummy-kajian-ke-'.$i . '-yang-dibuat-oleh-faker',
+                'thumbnail' => 'kajian/example.png',
+                'status' => 'published',
+                'meta_title' => 'Data Dummy Kajian ke-'.$i . 'yang dibuat oleh faker',
+                'meta_description' => 'Data Dummy Kajian ke-'.$i . 'yang dibuat oleh faker',
+                'meta_keywords' => 'dummy',
+                'user_id' => 1,
+            ]);
+        }
+
+
+        KajianComment::create([
+            'kajian_id' => 1,
+            'name' => 'Umar',
+            'email' => 'umar@example.com',
+            'comment' => 'Alhamdulillah, artikel yang sangat bermanfaat.',
+            'status' => 'approved',
+        ]);
+
     }
 }
