@@ -266,7 +266,7 @@
                                 <span class="path6"></span>
                             </i>
                         </span>
-                        <span class="menu-title">Profile</span>
+                        <span class="menu-title">Profile Menu</span>
                     </a>
                 </div>
 
