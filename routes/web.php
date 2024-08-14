@@ -12,6 +12,7 @@ use App\Http\Controllers\Back\UserController as BackUserController;
 use App\Http\Controllers\Back\NewsController as BackNewsController;
 use App\Http\Controllers\Back\PengumumanController as BackPengumumanController;
 use App\Http\Controllers\Back\KajianController as BackKajianController;
+use App\Http\Controllers\Back\SettingController as BackSettingController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -90,6 +91,11 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->grou
 
         Route::get('/comment', [BackKajianController::class, 'comment'])->name('comment');
         Route::post('/comment/spam/{id}', [BackKajianController::class, 'commentSpam'])->name('comment.spam');
+    });
+
+    Route::prefix('setting')->name('setting.')->group(function () {
+        Route::get('/website', [BackSettingController::class, 'website'])->name('website');
+        Route::put('/website', [BackSettingController::class, 'websiteUpdate'])->name('website.update');
     });
 
 
