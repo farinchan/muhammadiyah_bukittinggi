@@ -24,7 +24,7 @@ class KajianSeeder extends Seeder
             'meta_title' => 'Azab yang Menimpa Orang yang tidak membayar hutang',
             'meta_description' => 'Dari Abu Hurairah radhiyallahu anhu, Rasulullah shallallahu alaihi wa sallam bersabda, “Tidaklah seorang muslim meninggal dunia, sedang dia memiliki hutang yang wajib dibayar, kecuali Allah menghalanginya dari masuk surga.”',
             'meta_keywords' => 'hutang, azab, surga',
-            'user_id' => 1,
+            'user_id' => 2,
         ]);
 
         Kajian::create([
@@ -37,7 +37,7 @@ class KajianSeeder extends Seeder
             'meta_title' => 'Begini Cara Rasulullah Menyikapi Orang yang Berbuat Dzalim',
             'meta_description' => 'Dari Abu Hurairah radhiyallahu anhu, Rasulullah shallallahu alaihi wa sallam bersabda, “Janganlah kalian membantu seseorang dalam berbuat dzalim dan janganlah kalian membantu seseorang dalam berbuat maksiat. Jika kalian melihat orang yang berbuat dzalim, maka tolonglah dia.”',
             'meta_keywords' => 'dzalim, maksiat, tolong',
-            'user_id' => 1,
+            'user_id' => 2,
         ]);
 
         for ($i = 1; $i <= 10; $i++) {
@@ -51,7 +51,7 @@ class KajianSeeder extends Seeder
                 'meta_title' => 'Data Dummy Kajian ke-'.$i . 'yang dibuat oleh faker',
                 'meta_description' => 'Data Dummy Kajian ke-'.$i . 'yang dibuat oleh faker',
                 'meta_keywords' => 'dummy',
-                'user_id' => 1,
+                'user_id' => 2,
             ]);
         }
 

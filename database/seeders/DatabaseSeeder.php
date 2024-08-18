@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Profile;
+use App\Models\SettingBanner;
 use App\Models\SettingWebsite;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -22,14 +23,23 @@ class DatabaseSeeder extends Seeder
         $admin =  Role::create(['name' => 'admin']);
         $user =  Role::create(['name' => 'user']);
 
-        $user = User::create([
+        $office = User::create([
             'name' => 'Admin Garis Kode',
             'email' => 'office@gariskode.com',
             'password' => bcrypt('password'),
             'status' => 1
         ]);
 
-        $user->assignRole('admin');
+        $office->assignRole('admin');
+        
+        $fajri = User::create([
+            'name' => 'Fajri Rinaldi Chan',
+            'email' => 'fajri@gariskode.com',
+            'password' => bcrypt('password'),
+            'status' => 1
+        ]);
+
+        $fajri->assignRole('user');
 
         SettingWebsite::create([
             'name' => 'Pimpinan Daerah Muhammadiyah Kabupaten Bukittinggi',
@@ -58,6 +68,14 @@ class DatabaseSeeder extends Seeder
             'name' => 'Visi Misi',
             'slug' => 'visi-misi',
             'content' => '<h2>Visi Misi</h2><p>Visi Misi Pimpinan Daerah Muhammadiyah Kota Bukittinggi</p><p>lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum</p>',
+        ]);
+
+        SettingBanner::create([
+            'title' => 'Pimpinan Daerah Muhammadiyah Kota Bukittinggi',
+            'subtitle' => 'Organisasi Islam yang bergerak dalam bidang sosial, pendidikan, dan kesehatan.',
+            'image' => 'banner.jpg',
+            'url' => 'https://gariskode.com',
+            'status' => 1,
         ]);
 
         $this->call([

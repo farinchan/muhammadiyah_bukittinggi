@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
+use App\Models\SettingBanner;
 use App\Models\SettingWebsite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -79,5 +80,79 @@ class SettingController extends Controller
 
         Alert::success('Success', 'Setting website berhasil diperbarui');
         return redirect()->back();
+    }
+
+    public function banner ()
+    {
+        $data = [
+            'menu_title' => 'Pengaturan',
+            'submenu_title' => 'Banner',
+            'title' => 'Pengaturan Banner',
+            'list_banner' => SettingBanner::all(),
+
+        ];
+        return view('back.pages.setting.banner', $data);
+    }
+
+    public function bannerCreate (Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|string|max:255',
+            'subtitle' => 'nullable|string|max:255',
+            'image' => 'required|image',
+            'url' => 'required|string',
+        ], [
+            'required' => 'Kolom :attribute tidak boleh kosong',
+            'string' => 'Kolom :attribute harus berupa string',
+            'max' => 'Kolom :attribute tidak boleh lebih dari :max karakter',
+            'image' => 'Kolom :attribute harus berupa gambar',
+            'in' => 'Kolom :attribute harus diisi dengan :values',
+        ]);
+
+        if ($validator->fails()) {
+            Alert::error('Error', $validator->errors()->all());
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $banner = new SettingBanner();
+        $banner->title = $request->title;
+        $banner->subtitle = $request->subtitle;
+        $banner->url = $request->url;
+        $banner->status = 1;
+
+        $image = $request->file('image');
+        $fileName = time() . '_' . $image->getClientOriginalName();
+        $filePath = $image->storeAs('banner/', $fileName, 'public');
+        $banner->image = $filePath;
+
+        $banner->save();
+        return redirect()->route('admin.setting.banner')->with('success', 'Pengaturan Banner berhasil ditambahkan');
+    }
+
+    public function bannerUpdate (Request $request, $id)
+    {
+        // dd($request->all());
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'subtitle' => 'nullable|string|max:255',
+            'url' => 'required|string',
+            'status' => 'required|in:1,0',
+        ]);
+
+        $banner = SettingBanner::find($id);
+        $banner->title = $request->title;
+        $banner->subtitle = $request->subtitle;
+        $banner->url = $request->url;
+        $banner->status = $request->status;
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $fileName = time() . '_' . $image->getClientOriginalName();
+            $filePath = $image->storeAs('banner/', $fileName, 'public');
+            $banner->image = $filePath;
+        }
+
+        $banner->save();
+        return redirect()->route('admin.setting.banner')->with('success', 'Pengaturan Banner berhasil diubah');
     }
 }

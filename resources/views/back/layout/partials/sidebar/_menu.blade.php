@@ -244,11 +244,11 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="#">
+                            <a class="menu-link" href="{{ route("admin.setting.banner") }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Informasi</span>
+                                <span class="menu-title">Banner</span>
                             </a>
                         </div>
                     </div>

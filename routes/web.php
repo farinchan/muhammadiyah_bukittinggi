@@ -7,6 +7,8 @@ use App\Http\Controllers\Front\ProfileController;
 use App\Http\Controllers\Front\NewsController;
 use App\Http\Controllers\Front\AssetController;
 use App\Http\Controllers\Front\KajianController;
+use App\Http\Controllers\Front\UserController;
+use App\Http\Controllers\Front\User\KajianController as UserKajianController;
 
 use App\Http\Controllers\Back\DashboardController as BackDashboardController;
 use App\Http\Controllers\Back\UserController as BackUserController;
@@ -41,6 +43,22 @@ Route::get('/kajian/{slug}', [KajianController::class, 'detail'])->name('kajian.
 Route::post('/kajian/comment/{id}', [KajianController::class, 'comment'])->name('kajian.comment');
 
 Route::get('/asset', [AssetController::class, 'asset'])->name('asset');
+
+Route::prefix('user')->middleware(['auth', 'role:user'])->name('user.')->group(function () {
+    Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+
+    Route::get('/kajian', [UserKajianController::class, 'kajian'])->name('kajian');
+    Route::get('/kajian/create', [UserKajianController::class, 'kajianCreate'])->name('kajian.create');
+    Route::post('/kajian/create', [UserKajianController::class, 'kajianStore'])->name('kajian.store');
+    Route::get('/kajian/edit/{id}', [UserKajianController::class, 'kajianEdit'])->name('kajian.edit');
+    Route::put('/kajian/edit/{id}', [UserKajianController::class, 'kajianUpdate'])->name('kajian.update');
+    Route::delete('/kajian/delete/{id}', [UserKajianController::class, 'kajianDestroy'])->name('kajian.destroy');
+    
+
+    Route::get('/profile', [UserController::class, 'profile'])->name('profile');
+    Route::post('/profile/update', [UserController::class, 'profileUpdate'])->name('profile.update');
+
+});
 
 
 
@@ -83,7 +101,6 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->grou
 
         Route::get('/comment', [BackNewsController::class, 'comment'])->name('comment');
         Route::post('/comment/spam/{id}', [BackNewsController::class, 'commentSpam'])->name('comment.spam');
-
     });
 
     Route::prefix('kajian')->name('kajian.')->group(function () {
@@ -101,6 +118,11 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->grou
     Route::prefix('setting')->name('setting.')->group(function () {
         Route::get('/website', [BackSettingController::class, 'website'])->name('website');
         Route::put('/website', [BackSettingController::class, 'websiteUpdate'])->name('website.update');
+
+        Route::get('/banner', [BackSettingController::class, 'banner'])->name('banner');
+        Route::post('/banner', [BackSettingController::class, 'bannerCreate'])->name('banner.create');
+        Route::put('/banner/{id}', [BackSettingController::class, 'bannerUpdate'])->name('banner.update');
+        Route::delete('/banner/{id}', [BackSettingController::class, 'bannerDestroy'])->name('banner.destroy');
     });
 
     Route::prefix('profile')->name('profile.')->group(function () {
@@ -110,6 +132,4 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->grou
         Route::put('/edit/{id}', [BackProfileController::class, 'update'])->name('update');
         Route::delete('/delete/{id}', [BackProfileController::class, 'destroy'])->name('destroy');
     });
-
-
 });

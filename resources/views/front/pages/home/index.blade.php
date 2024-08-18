@@ -12,27 +12,29 @@
 @endsection
 
 @section('styles')
+    <style>
+        .title-banner {
+            font-size: 50px;
+            font-weight: bold;
+            color: #fff;
+        }
 
-<style>
-    .title-banner {
-        font-size: 50px;
-        font-weight: bold;
-        color: #fff;
-    }
-    .text-banner {
-        font-size: 20px;
-        color: #fff;
-    }
-    .image-banner {
-        height: 700px;
-        width: 100%;
-        object-fit: cover;
-        background: #333;
-    }
-    /* .carousel-caption{
-        background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
-    } */
-    .carousel-item::before {
+        .text-banner {
+            font-size: 20px;
+            color: #fff;
+        }
+
+        .image-banner {
+            height: 700px;
+            width: 100%;
+            object-fit: cover;
+            background: #333;
+        }
+
+        /* .carousel-caption{
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+        } */
+        .carousel-item::before {
             content: '';
             position: absolute;
             top: 0;
@@ -42,13 +44,12 @@
             background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
             z-index: 1;
         }
-</style>
-
+    </style>
 @endsection
 
 @section('content')
     <main>
-        <div class="banner">
+        <div>
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -57,28 +58,32 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="image-banner" src="https://fakeimg.pl/1280x720/a3a0a0/ebebeb"
-                        
-                            alt="First slide">
+                        <img class="image-banner" src="https://fakeimg.pl/1280x720/a3a0a0/ebebeb" alt="First slide">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5 class="title-banner" >Slide 1</h5>
-                            <p class="text-banner" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates.</p>
+                            <h5 class="title-banner">Slide 1</h5>
+                            <p class="text-banner">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem neque, voluptate corporis,
+                                numquam aliquid quasi fugiat quia vel sit, aliquam cumque ut culpa atque autem similique
+                                aspernatur? Reprehenderit nobis magni, animi aperiam iure ad dicta quae quibusdam fuga
+                                praesentium tempore itaque provident doloribus necessitatibus eligendi velit illum officia
+                                nemo accusantium.
+                            </p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img class="image-banner" src="https://fakeimg.pl/1280x720/a3a0a0/ebebeb" 
-                            alt="First slide">
+                        <img class="image-banner" src="https://fakeimg.pl/1280x720/a3a0a0/ebebeb" alt="First slide">
                         <div class="carousel-caption ">
-                            <h5 class="title-banner" >Slide 2</h5>
-                            <p class="text-banner" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates.</p>
+                            <h5 class="title-banner">Slide 2</h5>
+                            <p class="text-banner">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+                                voluptates.</p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img class="image-banner" src="https://fakeimg.pl/1280x720/a3a0a0/ebebeb" 
-                            alt="Second slide">
+                        <img class="image-banner" src="https://fakeimg.pl/1280x720/a3a0a0/ebebeb" alt="Second slide">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5 class="title-banner" >Slide 3</h5>
-                            <p class="text-banner" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates.</p>
+                            <h5 class="title-banner">Slide 3</h5>
+                            <p class="text-banner">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+                                voluptates.</p>
                         </div>
                     </div>
                 </div>
@@ -92,7 +97,7 @@
                 </a>
             </div>
         </div>
-        
+
         <!-- Trending Area Start -->
         <div class="trending-area fix">
             <div class="container">
@@ -505,6 +510,7 @@
                                             <iframe
                                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3354.9760992550064!2d100.37117380889596!3d-0.3059232862215682!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2fd538bd1ff164a7%3A0xcea33881870dc19!2sJam%20Gadang%20Bukittinggi!5e0!3m2!1sid!2sid!4v1723600608898!5m2!1sid!2sid"
                                                 height="450" style="border:0; width: 100%; border-radius: 20px;" " allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -513,8 +519,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- End Weekly-News -->
+                <!-- End Weekly-News -->
 
-        </main>
+            </main>
 @endsection

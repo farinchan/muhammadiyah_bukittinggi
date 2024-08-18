@@ -39,11 +39,11 @@
                         </div>
                         <div class="col-xl-9 col-lg-9 col-md-9 text-right" id="login1">
                             @auth
-                            <a href="#" class="genric-btn primary-border circle">
+                            <a href="{{ route("user.dashboard") }}" class="genric-btn primary-border circle">
                                 <i class="far fa-user"></i> &nbsp; &nbsp;
                                 {{ Auth::user()->name }}
                             </a>
-                            <a href="#" class="genric-btn primary-border circle">
+                            <a href="{{ route("logout") }}" class="genric-btn primary-border circle">
                                 <i class="fas fa-sign-out"></i> &nbsp; &nbsp;
                                 Logout
                             </a>
