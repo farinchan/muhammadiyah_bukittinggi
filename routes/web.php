@@ -9,6 +9,7 @@ use App\Http\Controllers\Front\AssetController;
 use App\Http\Controllers\Front\KajianController;
 use App\Http\Controllers\Front\UserController;
 use App\Http\Controllers\Front\User\KajianController as UserKajianController;
+use App\Http\Controllers\Front\User\ProfileController as UserProfileController;
 
 use App\Http\Controllers\Back\DashboardController as BackDashboardController;
 use App\Http\Controllers\Back\UserController as BackUserController;
@@ -55,8 +56,8 @@ Route::prefix('user')->middleware(['auth', 'role:user'])->name('user.')->group(f
     Route::delete('/kajian/delete/{id}', [UserKajianController::class, 'kajianDestroy'])->name('kajian.destroy');
     
 
-    Route::get('/profile', [UserController::class, 'profile'])->name('profile');
-    Route::post('/profile/update', [UserController::class, 'profileUpdate'])->name('profile.update');
+    Route::get('/profile', [UserProfileController::class, 'profile'])->name('profile');
+    Route::put('/profile', [UserProfileController::class, 'profileUpdate'])->name('profile.update');
 
 });
 

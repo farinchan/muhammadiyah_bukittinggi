@@ -63,7 +63,7 @@ class AuthController extends Controller
             'name' => 'required',
             'gender' => 'required|in:Laki-laki,Perempuan',
             'place_of_birth' => 'required',
-            'date_of_birth' => 'required|date',
+            'birth_date' => 'required|date',
             'address' => 'required',
             'phone' => 'required',
             'address' => 'required',
@@ -100,7 +100,7 @@ class AuthController extends Controller
         $user->name = $request->name;
         $user->gender = $request->gender;
         $user->place_of_birth = $request->place_of_birth;
-        $user->birth_date = $request->date_of_birth;
+        $user->birth_date = $request->birth_date;
         $user->address = $request->address;
         $user->phone = $request->phone;
         $user->address = $request->address;

@@ -23,7 +23,7 @@
             <ul class="list-group ">
                 <a href="{{ route('user.dashboard') }}" class="list-group-item text-info">Dashboard</a>
                 <a href="{{ route('user.kajian') }}" class="list-group-item text-info">Kajian</a>
-                <a href="" class="list-group-item text-info">Profile</a>
+                <a href="{{ route("user.profile") }}" class="list-group-item text-info">Profile</a>
                 <a href="" class="list-group-item text-info">Password</a>
             </ul>
         </div>

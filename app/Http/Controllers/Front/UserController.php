@@ -26,16 +26,5 @@ class UserController extends Controller
 
    
 
-    public function profile()
-    {
-        $data = [
-            'title' => 'Profile',
-            'metaTitle' => 'Profile',
-            'metaDescription' => 'Profile',
-            'metaKeywords' => 'Profile',
-            'url' => 'profile',
-        ];
-
-        return view('front.pages.user.profile', $data);
-    }
+    
 }

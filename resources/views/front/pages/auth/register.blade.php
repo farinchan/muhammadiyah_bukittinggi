@@ -91,11 +91,11 @@
                                     <div class="icon"><i class="fa-regular fa-calendar"></i></div>
                                     <input type="date" placeholder="Tanggal Lahir" onfocus="this.placeholder = ''"
                                         onblur="this.placeholder = 'Tanggal Lahir'" required=""
-                                        class="single-input @error('date_of_birth') is-invalid @enderror"
-                                        name="date_of_birth" value="{{ old('date_of_birth') }}"
-                                        autocomplete="date_of_birth">
+                                        class="single-input @error('birth_date') is-invalid @enderror"
+                                        name="birth_date" value="{{ old('birth_date') }}"
+                                        autocomplete="birth_date">
                                 </div>
-                                @error('date_of_birth')
+                                @error('birth_date')
                                     <span class="text-danger" role="alert">
                                         <small>{{ $message }}</small>
                                     </span>
