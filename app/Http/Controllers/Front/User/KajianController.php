@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Str;
 
 class KajianController extends Controller
 {
@@ -66,13 +67,14 @@ class KajianController extends Controller
         $kajian = new Kajian();
         $kajian->user_id = Auth::user()->id;
         $kajian->title = $request->title;
+        $kajian->slug = Str::slug($request->title).'-'.rand(1000, 9999);
         $kajian->content = $request->content;
-        $kajian->tags = $request->tags;
+        $kajian->tags = $request->tags ? implode(", ", array_column(json_decode($request->tags), 'value')) : null;
 
         if ($request->hasFile('thumbnail')) {
             $thumbnail = $request->file('thumbnail');
             $thumbnailPath = $thumbnail->storeAs('public/kajian', time() . '_' . Auth::user()->id . '_' . $thumbnail->getClientOriginalExtension());
-            $kajian->thumbnail = $thumbnailPath;
+            $kajian->thumbnail = str_replace('public/', '', $thumbnailPath);
         }
 
         $kajian->save();
@@ -128,8 +130,9 @@ class KajianController extends Controller
         }
 
         $kajian->title = $request->title;
+        $kajian->slug = Str::slug($request->title).'-'.rand(1000, 9999);
         $kajian->content = $request->content;
-        $kajian->tags = $request->tags;
+        $kajian->tags = $request->tags ? implode(", ", array_column(json_decode($request->tags), 'value')) : null;
 
         if ($request->hasFile('thumbnail')) {
             $thumbnail = $request->file('thumbnail');
