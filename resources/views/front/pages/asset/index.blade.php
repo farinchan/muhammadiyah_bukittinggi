@@ -117,12 +117,26 @@
                         icon: icon
                     }).addTo(group);
                     marker.bindPopup(
-                        '<b>' + asset.name + '</b><br>' +
-                        '<img src=' + (asset.image ? `/storage/${asset.image}` :
+                        '<b style="font-size: 1rem">' + asset.name + '</b><br>' +
+                        '<center><img src=' + (asset.image ? `/storage/${asset.image}` :
                             'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/330px-No-Image-Placeholder.svg.png'
-                        ) + ' width="150" height="150" style="object-fit: cover;"><br>' +
+                        ) + ' width="150" height="150" style="object-fit: cover;"></center><br>' +
                         asset.description + '<br>' +
-                        '<a href="' + asset.website + '" target="_blank">Website</a>'
+                        '<br><table border=0>' +
+                        '<tr><td style="vertical-align:top">Alamat</td><td style="vertical-align:top">:</td><td>' + asset.address + '</td></tr>' +
+                        '<tr><td style="vertical-align:top">Website</td><td style="vertical-align:top">:</td><td><a href="' + asset.website + '" target="_blank">' + asset.website + '</a></td></tr>' +
+                        '<tr><td style="vertical-align:top">Telepon</td><td style="vertical-align:top">:</td><td><a href="tel:' + asset.phone + '">' + asset.phone + '</a></td></tr>' +
+                        '<tr><td style="vertical-align:top">Email</td><td style="vertical-align:top">:</td ><td><a href="mailto:' + asset.email + '">' + asset.email + '</a></td></tr>' +
+                        '</table><br>' +
+                        '<table border=0>' +
+                        '<tr><td colspan="5" style="vertical-align:top; height: 25px">Sosial Media :</td></tr>' +
+                        '<tr><td style="vertical-align:top; width: 40px"><a href="' + asset.facebook + '" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" width="25" height="25"></a></td>'+
+                        '<td style="vertical-align:top; width: 40px"><a href="' + asset.instagram + '" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" width="25" height="25"></a></td>'+
+                        '<td style="vertical-align:top; width: 40px"><a href="' + asset.twitter + '" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Logo_of_Twitter.svg/512px-Logo_of_Twitter.svg.png" width="25" height="25"></a></td>'+
+                        '<td style="vertical-align:top; width: 40px"><a href="' + asset.youtube + '" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" width="25" height="25"></a></td>'+
+                        '<td style="vertical-align:top; width: 40px"><a href="' + asset.linkedin + '" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" width="25" height="25"></a></td></tr>'+
+                        '</table>'
+                            
                     );
                 }
             });
