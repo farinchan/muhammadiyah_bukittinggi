@@ -33,7 +33,6 @@
                                     </div>
                                 </th>
                                 <th class="min-w-250px">Kategori</th>
-                                <th class="min-w-150px">Slug</th>
                                 <th class="min-w-150px">Status</th>
                                 <th class="min-w-150px">Dibuat Oleh</th>
                                 <th class="text-end min-w-70px">Actions</th>
@@ -60,9 +59,6 @@
                                                     {{ Str::limit(strip_tags($pengumuman->content), 100) }}...</div>
                                             </div>
                                         </div>
-                                    </td>
-                                    <td>
-                                        <div class="badge">{{ $pengumuman->slug }}</div>
                                     </td>
                                     <td>
                                         @if ($pengumuman->is_active == 1)
