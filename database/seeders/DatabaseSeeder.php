@@ -82,6 +82,7 @@ class DatabaseSeeder extends Seeder
             NewsSeeder::class,
             PengumumanSeeder::class,
             KajianSeeder::class,
+            AssetSeeder::class,
         ]);
     }
 }

@@ -12,4 +12,9 @@ class Asset extends Model
     protected $table = 'asset';
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
+    public function type()
+    {
+        return $this->belongsTo(AssetType::class, 'asset_type_id');
+    }
+
 }

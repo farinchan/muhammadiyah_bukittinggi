@@ -37,6 +37,7 @@
     <!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
     <link href="{{ asset('back/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('back/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
+    @yield('styles')
     <!--end::Global Stylesheets Bundle-->
     <script>
         // Frame-busting to prevent site from being loaded within a frame without permission (click-jacking)
@@ -70,15 +71,15 @@
         </div>
     </div>
     
-    @include('back/partials/_drawers')
-    @include('back/partials/_scrolltop')
+    {{-- @include('back/partials/_drawers')
+    @include('back/partials/_scrolltop') --}}
     <!--begin::Modals-->
-    @include('back/partials/modals/_upgrade-plan')
+    {{-- @include('back/partials/modals/_upgrade-plan')
     @include('back/partials/modals/create-app/_main')
     @include('back/partials/modals/_new-target')
     @include('back/partials/modals/_view-users')
     @include('back/partials/modals/users-search/_main')
-    @include('back/partials/modals/_invite-friends')
+    @include('back/partials/modals/_invite-friends') --}}
     <!--end::Modals-->
     <!--begin::Javascript-->
     <script>
@@ -89,7 +90,7 @@
     <script src="{{ asset('back/js/scripts.bundle.js')}}"></script>
     <!--end::Global Javascript Bundle-->
     <!--begin::Vendors Javascript(used for this page only)-->
-    <script src="{{ asset('back/plugins/custom/fullcalendar/fullcalendar.bundle.js')}}"></script>
+    {{-- <script src="{{ asset('back/plugins/custom/fullcalendar/fullcalendar.bundle.js')}}"></script>
     <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
@@ -100,17 +101,17 @@
     <script src="https://cdn.amcharts.com/lib/5/geodata/continentsLow.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/geodata/usaLow.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/geodata/worldTimeZonesLow.js"></script>
-    <script src="https://cdn.amcharts.com/lib/5/geodata/worldTimeZoneAreasLow.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/geodata/worldTimeZoneAreasLow.js"></script> --}}
     <script src="{{ asset('back/plugins/custom/datatables/datatables.bundle.js')}}"></script>
     <!--end::Vendors Javascript-->
     <!--begin::Custom Javascript(used for this page only)-->
     <script src="{{ asset('back/js/widgets.bundle.js')}}"></script>
     <script src="{{ asset('back/js/custom/widgets.js')}}"></script>
-    <script src="{{ asset('back/js/custom/apps/chat/chat.js')}}"></script>
+    {{-- <script src="{{ asset('back/js/custom/apps/chat/chat.js')}}"></script>
     <script src="{{ asset('back/js/custom/utilities/modals/upgrade-plan.js')}}"></script>
     <script src="{{ asset('back/js/custom/utilities/modals/create-app.js')}}"></script>
     <script src="{{ asset('back/js/custom/utilities/modals/new-target.js')}}"></script>
-    <script src="{{ asset('back/js/custom/utilities/modals/users-search.js')}}"></script>
+    <script src="{{ asset('back/js/custom/utilities/modals/users-search.js')}}"></script> --}}
     <!--end::Custom Javascript-->
     <!--end::Javascript-->
     @yield('scripts')

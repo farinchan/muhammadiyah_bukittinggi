@@ -13,11 +13,10 @@ return new class extends Migration
     {
         Schema::create('asset', function (Blueprint $table) {
             $table->id();
-            $table->enum('type', ['Sekolah', 'Universitas', 'Rumah Sakit', 'Panti Asuhan']);
             $table->string('name');
             $table->string('image')->nullable();
             $table->text('description')->nullable();
-            $table->text('alamat');
+            $table->text('address')->nullable();
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();
             $table->string('phone')->nullable();
@@ -28,9 +27,7 @@ return new class extends Migration
             $table->string('twitter')->nullable();
             $table->string('youtube')->nullable();
             $table->string('linkedin')->nullable();
-            $table->string('meta_title')->nullable();
-            $table->string('meta_description')->nullable();
-            $table->string('meta_keywords')->nullable();
+            $table->foreignId('asset_type_id')->constrained('asset_type');
             $table->timestamps();
         });
     }

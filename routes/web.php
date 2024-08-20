@@ -16,6 +16,7 @@ use App\Http\Controllers\Back\UserController as BackUserController;
 use App\Http\Controllers\Back\NewsController as BackNewsController;
 use App\Http\Controllers\Back\PengumumanController as BackPengumumanController;
 use App\Http\Controllers\Back\KajianController as BackKajianController;
+use App\Http\Controllers\Back\AssetController as BackAssetController;
 use App\Http\Controllers\Back\SettingController as BackSettingController;
 use App\Http\Controllers\Back\ProfileController as BackProfileController;
 
@@ -114,6 +115,21 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->grou
 
         Route::get('/comment', [BackKajianController::class, 'comment'])->name('comment');
         Route::post('/comment/spam/{id}', [BackKajianController::class, 'commentSpam'])->name('comment.spam');
+    });
+
+    Route::prefix('asset')->name('asset.')->group(function () {
+        Route::get('/type', [BackAssetController::class, 'type'])->name('type');
+        Route::post('/type', [BackAssetController::class, 'typeStore'])->name('type.store');
+        Route::put('/type/{id}', [BackAssetController::class, 'typeUpdate'])->name('type.update');
+        Route::delete('/type/{id}', [BackAssetController::class, 'typeDestroy'])->name('type.destroy');
+
+        Route::get('/type/{slug}', [BackAssetController::class, 'asset'])->name('index');
+        Route::get('/create', [BackAssetController::class, 'assetCreate'])->name('create');
+        Route::post('/create', [BackAssetController::class, 'assetStore'])->name('store');
+        Route::get('/edit/{id}', [BackAssetController::class, 'assetEdit'])->name('edit');
+        Route::put('/edit/{id}', [BackAssetController::class, 'assetUpdate'])->name('update');
+        Route::delete('/delete/{id}', [BackAssetController::class, 'assetDestroy'])->name('destroy');
+
     });
 
     Route::prefix('setting')->name('setting.')->group(function () {

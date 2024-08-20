@@ -114,7 +114,7 @@
                     </div>
                 </div>
                 <div class="menu-item">
-                    <a class="menu-link" href="#">
+                    <a class="menu-link" href="{{ route("admin.asset.create") }}">
                         <span class="menu-icon">
                             <i class="ki-duotone ki-calendar-8 fs-2">
                                 <span class="path1"></span>
@@ -125,11 +125,11 @@
                                 <span class="path6"></span>
                             </i>
                         </span>
-                        <span class="menu-title">Pendidikan</span>
+                        <span class="menu-title">Tambah Aset</span>
                     </a>
                 </div>
                 <div class="menu-item">
-                    <a class="menu-link" href="#">
+                    <a class="menu-link" href="{{ route("admin.asset.type") }}">
                         <span class="menu-icon">
                             <i class="ki-duotone ki-calendar-8 fs-2">
                                 <span class="path1"></span>
@@ -140,39 +140,39 @@
                                 <span class="path6"></span>
                             </i>
                         </span>
-                        <span class="menu-title">Rumah Sakit</span>
+                        <span class="menu-title">Tipe Asset</span>
                     </a>
                 </div>
-                <div class="menu-item">
-                    <a class="menu-link" href="#">
+
+                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                    <span class="menu-link">
                         <span class="menu-icon">
-                            <i class="ki-duotone ki-calendar-8 fs-2">
+                            <i class="ki-duotone ki-address-book fs-2">
                                 <span class="path1"></span>
                                 <span class="path2"></span>
                                 <span class="path3"></span>
-                                <span class="path4"></span>
-                                <span class="path5"></span>
-                                <span class="path6"></span>
                             </i>
                         </span>
-                        <span class="menu-title">Perguruan Tinggi</span>
-                    </a>
+                        <span class="menu-title">Aset</span>
+                        <span class="menu-arrow"></span>
+                    </span>
+                    <div class="menu-sub menu-sub-accordion">
+                        @php
+                            $asset_types = \App\Models\AssetType::all();
+                        @endphp
+                        @foreach ($asset_types as $asset_type)
+                            <div class="menu-item">
+                                <a class="menu-link" href="{{ route("admin.asset.index", $asset_type->slug) }}">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title text-capitalize">{{ $asset_type->name }}</span>
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
-                <div class="menu-item">
-                    <a class="menu-link" href="#">
-                        <span class="menu-icon">
-                            <i class="ki-duotone ki-calendar-8 fs-2">
-                                <span class="path1"></span>
-                                <span class="path2"></span>
-                                <span class="path3"></span>
-                                <span class="path4"></span>
-                                <span class="path5"></span>
-                                <span class="path6"></span>
-                            </i>
-                        </span>
-                        <span class="menu-title">Panti Asuhan</span>
-                    </a>
-                </div>
+                
 
 
                 <div class="menu-item pt-5">
