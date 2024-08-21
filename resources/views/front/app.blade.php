@@ -4,10 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    @yield('seo')
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    @yield('seo')
     {{-- <link rel="manifest" href="site.webmanifest"> --}}
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('front/img/favicon.ico') }}">
+    <link rel="icon" href="{{ Storage::url($favicon) }}" type="image/png">
+    <link rel="shortcut icon" type="image/png" href="{{ Storage::url($favicon) }}">
 
     <!-- CSS here -->
     <link rel="stylesheet" href="{{ asset('front/css/bootstrap.min.css') }}">

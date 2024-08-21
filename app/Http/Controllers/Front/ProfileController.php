@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Profile;
+use App\Models\SettingWebsite;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -12,10 +13,14 @@ class ProfileController extends Controller
     {
 
         $profil = Profile::where('slug', $slug)->firstOrFail();
+        $setting_web = SettingWebsite::first();
+
         $data = [
-            'title' => 'Profile',
-            'menu' => 'profile',
-            'sub_menu' => '',
+            'title' => $profil->name . " | " . $setting_web->name,
+            'meta_description' => strip_tags($setting_web->about),
+            'meta_keywords' => 'Home, Muhammadiyah, Bukittinggi',
+            'favicon' => $setting_web->favicon,
+            
             'profile' => $profil
         ];
 

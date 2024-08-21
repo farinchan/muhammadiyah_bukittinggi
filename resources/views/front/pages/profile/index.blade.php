@@ -1,33 +1,36 @@
 @extends('front.app')
 
 @section('seo')
-    <title>Home</title>
-    <meta name="description" content="Home">
-    <meta name="keywords" content="Home">
-    <meta property="og:title" content="Home">
-    <meta property="og:description" content="Home">
+    <title>{{ $title }}</title>
+    <meta name="description" content="{{ $meta_description }}">
+    <meta name="keywords" content="{{ $meta_keywords }}">
+
+    <meta property="og:title" content="{{ $title }}">
+    <meta property="og:description" content="{{ $meta_description }}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ route('home') }}">
     <link rel="canonical" href="{{ route('home') }}">
+    <meta property="og:image" content="{{ Storage::url($favicon) }}">
 @endsection
 
 @section('styles')
-<style>
-    ul li {
-        list-style: disc;
-        margin-left: 20px;
-    }
-    ol li {
-        list-style: decimal;
-    }
-</style>
+    <style>
+        ul li {
+            list-style: disc;
+            margin-left: 20px;
+        }
+
+        ol li {
+            list-style: decimal;
+        }
+    </style>
 @endsection
 
 @section('content')
-<main>
-    <!-- About US Start -->
-    <div class="about-area">
-        <div class="container">
+    <main>
+        <!-- About US Start -->
+        <div class="about-area">
+            <div class="container">
                 <!-- Hot Aimated News Tittle-->
                 <div class="row">
                     <div class="col-lg-12">
@@ -41,27 +44,27 @@
                                     <li class="news-item">Rem ipsum dolor sit amet, consectetur adipisicing elit.</li>
                                 </ul>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
-               <div class="row">
+                <div class="row">
                     <div class="col-lg-8">
                         <!-- Trending Tittle -->
-                                <div class="about-right mb-90">
-                                    <div class="about-img">
-                                        <img src="assets/img/post/about_heor.jpg" alt="">
-                                    </div>
-                                    <div class="section-tittle mb-30 pt-30">
-                                        <h3>{{ $profile->name }}</h3>
-                                    </div>
-                                    <div class="about-prea">
-                                        <p>
+                        <div class="about-right mb-90">
+                            <div class="about-img">
+                                <img src="assets/img/post/about_heor.jpg" alt="">
+                            </div>
+                            <div class="section-tittle mb-30 pt-30">
+                                <h3>{{ $profile->name }}</h3>
+                            </div>
+                            <div class="about-prea">
+                                <p>
 
-                                            {!! $profile->content !!}
-                                        </p>
-                                    </div>
-                                </div>
+                                    {!! $profile->content !!}
+                                </p>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-lg-4">
                         <!-- Section Tittle -->
@@ -130,9 +133,9 @@
                             </aside>
                         </div>
                     </div>
-               </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <!-- About US End -->
-</main> 
+        <!-- About US End -->
+    </main>
 @endsection
