@@ -5,18 +5,20 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\Asset;
 use App\Models\AssetType;
+use App\Models\SettingWebsite;
 use Illuminate\Http\Request;
 
 class AssetController extends Controller
 {
     public function asset()
     {
+        $setting_web = SettingWebsite::first();
         $data = [
-            'title' => 'Asset',
-            'metaTitle' => 'Asset',
-            'metaDescription' => 'Asset',
-            'metaKeywords' => 'Asset',
-            'url' => 'asset',
+            'title' => "Aset | " . $setting_web->name,
+            'meta_description' => strip_tags($setting_web->about),
+            'meta_keywords' => 'aset, Muhammadiyah, Bukittinggi',
+            'favicon' => $setting_web->favicon,
+
             'assets_type' => AssetType::with('assets')->get(),
         ];
 

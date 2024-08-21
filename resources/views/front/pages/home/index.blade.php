@@ -5,6 +5,7 @@
     <meta name="description" content="{{ $meta_description }}">
     <meta name="keywords" content="{{ $meta_keywords }}">
 
+
     <meta property="og:title" content="{{ $title }}">
     <meta property="og:description" content="{{ $meta_description }}">
     <meta property="og:type" content="website">

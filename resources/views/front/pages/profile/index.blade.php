@@ -14,7 +14,7 @@
 @endsection
 
 @section('styles')
-    <style>
+    {{-- <style>
         ul li {
             list-style: disc;
             margin-left: 20px;
@@ -23,7 +23,7 @@
         ol li {
             list-style: decimal;
         }
-    </style>
+    </style> --}}
 @endsection
 
 @section('content')

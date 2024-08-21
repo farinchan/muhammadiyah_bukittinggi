@@ -6,6 +6,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @yield('seo')
+    <meta name="author" content="Fajri Rinaldi Chan - https://gariskode.com">
     {{-- <link rel="manifest" href="site.webmanifest"> --}}
     <link rel="icon" href="{{ asset('storage/setting/favicon.png') }}" type="image/png">
     <link rel="shortcut icon" href="{{ asset('storage/setting/favicon.png') }}" />

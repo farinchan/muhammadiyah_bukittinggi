@@ -2,7 +2,8 @@
     <!-- Header Start -->
     <div class="header-area">
         <div class="main-header ">
-            <div class="header-top d-none d-md-block" style="background: linear-gradient(90deg, #2c368b 0%, #01a54d 100%)">
+            <div class="header-top d-none d-md-block"
+                style="background: linear-gradient(90deg, #2c368b 0%, #01a54d 100%)">
                 <div class="container">
                     <div class="col-xl-12">
                         <div class="row d-flex justify-content-between align-items-center">
@@ -32,30 +33,27 @@
                         <!-- Logo -->
                         <div class="col-xl-3 col-lg-3 col-md-3">
                             <div class="logo">
-                                <a href="index.html"><img src="{{ asset('front/img/logo/logo.png') }}"
-                                    height="70px"
+                                <a href="index.html"><img src="{{ asset('front/img/logo/logo.png') }}" height="70px"
                                         alt=""></a>
                             </div>
                         </div>
                         <div class="col-xl-9 col-lg-9 col-md-9 text-right" id="login1">
                             @auth
-                            <a href="{{ route("user.dashboard") }}" class="genric-btn primary-border circle">
-                                <i class="far fa-user"></i> &nbsp; &nbsp;
-                                {{ Auth::user()->name }}
-                            </a>
-                            <a href="{{ route("logout") }}" class="genric-btn primary-border circle">
-                                <i class="fas fa-sign-out"></i> &nbsp; &nbsp;
-                                Logout
-                            </a>
-                            
-                                
+                                <a href="{{ route('user.dashboard') }}" class="genric-btn primary-border circle">
+                                    <i class="far fa-user"></i> &nbsp; &nbsp;
+                                    {{ Auth::user()->name }}
+                                </a>
+                                <a href="{{ route('logout') }}" class="genric-btn primary-border circle">
+                                    <i class="fas fa-sign-out"></i> &nbsp; &nbsp;
+                                    Logout
+                                </a>
                             @else
-                            <a href="{{ route('login') }}" class="genric-btn primary-border circle">
-                                <i class="fa-regular fa-right-to-bracket"></i> &nbsp; &nbsp;
-                                Login
-                            </a>
+                                <a href="{{ route('login') }}" class="genric-btn primary-border circle">
+                                    <i class="fa-regular fa-right-to-bracket"></i> &nbsp; &nbsp;
+                                    Login
+                                </a>
                             @endauth
-                            
+
 
                         </div>
                     </div>
@@ -67,52 +65,54 @@
                         <div class="col-xl-9 col-lg-9 col-md-12 header-flex">
                             <!-- sticky -->
                             <div class="sticky-logo">
-                                <a href="index.html"><img src="{{ asset('front/img/logo/logo.png') }}"
-                                    height="70px"
+                                <a href="index.html"><img src="{{ asset('front/img/logo/logo.png') }}" height="70px"
                                         alt=""></a>
                             </div>
                             <!-- Main-menu -->
                             <div class="main-menu d-none d-md-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a href="{{ route("home") }}">Home</a></li>
+                                        <li><a href="{{ route('home') }}">Home</a></li>
                                         <li><a href="#">Profile</a>
                                             <ul class="submenu">
                                                 @php
                                                     $profiles = \App\Models\Profile::all();
                                                 @endphp
                                                 @foreach ($profiles as $profile)
-                                                    <li><a href="{{ route('profile', $profile->slug) }}">{{ $profile->name }}</a></li>
+                                                    <li><a
+                                                            href="{{ route('profile', $profile->slug) }}">{{ $profile->name }}</a>
+                                                    </li>
                                                 @endforeach
                                             </ul>
                                         </li>
-                                        <li><a href="{{ route("news") }}">Berita</a>
+                                        <li><a href="{{ route('news') }}">Berita</a>
                                             <ul class="submenu">
                                                 @php
                                                     $categories = \App\Models\NewsCategory::all();
                                                 @endphp
                                                 @foreach ($categories as $category)
-                                                    <li><a href="{{ route('news.category', $category->slug) }}">{{ $category->name }}</a></li>
+                                                    <li><a
+                                                            href="{{ route('news.category', $category->slug) }}">{{ $category->name }}</a>
+                                                    </li>
                                                 @endforeach
                                             </ul>
                                         </li>
-                                        <li><a href="{{ route("kajian") }}">Kajian</a></li>
-                                        <li><a href="{{ route("asset") }}">Asset</a></li>
+                                        <li><a href="{{ route('kajian') }}">Kajian</a></li>
+                                        <li><a href="{{ route('asset') }}">Asset</a></li>
                                         <li><a href="#">Keanggotaan</a></li>
                                         <li><a href="#">Ortom</a></li>
-                                        
-                                        <li id="login_mobile" >
+
+                                        <li id="login_mobile">
                                             @auth
-                                            <a href="#" class="genric-btn primary-border circle">
-                                                <i class="fas fa-sign-out"></i> &nbsp; &nbsp;
-                                                Logout
-                                            </a>
-                                                
+                                                <a href="#" class="genric-btn primary-border circle">
+                                                    <i class="fas fa-sign-out"></i> &nbsp; &nbsp;
+                                                    Logout
+                                                </a>
                                             @else
-                                            <a href="{{ route('login') }}" class="genric-btn primary-border circle">
-                                                <i class="fa-regular fa-right-to-bracket"></i> &nbsp; &nbsp;
-                                                Login
-                                            </a>
+                                                <a href="{{ route('login') }}" class="genric-btn primary-border circle">
+                                                    <i class="fa-regular fa-right-to-bracket"></i> &nbsp; &nbsp;
+                                                    Login
+                                                </a>
                                             @endauth
                                         </li>
                                     </ul>
