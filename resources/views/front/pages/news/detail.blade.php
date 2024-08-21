@@ -1,14 +1,16 @@
 @extends('front.app')
 
 @section('seo')
-    <title>Home</title>
-    <meta name="description" content="Home">
-    <meta name="keywords" content="Home">
-    <meta property="og:title" content="Home">
-    <meta property="og:description" content="Home">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ route('home') }}">
-    <link rel="canonical" href="{{ route('home') }}">
+<title>{{ $title }}</title>
+<meta name="description" content="{{ $meta_description }}">
+<meta name="keywords" content="{{ $meta_keywords }}">
+
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $meta_description }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ route('news') }}">
+<link rel="canonical" href="{{ route('news') }}">
+<meta property="og:image" content="{{ Storage::url($favicon) }}">
 @endsection
 
 @section('content')

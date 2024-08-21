@@ -8,8 +8,8 @@
     <meta property="og:title" content="{{ $title }}">
     <meta property="og:description" content="{{ $meta_description }}">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ route('home') }}">
-    <link rel="canonical" href="{{ route('home') }}">
+    <meta property="og:url" content="{{ route('profile') }}">
+    <link rel="canonical" href="{{ route('profile') }}">
     <meta property="og:image" content="{{ Storage::url($favicon) }}">
 @endsection
 

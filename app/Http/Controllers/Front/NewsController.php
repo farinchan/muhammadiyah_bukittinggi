@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\News;
 use App\Models\NewsCategory;
 use App\Models\NewsComment;
+use App\Models\SettingWebsite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Str; 
 
 class NewsController extends Controller
 {
@@ -20,13 +22,14 @@ class NewsController extends Controller
             ->with(['category', 'user', 'viewers', 'comments'])
             ->where('status', 'published');
         $newsCategory = NewsCategory::with('news');
+        $setting_web = SettingWebsite::first();
+
 
         $data = [
-            'title' => 'News',
-            'metaTitle' => 'News',
-            'metaDescription' => 'News',
-            'metaKeywords' => 'News',
-            'url' => 'news',
+            'title' => "News | " . $setting_web->name,
+            'meta_description' => strip_tags($setting_web->about),
+            'meta_keywords' => 'News, Muhammadiyah, Bukittinggi',
+            'favicon' => $setting_web->favicon,
 
             'category' => '',
             'latest_news' => $news->limit(4)->get(),
@@ -46,14 +49,15 @@ class NewsController extends Controller
             ->where('slug', $slug)
             ->firstOrFail();
         $newsCategory = NewsCategory::with('news');
+        $setting_web = SettingWebsite::first();
 
 
         $data = [
-            'title' => $news->title,
-            'metaTitle' => $news->title,
-            'metaDescription' => $news->description,
-            'metaKeywords' => $news->title,
-            'url' => 'news/' . $slug,
+            'title' => $news->title . " | " . $setting_web->name,
+            'meta_description' => $news->meta_description,
+            'meta_keywords' => 'News, Muhammadiyah, Bukittinggi, ' . $news->meta_keywords,
+            'favicon' => $setting_web->favicon,
+
             'categories' => $newsCategory->get(),
             'latest_news' => news::latest()->limit(4)->get(),
             'news' => $news,
