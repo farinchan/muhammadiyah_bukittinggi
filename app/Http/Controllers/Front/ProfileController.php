@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Profile;
 use App\Models\SettingWebsite;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProfileController extends Controller
 {
@@ -17,7 +18,7 @@ class ProfileController extends Controller
 
         $data = [
             'title' => $profil->name . " | " . $setting_web->name,
-            'meta_description' => strip_tags($setting_web->about),
+            'meta_description' => Str::limit(strip_tags($profil->content), 300),
             'meta_keywords' => 'Home, Muhammadiyah, Bukittinggi',
             'favicon' => $setting_web->favicon,
             
