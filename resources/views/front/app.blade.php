@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @yield('seo')
     {{-- <link rel="manifest" href="site.webmanifest"> --}}
-    <link rel="icon" href="{{ Storage::url($favicon) }}" type="image/png">
-    <link rel="shortcut icon" type="image/png" href="{{ Storage::url($favicon) }}">
+    <link rel="icon" href="{{ asset('storage/settings/favicon.png') }}" type="image/png">
+    <link rel="shortcut icon" href="{{ asset('storage/settings/favicon.png') }}" type="image/png">
 
     <!-- CSS here -->
     <link rel="stylesheet" href="{{ asset('front/css/bootstrap.min.css') }}">
