@@ -57,6 +57,7 @@ class NewsController extends Controller
             'meta_description' => $news->meta_description,
             'meta_keywords' => 'News, Muhammadiyah, Bukittinggi, ' . $news->meta_keywords,
             'favicon' => $setting_web->favicon,
+            'image' => $news->image,
 
             'categories' => $newsCategory->get(),
             'latest_news' => news::latest()->limit(4)->get(),

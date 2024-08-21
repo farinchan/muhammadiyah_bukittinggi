@@ -10,7 +10,8 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="{{ route('news.detail', $news->slug) }}">
 <link rel="canonical" href="{{ route('news.detail', $news->slug) }}">
-<meta property="og:image" content="{{ Storage::url($favicon) }}">
+<meta property="og:image" content="{{ Storage::url($image) }}">
+
 @endsection
 
 @section('content')
