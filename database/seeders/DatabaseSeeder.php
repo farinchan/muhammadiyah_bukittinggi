@@ -43,6 +43,8 @@ class DatabaseSeeder extends Seeder
 
         SettingWebsite::create([
             'name' => 'Pimpinan Daerah Muhammadiyah Kabupaten Bukittinggi',
+            'logo' => 'setting/logo.png',
+            'favicon' => 'setting/favicon.png',
             'email' => 'office@gariskode.com',
             'phone' => '08123456789',
             'address' => '-',
