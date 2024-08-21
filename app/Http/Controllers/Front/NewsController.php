@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
-use Illuminate\Support\Str; 
+use Illuminate\Support\Str;
 
 class NewsController extends Controller
 {
@@ -82,13 +82,14 @@ class NewsController extends Controller
             ->whereHas('category', function ($query) use ($slug) {
                 $query->where('slug', $slug);
             });
+        $setting_web = SettingWebsite::first();
+ 
 
         $data = [
-            'title' => 'News',
-            'metaTitle' => 'News',
-            'metaDescription' => 'News',
-            'metaKeywords' => 'News',
-            'url' => 'news',
+            'title' => "News - " . $newsCategory->where('slug', $slug)->first()->name ." | " . $setting_web->name,
+            'meta_description' => strip_tags($setting_web->about),
+            'meta_keywords' => 'News, Muhammadiyah, Bukittinggi',
+            'favicon' => $setting_web->favicon,
 
             'category' => $newsCategory->where('slug', $slug)->first(),
             'categories' => $newsCategory->get(),
@@ -115,7 +116,7 @@ class NewsController extends Controller
                 Alert::error('Error', $validator->errors()->all());
                 return redirect()->back()->withInput()->withErrors($validator);
             }
-        } else{
+        } else {
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
                 'email' => 'required|email',
