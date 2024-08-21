@@ -4,7 +4,6 @@
     <title>{{ $title }}</title>
     <meta name="description" content="{{ $meta_description }}">
     <meta name="keywords" content="{{ $meta_keywords }}">
-    <link rel="icon" href="{{ Storage::url($favicon) }}" type="image/png">
 
     <meta property="og:title" content="{{ $title }}">
     <meta property="og:description" content="{{ $meta_description }}">
