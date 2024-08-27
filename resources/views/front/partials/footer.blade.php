@@ -109,7 +109,7 @@
                                 Copyright &copy;
                                 <script>
                                     document.write(new Date().getFullYear());
-                                </script> All rights reserved | Pimpinan Daerah Muhammadiyah Bukittinggi <a href="https://gariskode.com"
+                                </script> Pimpinan Daerah Muhammadiyah Bukittinggi<a href="https://gariskode.com"
                                     target="_blank">.
                                 </a>
                             </p>
