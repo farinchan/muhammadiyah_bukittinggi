@@ -32,7 +32,9 @@
                     <div class="single-footer-caption mt-60">
                         <div class="footer-tittle">
                             <h4>Newsletter</h4>
-                            <p>Heaven fruitful doesn't over les idays appear creeping</p>
+                            <p>
+                                Berita terbaru dan informasi menarik lainnya bisa kamu dapatkan dengan berlangganan
+                            </p>
                             <!-- Form -->
                             <div class="footer-form">
                                 <div id="mc_embed_signup">
@@ -103,14 +105,13 @@
                 <div class="row d-flex align-items-center justify-content-between">
                     <div class="col-lg-6">
                         <div class="footer-copy-right">
-                            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            <p>
                                 Copyright &copy;
                                 <script>
                                     document.write(new Date().getFullYear());
-                                </script> All rights reserved | This template is made with <i
-                                    class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
-                                    target="_blank">Colorlib</a>
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                </script> All rights reserved | Pimpinan Daerah Muhammadiyah Bukittinggi <a href="https://gariskode.com"
+                                    target="_blank">.
+                                </a>
                             </p>
                         </div>
                     </div>
