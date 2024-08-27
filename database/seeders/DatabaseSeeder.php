@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\ContactUs;
 use App\Models\Profile;
 use App\Models\SettingBanner;
 use App\Models\SettingWebsite;
+use App\Models\Subscriber;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -80,11 +82,24 @@ class DatabaseSeeder extends Seeder
             'status' => 1,
         ]);
 
+        Subscriber::create([
+            'email' => 'fajri@gariskode.com',
+        ]);
+
+        ContactUs::create([
+            'name' => 'Fajri Rinaldi Chan',
+            'email' => 'fajri@gariskode.com',
+            'subject' => 'Pertanyaan Tentang PDM Bukittinggi',
+            'message' => 'lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum',
+        ]);
+
         $this->call([
             NewsSeeder::class,
             PengumumanSeeder::class,
             KajianSeeder::class,
             AssetSeeder::class,
         ]);
+
+
     }
 }

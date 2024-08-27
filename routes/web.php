@@ -17,6 +17,7 @@ use App\Http\Controllers\Back\NewsController as BackNewsController;
 use App\Http\Controllers\Back\PengumumanController as BackPengumumanController;
 use App\Http\Controllers\Back\KajianController as BackKajianController;
 use App\Http\Controllers\Back\AssetController as BackAssetController;
+use App\Http\Controllers\Back\InboxController as BackInboxController;
 use App\Http\Controllers\Back\SettingController as BackSettingController;
 use App\Http\Controllers\Back\ProfileController as BackProfileController;
 
@@ -66,6 +67,11 @@ Route::prefix('user')->middleware(['auth', 'role:user'])->name('user.')->group(f
 
 Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->group(function () {
     Route::get('/dashboard', [BackDashboardController::class, 'index'])->name('dashboard');
+
+    Route::prefix('inbox')->name('inbox.')->group(function () {
+        Route::get('/', [BackInboxController::class, 'index'])->name('index');
+        Route::delete('/delete/{id}', [BackInboxController::class, 'destroy'])->name('destroy');
+    });
 
     Route::prefix('user')->name('user.')->group(function () {
         Route::get('/', [BackUserController::class, 'index'])->name('index');
