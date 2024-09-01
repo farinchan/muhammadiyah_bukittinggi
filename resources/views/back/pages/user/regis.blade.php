@@ -243,7 +243,7 @@
                                 <div class="mb-10 text-end me-3">
                                     <div class="image-input image-input-outline">
                                         <div class="image-input-wrapper w-125px h-125px"
-                                            style="background-image: url({{ storage::url($user->photo) }})"></div>
+                                            style="background-image: url({{ Storage::url($user->photo) }})"></div>
                                     </div>
                                 </div>
 
