@@ -45,7 +45,8 @@
                                                 src="{{ Storage::url($kajian->thumbnail) }}" alt="Event Image">
                                         </div>
                                         <div class="col-md-7">
-                                            <div class="card-body"><a href="">
+                                            <div class="card-body"><a href="{{ route('kajian.detail', $kajian->slug) }}
+                                                ">
 
                                                     <h5 class="card-title">{{ $kajian->title }}</h5>
                                                 </a>
