@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\ContactUs;
 use Illuminate\Http\Request;
 
-class InboxController extends Controller
+class inboxController extends Controller
 {
     public function index()
     {

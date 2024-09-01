@@ -17,7 +17,7 @@ use App\Http\Controllers\Back\NewsController as BackNewsController;
 use App\Http\Controllers\Back\PengumumanController as BackPengumumanController;
 use App\Http\Controllers\Back\KajianController as BackKajianController;
 use App\Http\Controllers\Back\AssetController as BackAssetController;
-use App\Http\Controllers\Back\InboxController as BackInboxController;
+use App\Http\Controllers\Back\inboxController as BackInboxController;
 use App\Http\Controllers\Back\SettingController as BackSettingController;
 use App\Http\Controllers\Back\ProfileController as BackProfileController;
 
