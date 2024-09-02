@@ -23,15 +23,12 @@
                 </div>
 
                 <div class="menu-item">
-                    <a class="menu-link" href="{{ route("admin.pengumuman.index") }}">
+                    <a class="menu-link" href="{{ route('admin.pengumuman.index') }}">
                         <span class="menu-icon">
-                            <i class="ki-duotone ki-calendar-8 fs-2">
+                            <i class="ki-duotone ki-information fs-2">
                                 <span class="path1"></span>
                                 <span class="path2"></span>
                                 <span class="path3"></span>
-                                <span class="path4"></span>
-                                <span class="path5"></span>
-                                <span class="path6"></span>
                             </i>
                         </span>
                         <span class="menu-title">Pengumuman</span>
@@ -41,10 +38,11 @@
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
-                            <i class="ki-duotone ki-address-book fs-2">
+                            <i class="ki-duotone ki-book fs-2">
                                 <span class="path1"></span>
                                 <span class="path2"></span>
                                 <span class="path3"></span>
+                                <span class="path4"></span>
                             </i>
                         </span>
                         <span class="menu-title">Berita</span>
@@ -52,7 +50,7 @@
                     </span>
                     <div class="menu-sub menu-sub-accordion">
                         <div class="menu-item">
-                            <a class="menu-link" href="{{ route("admin.news.category") }}">
+                            <a class="menu-link" href="{{ route('admin.news.category') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -60,7 +58,7 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="{{ route("admin.news.index") }}">
+                            <a class="menu-link" href="{{ route('admin.news.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -68,7 +66,7 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="{{ route("admin.news.comment") }}">
+                            <a class="menu-link" href="{{ route('admin.news.comment') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -80,7 +78,7 @@
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
-                            <i class="ki-duotone ki-address-book fs-2">
+                            <i class="ki-duotone ki-award fs-2">
                                 <span class="path1"></span>
                                 <span class="path2"></span>
                                 <span class="path3"></span>
@@ -91,7 +89,7 @@
                     </span>
                     <div class="menu-sub menu-sub-accordion">
                         <div class="menu-item">
-                            <a class="menu-link" href="{{ route("admin.kajian.index") }}">
+                            <a class="menu-link" href="{{ route('admin.kajian.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -99,7 +97,7 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="{{ route("admin.kajian.comment") }}">
+                            <a class="menu-link" href="{{ route('admin.kajian.comment') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -114,30 +112,23 @@
                     </div>
                 </div>
                 <div class="menu-item">
-                    <a class="menu-link" href="{{ route("admin.asset.create") }}">
+                    <a class="menu-link" href="{{ route('admin.asset.create') }}">
                         <span class="menu-icon">
-                            <i class="ki-duotone ki-calendar-8 fs-2">
+                            <i class="ki-duotone ki-add-item fs-2">
                                 <span class="path1"></span>
                                 <span class="path2"></span>
                                 <span class="path3"></span>
-                                <span class="path4"></span>
-                                <span class="path5"></span>
-                                <span class="path6"></span>
                             </i>
                         </span>
                         <span class="menu-title">Tambah Aset</span>
                     </a>
                 </div>
                 <div class="menu-item">
-                    <a class="menu-link" href="{{ route("admin.asset.type") }}">
+                    <a class="menu-link" href="{{ route('admin.asset.type') }}">
                         <span class="menu-icon">
-                            <i class="ki-duotone ki-calendar-8 fs-2">
+                            <i class="ki-duotone ki-size fs-2">
                                 <span class="path1"></span>
                                 <span class="path2"></span>
-                                <span class="path3"></span>
-                                <span class="path4"></span>
-                                <span class="path5"></span>
-                                <span class="path6"></span>
                             </i>
                         </span>
                         <span class="menu-title">Tipe Asset</span>
@@ -147,10 +138,9 @@
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
-                            <i class="ki-duotone ki-address-book fs-2">
+                            <i class="ki-duotone ki-copy-success fs-2">
                                 <span class="path1"></span>
                                 <span class="path2"></span>
-                                <span class="path3"></span>
                             </i>
                         </span>
                         <span class="menu-title">Aset</span>
@@ -162,7 +152,7 @@
                         @endphp
                         @foreach ($asset_types as $asset_type)
                             <div class="menu-item">
-                                <a class="menu-link" href="{{ route("admin.asset.index", $asset_type->slug) }}">
+                                <a class="menu-link" href="{{ route('admin.asset.index', $asset_type->slug) }}">
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>
@@ -172,7 +162,7 @@
                         @endforeach
                     </div>
                 </div>
-                
+
 
 
                 <div class="menu-item pt-5">
@@ -180,7 +170,7 @@
                             class="menu-heading fw-bold text-uppercase fs-7">Administrator</span>
                     </div>
                 </div>
-                
+
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
@@ -203,7 +193,7 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="{{ route("admin.user.register") }}">
+                            <a class="menu-link" href="{{ route('admin.user.register') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -221,7 +211,7 @@
                     </div>
                 </div>
 
-                
+
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
@@ -236,7 +226,7 @@
                     </span>
                     <div class="menu-sub menu-sub-accordion">
                         <div class="menu-item">
-                            <a class="menu-link" href="{{ route("admin.setting.website") }}">
+                            <a class="menu-link" href="{{ route('admin.setting.website') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -244,7 +234,7 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="{{ route("admin.setting.banner") }}">
+                            <a class="menu-link" href="{{ route('admin.setting.banner') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -255,7 +245,7 @@
                 </div>
 
                 <div class="menu-item">
-                    <a class="menu-link" href="{{ route("admin.profile.index") }}">
+                    <a class="menu-link" href="{{ route('admin.profile.index') }}">
                         <span class="menu-icon">
                             <i class="ki-duotone ki-calendar-8 fs-2">
                                 <span class="path1"></span>
@@ -271,7 +261,7 @@
                 </div>
 
                 <div class="menu-item">
-                    <a class="menu-link" href="{{ route("admin.inbox.index") }}">
+                    <a class="menu-link" href="{{ route('admin.inbox.index') }}">
                         <span class="menu-icon">
                             <i class="ki-duotone ki-calendar-8 fs-2">
                                 <span class="path1"></span>
@@ -286,7 +276,7 @@
                     </a>
                 </div>
                 <div class="menu-item">
-                    <a class="menu-link" href="{{ route("admin.inbox.index") }}">
+                    <a class="menu-link" href="{{ route('admin.inbox.index') }}">
                         <span class="menu-icon">
                             <i class="ki-duotone ki-calendar-8 fs-2">
                                 <span class="path1"></span>

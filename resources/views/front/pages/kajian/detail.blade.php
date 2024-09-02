@@ -235,8 +235,8 @@
                                 <div class="form-group">
                                     <div class="input-group mb-3">
                                         <input name="q" type="text" class="form-control"
-                                            placeholder='Cari Berita' onfocus="this.placeholder = ''"
-                                            onblur="this.placeholder = 'Cari Berita'" value="{{ request()->q }}">
+                                            placeholder='Cari Kajian' onfocus="this.placeholder = ''"
+                                            onblur="this.placeholder = 'Cari Kajian'" value="{{ request()->q }}">
                                         <div class="input-group-append">
                                             <button class="btns" type="button"><i class="ti-search"></i></button>
                                         </div>
@@ -248,7 +248,7 @@
                         </aside>
 
                         <aside class="single_sidebar_widget popular_post_widget">
-                            <h3 class="widget_title">Berita terbaru</h3>
+                            <h3 class="widget_title">Kajian terbaru</h3>
                             @foreach ($latest_kajian as $kajian)
                                 <div class="media post_item">
                                     <img src="{{ Storage::url($kajian->thumbnail) }}" alt="post" width="100px"
@@ -293,8 +293,8 @@
                 </aside> --}}
 
 
-                        <aside class="single_sidebar_widget kajianletter_widget">
-                            <h4 class="widget_title">kajianletter</h4>
+                        <aside class="single_sidebar_widget newsletter_widget">
+                            <h4 class="widget_title">Newsletter</h4>
 
                             <form action="#">
                                 <div class="form-group">

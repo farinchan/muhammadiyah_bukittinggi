@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('pengumuman', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('content');
+            $table->mediumText('content');
             $table->string('image')->nullable();
             $table->string('slug');
             $table->boolean('is_active')->default(true);
