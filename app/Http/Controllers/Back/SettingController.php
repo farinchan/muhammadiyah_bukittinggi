@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\SettingBanner;
 use App\Models\SettingWebsite;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -132,20 +133,33 @@ class SettingController extends Controller
     public function bannerUpdate (Request $request, $id)
     {
         // dd($request->all());
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
             'subtitle' => 'nullable|string|max:255',
+            'image' => 'nullable|image',
             'url' => 'required|string',
-            'status' => 'required|in:1,0',
+        ], [
+            'required' => 'Kolom :attribute tidak boleh kosong',
+            'string' => 'Kolom :attribute harus berupa string',
+            'max' => 'Kolom :attribute tidak boleh lebih dari :max karakter',
+            'image' => 'Kolom :attribute harus berupa gambar',
+            'in' => 'Kolom :attribute harus diisi dengan :values',
         ]);
+
+        if ($validator->fails()) {
+            Alert::error('Error', $validator->errors()->all());
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
         $banner = SettingBanner::find($id);
         $banner->title = $request->title;
         $banner->subtitle = $request->subtitle;
         $banner->url = $request->url;
-        $banner->status = $request->status;
 
         if ($request->hasFile('image')) {
+            $oldImage = $banner->image;
+            Storage::delete('public/' . $oldImage);
+
             $image = $request->file('image');
             $fileName = time() . '_' . $image->getClientOriginalName();
             $filePath = $image->storeAs('banner/', $fileName, 'public');
@@ -153,6 +167,16 @@ class SettingController extends Controller
         }
 
         $banner->save();
+        Alert::success('Success', 'Pengaturan Banner berhasil diubah');
         return redirect()->route('admin.setting.banner')->with('success', 'Pengaturan Banner berhasil diubah');
+    }
+
+    public function bannerDestroy($id)
+    {
+        $banner = SettingBanner::find($id);
+        Storage::delete('public/' . $banner->image);
+        $banner->delete();
+        Alert::success('Success', 'Pengaturan Banner berhasil dihapus');
+        return redirect()->route('admin.setting.banner')->with('success', 'Pengaturan Banner berhasil dihapus');
     }
 }

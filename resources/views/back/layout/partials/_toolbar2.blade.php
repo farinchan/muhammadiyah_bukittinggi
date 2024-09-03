@@ -29,6 +29,11 @@
                     </li>
                 @endif
             </ul>
+            
+        </div>
+        <div class="d-flex align-items-center gap-2 gap-lg-3">
+            @yield('toolbar')
+          
         </div>
     </div>
 </div>

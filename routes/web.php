@@ -158,7 +158,7 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->grou
         Route::get('/banner', [BackSettingController::class, 'banner'])->name('banner');
         Route::post('/banner', [BackSettingController::class, 'bannerCreate'])->name('banner.create');
         Route::put('/banner/{id}', [BackSettingController::class, 'bannerUpdate'])->name('banner.update');
-        Route::delete('/banner/{id}', [BackSettingController::class, 'bannerDestroy'])->name('banner.destroy');
+        Route::get('/banner/{id}', [BackSettingController::class, 'bannerDestroy'])->name('banner.destroy');
     });
 
     Route::prefix('profile')->name('profile.')->group(function () {
