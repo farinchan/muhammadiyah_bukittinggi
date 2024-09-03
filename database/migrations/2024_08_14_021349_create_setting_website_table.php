@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('telegram')->nullable();
             $table->string('linkedin')->nullable();
             $table->text('about')->nullable();
+            $table->text('terms_conditions')->nullable();
             $table->timestamps();
         });
     }

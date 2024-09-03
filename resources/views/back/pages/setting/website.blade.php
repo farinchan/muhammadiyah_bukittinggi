@@ -39,13 +39,7 @@
                                     <div class="col-md-3 text-md-end">
                                         <label class="fs-6 fw-semibold form-label mt-3">
                                             <span class="required">Nama Website</span>
-                                            <span class="ms-1" data-bs-toggle="tooltip" title="atur nama Website">
-                                                <i class="ki-duotone ki-information-5 text-gray-500 fs-6">
-                                                    <span class="path1"></span>
-                                                    <span class="path2"></span>
-                                                    <span class="path3"></span>
-                                                </i>
-                                            </span>
+                                            
                                         </label>
                                     </div>
                                     <div class="col-md-9">
@@ -57,14 +51,6 @@
                                     <div class="col-md-3 text-md-end">
                                         <label class="fs-6 fw-semibold form-label mt-3">
                                             <span class="required">Logo</span>
-                                            <span class="ms-1" data-bs-toggle="tooltip"
-                                                title="Set the store owner's name">
-                                                <i class="ki-duotone ki-information-5 text-gray-500 fs-6">
-                                                    <span class="path1"></span>
-                                                    <span class="path2"></span>
-                                                    <span class="path3"></span>
-                                                </i>
-                                            </span>
                                         </label>
                                     </div>
                                     <div class="col-md-9">
@@ -110,7 +96,7 @@
                                         <label class="fs-6 fw-semibold form-label mt-3">
                                             <span class="required">Favicon</span>
                                             <span class="ms-1" data-bs-toggle="tooltip"
-                                                title="Set the store owner's name">
+                                                title="Favicon website adalah ikon kecil yang muncul di tab browser Anda.">
                                                 <i class="ki-duotone ki-information-5 text-gray-500 fs-6">
                                                     <span class="path1"></span>
                                                     <span class="path2"></span>
@@ -163,13 +149,7 @@
                                     <div class="col-md-3 text-md-end">
                                         <label class="fs-6 fw-semibold form-label mt-3">
                                             <span class="required">Email</span>
-                                            <span class="ms-1" data-bs-toggle="tooltip" title="atur email Website">
-                                                <i class="ki-duotone ki-information-5 text-gray-500 fs-6">
-                                                    <span class="path1"></span>
-                                                    <span class="path2"></span>
-                                                    <span class="path3"></span>
-                                                </i>
-                                            </span>
+                                           
                                         </label>
                                     </div>
                                     <div class="col-md-9">
@@ -182,13 +162,6 @@
                                     <div class="col-md-3 text-md-end">
                                         <label class="fs-6 fw-semibold form-label mt-3">
                                             <span class="required">No Telp</span>
-                                            <span class="ms-1" data-bs-toggle="tooltip" title="atur email Website">
-                                                <i class="ki-duotone ki-information-5 text-gray-500 fs-6">
-                                                    <span class="path1"></span>
-                                                    <span class="path2"></span>
-                                                    <span class="path3"></span>
-                                                </i>
-                                            </span>
                                         </label>
                                     </div>
                                     <div class="col-md-9">
@@ -201,14 +174,6 @@
                                     <div class="col-md-3 text-md-end">
                                         <label class="fs-6 fw-semibold form-label mt-3">
                                             <span class="required">Alamat</span>
-                                            <span class="ms-1" data-bs-toggle="tooltip"
-                                                title="Set the store's full address.">
-                                                <i class="ki-duotone ki-information-5 text-gray-500 fs-6">
-                                                    <span class="path1"></span>
-                                                    <span class="path2"></span>
-                                                    <span class="path3"></span>
-                                                </i>
-                                            </span>
                                         </label>
                                     </div>
                                     <div class="col-md-9">
@@ -363,7 +328,7 @@
                         </div>
 
                         <div class="tab-pane fade " id="kt_ecommerce_settings_general" role="tabpanel">
-                            <form id="kt_ecommerce_settings_general_form" class="form" action="" method="POST">
+                            <form id="kt_ecommerce_settings_general_form" class="form" action="{{ route("admin.setting.website.info") }}" method="POST">
                                 @method("PUT")
                                 @csrf
                                 <div class="row mb-7">
@@ -371,115 +336,19 @@
                                         <h2>Setting Informasi</h2>
                                     </div>
                                 </div>
-                                {{-- privacy_policy --}}
+                                {{-- syarat & ketentuan --}}
                                 <div class="row fv-row mb-18">
                                     <div class="col-md-3 text-md-end">
                                         <label class="fs-6 fw-semibold form-label mt-3">
-                                            <span>Privacy Policy</span>
+                                            <span>Syarat & Ketentuan</span>
                                         </label>
                                     </div>
                                     <div class="col-md-9">
-                                        <div id="editor_privacy_policy"
+                                        <div id="editor_terms_conditions"
                                             class="form-control form-control-solid min-h-150px mb-5">
-                                            {!! $setting->privacy_policy !!}
+                                            {!! $setting->terms_conditions !!}
                                         </div>
-                                        <input type="hidden" id="privacy_policy" name="privacy_policy">
-                                    </div>
-                                </div>
-
-                                {{-- terms_and_conditions --}}
-                                <div class="row fv-row mb-18">
-                                    <div class="col-md-3 text-md-end">
-                                        <label class="fs-6 fw-semibold form-label mt-3">
-                                            <span>Terms & Conditions</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-md-9">
-                                        <div id="editor_terms_and_conditions"
-                                            class="form-control form-control-solid min-h-150px mb-5">
-                                            {!! $setting->terms_and_conditions !!}
-                                        </div>
-                                        <input type="hidden" id="terms_and_conditions" name="terms_and_conditions">
-                                    </div>
-                                </div>
-
-                                {{-- return_policy --}}
-                                <div class="row fv-row mb-18">
-                                    <div class="col-md-3 text-md-end">
-                                        <label class="fs-6 fw-semibold form-label mt-3">
-                                            <span>Return Policy</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-md-9">
-                                        <div id="editor_return_policy"
-                                            class="form-control form-control-solid min-h-150px mb-5">
-                                            {!! $setting->return_policy !!}
-                                        </div>
-                                        <input type="hidden" id="return_policy" name="return_policy">
-                                    </div>
-                                </div>
-
-                                {{-- shipping_policy --}}
-                                <div class="row fv-row mb-18">
-                                    <div class="col-md-3 text-md-end">
-                                        <label class="fs-6 fw-semibold form-label mt-3">
-                                            <span>Shipping Policy</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-md-9">
-                                        <div id="editor_shipping_policy"
-                                            class="form-control form-control-solid min-h-150px mb-5">
-                                            {!! $setting->shipping_policy !!}
-                                        </div>
-                                        <input type="hidden" id="shipping_policy" name="shipping_policy">
-                                    </div>
-                                </div>
-
-                                {{-- cancellation_policy --}}
-                                <div class="row fv-row mb-18">
-                                    <div class="col-md-3 text-md-end">
-                                        <label class="fs-6 fw-semibold form-label mt-3">
-                                            <span>Cancellation Policy</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-md-9">
-                                        <div id="editor_cancellation_policy"
-                                            class="form-control form-control-solid min-h-150px mb-5">
-                                            {!! $setting->cancellation_policy !!}
-                                        </div>
-                                        <input type="hidden" id="cancellation_policy" name="cancellation_policy">
-                                    </div>
-                                </div>
-
-                                {{-- refund_policy --}}
-                                <div class="row fv-row mb-18">
-                                    <div class="col-md-3 text-md-end">
-                                        <label class="fs-6 fw-semibold form-label mt-3">
-                                            <span>Refund Policy</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-md-9">
-                                        <div id="editor_refund_policy"
-                                            class="form-control form-control-solid min-h-150px mb-5">
-                                            {!! $setting->refund_policy !!}
-                                        </div>
-                                        <input type="hidden" id="refund_policy" name="refund_policy">
-                                    </div>
-                                </div>
-
-                                {{-- payment_policy --}}
-                                <div class="row fv-row mb-18">
-                                    <div class="col-md-3 text-md-end">
-                                        <label class="fs-6 fw-semibold form-label mt-3">
-                                            <span>Payment Policy</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-md-9">
-                                        <div id="editor_payment_policy"
-                                            class="form-control form-control-solid min-h-150px mb-5">
-                                            {!! $setting->payment_policy !!}
-                                        </div>
-                                        <input type="hidden" id="payment_policy" name="payment_policy">
+                                        <input type="hidden" id="terms_conditions" name="terms_conditions">
                                     </div>
                                 </div>
 
@@ -516,5 +385,15 @@
         quill.on('text-change', function() {
             quillEditor.value = quill.root.innerHTML;
         });
+
+        const quill_terms_conditions = new Quill('#editor_terms_conditions', {
+            theme: 'snow'
+        });
+        var quillEditor_terms_conditions = document.getElementById('terms_conditions');
+        quillEditor_terms_conditions.value = quill_terms_conditions.root.innerHTML;
+        quill_terms_conditions.on('text-change', function() {
+            quillEditor_terms_conditions.value = quill_terms_conditions.root.innerHTML;
+        });
+
     </script>
 @endsection

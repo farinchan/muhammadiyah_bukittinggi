@@ -154,6 +154,7 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->grou
     Route::prefix('setting')->name('setting.')->group(function () {
         Route::get('/website', [BackSettingController::class, 'website'])->name('website');
         Route::put('/website', [BackSettingController::class, 'websiteUpdate'])->name('website.update');
+        Route::put('/website/info', [BackSettingController::class, 'informationUpdate'])->name('website.info');
 
         Route::get('/banner', [BackSettingController::class, 'banner'])->name('banner');
         Route::post('/banner', [BackSettingController::class, 'bannerCreate'])->name('banner.create');

@@ -83,6 +83,25 @@ class SettingController extends Controller
         return redirect()->back();
     }
 
+    public function informationUpdate(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'terms_conditions' => 'nullable',
+        ]);
+
+        if ($validator->fails()) {
+            Alert::error('Error', $validator->errors()->all());
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $setting = SettingWebsite::first();
+        $setting->terms_conditions = $request->terms_conditions;
+        $setting->save();
+
+        Alert::success('Success', 'Informasi berhasil diperbarui');
+        return redirect()->back();
+    }
+
     public function banner ()
     {
         $data = [
