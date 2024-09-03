@@ -16,6 +16,7 @@ use App\Http\Controllers\Back\UserController as BackUserController;
 use App\Http\Controllers\Back\NewsController as BackNewsController;
 use App\Http\Controllers\Back\PengumumanController as BackPengumumanController;
 use App\Http\Controllers\Back\KajianController as BackKajianController;
+use App\Http\Controllers\Back\GalleryController as BackGalleryController;
 use App\Http\Controllers\Back\AssetController as BackAssetController;
 use App\Http\Controllers\Back\inboxController as BackInboxController;
 use App\Http\Controllers\Back\SettingController as BackSettingController;
@@ -121,6 +122,18 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->grou
 
         Route::get('/comment', [BackKajianController::class, 'comment'])->name('comment');
         Route::post('/comment/spam/{id}', [BackKajianController::class, 'commentSpam'])->name('comment.spam');
+    });
+
+    Route::prefix('gallery')->name('gallery.')->group(function () {
+        Route::get('/album', [BackGalleryController::class, 'album'])->name('album');
+        Route::post('/album', [BackGalleryController::class, 'albumStore'])->name('album.store');
+        Route::put('/album/{id}', [BackGalleryController::class, 'albumUpdate'])->name('album.update');
+        Route::delete('/album/{id}', [BackGalleryController::class, 'albumDestroy'])->name('album.destroy');
+
+        Route::get('/', [BackGalleryController::class, 'index'])->name('index');
+        Route::post('/create', [BackGalleryController::class, 'store'])->name('store');
+        Route::put('/edit/{id}', [BackGalleryController::class, 'update'])->name('update');
+        Route::delete('/delete/{id}', [BackGalleryController::class, 'destroy'])->name('destroy');
     });
 
     Route::prefix('asset')->name('asset.')->group(function () {

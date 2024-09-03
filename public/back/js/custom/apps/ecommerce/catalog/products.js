@@ -46,6 +46,17 @@ var KTAppEcommerceProducts = function () {
         });
     }
 
+    var handleStatusFilter = () => {
+        const filterStatus = document.querySelector('[data-kt-ecommerce-product-filter="type_galeri"]');
+        $(filterStatus).on('change', e => {
+            let value = e.target.value;
+            if(value === 'all'){
+                value = '';
+            }
+            datatable.column(2).search(value).draw();
+        });
+    }
+
     // Delete cateogry
     var handleDeleteRows = () => {
         // Select all delete buttons
