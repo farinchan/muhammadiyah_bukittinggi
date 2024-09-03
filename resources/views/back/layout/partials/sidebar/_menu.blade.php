@@ -143,6 +143,18 @@
                     </div>
                 </div>
                 <div class="menu-item">
+                    <a class="menu-link" href="{{ route('admin.asset.type') }}">
+                        <span class="menu-icon">
+                            <i class="ki-duotone ki-size fs-2">
+                                <span class="path1"></span>
+                                <span class="path2"></span>
+                            </i>
+                        </span>
+                        <span class="menu-title">Tipe Asset</span>
+                    </a>
+                </div>
+
+                <div class="menu-item">
                     <a class="menu-link" href="{{ route('admin.asset.create') }}">
                         <span class="menu-icon">
                             <i class="ki-duotone ki-add-item fs-2">
@@ -152,17 +164,6 @@
                             </i>
                         </span>
                         <span class="menu-title">Tambah Aset</span>
-                    </a>
-                </div>
-                <div class="menu-item">
-                    <a class="menu-link" href="{{ route('admin.asset.type') }}">
-                        <span class="menu-icon">
-                            <i class="ki-duotone ki-size fs-2">
-                                <span class="path1"></span>
-                                <span class="path2"></span>
-                            </i>
-                        </span>
-                        <span class="menu-title">Tipe Asset</span>
                     </a>
                 </div>
 
@@ -194,7 +195,77 @@
                     </div>
                 </div>
 
+                <div class="menu-item pt-5">
+                    <div class="menu-content"><span
+                            class="menu-heading fw-bold text-uppercase fs-7">Administrasi</span>
+                    </div>
+                </div>
+                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                    <span class="menu-link">
+                        <span class="menu-icon">
+                            <i class="ki-duotone ki-directbox-default fs-2">
+                                <span class="path1"></span>
+                                <span class="path2"></span>
+                                <span class="path3"></span>
+                                <span class="path4"></span>
+                            </i>
+                        </span>
+                        <span class="menu-title">Persuratan</span>
+                        <span class="menu-arrow"></span>
+                    </span>
+                    <div class="menu-sub menu-sub-accordion">
+                        <div class="menu-item">
+                            <a class="menu-link" href="{{ route('admin.user.index') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Surat Masuk</span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link" href="{{ route('admin.user.register') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Surat keluar</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
+
+                <div class="menu-item pt-5">
+                    <div class="menu-content"><span class="menu-heading fw-bold text-uppercase fs-7">Menu</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <a class="menu-link" href="{{ route('admin.profile.index') }}">
+                        <span class="menu-icon">
+                            <i class="ki-duotone ki-setting-3 fs-2">
+                                <span class="path1"></span>
+                                <span class="path2"></span>
+                                <span class="path3"></span>
+                                <span class="path4"></span>
+                                <span class="path5"></span>
+                            </i>
+                        </span>
+                        <span class="menu-title">Profile Menu</span>
+                    </a>
+                </div>
+                <div class="menu-item">
+                    <a class="menu-link" href="">
+                        <span class="menu-icon">
+                            <i class="ki-duotone ki-setting-3 fs-2">
+                                <span class="path1"></span>
+                                <span class="path2"></span>
+                                <span class="path3"></span>
+                                <span class="path4"></span>
+                                <span class="path5"></span>
+                            </i>
+                        </span>
+                        <span class="menu-title">Ortom Menu</span>
+                    </a>
+                </div>
 
                 <div class="menu-item pt-5">
                     <div class="menu-content"><span
@@ -205,10 +276,11 @@
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
-                            <i class="ki-duotone ki-address-book fs-2">
+                            <i class="ki-duotone ki-profile-user fs-2">
                                 <span class="path1"></span>
                                 <span class="path2"></span>
                                 <span class="path3"></span>
+                                <span class="path4"></span>
                             </i>
                         </span>
                         <span class="menu-title">Anggota</span>
@@ -242,14 +314,24 @@
                     </div>
                 </div>
 
+                <div class="menu-item">
+                    <a class="menu-link" href="{{ route('admin.inbox.index') }}">
+                        <span class="menu-icon">
+                            <i class="ki-duotone ki-sms fs-2">
+                                <span class="path1"></span>
+                                <span class="path2"></span>
+                            </i>
+                        </span>
+                        <span class="menu-title">Inbox</span>
+                    </a>
+                </div>
 
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
-                            <i class="ki-duotone ki-address-book fs-2">
+                            <i class="ki-duotone ki-setting-2 fs-2">
                                 <span class="path1"></span>
                                 <span class="path2"></span>
-                                <span class="path3"></span>
                             </i>
                         </span>
                         <span class="menu-title">Pengaturan</span>
@@ -275,38 +357,8 @@
                     </div>
                 </div>
 
-                <div class="menu-item">
-                    <a class="menu-link" href="{{ route('admin.profile.index') }}">
-                        <span class="menu-icon">
-                            <i class="ki-duotone ki-calendar-8 fs-2">
-                                <span class="path1"></span>
-                                <span class="path2"></span>
-                                <span class="path3"></span>
-                                <span class="path4"></span>
-                                <span class="path5"></span>
-                                <span class="path6"></span>
-                            </i>
-                        </span>
-                        <span class="menu-title">Profile Menu</span>
-                    </a>
-                </div>
 
-                <div class="menu-item">
-                    <a class="menu-link" href="{{ route('admin.inbox.index') }}">
-                        <span class="menu-icon">
-                            <i class="ki-duotone ki-calendar-8 fs-2">
-                                <span class="path1"></span>
-                                <span class="path2"></span>
-                                <span class="path3"></span>
-                                <span class="path4"></span>
-                                <span class="path5"></span>
-                                <span class="path6"></span>
-                            </i>
-                        </span>
-                        <span class="menu-title">Inbox</span>
-                    </a>
-                </div>
-                <div class="menu-item">
+                {{-- <div class="menu-item">
                     <a class="menu-link" href="{{ route('admin.inbox.index') }}">
                         <span class="menu-icon">
                             <i class="ki-duotone ki-calendar-8 fs-2">
@@ -320,7 +372,7 @@
                         </span>
                         <span class="menu-title">Subscriber</span>
                     </a>
-                </div>
+                </div> --}}
 
             </div>
         </div>
