@@ -57,7 +57,11 @@
                 @include('back/layout/partials/_sidebar')
                 <div class="app-main flex-column flex-row-fluid " id="kt_app_main">
                     <div class="d-flex flex-column flex-column-fluid">
-                        @include('back/layout/partials/_toolbar')
+                        @if (request()->routeIs('admin.dashboard'))
+                            @include('back/layout/partials/_toolbar')
+                        @else
+                            @include('back/layout/partials/_toolbar2')
+                        @endif
                         @yield('content')
                     </div>
                     @include('back/layout/partials/_footer')
