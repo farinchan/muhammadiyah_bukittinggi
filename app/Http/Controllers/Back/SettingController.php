@@ -89,7 +89,7 @@ class SettingController extends Controller
             'menu_title' => 'Pengaturan',
             'submenu_title' => 'Banner',
             'title' => 'Pengaturan Banner',
-            'list_banner' => SettingBanner::all(),
+            'list_banner' => SettingBanner::latest()->get(),
 
         ];
         return view('back.pages.setting.banner', $data);
