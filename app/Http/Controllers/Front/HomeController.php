@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Kajian;
 use App\Models\News;
 use App\Models\Pengumuman;
+use App\Models\SettingBanner;
 use App\Models\SettingWebsite;
 use Illuminate\Http\Request;
 
@@ -20,6 +21,7 @@ class HomeController extends Controller
             'meta_keywords' => 'Home, Muhammadiyah, Bukittinggi',
             'favicon' => $setting_web->favicon,
 
+            'banner_list' => SettingBanner::latest()->get(),
             'news' => news::with('category')->latest()->limit(4)->get(),
             'pengumumans' => Pengumuman::latest()->limit(5)->get(),
             'kajians' => Kajian::latest()->limit(8)->get(),
