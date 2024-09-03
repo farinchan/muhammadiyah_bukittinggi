@@ -15,8 +15,13 @@
         <!--end::Sidebar mobile toggle-->
         <!--begin::Mobile logo-->
         <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
-            <a href="?page=index" class="d-lg-none">
-                <img alt="Logo" src="assets/media/logos/default-small.svg" class="h-30px" />
+            <a href="{{ route("admin.dashboard") }}" class="d-lg-none">
+                @php
+                    $settingWebsite = new \App\Models\SettingWebsite();
+                    $settingWebsite = $settingWebsite->first();
+                @endphp
+                <img alt="Logo" src="{{ Storage::url($settingWebsite->logo)
+                 }}" class="h-50px" />
             </a>
         </div>
         <!--end::Mobile logo-->
