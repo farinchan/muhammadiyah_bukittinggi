@@ -66,7 +66,6 @@ class AuthController extends Controller
             'birth_date' => 'required|date',
             'address' => 'required',
             'phone' => 'required',
-            'address' => 'required',
             'keanggotaan' => 'required',
             'job' => 'required',
             'kepakaran' => 'nullable',
@@ -103,7 +102,6 @@ class AuthController extends Controller
         $user->birth_date = $request->birth_date;
         $user->address = $request->address;
         $user->phone = $request->phone;
-        $user->address = $request->address;
         $user->keanggotaan = $request->keanggotaan;
         $user->job = json_encode($request->job);
         $user->kepakaran = $request->kepakaran;

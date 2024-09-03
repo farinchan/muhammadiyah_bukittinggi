@@ -278,7 +278,7 @@
                                         </div>
                                         <div class="col-md-8">
                                             <input type="email" class="form-control form-control-solid"
-                                                value="{{ $user->birth_date->format('d F Y') }}" readonly />
+                                                value="{{ $user->birth_date?->format('d F Y') }}" readonly />
                                         </div>
                                     </div>
                                 </div>

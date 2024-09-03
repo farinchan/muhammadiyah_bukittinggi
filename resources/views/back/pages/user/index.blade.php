@@ -100,8 +100,8 @@
                                 </div>
                             </div>
 
-                            <button type="button" class="btn btn-primary">
-                                <i class="ki-duotone ki-plus fs-2"></i>Tambah Anggota</button>
+                            <a href="{{ route("admin.user.create") }}" class="btn btn-primary">
+                                <i class="ki-duotone ki-plus fs-2"></i>Tambah Anggota</a>
                         </div>
                         <div class="d-flex justify-content-end align-items-center d-none" {{-- data-kt-user-table-toolbar="selected" --}}>
                             <div class="fw-bold me-5">
@@ -195,8 +195,7 @@
                                         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4"
                                             data-kt-menu="true">
                                             <div class="menu-item px-3">
-                                                <a class="menu-link px-3" data-bs-toggle="modal"
-                                                    data-bs-target="#kt_modal_edit_user{{ $user->id }}">Edit</a>
+                                                <a href="{{ route("admin.user.edit", $user->id) }}"  class="menu-link px-3">Edit</a>
                                             </div>
                                             <div class="menu-item px-3">
                                                 <a href="#" class="menu-link px-3" data-bs-toggle="modal"
