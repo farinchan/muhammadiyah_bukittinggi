@@ -93,6 +93,17 @@ class UserController extends Controller
             $user->assignRole("admin");
         }
 
+        try {
+            Mail::send('email.create_user', ['user' => $user], function ($message) use ($user) {
+                $message->to($user->email);
+                $message->subject('Anda telah terdaftar sebagai anggota');
+            });
+            
+        } catch (\Exception $e) {
+            // Alert::error('Error', 'Gagal mengirim email');
+            // return redirect()->back();
+        }
+
         Alert::success('Success', 'Anggota berhasil ditambahkan');
         return redirect()->route('admin.user.index');
     }

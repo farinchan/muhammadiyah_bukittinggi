@@ -33,7 +33,7 @@
                         <!-- Logo -->
                         <div class="col-xl-3 col-lg-3 col-md-3">
                             <div class="logo">
-                                <a href="index.html"><img src="{{ asset('front/img/logo/logo.png') }}" height="70px"
+                                <a href="{{ route("home") }}"><img src="{{ asset('front/img/logo/logo.png') }}" height="70px"
                                         alt=""></a>
                             </div>
                         </div>
@@ -99,7 +99,7 @@
                                         </li>
                                         <li><a href="{{ route('kajian') }}">Kajian</a></li>
                                         <li><a href="{{ route('asset') }}">Asset</a></li>
-                                        <li><a href="#">Keanggotaan</a></li>
+                                        <li><a href="{{ route("keanggotaan") }}">Keanggotaan</a></li>
                                         <li><a href="#">Ortom</a></li>
 
                                         <li id="login_mobile">

@@ -7,6 +7,7 @@ use App\Http\Controllers\Front\ProfileController;
 use App\Http\Controllers\Front\NewsController;
 use App\Http\Controllers\Front\AssetController;
 use App\Http\Controllers\Front\KajianController;
+use App\Http\Controllers\Front\KeanggotaanController;
 use App\Http\Controllers\Front\UserController;
 use App\Http\Controllers\Front\User\KajianController as UserKajianController;
 use App\Http\Controllers\Front\User\ProfileController as UserProfileController;
@@ -47,6 +48,8 @@ Route::get('/kajian/{slug}', [KajianController::class, 'detail'])->name('kajian.
 Route::post('/kajian/comment/{id}', [KajianController::class, 'comment'])->name('kajian.comment');
 
 Route::get('/asset', [AssetController::class, 'asset'])->name('asset');
+
+Route::get('/keanggotaan', [KeanggotaanController::class, 'index'])->name('keanggotaan');
 
 Route::prefix('user')->middleware(['auth', 'role:user'])->name('user.')->group(function () {
     Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
