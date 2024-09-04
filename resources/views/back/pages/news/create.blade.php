@@ -68,15 +68,19 @@
                             <select name="status" class="form-select mb-2" data-control="select2" data-hide-search="true"
                                 data-placeholder="Select an option" id="kt_ecommerce_add_category_status_select" required>
                                 <option></option>
-                                <option value="published" {{ old('status') == 'published' ? 'selected' : '' }}>Published</option>
+                                <option value="published" {{ old('status') == 'published' ? 'selected' : '' }}>Published
+                                </option>
                                 <option value="draft" {{ old('status') == 'draft' ? 'selected' : '' }}>Draft</option>
-                                <option value="archived" {{ old('status') == 'archived' ? 'selected' : '' }}>Archived</option>
+                                <option value="archived" {{ old('status') == 'archived' ? 'selected' : '' }}>Archived
+                                </option>
                             </select>
                             @error('status')
                                 <div class="text-danger fs-7">{{ $message }}</div>
                             @enderror
                             <div class="text-muted fs-7">
-                                Set Status Berita, <code>Published</code> untuk mempublikasikan berita, <code>Draft</code> untuk menyimpan berita sebagai draft, <code>Archived</code> untuk menyimpan berita sebagai arsip 
+                                Set Status Berita, <code>Published</code> untuk mempublikasikan berita, <code>Draft</code>
+                                untuk menyimpan berita sebagai draft, <code>Archived</code> untuk menyimpan berita sebagai
+                                arsip
                             </div>
                         </div>
                     </div>
@@ -156,18 +160,47 @@
         var quill = new Quill('#quill_content', {
             modules: {
                 toolbar: [
+
+                    ['bold', 'italic', 'underline', 'strike'], // toggled buttons
+                    ['blockquote', 'code-block'],
+                    ['link', 'image', 'video', 'formula'],
+
                     [{
                         header: [1, 2, 3, 4, 5, 6, false]
-                    }],
-                    ['bold', 'italic', 'underline'],
-                    ['image', 'video'],
+                    }], // custom button values
                     [{
-                        list: 'ordered'
+                        'list': 'ordered'
                     }, {
-                        list: 'bullet'
+                        'list': 'bullet'
+                    }, {
+                        'list': 'check'
                     }],
-                    ['blockquote', 'code-block', 'formula'],
-                    ['clean']
+                    [{
+                        'script': 'sub'
+                    }, {
+                        'script': 'super'
+                    }], // superscript/subscript
+                    [{
+                        'indent': '-1'
+                    }, {
+                        'indent': '+1'
+                    }], // outdent/indent
+                    [{
+                        'direction': 'rtl'
+                    }], // text direction
+
+                    [{
+                        'color': []
+                    }, {
+                        'background': []
+                    }], // dropdown with defaults from theme
+                    [{
+                        'font': []
+                    }],
+                    [{
+                        'align': []
+                    }],
+                    ['clean'] // remove formatting button
                 ]
             },
             placeholder: 'Tulis Pengumuman disini...',
