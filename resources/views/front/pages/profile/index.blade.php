@@ -74,46 +74,50 @@
                         <!-- Flow Socail -->
                         <div class="single-follow mb-45">
                             <div class="single-box">
-                                <div class="follow-us d-flex align-items-center">
-                                    <div class="follow-social">
-                                        <a href="#"><img src="{{ asset('front/img/news/icon-fb.png') }}"
-                                                alt=""></a>
+                                @if ($setting_web->facebook)
+                                    <div class="follow-us d-flex align-items-center">
+                                        <div class="follow-social">
+                                            <a href="{{ $setting_web->facebook }}"><img
+                                                    src="{{ asset('front/img/news/icon-fb.png') }}" alt=""></a>
+                                        </div>
+                                        <div class="follow-count">
+                                            <span>Facebook</span>
+                                        </div>
                                     </div>
-                                    <div class="follow-count">
-                                        <span>8,045</span>
-                                        <p>Fans</p>
+                                @endif
+                                @if ($setting_web->instagram)
+                                    <div class="follow-us d-flex align-items-center">
+                                        <div class="follow-social">
+                                            <a href="{{ $setting_web->instagram }}"><img
+                                                    src="{{ asset('front/img/news/icon-ins.png') }}" alt=""></a>
+                                        </div>
+                                        <div class="follow-count">
+                                            <span>Instagram</span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="follow-us d-flex align-items-center">
-                                    <div class="follow-social">
-                                        <a href="#"><img src="{{ asset('front/img/news/icon-tw.png') }}"
-                                                alt=""></a>
+                                @endif
+                                @if ($setting_web->twitter)
+                                    <div class="follow-us d-flex align-items-center">
+                                        <div class="follow-social">
+                                            <a href="{{ $setting_web->twitter }}"><img
+                                                    src="{{ asset('front/img/news/icon-tw.png') }}" alt=""></a>
+                                        </div>
+                                        <div class="follow-count">
+                                            <span>Twitter</span>
+                                        </div>
                                     </div>
-                                    <div class="follow-count">
-                                        <span>8,045</span>
-                                        <p>Fans</p>
+                                @endif
+                                @if ($setting_web->youtube)
+                                    <div class="follow-us d-flex align-items-center">
+                                        <div class="follow-social">
+                                            <a href="{{ $setting_web->youtube }}"><img
+                                                    src="{{ asset('front/img/news/icon-yo.png') }}" alt=""></a>
+                                        </div>
+                                        <div class="follow-count">
+                                            <span>Youtube</span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="follow-us d-flex align-items-center">
-                                    <div class="follow-social">
-                                        <a href="#"><img src="{{ asset('front/img/news/icon-ins.png') }}"
-                                                alt=""></a>
-                                    </div>
-                                    <div class="follow-count">
-                                        <span>8,045</span>
-                                        <p>Fans</p>
-                                    </div>
-                                </div>
-                                <div class="follow-us d-flex align-items-center">
-                                    <div class="follow-social">
-                                        <a href="#"><img src="{{ asset('front/img/news/icon-yo.png') }}"
-                                                alt=""></a>
-                                    </div>
-                                    <div class="follow-count">
-                                        <span>8,045</span>
-                                        <p>Fans</p>
-                                    </div>
-                                </div>
+                                @endif
                             </div>
                         </div>
                         <!-- New Poster -->
@@ -121,9 +125,10 @@
 
                             <aside class="single_sidebar_widget newsletter_widget">
                                 <h4 class="widget_title">Subscribe</h4>
-                                <form action="#">
+                                <form action="{{ route("subscribe") }}" method="POST" >
+                                    @csrf
                                     <div class="form-group">
-                                        <input type="email" class="form-control" onfocus="this.placeholder = ''"
+                                        <input type="email" name="email" class="form-control" onfocus="this.placeholder = ''"
                                             onblur="this.placeholder = 'Enter email'" placeholder="Enter email"
                                             required="">
                                     </div>

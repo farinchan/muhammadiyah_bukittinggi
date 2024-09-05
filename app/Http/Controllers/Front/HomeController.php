@@ -11,6 +11,7 @@ use App\Models\News;
 use App\Models\Pengumuman;
 use App\Models\SettingBanner;
 use App\Models\SettingWebsite;
+use App\Models\Subscriber;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -58,6 +59,33 @@ class HomeController extends Controller
         ContactUs::create($data);
 
         Alert::success('Berhasil', 'Pesan berhasil dikirim');
+        return redirect()->back();
+
+    }
+
+    public function subscribe()
+    {
+        $validator = Validator::make(request()->all(), [
+            'email' => 'required|email',
+        ],[
+            'required' => 'Kolom :attribute harus diisi',
+            'email' => 'Format email tidak valid',
+        ]);
+
+        if ($validator->fails()) {
+            Alert::error('Gagal', 'Terjadi kesalahan');
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $data = request()->all();
+        if (Subscriber::where('email', $data['email'])->first()) {
+            Alert::error('Gagal', 'Email sudah terdaftar');
+            return redirect()->back();
+        }
+
+        Subscriber::create($data);
+
+        Alert::success('Berhasil', 'Email berhasil disubscribe');
         return redirect()->back();
 
     }

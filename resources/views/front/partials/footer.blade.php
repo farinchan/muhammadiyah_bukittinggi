@@ -37,7 +37,7 @@
                             <!-- Form -->
                             <div class="footer-form">
                                 <div id="mc_embed_signup">
-                                    <form target="_blank" action="" method="get"
+                                    <form target="_blank" action="{{ route("subscribe") }}" method="get"
 
                                         class="subscribe_form relative mail_part">
                                         <input  type="email" name="email" id="newsletter-form-email" style="color: #fffl; background-color: #fff; border: 1px solid #fff; border-radius: 5px; padding: 5px 10px; width: 100%; "

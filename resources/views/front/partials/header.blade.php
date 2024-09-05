@@ -111,7 +111,7 @@
                                         <li><a href="{{ route('asset') }}">Asset</a></li>
                                         <li><a href="{{ route('keanggotaan') }}">Keanggotaan</a></li>
                                         <li><a href="#">Ortom</a></li>
-                                        <li><a href="#">Kontak</a></li>
+                                        <li><a href="{{ route("contact") }}">Kontak</a></li>
 
                                         <li id="login_mobile">
                                             @auth

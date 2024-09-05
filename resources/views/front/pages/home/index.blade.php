@@ -373,9 +373,10 @@
 
                             <aside class="single_sidebar_widget newsletter_widget">
                                 <h4 class="widget_title">Subscribe</h4>
-                                <form action="#">
+                                <form action="{{ route("subscribe") }}" method="POST" >
+                                    @csrf
                                     <div class="form-group">
-                                        <input type="email" class="form-control" onfocus="this.placeholder = ''"
+                                        <input type="email" name="email" class="form-control" onfocus="this.placeholder = ''"
                                             onblur="this.placeholder = 'Enter email'" placeholder="Enter email"
                                             required="">
                                     </div>
