@@ -295,9 +295,10 @@
                                                                 {{-- <li><a class="text-white" href="#"><i class="fa fa-user"></i> {{ $kajian->user->name }}</a></li> --}}
                                                                 <li><a href="#"><i class="fa fa-comments"></i>
                                                                         {{ $kajian->kajianComment->count() }}
-                                                                        Komentar</a></li>
+                                                                        Komentar</a>
+                                                                    </li>
                                                             </ul>
-                                                            <h4><a href="">
+                                                            <h4><a href="{{ route("kajian.detail", $kajian->slug) }}">
                                                                     {{ Str::limit($kajian->title, 60) }}
                                                                 </a></h4>
                                                         </div>
@@ -445,7 +446,7 @@
                     <!-- section Tittle -->
                     <div class="row">
                         <div class="col-12">
-                            <div class="card shadow-lg" style="border-radius: 20px;">
+                            <div class="card" style="border-radius: 20px; border: none;">
                                 <div class="card-body p-5">
                                     <h5 class="card-title mb-5" style="font-weight: bold; color: #333;">Hubungi Kami</h5>
                                     <form  method="POST" action="{{ route('message') }}">

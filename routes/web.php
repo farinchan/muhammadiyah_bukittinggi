@@ -11,6 +11,7 @@ use App\Http\Controllers\Front\KeanggotaanController;
 use App\Http\Controllers\Front\UserController;
 use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\UstadzController;
+use App\Http\Controllers\Front\OrtomController;
 use App\Http\Controllers\Front\User\KajianController as UserKajianController;
 use App\Http\Controllers\Front\User\ProfileController as UserProfileController;
 
@@ -55,6 +56,8 @@ Route::post('/kajian/comment/{id}', [KajianController::class, 'comment'])->name(
 Route::get('/asset', [AssetController::class, 'asset'])->name('asset');
 
 Route::get('/keanggotaan', [KeanggotaanController::class, 'index'])->name('keanggotaan');
+
+Route::get('/ortom/{slug}', [OrtomController::class, 'ortom'])->name('ortom');
 
 Route::get('/ustadz', [UstadzController::class, 'search'])->name('ustadz.search');
 

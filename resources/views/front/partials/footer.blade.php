@@ -37,10 +37,10 @@
                             <!-- Form -->
                             <div class="footer-form">
                                 <div id="mc_embed_signup">
-                                    <form target="_blank" action="{{ route("subscribe") }}" method="get"
-
+                                    <form target="_blank" action="{{ route('subscribe') }}" method="get"
                                         class="subscribe_form relative mail_part">
-                                        <input  type="email" name="email" id="newsletter-form-email" style="color: #fffl; background-color: #fff; border: 1px solid #fff; border-radius: 5px; padding: 5px 10px; width: 100%; "
+                                        <input type="email" name="email" id="newsletter-form-email"
+                                            style="color: #fffl; background-color: #fff; border: 1px solid #fff; border-radius: 5px; padding: 5px 10px; width: 100%; "
                                             placeholder="Email Address" class="placeholder hide-on-focus"
                                             onfocus="this.placeholder = ''"
                                             onblur="this.placeholder = ' Email Address '">
@@ -92,6 +92,31 @@
 
                             </ul>
                         </div>
+
+                        <br>
+                        <h4 style="color: #fff; font-size: 20px; ">Kunjungan</h4>
+                        <!-- Default Statcounter code for Muhammadiyah Bukittinggi https://muhammadiyahbukittinggi.org -->
+                        <script type="text/javascript">
+                            var sc_project = 13033338;
+                            var sc_invisible = 0;
+                            var sc_security = "bb7fb319";
+                            var scJsHost = "https://";
+                            document.write("<sc" + "ript type='text/javascript' src='" +
+                                scJsHost +
+                                "statcounter.com/counter/counter.js'></" + "script>");
+                        </script>
+                        <noscript>
+                            <div class="statcounter">
+                                <a title="Web Analytics Made Easy - Statcounter" href="https://statcounter.com/"
+                                    target="_blank"><img class="statcounter"
+                                        src="https://c.statcounter.com/13033338/0/bb7fb319/0/"
+                                        alt="Web Analytics Made Easy - Statcounter"
+                                        referrerPolicy="no-referrer-when-downgrade">
+                                </a>
+                            </div>
+                        </noscript>
+                        <!-- End of Statcounter Code -->
+
                     </div>
                 </div>
             </div>
@@ -108,8 +133,8 @@
                                 Copyright &copy;
                                 <script>
                                     document.write(new Date().getFullYear());
-                                </script> Pimpinan Daerah Muhammadiyah Bukittinggi<a href="https://gariskode.com"
-                                    target="_blank">.
+                                </script> Pimpinan Daerah Muhammadiyah Bukittinggi<a
+                                    href="https://gariskode.com" target="_blank">.
                                 </a>
                             </p>
                         </div>

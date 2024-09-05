@@ -23,6 +23,11 @@
                 border: none;
             } */
 
+            .card {
+            border: none;
+            border-radius: 0;
+        }
+
         .card-title a:hover {
             color: #01a54d;
         }

@@ -110,7 +110,18 @@
                                         <li><a href="{{ route('kajian') }}">Kajian</a></li>
                                         <li><a href="{{ route('asset') }}">Asset</a></li>
                                         <li><a href="{{ route('keanggotaan') }}">Keanggotaan</a></li>
-                                        <li><a href="#">Ortom</a></li>
+                                        <li><a href="#">Ortom</a>
+                                            <ul class="submenu">
+                                                @php
+                                                    $list_ortom = \App\Models\OrganisasiOtonom::all();
+                                                @endphp
+                                                @foreach ($list_ortom as $ortom)
+                                                    <li><a
+                                                            href="{{ route('ortom', $ortom->slug) }}">{{ $ortom->name }}</a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </li>
                                         <li><a href="{{ route('contact') }}">Kontak</a></li>
 
                                         <li id="login_mobile">
@@ -144,6 +155,7 @@
                                 <form action="{{ route('ustadz.search') }}" method="GET">
                                     <input type="text" name="q" placeholder="Cari Ustadz"
                                         onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cari Ustadz'"
+                                        value="{{ request()->q }}"
                                         required="" class="single-input">
                                     {{-- <button type="submit" class="btn btn-primary">Cari</button> --}}
                                 </form>
