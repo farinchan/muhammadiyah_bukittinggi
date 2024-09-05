@@ -59,6 +59,7 @@ class NewsController extends Controller
             'meta_keywords' => 'News, Muhammadiyah, Bukittinggi, ' . $news->meta_keywords,
             'favicon' => $setting_web->favicon,
             'image' => $news->thumbnail,
+            'setting_web' => $setting_web,
 
             'categories' => $newsCategory->get(),
             'latest_news' => news::latest()->limit(4)->get(),
@@ -92,6 +93,7 @@ class NewsController extends Controller
             'meta_description' => strip_tags($setting_web->about),
             'meta_keywords' => 'News, Muhammadiyah, Bukittinggi',
             'favicon' => $setting_web->favicon,
+            'setting_web' => $setting_web,
 
             'category' => $newsCategory->where('slug', $slug)->first(),
             'categories' => $newsCategory->get(),
