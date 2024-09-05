@@ -16,6 +16,21 @@ return Application::configure(basePath: dirname(__DIR__))
             'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
             'role_or_permission' => \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
         ]);
+        $middleware->validateCsrfTokens(except: [
+            'admin/setting/*',
+            'admin/news/*',
+            'admin/kajian/*',
+            'admin/gallery/*',
+            'admin/profile/*',
+            'admin/profile',
+            'admin/ortom/*',
+            'admin/ortom',
+            'admin/user/*',
+            'message',
+            'subscribe',
+            'user/kajian/*',
+            'user/profile',
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
