@@ -6,12 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Models\News;
 use App\Models\NewsCategory;
 use App\Models\NewsComment;
+use App\Models\NewsViewer;
 use App\Models\SettingWebsite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Str;
+use Jenssegers\Agent\Facades\Agent;
+use Stevebauman\Location\Facades\Location;
 
 class NewsController extends Controller
 {
@@ -69,6 +72,26 @@ class NewsController extends Controller
             'prev_news' => News::where('id', '<', $news->id)->first(),
         ];
         // dd($data);
+
+        $currentUserInfo = Location::get(request()->ip());
+        $news_viewers = new NewsViewer();
+        $news_viewers->news_id = $news->id;
+        $news_viewers->ip = request()->ip();
+        if ($currentUserInfo) {
+            $news_viewers->country = $currentUserInfo->countryName;
+            $news_viewers->city = $currentUserInfo->cityName;
+            $news_viewers->region = $currentUserInfo->regionName;
+            $news_viewers->postal_code = $currentUserInfo->postalCode;
+            $news_viewers->latitude = $currentUserInfo->latitude;
+            $news_viewers->longitude = $currentUserInfo->longitude;
+            $news_viewers->timezone = $currentUserInfo->timezone;
+        }
+        $news_viewers->user_agent = Agent::getUserAgent();
+        $news_viewers->platform = Agent::platform();
+        $news_viewers->browser = Agent::browser();
+        $news_viewers->device = Agent::device();
+        $news_viewers->save();
+
 
         return view('front.pages.news.detail', $data);
     }
