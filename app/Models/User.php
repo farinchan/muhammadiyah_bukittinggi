@@ -54,4 +54,9 @@ class User extends Authenticatable
     {
         return $this->photo ? Storage::url($this->photo) : "https://ui-avatars.com/api/?background=000C32&color=fff&name=" . $this->name;
     }
+
+    public function kajian()
+    {
+        return $this->hasMany(Kajian::class);
+    }
 }

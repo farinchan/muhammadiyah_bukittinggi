@@ -253,7 +253,7 @@
                     </a>
                 </div>
                 <div class="menu-item">
-                    <a class="menu-link" href="">
+                    <a class="menu-link" href="{{ route("admin.ortom.index") }}">
                         <span class="menu-icon">
                             <i class="ki-duotone ki-setting-3 fs-2">
                                 <span class="path1"></span>

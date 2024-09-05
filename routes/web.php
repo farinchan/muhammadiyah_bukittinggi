@@ -10,6 +10,7 @@ use App\Http\Controllers\Front\KajianController;
 use App\Http\Controllers\Front\KeanggotaanController;
 use App\Http\Controllers\Front\UserController;
 use App\Http\Controllers\Front\ContactController;
+use App\Http\Controllers\Front\UstadzController;
 use App\Http\Controllers\Front\User\KajianController as UserKajianController;
 use App\Http\Controllers\Front\User\ProfileController as UserProfileController;
 
@@ -23,6 +24,7 @@ use App\Http\Controllers\Back\AssetController as BackAssetController;
 use App\Http\Controllers\Back\inboxController as BackInboxController;
 use App\Http\Controllers\Back\SettingController as BackSettingController;
 use App\Http\Controllers\Back\ProfileController as BackProfileController;
+use App\Http\Controllers\Back\OrtomController as BackOrtomController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -53,6 +55,8 @@ Route::post('/kajian/comment/{id}', [KajianController::class, 'comment'])->name(
 Route::get('/asset', [AssetController::class, 'asset'])->name('asset');
 
 Route::get('/keanggotaan', [KeanggotaanController::class, 'index'])->name('keanggotaan');
+
+Route::get('/ustadz', [UstadzController::class, 'search'])->name('ustadz.search');
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
@@ -176,5 +180,13 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->grou
         Route::get('/edit/{id}', [BackProfileController::class, 'edit'])->name('edit');
         Route::put('/edit/{id}', [BackProfileController::class, 'update'])->name('update');
         Route::delete('/delete/{id}', [BackProfileController::class, 'destroy'])->name('destroy');
+    });
+
+    Route::prefix('ortom')->name('ortom.')->group(function () {
+        Route::get('/', [BackOrtomController::class, 'index'])->name('index');
+        Route::post('/create', [BackOrtomController::class, 'store'])->name('store');
+        Route::get('/edit/{id}', [BackOrtomController::class, 'edit'])->name('edit');
+        Route::put('/edit/{id}', [BackOrtomController::class, 'update'])->name('update');
+        Route::delete('/delete/{id}', [BackOrtomController::class, 'destroy'])->name('destroy');
     });
 });

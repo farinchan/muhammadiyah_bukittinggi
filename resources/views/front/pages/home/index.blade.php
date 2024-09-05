@@ -309,7 +309,7 @@
                                 </div>
                                 <!-- End Nav Card -->
                                 <div class="text-right">
-                                    <a href="{{ route('kajian') }}" class="text-info">Lihat Semua >></a>
+                                    <a href="{{ route('kajian') }}" class="text-info">Lihat Selengkapnya >></a>
                                 </div>
                             </div>
                         </div>

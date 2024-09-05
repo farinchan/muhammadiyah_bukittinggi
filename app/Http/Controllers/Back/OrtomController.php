@@ -3,24 +3,24 @@
 namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
-use App\Models\Profile;
+use App\Models\OrganisasiOtonom;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Str;
 
-class ProfileController extends Controller
+class OrtomController extends Controller
 {
-   public function index()
+    public function index()
    {
         $data = [
-            'title' => 'Profile',
-            'menu' => 'profile',
+            'title' => 'Organisasi Otonom',
+            'menu' => 'Ortom',
             'sub_menu' => '',
-            'list_profile' => Profile::all()
+            'list_ortom' => OrganisasiOtonom::all()
         ];
 
-        return view('back.pages.profile.index', $data);
+        return view('back.pages.ortom.index', $data);
     }
 
     public function store(Request $request)
@@ -36,27 +36,29 @@ class ProfileController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        Profile::create([
+        OrganisasiOtonom::create([
             'name' => $request->name,
             'slug' => Str::slug($request->name),
+            'meta_title' => $request->name,
+            'meta_keywords' => $request->name,
+            'content' => "",
+            'meta_description' => "",
         ]);
 
         Alert::success('Success', 'Data berhasil ditambahkan');
-        return redirect()->route('admin.profile.index');
-
-
+        return redirect()->route('admin.ortom.index');
     }
 
     public function edit($id)
     {
         $data = [
-            'title' => 'Profile',
-            'menu' => 'profile',
+            'title' => 'Organisasi Otonom',
+            'menu' => 'Ortom',
             'sub_menu' => '',
-            'profile' => Profile::find($id)
+            'ortom' => OrganisasiOtonom::find($id)
         ];
 
-        return view('back.pages.profile.edit', $data);
+        return view('back.pages.ortom.edit', $data);
     }
 
     public function update(Request $request, $id)
@@ -74,20 +76,24 @@ class ProfileController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        Profile::find($id)->update([
+        OrganisasiOtonom::find($id)->update([
             'name' => $request->name,
             'slug' => Str::slug($request->name),
+            'meta_title' => $request->name,
+            'meta_keywords' => $request->name,
+            'meta_description' => strip_tags(substr($request->content, 0, 150)),
             'content' => $request->content,
         ]);
 
-        Alert::success('Success', 'Data berhasil diubah');
-        return redirect()->route('admin.profile.index');
+        Alert::success('Success', 'Data berhasil diupdate');
+        return redirect()->route('admin.ortom.index');
+
     }
 
     public function destroy($id)
     {
-        Profile::find($id)->delete();
+        OrganisasiOtonom::find($id)->delete();
         Alert::success('Success', 'Data berhasil dihapus');
-        return redirect()->route('admin.profile.index');
+        return redirect()->route('admin.ortom.index');
     }
 }

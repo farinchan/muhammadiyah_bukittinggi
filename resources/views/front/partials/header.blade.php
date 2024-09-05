@@ -111,13 +111,13 @@
                                         <li><a href="{{ route('asset') }}">Asset</a></li>
                                         <li><a href="{{ route('keanggotaan') }}">Keanggotaan</a></li>
                                         <li><a href="#">Ortom</a></li>
-                                        <li><a href="{{ route("contact") }}">Kontak</a></li>
+                                        <li><a href="{{ route('contact') }}">Kontak</a></li>
 
                                         <li id="login_mobile">
                                             @auth
                                                 <a href="#" class="genric-btn primary-border circle">
                                                     <i class="far fa-user"></i> &nbsp; &nbsp;
-                                                   {{ Auth::user()->name }}
+                                                    {{ Auth::user()->name }}
                                                 </a>
                                             @else
                                                 <a href="{{ route('login') }}" class="genric-btn primary-border circle">
@@ -139,9 +139,15 @@
                                     aria-label="Username" aria-describedby="basic-addon1">
                             </div> --}}
                             <div class="input-group-icon mt-10 pr-5">
-								<div class="icon"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></div>
-                                <input type="text" name="ustadz" placeholder="Cari Ustadz" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cari Ustadz'" required="" class="single-input">
-							</div>
+                                <div class="icon"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                                </div>
+                                <form action="{{ route('ustadz.search') }}" method="GET">
+                                    <input type="text" name="q" placeholder="Cari Ustadz"
+                                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cari Ustadz'"
+                                        required="" class="single-input">
+                                    {{-- <button type="submit" class="btn btn-primary">Cari</button> --}}
+                                </form>
+                            </div>
                             <!-- <div class="header-right-btn f-right d-none d-lg-block">
                                 <i class="fas fa-search special-tag"></i>
                                 <div class="search-box">
