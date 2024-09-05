@@ -77,7 +77,7 @@ class DatabaseSeeder extends Seeder
         SettingBanner::create([
             'title' => 'Pimpinan Daerah Muhammadiyah Kota Bukittinggi',
             'subtitle' => 'Organisasi Islam yang bergerak dalam bidang sosial, pendidikan, dan kesehatan.',
-            'image' => 'banner.jpg',
+            'image' => 'banner/1725391558_yahaha (1).png',
             'url' => 'https://gariskode.com',
             'status' => 1,
         ]);

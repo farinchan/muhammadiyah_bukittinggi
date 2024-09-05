@@ -18,6 +18,7 @@ class AssetController extends Controller
             'meta_description' => strip_tags($setting_web->about),
             'meta_keywords' => 'aset, Muhammadiyah, Bukittinggi',
             'favicon' => $setting_web->favicon,
+            'setting_web' => $setting_web,
 
             'assets_type' => AssetType::with('assets')->get(),
         ];

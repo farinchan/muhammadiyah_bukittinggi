@@ -30,6 +30,7 @@ class NewsController extends Controller
             'meta_description' => strip_tags($setting_web->about),
             'meta_keywords' => 'News, Muhammadiyah, Bukittinggi',
             'favicon' => $setting_web->favicon,
+            'setting_web' => $setting_web,
 
             'category' => '',
             'latest_news' => $news->limit(4)->get(),

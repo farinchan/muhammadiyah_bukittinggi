@@ -21,6 +21,7 @@ class ProfileController extends Controller
             'meta_description' => Str::limit(strip_tags($profil->content), 300),
             'meta_keywords' => $profil->name . ', Muhammadiyah, Bukittinggi',
             'favicon' => $setting_web->favicon,
+            'setting_web' => $setting_web,
             
             'profile' => $profil
         ];

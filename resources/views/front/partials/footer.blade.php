@@ -13,10 +13,9 @@
                             </div>
                             <div class="footer-tittle">
                                 <div class="footer-pera">
-                                    <p>Suscipit mauris pede for con sectetuer sodales adipisci for cursus fames
-                                        lectus tempor da blandit gravida sodales Suscipit mauris pede for con
-                                        sectetuer sodales adipisci for cursus fames lectus tempor da blandit gravida
-                                        sodales Suscipit mauris pede for sectetuer.</p>
+                                    <p>
+                                        {{ strip_tags(Str::limit($setting_web->about, 200)) }}
+                                    </p>
                                 </div>
                             </div>
                             <!-- social -->
@@ -72,22 +71,22 @@
                                 </li>
                                 <li>
                                     <a href="#">
-                                        Features
+                                        Profile
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        Services
+                                        Berita
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        Portfolio
+                                        Kajian
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        Contact
+                                        Asset
                                     </a>
                                 </li>
 

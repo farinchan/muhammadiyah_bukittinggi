@@ -25,6 +25,7 @@ use App\Http\Controllers\Back\ProfileController as BackProfileController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::post('/message', [HomeController::class, 'message'])->name('message');
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'loginProcess'])->name('login.process');

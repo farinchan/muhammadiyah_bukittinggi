@@ -12,15 +12,30 @@
                                     {{-- <li><img src="{{ asset('front/img/icon/header_icon1.png') }}" alt="">34ºc,
                                         Sunny </li> --}}
                                     <li><img src="{{ asset('front/img/icon/header_icon1.png') }}" alt="">
-                                        {{ \Carbon\Carbon::now()->translatedFormat('l, j F Y') }}
+                                        {{ \Carbon\Carbon::now()->translatedFormat('l, j F Y') }} /
+                                        {{ \Alkoumi\LaravelHijriDate\Hijri::Date('l d F Y') }}
                                     </li>
                                 </ul>
                             </div>
                             <div class="header-info-right">
                                 <ul class="header-social">
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                    <li> <a href="#"><i class="fab fa-pinterest-p"></i></a></li>
+                                    @if ($setting_web->facebook)
+                                        <li><a href="{{ $setting_web->facebook }}"><i class="fab fa-facebook-f"></i></a>
+                                        </li>
+                                    @endif
+                                    @if ($setting_web->instagram)
+                                        <li><a href="{{ $setting_web->instagram }}"><i class="fab fa-instagram"></i></a>
+                                        </li>
+                                    @endif
+                                    @if ($setting_web->twitter)
+                                        <li><a href="{{ $setting_web->twitter }}"><i class="fab fa-twitter"></i></a>
+                                        </li>
+                                    @endif
+                                    @if ($setting_web->youtube)
+                                        <li><a href="{{ $setting_web->youtube }}"><i class="fab fa-youtube"></i></a>
+                                        </li>
+                                    @endif
+
                                 </ul>
                             </div>
                         </div>
@@ -33,8 +48,8 @@
                         <!-- Logo -->
                         <div class="col-xl-3 col-lg-3 col-md-3">
                             <div class="logo">
-                                <a href="{{ route("home") }}"><img src="{{ asset('front/img/logo/logo.png') }}" height="70px"
-                                        alt=""></a>
+                                <a href="{{ route('home') }}"><img src="{{ asset('front/img/logo/logo.png') }}"
+                                        height="70px" alt=""></a>
                             </div>
                         </div>
                         <div class="col-xl-9 col-lg-9 col-md-9 text-right" id="login1">
@@ -43,17 +58,12 @@
                                     <i class="far fa-user"></i> &nbsp; &nbsp;
                                     {{ Auth::user()->name }}
                                 </a>
-                                <a href="{{ route('logout') }}" class="genric-btn primary-border circle">
-                                    <i class="fas fa-sign-out"></i> &nbsp; &nbsp;
-                                    Logout
-                                </a>
                             @else
                                 <a href="{{ route('login') }}" class="genric-btn primary-border circle">
                                     <i class="fa-regular fa-right-to-bracket"></i> &nbsp; &nbsp;
                                     Login
                                 </a>
                             @endauth
-
 
                         </div>
                     </div>
@@ -65,8 +75,8 @@
                         <div class="col-xl-9 col-lg-9 col-md-12 header-flex">
                             <!-- sticky -->
                             <div class="sticky-logo">
-                                <a href="index.html"><img src="{{ asset('front/img/logo/logo.png') }}" height="70px"
-                                        alt=""></a>
+                                <a href="{{ route('home') }}"><img src="{{ asset('front/img/logo/logo.png') }}"
+                                        height="70px" alt=""></a>
                             </div>
                             <!-- Main-menu -->
                             <div class="main-menu d-none d-md-block">
@@ -99,14 +109,15 @@
                                         </li>
                                         <li><a href="{{ route('kajian') }}">Kajian</a></li>
                                         <li><a href="{{ route('asset') }}">Asset</a></li>
-                                        <li><a href="{{ route("keanggotaan") }}">Keanggotaan</a></li>
+                                        <li><a href="{{ route('keanggotaan') }}">Keanggotaan</a></li>
                                         <li><a href="#">Ortom</a></li>
+                                        <li><a href="#">Kontak</a></li>
 
                                         <li id="login_mobile">
                                             @auth
                                                 <a href="#" class="genric-btn primary-border circle">
-                                                    <i class="fas fa-sign-out"></i> &nbsp; &nbsp;
-                                                    Logout
+                                                    <i class="far fa-user"></i> &nbsp; &nbsp;
+                                                   {{ Auth::user()->name }}
                                                 </a>
                                             @else
                                                 <a href="{{ route('login') }}" class="genric-btn primary-border circle">
@@ -120,13 +131,17 @@
                             </div>
                         </div>
                         <div class="col-xl-3 col-lg-3 col-md-4 my-3 me-3 ">
-                            <div class="input-group">
+                            {{-- <div class="input-group">
                                 <span class="input-group-text">
                                     <i class="fas fa-search special-tag"></i>
                                 </span>
                                 <input type="text" class="form-control" placeholder="Cari Ustadz"
                                     aria-label="Username" aria-describedby="basic-addon1">
-                            </div>
+                            </div> --}}
+                            <div class="input-group-icon mt-10 pr-5">
+								<div class="icon"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></div>
+                                <input type="text" name="ustadz" placeholder="Cari Ustadz" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cari Ustadz'" required="" class="single-input">
+							</div>
                             <!-- <div class="header-right-btn f-right d-none d-lg-block">
                                 <i class="fas fa-search special-tag"></i>
                                 <div class="search-box">

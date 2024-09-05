@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\SettingWebsite;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +16,11 @@ class AuthController extends Controller
 {
     public function login()
     {
-        return view('front.pages.auth.login');
+        $setting_web = SettingWebsite::first();
+        $data = [
+            'setting_web' => $setting_web,
+        ];
+        return view('front.pages.auth.login', $data);
     }
 
     public function loginProcess(Request $request)
@@ -52,7 +57,11 @@ class AuthController extends Controller
 
     public function register()
     {
-        return view('front.pages.auth.register');
+        $setting_web = SettingWebsite::first();
+        $data = [
+            'setting_web' => $setting_web,
+        ];
+        return view('front.pages.auth.register', $data);
     }
 
     public function registerProcess(Request $request)

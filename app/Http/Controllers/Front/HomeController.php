@@ -3,12 +3,17 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\ContactUs;
+use App\Models\Gallery;
+use App\Models\GalleryAlbum;
 use App\Models\Kajian;
 use App\Models\News;
 use App\Models\Pengumuman;
 use App\Models\SettingBanner;
 use App\Models\SettingWebsite;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class HomeController extends Controller
 {
@@ -20,13 +25,40 @@ class HomeController extends Controller
             'meta_description' => strip_tags($setting_web->about),
             'meta_keywords' => 'Home, Muhammadiyah, Bukittinggi',
             'favicon' => $setting_web->favicon,
+            'setting_web' => $setting_web,
 
             'banner_list' => SettingBanner::latest()->get(),
             'news' => news::with('category')->latest()->limit(4)->get(),
             'pengumumans' => Pengumuman::latest()->limit(5)->get(),
-            'kajians' => Kajian::latest()->limit(8)->get(),
+            'kajians' => Kajian::latest()->limit(6)->get(),
+            'list_album' => GalleryAlbum::latest()->limit(6)->get(),
 
         ];
         return view('front.pages.home.index', $data);
+    }
+
+    public function message()
+    {
+        $validator = Validator::make(request()->all(), [
+            'name' => 'required',
+            'email' => 'required|email',
+            'subject' => 'required',
+            'message' => 'required',
+        ],[
+            'required' => 'Kolom :attribute harus diisi',
+            'email' => 'Format email tidak valid',
+        ]);
+
+        if ($validator->fails()) {
+            Alert::error('Gagal', 'Pesan gagal dikirim');
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $data = request()->all();
+        ContactUs::create($data);
+
+        Alert::success('Berhasil', 'Pesan berhasil dikirim');
+        return redirect()->back();
+
     }
 }

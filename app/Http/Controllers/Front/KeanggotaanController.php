@@ -20,6 +20,7 @@ class KeanggotaanController extends Controller
             'meta_description' => strip_tags($setting_web->about),
             'meta_keywords' => 'Keanggotaan, Muhammadiyah, Bukittinggi',
             'favicon' => $setting_web->favicon,
+            'setting_web' => $setting_web,
 
             'users' => User::where(function ($query) use ($search) {
                 $query->where('name', 'like', '%' . $search . '%');

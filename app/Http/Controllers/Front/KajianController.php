@@ -17,12 +17,14 @@ class KajianController extends Controller
     {
         $search = request()->input('q');
         $kajian = Kajian::latest()->where('status', 'published');
+        $setting_web = SettingWebsite::first();
         $data = [
             'title' => 'Kajian',
             'metaTitle' => 'Kajian',
             'metaDescription' => 'Kajian',
             'metaKeywords' => 'Kajian',
             'url' => 'kajian',
+            'setting_web' => $setting_web,
 
             'latest_kajian' => $kajian->limit(4)->get(),
             'list_kajian' => $kajian->where(function ($query) use ($search) {
@@ -45,6 +47,7 @@ class KajianController extends Controller
             'meta_keywords' => 'Kajian, Muhammadiyah, Bukittinggi, ' . $kajian->meta_keywords,
             'favicon' => $setting_web->favicon,
             'image' => $kajian->thumbnail,
+            'setting_web' => $setting_web,
 
             'kajian' => $kajian,
             'comments' => KajianComment::where('kajian_id', $kajian->id)->get(),
