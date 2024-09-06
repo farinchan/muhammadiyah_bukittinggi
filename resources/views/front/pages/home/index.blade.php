@@ -131,6 +131,10 @@
                                             <li><a class="text-white" href="#"><i class="fa fa-comments"></i>
                                                     {{ $news->first()->comments->count() }}
                                                     Komentar</a></li>
+                                                    <li><a class="text-white" href="#"><i class="fa fa-eye"></i>
+                                                        {{ $news->first()->viewers->count() }}
+                                                        Kali Dilihat</a>
+                                                </li>
                                         </ul>
                                         <h2><a class="mr-5" href="{{ route('news.detail', $news->first()->slug) }}">
                                                 {{ $news->first()->title }}
@@ -157,6 +161,10 @@
                                                             <li><a href="#"><i class="fa fa-comments"></i>
                                                                     {{ $item->comments->count() }}
                                                                     Komentar</a></li>
+                                                                    <li><a href="#"><i class="fa fa-eye"></i>
+                                                                        {{ $item->viewers->count() }}
+                                                                        Kali Dilihat</a>
+                                                                </li>
                                                         </ul>
                                                         <h4><a href="{{ route('news.detail', $item->slug) }}">
                                                                 {{ Str::limit($item->title, 60) }}

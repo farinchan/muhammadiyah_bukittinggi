@@ -51,6 +51,11 @@
                                         </li>
                                         <li><a href="#"><i class="fa fa-comments"></i> {{ $news->comments->count() }}
                                                 Komentar</a></li>
+                                                
+                                                    <li><a href="#"><i class="fa fa-eye"></i>
+                                                        {{ $news->viewers->count() }}
+                                                        Kali Dilihat</a>
+                                                </li>
                                     </ul>
                                 </div>
                             </article>
