@@ -44,7 +44,7 @@ class SettingController extends Controller
             'about' => 'nullable',
         ]);
 
-        dd($request->all());
+        // dd($request->all());
         if ($validator->fails()) {
             Alert::error('Error', $validator->errors()->all());
             return redirect()->back()->withErrors($validator)->withInput();
