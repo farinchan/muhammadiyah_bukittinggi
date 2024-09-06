@@ -1,17 +1,16 @@
 @extends('front.app')
 
 @section('seo')
-<title>{{ $title }}</title>
-<meta name="description" content="{{ $meta_description }}">
-<meta name="keywords" content="{{ $meta_keywords }}">
+    <title>{{ $title }}</title>
+    <meta name="description" content="{{ $meta_description }}">
+    <meta name="keywords" content="{{ $meta_keywords }}">
 
-<meta property="og:title" content="{{ $title }}">
-<meta property="og:description" content="{{ $meta_description }}">
-<meta property="og:type" content="website">
-<meta property="og:url" content="{{ route('kajian.detail', $kajian->slug) }}">
-<link rel="canonical" href="{{ route('kajian.detail', $kajian->slug) }}">
-<meta property="og:image" content="{{ Storage::url($image) }}">
-
+    <meta property="og:title" content="{{ $title }}">
+    <meta property="og:description" content="{{ $meta_description }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ route('kajian.detail', $kajian->slug) }}">
+    <link rel="canonical" href="{{ route('kajian.detail', $kajian->slug) }}">
+    <meta property="og:image" content="{{ Storage::url($image) }}">
 @endsection
 
 @section('content')
@@ -129,7 +128,9 @@
                                 <div class="single-comment justify-content-between d-flex">
                                     <div class="user justify-content-between d-flex">
                                         <div class="thumb">
-                                            <img src="@if ($comment->user_id) {{ $comment->user->photo ? Storage::url($comment->user->photo) : 'https://ui-avatars.com/api/?background=000C32&color=fff&name=' . $comment->user->name }} @else https://ui-avatars.com/api/?background=000C32&color=fff&name={{ $comment->name }} @endif"
+                                            <img src="@if ($comment->user_id) @if ($comment->user->photo) {{ Storage::url($comment->user->photo) }} @else https://ui-avatars.com/api/?background=000C32&color=fff&name= {{  $comment->user->name }} @endif
+@else
+https://ui-avatars.com/api/?background=000C32&color=fff&name={{ $comment->name }} @endif"
                                                 alt="">
                                         </div>
                                         <div class="desc">

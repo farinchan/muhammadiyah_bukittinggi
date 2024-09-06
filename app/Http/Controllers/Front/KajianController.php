@@ -116,24 +116,22 @@ class KajianController extends Controller
                 Alert::error('Error', 'Nama, Email, dan Komentar tidak boleh kosong');
                 return redirect()->back()->withErrors($validator)->withInput();
             }
-
-            $kajian = Kajian::where('slug', $slug)->firstOrFail();
-            $comment = new KajianComment();
-            $comment->kajian_id = $kajian->id;
-           if (Auth::check()) {
-                $comment->user_id = Auth::user()->id;
-                $comment->name = Auth::user()->name;
-                $comment->email = Auth::user()->email;
-            } else {
-                $comment->name = $request->name;
-                $comment->email = $request->email;
-            }
-            $comment->comment = $request->comment;
-            $comment->save();
-
-            Alert::success('Success', 'Komentar berhasil di posting');
-            return redirect()->back();
-
         }
+        $kajian = Kajian::where('slug', $slug)->firstOrFail();
+        $comment = new KajianComment();
+        $comment->kajian_id = $kajian->id;
+       if (Auth::check()) {
+            $comment->user_id = Auth::user()->id;
+            $comment->name = Auth::user()->name;
+            $comment->email = Auth::user()->email;
+        } else {
+            $comment->name = $request->name;
+            $comment->email = $request->email;
+        }
+        $comment->comment = $request->comment;
+        $comment->save();
+
+        Alert::success('Success', 'Komentar berhasil di posting');
+        return redirect()->back();
     }
 }

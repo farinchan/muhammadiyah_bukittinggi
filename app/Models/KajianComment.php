@@ -26,4 +26,9 @@ class KajianComment extends Model
     {
         return $this->hasMany(KajianComment::class, 'parent_id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }
