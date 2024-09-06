@@ -54,7 +54,7 @@
         }
 
         .about a {
-            color: #333;
+            color: #3c5e4d;
         }
     </style>
 @endsection
