@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Kajian;
+use App\Models\SettingWebsite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -14,12 +15,16 @@ class KajianController extends Controller
 {
     public function kajian()
     {
+        $setting_web = SettingWebsite::first();
+
         $data = [
             'title' => 'Kajian',
             'metaTitle' => 'Kajian',
             'metaDescription' => 'Kajian',
             'metaKeywords' => 'Kajian',
             'url' => 'kajian',
+            'setting_web' => $setting_web,
+
 
             'list_kajian' => Kajian::where('user_id', Auth::user()->id)->latest()->get(),
         ];
@@ -29,12 +34,16 @@ class KajianController extends Controller
 
     public function kajianCreate()
     {
+        $setting_web = SettingWebsite::first();
+
         $data = [
             'title' => 'Kajian Create',
             'metaTitle' => 'Kajian Create',
             'metaDescription' => 'Kajian Create',
             'metaKeywords' => 'Kajian Create',
             'url' => 'kajian-create',
+            'setting_web' => $setting_web,
+
         ];
 
         return view('front.pages.user.kajian-create', $data);
@@ -85,12 +94,16 @@ class KajianController extends Controller
 
     public function kajianEdit($id)
     {
+        $setting_web = SettingWebsite::first();
+
         $data = [
             'title' => 'Kajian Edit',
             'metaTitle' => 'Kajian Edit',
             'metaDescription' => 'Kajian Edit',
             'metaKeywords' => 'Kajian Edit',
             'url' => 'kajian-edit',
+            'setting_web' => $setting_web,
+
 
             'kajian' => Kajian::findOrFail($id),
         ];

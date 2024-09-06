@@ -59,6 +59,11 @@
             background-color: #f8f9fa;
             border-bottom: none;
         }
+
+        .card-title a:hover {
+            color: #01a54d;
+        }
+
     </style>
 @endsection
 
@@ -66,15 +71,17 @@
     <!-- ================ contact section start ================= -->
     <section class="mt-5 mb-5">
         <div class="container">
-            <div class="search-box input-group">
-                <input type="text" class="form-control" placeholder="Cari Ustadz..." value="{{ request('q') }}">
-                <div class="input-group-append">
-                    <button class="btn btn-primary" type="button">Cari</button>
+            <form action="{{ route('ustadz.search') }}" method="GET">
+                <div class="search-box input-group">
+                    <input type="text" class="form-control" name="q" placeholder="Cari Ustadz..." value="{{ request('q') }}">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit">Cari</button>
+                    </div>
                 </div>
-            </div>
+            </form>
 
 
-            @foreach ($list_ustadz as $ustadz)
+            @forelse ($list_ustadz as $ustadz)
                 <div class="row mb-3">
                     <div class="col-md-4">
                         <div class="card shadow-sm">
@@ -91,7 +98,7 @@
 
                                 <div class="card-text">
                                     <h5 class="card-title text-center">
-                                        <a href="">{{ $ustadz->name }}</a>
+                                        <a href="{{ route('keanggotaan.detail', $ustadz->id) }}">{{ $ustadz->name }}</a>
                                     </h5>
                                     <p>{{ $ustadz->keanggotaan }}</p>
                                     <hr>
@@ -120,14 +127,19 @@
                                                                 <h5 class="card-title">{{ $kajian->title }}</h5>
                                                             </a>
                                                             <ul class="blog-info-link">
-                                                                <li><a href="#"><i class="fa fa-user"></i> Admin Garis
-                                                                        Kode</a>
+                                                                <li>
+                                                                    <a href="#"><i class="fa fa-user"></i>
+                                                                        {{ $kajian->user->name }}</a>
                                                                 </li>
-                                                                <li><a href="#"><i class="fas fa-tags"></i>
-                                                                        Putusan</a>
+            
+                                                                <li><a href="#"><i class="fa fa-comments"></i>
+                                                                        {{ $kajian->kajianComment->count() }}
+                                                                        Komentar</a>
                                                                 </li>
-                                                                <li><a href="#"><i class="fa fa-comments"></i> 3
-                                                                        Komentar</a></li>
+                                                                <li><a href="#"><i class="fa fa-eye"></i>
+                                                                        {{ $kajian->kajianViewer->count() }}
+                                                                        Kali Dilihat</a>
+                                                                </li>
                                                             </ul>
                                                             <p class="card-text">
                                                                 {{ Str::limit(strip_tags($kajian->content), 160, '...') }}
@@ -142,8 +154,7 @@
                                                 <div class="row no-gutters">
                                                     <div class="col-md-12">
                                                         <div class="card-body">
-                                                            <a href=""
-                                                                class="text-info">Lihat Semua Kajian >></a>
+                                                            <a href="" class="text-info">Lihat Semua Kajian >></a>
                                                             {{-- <a href="{{ route('ustadz.detail', $ustadz->slug) }}"
                                                                 class="text-info">Lihat Semua Kajian >></a> --}}
                                                         </div>
@@ -162,7 +173,12 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
+            @empty
+                <div class="alert alert-warning" role="alert">
+                    Ustadz tidak ditemukan
+                </div>
+
+            @endforelse
         </div>
     </section>
     <!-- ================ contact section end ================= -->

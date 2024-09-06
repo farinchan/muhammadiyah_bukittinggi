@@ -21,10 +21,10 @@
         <h4 class="card-title text-center">Menu</h4>
         <div class="card-body">
             <ul class="list-group ">
-                <a href="{{ route('user.dashboard') }}" class="list-group-item text-info">Dashboard</a>
+                {{-- <a href="{{ route('user.dashboard') }}" class="list-group-item text-info">Dashboard</a> --}}
+                <a href="{{ route("user.profile") }}" class="list-group-item text-info">Data Pribadi</a>
                 <a href="{{ route('user.kajian') }}" class="list-group-item text-info">Kajian</a>
-                <a href="{{ route("user.profile") }}" class="list-group-item text-info">Profile</a>
-                <a href="" class="list-group-item text-info">Password</a>
+                <a href="{{ route('logout') }}" class="list-group-item text-info">Logout</a>
             </ul>
         </div>
     </div>

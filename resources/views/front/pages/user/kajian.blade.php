@@ -41,6 +41,14 @@
         .card-body {
             padding: 1.25rem 0.75rem;
         }
+        .card-header {
+            background-color: #f8f9fa;
+            border-bottom: none;
+        }
+        .card-footer {
+            background-color: #f8f9fa;
+            border-top: none;
+        }
     </style>
 @endsection
 
@@ -55,8 +63,10 @@
                 </div>
                 <div class="col-md-8">
                     <div class="card shadow-sm">
+                        <div class="card-header">
+                            <h5 class="card-title">Kajian</h5>
+                        </div>
                         <div class="card-body">
-                            <h4 class="card-title">Dashboard</h4>
                             <div class="card-body">
                                 <table class="table" id="datatable">
                                     <thead>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\SettingWebsite;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,16 +15,38 @@ class ProfileController extends Controller
 {
     public function profile()
     {
+        $setting_web = SettingWebsite::first();
+
         $data = [
             'title' => 'Profile',
             'metaTitle' => 'Profile',
             'metaDescription' => 'Profile',
             'metaKeywords' => 'Profile',
             'url' => 'profile',
+            'setting_web' => $setting_web,
+
+
             "user" => Auth::user()
         ];
 
-        return view('front.pages.user.profile', $data);
+        return view('front.pages.user.profile_data', $data);
+    }
+
+    public function profileEdit()
+    {
+        $setting_web = SettingWebsite::first();
+        $data = [
+            'title' => 'Profile Edit',
+            'metaTitle' => 'Profile Edit',
+            'metaDescription' => 'Profile Edit',
+            'metaKeywords' => 'Profile Edit',
+            'url' => 'profile-edit',
+            'setting_web' => $setting_web,
+
+            "user" => Auth::user()
+        ];
+
+        return view('front.pages.user.profile_edit', $data);
     }
 
     public function profileUpdate(Request $request)

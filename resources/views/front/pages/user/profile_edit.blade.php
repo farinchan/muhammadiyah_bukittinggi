@@ -40,6 +40,14 @@
         .card-body {
             padding: 1.25rem 0.75rem;
         }
+        .card-header {
+            background-color: #f8f9fa;
+            border-bottom: none;
+        }
+        .card-footer {
+            background-color: #f8f9fa;
+            border-top: none;
+        }
     </style>
 @endsection
 
@@ -53,11 +61,13 @@
                 </div>
                 <div class="col-md-8">
                     <div class="card shadow-sm">
+                        <div class="card-header">
+                            <h5 class="card-title">Profile</h5>
+                        </div>
                         <form action="{{ route('user.profile.update') }}" method="POST" enctype="multipart/form-data">
                             @method('PUT')
                             @csrf
                             <div class="card-body">
-                                <h4 class="card-title text-center">Profile</h4>
                                 <div class="card-body">
 
 

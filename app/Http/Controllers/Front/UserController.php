@@ -11,18 +11,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
-    public function dashboard()
-    {
-        $data = [
-            'title' => 'Dashboard',
-            'metaTitle' => 'Dashboard',
-            'metaDescription' => 'Dashboard',
-            'metaKeywords' => 'Dashboard',
-            'url' => 'dashboard',
-        ];
-
-        return view('front.pages.user.dashboard', $data);
-    }
+    
 
    
 

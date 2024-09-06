@@ -14,6 +14,7 @@ use App\Http\Controllers\Front\UstadzController;
 use App\Http\Controllers\Front\OrtomController;
 use App\Http\Controllers\Front\User\KajianController as UserKajianController;
 use App\Http\Controllers\Front\User\ProfileController as UserProfileController;
+use App\Http\Controllers\Front\User\DashboardController as UserDashboardController;
 
 use App\Http\Controllers\Back\DashboardController as BackDashboardController;
 use App\Http\Controllers\Back\UserController as BackUserController;
@@ -56,6 +57,7 @@ Route::post('/kajian/comment/{id}', [KajianController::class, 'comment'])->name(
 Route::get('/asset', [AssetController::class, 'asset'])->name('asset');
 
 Route::get('/keanggotaan', [KeanggotaanController::class, 'index'])->name('keanggotaan');
+Route::get('/keanggotaan/{id}', [KeanggotaanController::class, 'detail'])->name('keanggotaan.detail');
 
 Route::get('/ortom/{slug}', [OrtomController::class, 'ortom'])->name('ortom');
 
@@ -64,7 +66,7 @@ Route::get('/ustadz', [UstadzController::class, 'search'])->name('ustadz.search'
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
 Route::prefix('user')->middleware(['auth', 'role:user'])->name('user.')->group(function () {
-    Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+    Route::get('/dashboard', [UserDashboardController::class, 'dashboard'])->name('dashboard');
 
     Route::get('/kajian', [UserKajianController::class, 'kajian'])->name('kajian');
     Route::get('/kajian/create', [UserKajianController::class, 'kajianCreate'])->name('kajian.create');
@@ -75,7 +77,8 @@ Route::prefix('user')->middleware(['auth', 'role:user'])->name('user.')->group(f
     
 
     Route::get('/profile', [UserProfileController::class, 'profile'])->name('profile');
-    Route::put('/profile', [UserProfileController::class, 'profileUpdate'])->name('profile.update');
+    Route::get('/profile/edit', [UserProfileController::class, 'profileEdit'])->name('profile.edit');
+    Route::put('/profile/edit', [UserProfileController::class, 'profileUpdate'])->name('profile.update');
 
 });
 

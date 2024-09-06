@@ -51,12 +51,19 @@
                                                     <h5 class="card-title">{{ $kajian->title }}</h5>
                                                 </a>
                                                 <ul class="blog-info-link">
-                                                    <li><a href="#"><i class="fa fa-user"></i> Admin Garis Kode</a>
+                                                    <li>
+                                                        <a href="#"><i class="fa fa-user"></i>
+                                                            {{ $kajian->user->name }}</a>
                                                     </li>
-                                                    <li><a href="#"><i class="fas fa-tags"></i> Putusan</a>
+
+                                                    <li><a href="#"><i class="fa fa-comments"></i>
+                                                            {{ $kajian->kajianComment->count() }}
+                                                            Komentar</a>
                                                     </li>
-                                                    <li><a href="#"><i class="fa fa-comments"></i> 3
-                                                            Komentar</a></li>
+                                                    <li><a href="#"><i class="fa fa-eye"></i>
+                                                            {{ $kajian->kajianViewer->count() }}
+                                                            Kali Dilihat</a>
+                                                    </li>
                                                 </ul>
                                                 <p class="card-text">
                                                     {{ Str::limit(strip_tags($kajian->content), 160, '...') }}

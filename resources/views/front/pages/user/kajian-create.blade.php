@@ -41,16 +41,38 @@
             padding: 1.25rem 0.75rem;
         }
 
-        #preview {
+        .preview {
+            height: 250px;
+            object-fit: cover;
+            max-width: 100%;
+            display: block;
+        }
+
+        .thumbnail-image {
             cursor: pointer;
             width: 100%;
-            border-radius: 5px;
-            background-color: #F9F9FF;
+            height: 270px;
+            overflow: hidden;
+            border-radius: 10px;
+            margin: 10px 0;
+            border: 2px solid #cecece;
+            position: relative; /* Set thumbnail-image as relative */
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .tagify__input {
             border: none;
             outline: none;
+        }
+        .card-header {
+            background-color: #f8f9fa;
+            border-bottom: none;
+        }
+        .card-footer {
+            background-color: #f8f9fa;
+            border-top: none;
         }
     </style>
 @endsection
@@ -60,24 +82,26 @@
         <div class="container">
 
             <div class="row">
-                <div class="col-md-4">
-                    @include('front.pages.user.__sidebar')
-                </div>
-                <div class="col-md-8">
+                
+                <div class="col-md-12">
                     <div class="card shadow-sm">
+                        <div class="card-header">
+                            <h5 class="card-title">Buat Kajian</h5>
+                        </div>
                         <form action="{{ route('user.kajian.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
-                                <h4 class="card-title text-center">Dashboard</h4>
-                                <div class="card-body">
 
 
                                     <div class="form-group">
+                                        
                                         <label>Thumbnail
                                             <span class="text-danger">*</span>
                                         </label>
-                                        <img src="{{ asset('front/img/thumbnail_placeholder.png') }}" class="img-fluid"
-                                            alt="thumbnail" id="preview">
+                                        <div class="thumbnail-image" id="thumbnail">
+                                            <img src="{{ asset('front/img/thumbnail_placeholder.png') }}" class="img-fluid preview"
+                                                alt="thumbnail" id="preview">
+                                        </div>
                                         <input type="file" class="form-control" style="display: none;" name="thumbnail"
                                             accept="image/*">
                                         @error('thumbnail')
@@ -118,10 +142,9 @@
                                             <code>(,) </code> jika lebih dari satu keywoard yang digunakan</small>
                                     </div>
 
-                                </div>
                             </div>
                             <div class="card-footer text-right">
-                                <button type="{{ route('user.kajian') }}" class="genric-btn default radius">Batal</button>
+                                <a href="{{ route('user.kajian') }}" class="genric-btn default radius">Batal</a>
                                 <button type="submit" class="genric-btn success radius">Simpan Perubahan</button>
                             </div>
                         </form>
@@ -135,7 +158,7 @@
 
 @section('scripts')
     <script>
-            $('#preview').click(function() {
+            $('#thumbnail').click(function() {
                 console.log("test");
                 $('input[name="thumbnail"]').click();
                 

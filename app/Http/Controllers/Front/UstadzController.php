@@ -22,9 +22,14 @@ class UstadzController extends Controller
             'setting_web' => $setting_web,
 
             'list_ustadz' => User::with(['kajian'])
-            ->where('job', 'like', '%Ustadz%')->where('name', 'like', '%' . $query . '%')->get()
+            ->where('job', 'like', '%Ustadz%')->where('name', 'like', '%' . $query . '%')
+            ->withCount('kajian')
+            ->orderBy('kajian_count', 'desc')
+            ->get(),
         ];
 
         return view('front.pages.ustadz.search', $data);        
     }
+
+    
 }

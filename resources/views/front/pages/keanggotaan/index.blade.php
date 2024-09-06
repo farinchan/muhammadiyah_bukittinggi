@@ -16,14 +16,14 @@
 @section('styles')
     <style>
         /* .card {
-                margin-bottom: 20px;
-                border: none;
-                box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
-                transition: all 0.3s;
-                border: none;
-            } */
+                    margin-bottom: 20px;
+                    border: none;
+                    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+                    transition: all 0.3s;
+                    border: none;
+                } */
 
-            .card {
+        .card {
             border: none;
             border-radius: 0;
         }
@@ -68,36 +68,46 @@
                                     <h3>Daftar Anggota</h3>
                                 </div>
                                 <div class="card">
-                                    <div class="card-body" style="padding: 20px 20px 0px 20px; background-color: white;">
-                                        <div class="card-text">
-                                            <form>
+                                    <form>
+                                        <div class="card-body"
+                                            style="padding: 20px 20px 0px 20px; background-color: white;">
+                                            <div class="card-text">
                                                 <div class="form-group row">
                                                     <label for="staticEmail" class="col-sm-2 col-form-label">Cari
                                                         Nama</label>
                                                     <div class="col-sm-10">
-                                                        <input type="password" class="form-control" id="inputPassword">
+                                                        <input type="text" class="form-control" name="nama"
+                                                            placeholder="Nama anggota" value="{{ request('nama') }}">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <label for="inputPassword"
                                                         class="col-sm-2 col-form-label">Keanggotaan</label>
                                                     <div class="col-sm-10">
-                                                        <select class="form-select" aria-label="Default select example">
-                                                            <option selected>Semua</option>
-                                                            <option value="1">Kader Muhammadiyah</option>
-                                                            <option value="2">Warga Muhammadiyah</option>
-                                                            <option value="3">Simpatisan Muhammadiyah</option>
+                                                        <select name="keanggotaan" class="form-select"
+                                                            aria-label="Default select example">
+                                                            <option>Semua</option>
+                                                            <option value="Kader Muhammadiyah"
+                                                                @if (request('keanggotaan') == 'Kader Muhammadiyah') selected @endif>Kader
+                                                                Muhammadiyah</option>
+                                                            <option value="Warga Muhammadiyah"
+                                                                @if (request('keanggotaan') == 'Warga Muhammadiyah') selected @endif>Warga
+                                                                Muhammadiyah</option>
+                                                            <option value="Simpatisan Muhammadiyah"
+                                                                @if (request('keanggotaan') == 'Simpatisan Muhammadiyah') selected @endif>Simpatisan
+                                                                Muhammadiyah</option>
                                                         </select>
                                                     </div>
                                                 </div>
-                                                
-                                            </form>
+
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="card-footer text-right" style="background-color: white; border: none; padding: 0px 20px 20px 20px;"
-                                    >
-                                        <button type="submit" href="#" class="genric-btn primary-border radius">Cari</button>
-                                    </div>
+                                        <div class="card-footer text-right"
+                                            style="background-color: white; border: none; padding: 0px 20px 20px 20px;">
+                                            <button type="submit" href="#"
+                                                class="genric-btn primary-border radius">Cari</button>
+                                        </div>
+                                    </form>
                                 </div>
 
                                 <hr>
@@ -107,8 +117,7 @@
                         <div class="row">
                             @foreach ($users as $user)
                                 <div class="col-md-4">
-                                    <div class="card shadow-sm"
-                                    >
+                                    <div class="card shadow-sm">
                                         <div class="text-center pt-4">
 
                                             <img class="card-img-top " alt="avatar1" src="{{ $user->getPhoto() }}"
@@ -120,12 +129,12 @@
                                             <div class="card-text">
                                                 <h5 class="card-title text-center">
                                                     <a
-                                                        href="{{ route('user.profile', $user->username) }}">{{ $user->name }}</a>
+                                                        href="{{ route('keanggotaan.detail', $user->id) }}">{{ $user->name }}</a>
                                                 </h5>
                                                 <p>{{ $user->keanggotaan }}</p>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                             @endforeach
@@ -155,7 +164,7 @@
 
                     </div>
                     <div class="col-lg-4">
-                        
+
                         <!-- Section Tittle -->
                         <div class="section-tittle mb-40">
                             <h3>Ikuti Kami</h3>
@@ -210,12 +219,12 @@
 
                             <aside class="single_sidebar_widget newsletter_widget">
                                 <h4 class="widget_title">Subscribe</h4>
-                                <form action="{{ route("subscribe") }}" method="POST" >
+                                <form action="{{ route('subscribe') }}" method="POST">
                                     @csrf
                                     <div class="form-group">
-                                        <input type="email" name="email" class="form-control" onfocus="this.placeholder = ''"
-                                            onblur="this.placeholder = 'Enter email'" placeholder="Enter email"
-                                            required="">
+                                        <input type="email" name="email" class="form-control"
+                                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email'"
+                                            placeholder="Enter email" required="">
                                     </div>
                                     <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
                                         type="submit">Subscribe</button>
