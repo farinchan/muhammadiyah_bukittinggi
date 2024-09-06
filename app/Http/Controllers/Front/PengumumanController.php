@@ -40,7 +40,7 @@ class PengumumanController extends Controller
 
         $data = [
             'title' => $pengumuman->title . " | " . $setting_web->name,
-            'meta_description' => $pengumuman->content,
+            'meta_description' => strip_tags($pengumuman->content),
             'meta_keywords' => 'Pengumuman, Muhammadiyah, Bukittinggi',
             'favicon' => $setting_web->favicon,
             'setting_web' => $setting_web,

@@ -8,9 +8,9 @@
     <meta property="og:title" content="{{ $title }}">
     <meta property="og:description" content="{{ $meta_description }}">
     <meta property="og:type" content="website">
-    {{-- <meta property="og:url" content="{{ route('profile',  $profile->slug) }}">
-    <link rel="canonical" href="{{ route('profile', $profile->slug) }}"> --}}
-    <meta property="og:image" content="{{ Storage::url($favicon) }}">
+    <meta property="og:url" content="{{ route('pengumuman.detail',  $profile->slug) }}">
+    <link rel="canonical" href="{{ route('pengumuman.detail', $profile->slug) }}">
+    <meta property="og:image" content="{{ Storage::url($pengumuman->image) }}">
 @endsection
 
 @section('styles')
