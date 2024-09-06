@@ -17,7 +17,7 @@
 @endsection
 
 @section('content')
-    <main>
+    <main class="mt-5">
         <!-- About US Start -->
         <div class="about-area">
             <div class="container">
