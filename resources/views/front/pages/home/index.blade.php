@@ -189,7 +189,7 @@
                                         {{-- <span class="color4">Pengumuman</span> --}}
                                         <div style="font-size: 12px; color: #333;">
                                             {{ $pengumuman->created_at->diffForHumans() }} </div>
-                                        <h4 style=" font-size: 16px;"><a href="#">
+                                        <h4 style=" font-size: 16px;"><a href="{{ route("pengumuman.detail",$pengumuman->slug ) }}">
                                                 {{ Str::limit($pengumuman->title, 80) }}
                                             </a></h4>
                                     </div>

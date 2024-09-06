@@ -12,6 +12,7 @@ use App\Http\Controllers\Front\UserController;
 use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\UstadzController;
 use App\Http\Controllers\Front\OrtomController;
+use App\Http\Controllers\Front\PengumumanController;
 use App\Http\Controllers\Front\User\KajianController as UserKajianController;
 use App\Http\Controllers\Front\User\ProfileController as UserProfileController;
 use App\Http\Controllers\Front\User\DashboardController as UserDashboardController;
@@ -42,6 +43,8 @@ Route::get('/forgot-password', [AuthController::class, 'forgotPassword'])->name(
 Route::post('/forgot-password', [AuthController::class, 'forgotPasswordProcess'])->name('forgot.password.process');
 Route::get('/reset-password/{token}', [AuthController::class, 'resetPassword'])->name('reset.password');
 Route::post('/reset-password/{token}', [AuthController::class, 'resetPasswordProcess'])->name('reset.password.process');
+
+Route::get('/pengumuman/{slug}', [PengumumanController::class, 'detail'])->name('pengumuman.detail');
 
 Route::get('/profile/{slug}', [ProfileController::class, 'profile'])->name('profile');
 
