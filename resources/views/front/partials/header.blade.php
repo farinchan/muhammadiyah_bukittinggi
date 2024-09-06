@@ -49,7 +49,7 @@
                         <div class="col-xl-3 col-lg-3 col-md-3">
                             <div class="logo">
                                 <a href="{{ route('home') }}"><img src="{{ Storage::url($setting_web->logo)}}"
-                                        height="70px" alt=""></a>
+                                    width="200px" alt=""></a>
                             </div>
                         </div>
                         <div class="col-xl-9 col-lg-9 col-md-9 text-right" id="login1">
@@ -76,7 +76,7 @@
                             <!-- sticky -->
                             <div class="sticky-logo">
                                 <a href="{{ route('home') }}"><img src="{{ Storage::url($setting_web->logo)}}"
-                                        height="70px" alt=""></a>
+                                        width="200px" alt=""></a>
                             </div>
                             <!-- Main-menu -->
                             <div class="main-menu d-none d-md-block">
