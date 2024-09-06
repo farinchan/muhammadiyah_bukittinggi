@@ -8,7 +8,7 @@
                         <div class="single-footer-caption">
                             <!-- logo -->
                             <div class="footer-logo">
-                                <a href="index.html"><img src="{{ asset('front/img/logo/logo2_footer.png') }}"
+                                <a href="index.html"><img src="{{ asset("images/Logo_hp.png") }}"
                                         width="400px" alt=""></a>
                             </div>
                             <div class="footer-tittle">
