@@ -105,18 +105,6 @@
                                         <td>{{ $user->gender }}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">Tempat, Tanggal Lahir</th>
-                                        <td>{{ $user->place_of_birth }}, {{ $user->birth_date }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">No. Telepon</th>
-                                        <td>{{ $user->phone }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Alamat</th>
-                                        <td>{{ $user->address }}</td>
-                                    </tr>
-                                    <tr>
                                         <th scope="row">Pekerjaan</th>
 
                                         <td>
@@ -133,10 +121,7 @@
                                             <td>{{ $user->kepakaran }}</td>
                                         </tr>
                                     @endif
-                                    <tr>
-                                        <th scope="row">Email</th>
-                                        <td>{{ $user->email }}</td>
-                                    </tr>
+                                    
 
                                 </tbody>
                             </table>
