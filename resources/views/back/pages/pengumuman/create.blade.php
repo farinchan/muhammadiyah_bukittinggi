@@ -138,18 +138,46 @@
         var quill = new Quill('#quill_content', {
             modules: {
                 toolbar: [
+                    ['bold', 'italic', 'underline', 'strike'], // toggled buttons
+                    ['blockquote', 'code-block'],
+                    ['link', 'image', 'video', 'formula'],
+
                     [{
                         header: [1, 2, 3, 4, 5, 6, false]
-                    }],
-                    ['bold', 'italic', 'underline'],
-                    ['image', 'video'],
+                    }], // custom button values
                     [{
-                        list: 'ordered'
+                        'list': 'ordered'
                     }, {
-                        list: 'bullet'
+                        'list': 'bullet'
+                    }, {
+                        'list': 'check'
                     }],
-                    ['blockquote', 'code-block', 'formula'],
-                    ['clean']
+                    [{
+                        'script': 'sub'
+                    }, {
+                        'script': 'super'
+                    }], // superscript/subscript
+                    [{
+                        'indent': '-1'
+                    }, {
+                        'indent': '+1'
+                    }], // outdent/indent
+                    [{
+                        'direction': 'rtl'
+                    }], // text direction
+
+                    [{
+                        'color': []
+                    }, {
+                        'background': []
+                    }], // dropdown with defaults from theme
+                    [{
+                        'font': []
+                    }],
+                    [{
+                        'align': []
+                    }],
+                    ['clean'] // remove formatting button
                 ]
             },
             placeholder: 'Tulis Pengumuman disini...',
