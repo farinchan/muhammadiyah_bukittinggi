@@ -48,13 +48,18 @@
                         <!-- Logo -->
                         <div class="col-xl-3 col-lg-3 col-md-3">
                             <div class="logo">
-                                <a href="{{ route('home') }}"><img src="{{ Storage::url($setting_web->logo)}}"
-                                    width="200px" alt=""></a>
+                                <a href="{{ route('home') }}"><img src="{{ Storage::url($setting_web->logo) }}"
+                                        width="200px" alt=""></a>
                             </div>
                         </div>
                         <div class="col-xl-9 col-lg-9 col-md-9 text-right" id="login1">
                             @auth
-                                <a href="{{ route('user.dashboard') }}" class="genric-btn primary-border circle">
+                                <a href="
+                                @if (Auth::user()->hasRole('admin')) {{ route('admin.dashboard') }}
+                                @else
+                                    {{ route('user.profile') }} @endif
+                                "
+                                    class="genric-btn primary-border circle">
                                     <i class="far fa-user"></i> &nbsp; &nbsp;
                                     {{ Auth::user()->name }}
                                 </a>
@@ -75,7 +80,7 @@
                         <div class="col-xl-9 col-lg-9 col-md-12 header-flex">
                             <!-- sticky -->
                             <div class="sticky-logo">
-                                <a href="{{ route('home') }}"><img src="{{ Storage::url($setting_web->logo)}}"
+                                <a href="{{ route('home') }}"><img src="{{ Storage::url($setting_web->logo) }}"
                                         width="200px" alt=""></a>
                             </div>
                             <!-- Main-menu -->
@@ -126,7 +131,12 @@
 
                                         <li id="login_mobile">
                                             @auth
-                                                <a href="#" class="genric-btn primary-border circle">
+                                                <a href="
+                                                @if (Auth::user()->hasRole('admin')) {{ route('admin.dashboard') }}
+                                @else
+                                    {{ route('user.profile') }} @endif
+                                "
+                                                    class="genric-btn primary-border circle">
                                                     <i class="far fa-user"></i> &nbsp; &nbsp;
                                                     {{ Auth::user()->name }}
                                                 </a>
@@ -155,8 +165,7 @@
                                 <form action="{{ route('ustadz.search') }}" method="GET">
                                     <input type="text" name="q" placeholder="Cari Ustadz"
                                         onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cari Ustadz'"
-                                        value="{{ request()->q }}"
-                                        required="" class="single-input">
+                                        value="{{ request()->q }}" required="" class="single-input">
                                     {{-- <button type="submit" class="btn btn-primary">Cari</button> --}}
                                 </form>
                             </div>
