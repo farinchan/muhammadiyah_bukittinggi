@@ -274,8 +274,8 @@
                                                     {{ old('remember') ? 'checked' : '' }}>
                                                 <label for="default-checkbox"></label>
                                             </div>
-                                            Saya menyetujui &nbsp;<a class="text-info" href="#"> Syarat dan
-                                                Ketentuan</a> &nbsp; Keanggotaan Muhammadiyah
+                                            Saya menyetujui Syarat dan
+                                                Ketentuan Keanggotaan Muhammadiyah
                                         </div>
                                     </div>
                                 </div>
@@ -334,7 +334,7 @@
             if (data.includes('Ustadz')) {
                 $('#kepakaran').html(`
                     <div class="form-group row">
-                        <label for="Kepakaran" class="col-md-3 col-form-label text-success text-md-right">{{ __('Kepakaran') }}
+                        <label for="Kepakaran" class="col-md-3 col-form-label text-success text-md-right">{{ __('Bidang Kajian') }}
                             <span class="text-danger">*</span>
                         </label>
                         <div class="col-md-8">

@@ -107,10 +107,9 @@
                                     <tr>
                                         <th scope="row">Pekerjaan</th>
                                         @php 
-                                        $job = json_decode($user->job);
+                                        $job = json_decode($user->job??'[]');
                                         @endphp
                                         <td>
-                                            
                                             <ul class="unordered-list">
                                                 @foreach ($job as $item)
                                                     <li>{{ $item }}</li>
