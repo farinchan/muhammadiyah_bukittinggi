@@ -36,6 +36,6 @@ class GalleryAlbum extends Model
 
     public function getThumbnail()
     {
-        return $this->thumbnail ? Storage::url($this->thumbnail) : asset('images/default.png');
+        return $this->thumbnail ? asset('storage/' . $this->thumbnail): asset('images/default.png');
     }
 }

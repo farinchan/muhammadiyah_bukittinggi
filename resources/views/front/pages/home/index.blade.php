@@ -297,6 +297,11 @@
                                                                         {{ $kajian->kajianComment->count() }}
                                                                         Komentar</a>
                                                                     </li>
+                                                                    <li><a href="#"><i class="fa fa-eye"></i>
+                                                                        {{ $kajian->kajianViewer->count() }}
+                                                                        Kali Dilihat</a>
+                                                                </li>
+                                                                    
                                                             </ul>
                                                             <h4><a href="{{ route("kajian.detail", $kajian->slug) }}">
                                                                     {{ Str::limit($kajian->title, 60) }}
