@@ -73,9 +73,17 @@ class AuthController extends Controller
             'gender' => 'required|in:Laki-laki,Perempuan',
             'place_of_birth' => 'required',
             'birth_date' => 'required|date',
+            'province' => 'required',
+            'city' => 'required',
+            'district' => 'required',
+            'village' => 'required',
+            'latitude' => 'nullable',
+            'longitude' => 'nullable',
             'address' => 'required',
             'phone' => 'required',
             'keanggotaan' => 'required',
+            'ktam' => 'required',
+            'nbm' => 'nullable',
             'job' => 'required',
             'kepakaran' => 'nullable',
             'email' => 'required|email|unique:users,email',
@@ -88,7 +96,7 @@ class AuthController extends Controller
             'in' => 'Pilih salah satu :attribute',
             'image' => 'File harus berupa gambar',
             'mimes' => 'Format file harus :values',
-            'date' => 'Format tanggal tidak valid'
+            'date' => 'Format tanggal tidak valid',
         ]
         );
 
@@ -109,9 +117,17 @@ class AuthController extends Controller
         $user->gender = $request->gender;
         $user->place_of_birth = $request->place_of_birth;
         $user->birth_date = $request->birth_date;
+        $user->province = $request->province;
+        $user->city = $request->city;
+        $user->district = $request->district;
+        $user->village = $request->village;
+        $user->latitude = $request->latitude;
+        $user->longitude = $request->longitude;
         $user->address = $request->address;
         $user->phone = $request->phone;
         $user->keanggotaan = $request->keanggotaan;
+        $user->ktam = $request->ktam;
+        $user->nbm = $request->nbm;
         $user->job = json_encode($request->job);
         $user->kepakaran = $request->kepakaran;
         $user->email = $request->email;

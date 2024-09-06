@@ -1,6 +1,16 @@
 @extends('front.app')
 @section('seo')
 @endsection
+@section("styles")
+<style>
+    .icon{
+        z-index: -10000;
+    }
+    .icon i{
+        z-index: -10000;
+    }
+</style>
+@endsection
 @section('content')
     <main class="my-5">
         <div class="container ">
@@ -102,6 +112,125 @@
                                 @enderror
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                            <label for="Provinsi" class="col-md-3 col-form-label text-md-right">{{ __('Provinsi') }}
+                                <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-md-8">
+                                <div class="input-group-icon">
+                                    <div class="icon"><i class="fa-regular fa-map"></i></div>
+                                    <input type="text" placeholder="Provinsi" onfocus="this.placeholder = ''"
+                                        onblur="this.placeholder = 'Provinsi'" required=""
+                                        class="single-input @error('province') is-invalid @enderror" name="province"
+                                        value="{{ old('province') }}" autocomplete="province">
+                                </div>
+                                @error('province')
+                                    <span class="text-danger" role="alert">
+                                        <small>{{ $message }}</small>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="Kabupaten/Kota"
+                                class="col-md-3 col-form-label text-md-right">{{ __('Kabupaten/Kota') }}
+                                <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-md-8">
+                                <div class="input-group-icon">
+                                    <div class="icon"><i class="fa-regular fa-map"></i></div>
+                                    <input type="text" placeholder="Kabupaten/Kota" onfocus="this.placeholder = ''"
+                                        onblur="this.placeholder = 'Kabupaten/Kota'" required=""
+                                        class="single-input @error('city') is-invalid @enderror" name="city"
+                                        value="{{ old('city') }}" autocomplete="city">
+                                </div>
+                                @error('city')
+                                    <span class="text-danger" role="alert">
+                                        <small>{{ $message }}</small>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="Kecamatan" class="col-md-3 col-form-label text-md-right">{{ __('Kecamatan') }}
+                                <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-md-8">
+                                <div class="input-group-icon">
+                                    <div class="icon"><i class="fa-regular fa-map"></i></div>
+                                    <input type="text" placeholder="Kecamatan" onfocus="this.placeholder = ''"
+                                        onblur="this.placeholder = 'Kecamatan'" required=""
+                                        class="single-input @error('district') is-invalid @enderror" name="district"
+                                        value="{{ old('district') }}" autocomplete="district">
+                                </div>
+                                @error('district')
+                                    <span class="text-danger" role="alert">
+                                        <small>{{ $message }}</small>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="Kenagarian/Kelurahan"
+                                class="col-md-3 col-form-label text-md-right">{{ __('Kenagarian/Kelurahan') }}
+                                <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-md-8">
+                                <div class="input-group-icon">
+                                    <div class="icon"><i class="fa-regular fa-map"></i></div>
+                                    <input type="text" placeholder="Kenagarian/Kelurahan" onfocus="this.placeholder = ''"
+                                        onblur="this.placeholder = 'Kenagarian/Kelurahan'" required=""
+                                        class="single-input @error('village') is-invalid @enderror" name="village"
+                                        value="{{ old('village') }}" autocomplete="village">
+                                </div>
+                                @error('village')
+                                    <span class="text-danger" role="alert">
+                                        <small>{{ $message }}</small>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="Koordinat" class="col-md-3 col-form-label text-md-right">{{ __('Koordinat') }}
+                                <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-md-4">
+                                <div class="input-group-icon">
+                                    <div class="icon"><i class="fa-regular fa-map-marker-alt"></i></div>
+                                    <input type="text" placeholder="Latitude" onfocus="this.placeholder = ''"
+                                        onblur="this.placeholder = 'Latitude'" required=""
+                                        class="single-input @error('latitude') is-invalid @enderror" name="latitude"
+                                        value="{{ old('latitude') }}" autocomplete="latitude">
+                                </div>
+                                @error('latitude')
+                                    <span class="text-danger" role="alert">
+                                        <small>{{ $message }}</small>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-group-icon">
+                                    <div class="icon"><i class="fa-regular fa-map-marker-alt"></i></div>
+                                    <input type="text" placeholder="Longitude" onfocus="this.placeholder = ''"
+                                        onblur="this.placeholder = 'Longitude'" required=""
+                                        class="single-input @error('longitude') is-invalid @enderror" name="longitude"
+                                        value="{{ old('longitude') }}" autocomplete="longitude">
+                                </div>
+                                @error('longitude')
+                                    <span class="text-danger" role="alert">
+                                        <small>{{ $message }}</small>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                                
+
 
                         <div class="form-group row">
                             <label for="No. HP" class="col-md-3 col-form-label text-md-right">{{ __('No. HP') }}
@@ -217,6 +346,49 @@
                                     </select>
                                 </div>
                                 @error('keanggotaan')
+                                    <span class="text-danger" role="alert">
+                                        <small>{{ $message }}</small>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="Memiliki KTAM"
+                                class="col-md-3 col-form-label text-md-right">{{ __('Memiliki KTAM') }}
+                                <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-md-8">
+                                <div class="input-group-icon">
+                                    <div class="icon"><i class="fa-regular fa-id-card"></i></div>
+                                    <select name="ktam" id="ktam"
+                                        class="single-input form-select @error('ktam') is-invalid @enderror" required>
+                                        <option value="" disabled selected>Pilih </option>
+                                        <option value="Ada" @if (old('ktam') == 'Ada') selected @endif>Ada</option>
+                                        <option value="Tidak Ada" @if (old('ktam') == 'Tidak Ada') selected @endif>Tidak Ada</option>
+                                    </select>
+                                </div>
+                                @error('ktam')
+                                    <span class="text-danger" role="alert">
+                                        <small>{{ $message }}</small>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="NBM" class="col-md-3 col-form-label text-md-right">{{ __('NBM') }}
+                                
+                            </label>
+                            <div class="col-md-8">
+                                <div class="input-group-icon">
+                                    <div class="icon"><i class="fa-regular fa-id-card"></i></div>
+                                    <input type="text" placeholder="NBM" onfocus="this.placeholder = ''"
+                                        onblur="this.placeholder = 'NBM'"
+                                        class="single-input @error('nbm') is-invalid @enderror" name="nbm"
+                                        value="{{ old('nbm') }}" autocomplete="nbm">
+                                </div>
+                                @error('nbm')
                                     <span class="text-danger" role="alert">
                                         <small>{{ $message }}</small>
                                     </span>
