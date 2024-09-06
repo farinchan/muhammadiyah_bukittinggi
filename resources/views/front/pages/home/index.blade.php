@@ -52,6 +52,10 @@
         .carousel-inner {
             border-radius: 0 0 10px 10px;
         }
+
+        .about a {
+            color: #333;
+        }
     </style>
 @endsection
 
@@ -230,7 +234,7 @@
                                 Pimpinan Daerah Muhammadiyah (PDM)
                             </h1>
                             <h2 style="color: #08652F; ">Kota Bukittinggi</h2>
-                            <div class="mt-3">
+                            <div class="mt-3 about">
                                 <p>
                                     {!! $setting_web->about !!}
                                 </p>
