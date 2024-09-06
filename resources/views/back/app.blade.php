@@ -3,16 +3,20 @@
 <!--begin::Head-->
 
 <head>
+    @php
+        $setting_web = \App\Models\SettingWebsite::first();
+    @endphp
+
     <base href="" />
-    <title>Pimpinan Daerah Muhammadiyah Bukittinggi</title>
+    <title>{{ $setting_web->name }} - Administration</title>
     <meta charset="utf-8" />
     <meta name="description"
         content="
-            Pimpinan Daerah Muhammadiyah Bukittinggi - Administration
+            Administration {{ $setting_web->name }} - {{ strip_tags($setting_web->about) }}
         " />
     <meta name="keywords"
         content="
-            Pimpinan Daerah Muhammadiyah Bukittinggi, Pimpinan Daerah Muhammadiyah Bukittinggi - Administration
+            {{ $setting_web->name }}
         " />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     {{-- <meta property="og:locale" content="en_US" />
@@ -22,7 +26,7 @@
     <meta property="og:url" content="https://keenthemes.com/metronic" />
     <meta property="og:site_name" content="Metronic by Keenthemes" />
     <link rel="canonical" href="http://preview.keenthemes.com?page=index" /> --}}
-    <link rel="shortcut icon" href="{{ asset('back/media/logos/favicon.ico')}}" />
+    <link rel="shortcut icon" href="{{ asset('storage/setting/favicon.png') }}" />
     <!--begin::Fonts(mandatory for all pages)-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" /> <!--end::Fonts-->
     <!--begin::Vendor Stylesheets(used for this page only)-->
