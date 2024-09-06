@@ -78,7 +78,7 @@
                             {{-- <h4 class="card-title text-center">Profile</h4> --}}
                             <div class="card-body">
                                 <div class="text-center">
-                                    <img src="@if (Auth::user()->photo) {{ Storage::url(Auth::user()->photo) }} @else https://ui-avatars.com/api/?background=000C32&color=fff&name={{ Auth::user()->name }} @endif"
+                                    <img src="{{ $user->getPhoto() }}"
                                         class="img-fluid" alt="profile" style=" width: auto; height: 200px; ">
                                 </div>
 
