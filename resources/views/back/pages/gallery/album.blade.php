@@ -118,7 +118,7 @@
                             <div class="card card-custom card-stretch" style="cursor: pointer;" onclick="$('#thumbnail').click()"
                             >
                                 <div class="card-body">
-                                    <img src="{{ asset('images/default.png') }}" id="thumbnail_preview"
+                                    <img src="https://muhammadiyahbukittinggi.org/back/media/svg/files/blank-image.svg" id="thumbnail_preview"
                                         class="rounded" alt="" style="height: 200px; width: auto; margin: auto; display: block;"
                                         />
                                 </div>
