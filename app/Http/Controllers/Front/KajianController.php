@@ -34,7 +34,6 @@ class KajianController extends Controller
                 $query->where('title', 'like', '%' . $search . '%')
                     ->orWhere('content', 'like', '%' . $search . '%');
             })
-                ->latest()
                 ->paginate(6),
         ];
 
