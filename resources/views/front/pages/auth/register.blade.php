@@ -13,6 +13,17 @@
         p a{
             color: #0B863E
         }
+        .about {
+            text-align: justify;
+            margin : 0;
+            padding: 0;
+        }
+        td{
+            vertical-align: top;
+        }
+        .td_about{
+            padding-right: 10px;
+        }
     </style>
 @endsection
 @section('content')
@@ -534,7 +545,7 @@
                     <h3>
                         Tentang Kami
                     </h3>
-                    <p>
+                    <p class="about">
                         {!! $setting_web->about !!}
                     </p>
                     <br>
@@ -545,7 +556,7 @@
                     <p>
                         <table>
                             <tr>
-                                <td><i class="fa-regular fa-envelope"></i></td>
+                                <td class="td_about" ><i class="fa-regular fa-envelope"></i></td>
                                 <td>:</td>
                                 <td>{{ $setting_web->email }}</td>
                             </tr>
