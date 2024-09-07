@@ -22,14 +22,14 @@ class KeanggotaanController extends Controller
             'favicon' => $setting_web->favicon,
             'setting_web' => $setting_web,
 
-            'users' => User::where('status', '1')->
-            where(function ($query) use ($search) {
-                $query->where('name', 'like', '%' . $search . '%');
-            })->where(function ($query) use ($tipe_anggota) {
-                if ($tipe_anggota != 'Semua' && $tipe_anggota != null) {
-                    $query->where('keanggotaan', $tipe_anggota);
-                }
-            })->paginate(12),
+            'users' => User::where('status', '1')
+                ->where(function ($query) use ($search) {
+                    $query->where('name', 'like', '%' . $search . '%');
+                })->where(function ($query) use ($tipe_anggota) {
+                    if ($tipe_anggota != 'Semua' && $tipe_anggota != null) {
+                        $query->where('keanggotaan', $tipe_anggota);
+                    }
+                })->paginate(12),
         ];
 
         return view('front.pages.keanggotaan.index', $data);

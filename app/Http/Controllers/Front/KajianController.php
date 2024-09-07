@@ -33,7 +33,9 @@ class KajianController extends Controller
             'list_kajian' => $kajian->where(function ($query) use ($search) {
                 $query->where('title', 'like', '%' . $search . '%')
                     ->orWhere('content', 'like', '%' . $search . '%');
-            })->paginate(6),
+            })
+                ->latest()
+                ->paginate(6),
         ];
 
         return view('front.pages.kajian.index', $data);
@@ -63,7 +65,7 @@ class KajianController extends Controller
         $kajian_viewer = new KajianViewer();
         $kajian_viewer->kajian_id = $kajian->id;
         $kajian_viewer->ip = request()->ip();
-        if($currentUserInfo){
+        if ($currentUserInfo) {
             $kajian_viewer->country = $currentUserInfo->countryName;
             $kajian_viewer->city = $currentUserInfo->cityName;
             $kajian_viewer->region = $currentUserInfo->regionName;
@@ -97,7 +99,7 @@ class KajianController extends Controller
                 Alert::error('Error', 'Komentar tidak boleh kosong');
                 return redirect()->back()->withErrors($validator)->withInput();
             }
-        } else{
+        } else {
             $validator = Validator::make(
                 $request->all(),
                 [
@@ -120,7 +122,7 @@ class KajianController extends Controller
         $kajian = Kajian::where('slug', $slug)->firstOrFail();
         $comment = new KajianComment();
         $comment->kajian_id = $kajian->id;
-       if (Auth::check()) {
+        if (Auth::check()) {
             $comment->user_id = Auth::user()->id;
             $comment->name = Auth::user()->name;
             $comment->email = Auth::user()->email;
