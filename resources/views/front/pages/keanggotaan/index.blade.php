@@ -116,7 +116,7 @@
 
                         <div class="row">
                             @foreach ($users as $user)
-                                <div class="col-md-4">
+                                <div class="col-md-4 mb-3">
                                     <div class="card shadow-sm">
                                         <div class="text-center pt-4">
 
@@ -164,7 +164,6 @@
 
                     </div>
                     <div class="col-lg-4">
-
                         <!-- Section Tittle -->
                         <div class="section-tittle mb-40">
                             <h3>Ikuti Kami</h3>
@@ -172,46 +171,50 @@
                         <!-- Flow Socail -->
                         <div class="single-follow mb-45">
                             <div class="single-box">
-                                <div class="follow-us d-flex align-items-center">
-                                    <div class="follow-social">
-                                        <a href="#"><img src="{{ asset('front/img/news/icon-fb.png') }}"
-                                                alt=""></a>
+                                @if ($setting_web->facebook)
+                                    <div class="follow-us d-flex align-items-center">
+                                        <div class="follow-social">
+                                            <a href="{{ $setting_web->facebook }}"><img
+                                                    src="{{ asset('front/img/news/icon-fb.png') }}" alt=""></a>
+                                        </div>
+                                        <div class="follow-count">
+                                            <span>Facebook</span>
+                                        </div>
                                     </div>
-                                    <div class="follow-count">
-                                        <span>8,045</span>
-                                        <p>Fans</p>
+                                @endif
+                                @if ($setting_web->instagram)
+                                    <div class="follow-us d-flex align-items-center">
+                                        <div class="follow-social">
+                                            <a href="{{ $setting_web->instagram }}"><img
+                                                    src="{{ asset('front/img/news/icon-ins.png') }}" alt=""></a>
+                                        </div>
+                                        <div class="follow-count">
+                                            <span>Instagram</span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="follow-us d-flex align-items-center">
-                                    <div class="follow-social">
-                                        <a href="#"><img src="{{ asset('front/img/news/icon-tw.png') }}"
-                                                alt=""></a>
+                                @endif
+                                @if ($setting_web->twitter)
+                                    <div class="follow-us d-flex align-items-center">
+                                        <div class="follow-social">
+                                            <a href="{{ $setting_web->twitter }}"><img
+                                                    src="{{ asset('front/img/news/icon-tw.png') }}" alt=""></a>
+                                        </div>
+                                        <div class="follow-count">
+                                            <span>Twitter</span>
+                                        </div>
                                     </div>
-                                    <div class="follow-count">
-                                        <span>8,045</span>
-                                        <p>Fans</p>
+                                @endif
+                                @if ($setting_web->youtube)
+                                    <div class="follow-us d-flex align-items-center">
+                                        <div class="follow-social">
+                                            <a href="{{ $setting_web->youtube }}"><img
+                                                    src="{{ asset('front/img/news/icon-yo.png') }}" alt=""></a>
+                                        </div>
+                                        <div class="follow-count">
+                                            <span>Youtube</span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="follow-us d-flex align-items-center">
-                                    <div class="follow-social">
-                                        <a href="#"><img src="{{ asset('front/img/news/icon-ins.png') }}"
-                                                alt=""></a>
-                                    </div>
-                                    <div class="follow-count">
-                                        <span>8,045</span>
-                                        <p>Fans</p>
-                                    </div>
-                                </div>
-                                <div class="follow-us d-flex align-items-center">
-                                    <div class="follow-social">
-                                        <a href="#"><img src="{{ asset('front/img/news/icon-yo.png') }}"
-                                                alt=""></a>
-                                    </div>
-                                    <div class="follow-count">
-                                        <span>8,045</span>
-                                        <p>Fans</p>
-                                    </div>
-                                </div>
+                                @endif
                             </div>
                         </div>
                         <!-- New Poster -->
@@ -219,19 +222,18 @@
 
                             <aside class="single_sidebar_widget newsletter_widget">
                                 <h4 class="widget_title">Subscribe</h4>
-                                <form action="{{ route('subscribe') }}" method="POST">
+                                <form action="{{ route("subscribe") }}" method="POST" >
                                     @csrf
                                     <div class="form-group">
-                                        <input type="email" name="email" class="form-control"
-                                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email'"
-                                            placeholder="Enter email" required="">
+                                        <input type="email" name="email" class="form-control" onfocus="this.placeholder = ''"
+                                            onblur="this.placeholder = 'Enter email'" placeholder="Enter email"
+                                            required="">
                                     </div>
                                     <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
                                         type="submit">Subscribe</button>
                                 </form>
                             </aside>
                         </div>
-
                     </div>
                 </div>
             </div>

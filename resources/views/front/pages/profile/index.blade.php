@@ -48,7 +48,7 @@
                         </div>
                     </div>
                 </div> --}}
-                <div class="row">
+                <div class="row my-5">
                     <div class="col-lg-8">
                         <!-- Trending Tittle -->
                         <div class="about-right mb-90">
