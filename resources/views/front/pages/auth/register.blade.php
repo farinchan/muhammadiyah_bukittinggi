@@ -11,7 +11,7 @@
             z-index: -10000;
         }
         p a{
-            color: #000;
+            color: #0B863E
         }
     </style>
 @endsection
@@ -540,33 +540,24 @@
                     <br>
 
                     <h3>
-                        Kontak
+                        Kontak Kami
                     </h3>
                     <p>
                         <table>
-                            <tr >
-                                <td>
-                                    <i class="fa fa-facebook"></i>
-                                </td>
-                                <td>
-                                    &nbsp; {{ $setting_web->facebook }}
-                                </td>
+                            <tr>
+                                <td><i class="fa-regular fa-envelope"></i></td>
+                                <td>:</td>
+                                <td>{{ $setting_web->email }}</td>
                             </tr>
                             <tr>
-                                <td>
-                                    <i class="fa fa-instagram"></i>
-                                </td>
-                                <td>
-                                    &nbsp; {{ $setting_web->instagram }}
-                                </td>
+                                <td><i class="fa-regular fa-phone"></i></td>
+                                <td>:</td>
+                                <td>{{ $setting_web->phone }}</td>
                             </tr>
                             <tr>
-                                <td>
-                                    <i class="fa fa-twitter"></i>
-                                </td>
-                                <td>
-                                    &nbsp; {{ $setting_web->twitter }}
-                                </td>
+                                <td><i class="fa-regular fa-map"></i></td>
+                                <td>:</td>
+                                <td>{{ $setting_web->address }}</td>
                             </tr>
                         </table>
                     </p>
