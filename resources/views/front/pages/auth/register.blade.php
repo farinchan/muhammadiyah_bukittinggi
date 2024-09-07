@@ -547,14 +547,18 @@
                     </form>
                 </div>
                 <div class="col-md-4">
-                    <h3>
-                        Tentang Kami
-                    </h3>
-                    <p class="about">
-                        {{ strip_tags($setting_web->about) }}
-                    </p>
+
+                   
                     <br>
 
+                    <h3>
+                        Syarat dan Ketentuan
+                    </h3>
+                    <p>
+                        {!! $setting_web->terms_conditions !!}
+                    </p>
+
+                    <br>
                     <h3>
                         Kontak Kami
                     </h3>
@@ -576,14 +580,6 @@
                             <td>{{ $setting_web->address }}</td>
                         </tr>
                     </table>
-                    </p>
-                    <br>
-
-                    <h3>
-                        Syarat dan Ketentuan
-                    </h3>
-                    <p>
-                        {!! $setting_web->terms_conditions !!}
                     </p>
                 </div>
 
