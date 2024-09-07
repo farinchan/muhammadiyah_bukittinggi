@@ -10,6 +10,9 @@
         .icon i {
             z-index: -10000;
         }
+        p a{
+            color: #000;
+        }
     </style>
 @endsection
 @section('content')
@@ -540,9 +543,32 @@
                         Kontak
                     </h3>
                     <p>
-                        <i class="fa fa-phone"></i>&nbsp; {{ $setting_web->phone }} <br>
-                        <i class="fa fa-envelope"></i>&nbsp; {{ $setting_web->email }} <br>
-                        <i class="fa fa-map-marker"></i>&nbsp; {{ $setting_web->address }} <br>
+                        <table>
+                            <tr >
+                                <td>
+                                    <i class="fa fa-facebook"></i>
+                                </td>
+                                <td>
+                                    &nbsp; {{ $setting_web->facebook }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <i class="fa fa-instagram"></i>
+                                </td>
+                                <td>
+                                    &nbsp; {{ $setting_web->instagram }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <i class="fa fa-twitter"></i>
+                                </td>
+                                <td>
+                                    &nbsp; {{ $setting_web->twitter }}
+                                </td>
+                            </tr>
+                        </table>
                     </p>
                     <br>
 
