@@ -10,18 +10,23 @@
         .icon i {
             z-index: -10000;
         }
-        p a{
+
+        p a {
             color: #0B863E
         }
+
         .about {
             text-align: justify;
-            margin : 0;
+            margin: 0;
             padding: 0;
+            line-height: 1.5;
         }
-        td{
+
+        td {
             vertical-align: top;
         }
-        .td_about{
+
+        .td_about {
             padding-right: 10px;
         }
     </style>
@@ -209,7 +214,7 @@
                                 @enderror
                             </div>
                         </div>
-{{-- 
+                        {{-- 
                         <div class="form-group row">
                             <label for="Koordinat" class="col-md-3 col-form-label text-md-right">{{ __('Koordinat') }}
                                 <span class="text-danger">*</span>
@@ -546,7 +551,7 @@
                         Tentang Kami
                     </h3>
                     <p class="about">
-                        {!! $setting_web->about !!}
+                        {{ strip_tags($setting_web->about) }}
                     </p>
                     <br>
 
@@ -554,23 +559,23 @@
                         Kontak Kami
                     </h3>
                     <p>
-                        <table>
-                            <tr>
-                                <td class="td_about" ><i class="fa-regular fa-envelope"></i></td>
-                                <td>:</td>
-                                <td>{{ $setting_web->email }}</td>
-                            </tr>
-                            <tr>
-                                <td><i class="fa-regular fa-phone"></i></td>
-                                <td>:</td>
-                                <td>{{ $setting_web->phone }}</td>
-                            </tr>
-                            <tr>
-                                <td><i class="fa-regular fa-map"></i></td>
-                                <td>:</td>
-                                <td>{{ $setting_web->address }}</td>
-                            </tr>
-                        </table>
+                    <table>
+                        <tr>
+                            <td class="td_about"><i class="fa-regular fa-envelope"></i></td>
+                            <td>:</td>
+                            <td>{{ $setting_web->email }}</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa-regular fa-phone"></i></td>
+                            <td>:</td>
+                            <td>{{ $setting_web->phone }}</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa-regular fa-map"></i></td>
+                            <td>:</td>
+                            <td>{{ $setting_web->address }}</td>
+                        </tr>
+                    </table>
                     </p>
                     <br>
 
