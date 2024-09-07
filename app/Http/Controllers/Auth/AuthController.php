@@ -129,7 +129,7 @@ class AuthController extends Controller
         $user->ktam = $request->ktam;
         $user->nbm = $request->nbm;
         $user->job = json_encode($request->job);
-        $user->kepakaran = $request->kepakaran;
+        $user->kepakaran = json_encode($request->kepakaran);
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
         $user->save();

@@ -393,6 +393,8 @@
                                             <option value="Fiqih">Fiqih</option>
                                             <option value="Aqidah">Aqidah</option>
                                             <option value="Tarikh">Tarikh</option>
+                                            <option value="Akhlak">Akhlak</option>
+                                            <option value="Tasawuf">Tasawuf</option>
                                         </select>
                                     </div>
                                     @error('kepakaran')
