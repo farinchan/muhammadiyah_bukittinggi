@@ -35,7 +35,7 @@
     <main class="my-5">
         <div class="container ">
             <div class="row">
-                <div class="col-md-9">
+                <div class="col-md-8">
                     <form method="POST" action="{{ route('register.process') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="text-center pb-5">
@@ -546,7 +546,7 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <h3>
                         Tentang Kami
                     </h3>
