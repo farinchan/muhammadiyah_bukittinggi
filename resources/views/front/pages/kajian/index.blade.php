@@ -45,14 +45,16 @@
                                                 src="{{ Storage::url($kajian->thumbnail) }}" alt="Event Image">
                                         </div>
                                         <div class="col-md-7">
-                                            <div class="card-body"><a href="{{ route('kajian.detail', $kajian->slug) }}
+                                            <div class="card-body"><a
+                                                    href="{{ route('kajian.detail', $kajian->slug) }}
                                                 ">
 
                                                     <h5 class="card-title">{{ $kajian->title }}</h5>
                                                 </a>
                                                 <ul class="blog-info-link">
                                                     <li>
-                                                        <a href="{{ route("keanggotaan.detail", $kajian->user?->id) }}"><i class="fa fa-user"></i>
+                                                        <a href="{{ route('keanggotaan.detail', $kajian->user?->id) }}"><i
+                                                                class="fa fa-user"></i>
                                                             {{ $kajian->user->name }}</a>
                                                     </li>
 
@@ -68,7 +70,9 @@
                                                 <p class="card-text">
                                                     {{ Str::limit(strip_tags($kajian->content), 160, '...') }}
                                                 </p>
-                                                <p class="card-text"><small class="text-muted">{{ $kajian->created_at->diffForHumans() }}</small></p>
+                                                <p class="card-text"><small
+                                                        class="text-muted">{{ $kajian->created_at->diffForHumans() }}</small>
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -79,22 +83,68 @@
 
                         <nav class="blog-pagination justify-content-center d-flex">
                             <ul class="pagination">
-                                <li class="page-item">
-                                    <a href="#" class="page-link" aria-label="Previous">
-                                        <i class="ti-angle-left"></i>
-                                    </a>
-                                </li>
-                                <li class="page-item">
-                                    <a href="#" class="page-link">1</a>
-                                </li>
-                                <li class="page-item active">
-                                    <a href="#" class="page-link">2</a>
-                                </li>
-                                <li class="page-item">
-                                    <a href="#" class="page-link" aria-label="Next">
-                                        <i class="ti-angle-right"></i>
-                                    </a>
-                                </li>
+                                @if ($list_kajian->onFirstPage())
+                                    <li class="page-item disabled">
+                                        <a href="#" class="page-link" aria-label="Previous">
+                                            <i class="ti-angle-left"></i>
+                                        </a>
+                                    </li>
+                                @else
+                                    <li class="page-item">
+                                        <a href="{{ route('kajian', ['page' => $list_kajian->currentPage() - 1, 'q' => request()->q]) }}"
+                                            class="page-link" aria-label="Previous">
+                                            <i class="ti-angle-left"></i>
+                                        </a>
+                                    </li>
+                                @endif
+
+                                @php
+                                    // Menghitung halaman pertama dan terakhir yang akan ditampilkan
+                                    $start = max($list_kajian->currentPage() - 2, 1);
+                                    $end = min($start + 4, $list_kajian->lastPage());
+                                @endphp
+
+                                @if ($start > 1)
+                                    <!-- Menampilkan tanda elipsis jika halaman pertama tidak termasuk dalam tampilan -->
+                                    <li class="page-item">
+                                        <a class="page-link">...</a>
+                                    </li>
+                                @endif
+
+                                @foreach ($list_kajian->getUrlRange($start, $end) as $page => $url)
+                                    @if ($page == $list_kajian->currentPage())
+                                        <li class="page-item active">
+                                            <a href="#" class="page-link">{{ $page }}</a>
+                                        </li>
+                                    @else
+                                        <li class="page-item"><a class="page-link"
+                                                href="{{ route('kajian', ['page' => $page, 'q' => request()->q]) }}">{{ $page }}</a>
+                                        </li>
+                                    @endif
+                                @endforeach
+
+                                @if ($end < $list_kajian->lastPage())
+                                    <!-- Menampilkan tanda elipsis jika halaman terakhir tidak termasuk dalam tampilan -->
+                                    <li class="page-item">
+                                        <a class="page-link">...</a>
+                                    </li>
+                                @endif
+
+                                @if ($list_kajian->hasMorePages())
+                                    <li class="page-item">
+                                        <a class="page-link"
+                                            href="{{ route('kajian', ['page' => $list_kajian->currentPage() + 1, 'q' => request()->q]) }}"
+                                            aria-label="Next">
+                                            <i class="ti-angle-right"></i>
+                                        </a>
+                                    </li>
+                                @else
+                                    <li class="page-item disabled">
+                                        <a href="#" class="page-link" aria-label="Next">
+                                            <i class="ti-angle-right"></i>
+                                        </a>
+                                    </li>
+                                @endif
                             </ul>
                         </nav>
                     </div>
@@ -167,12 +217,12 @@
 
                         <aside class="single_sidebar_widget newsletter_widget">
                             <h4 class="widget_title">Subscribe</h4>
-                            <form action="{{ route("subscribe") }}" method="POST" >
+                            <form action="{{ route('subscribe') }}" method="POST">
                                 @csrf
                                 <div class="form-group">
-                                    <input type="email" name="email" class="form-control" onfocus="this.placeholder = ''"
-                                        onblur="this.placeholder = 'Enter email'" placeholder="Enter email"
-                                        required="">
+                                    <input type="email" name="email" class="form-control"
+                                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email'"
+                                        placeholder="Enter email" required="">
                                 </div>
                                 <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
                                     type="submit">Subscribe</button>

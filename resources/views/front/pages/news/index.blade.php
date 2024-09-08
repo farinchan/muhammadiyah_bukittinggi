@@ -68,31 +68,66 @@
                             <ul class="pagination">
 
                                 @if ($list_news->onFirstPage())
-                                    <li class="page-item">
+                                    <li class="page-item disabled">
                                         <a href="#" class="page-link" aria-label="Previous">
                                             <i class="ti-angle-left"></i>
                                         </a>
                                     </li>
                                 @else
                                     <li class="page-item">
-                                        <a href="{{ route("news", ['page' => $list_news->currentPage() - 1, 'q' => request()->q]) }}" class="page-link" aria-label="Previous">
+                                        <a href="{{ route('news', ['page' => $list_news->currentPage() - 1, 'q' => request()->q]) }}"
+                                            class="page-link" aria-label="Previous">
                                             <i class="ti-angle-left"></i>
                                         </a>
                                     </li>
                                 @endif
 
+                                @php
+                                    // Menghitung halaman pertama dan terakhir yang akan ditampilkan
+                                    $start = max($list_news->currentPage() - 2, 1);
+                                    $end = min($start + 4, $list_news->lastPage());
+                                @endphp
 
-                                <li class="page-item">
-                                    <a href="#" class="page-link">1</a>
-                                </li>
-                                <li class="page-item active">
-                                    <a href="#" class="page-link">2</a>
-                                </li>
-                                <li class="page-item">
-                                    <a href="#" class="page-link" aria-label="Next">
-                                        <i class="ti-angle-right"></i>
-                                    </a>
-                                </li>
+                                @if ($start > 1)
+                                    <!-- Menampilkan tanda elipsis jika halaman pertama tidak termasuk dalam tampilan -->
+                                    <li class="page-item">
+                                        <a class="page-link">...</a>
+                                    </li>
+                                @endif
+
+                                @foreach ($list_news->getUrlRange($start, $end) as $page => $url)
+                                    @if ($page == $list_news->currentPage())
+                                        <li class="page-item active">
+                                            <a href="#" class="page-link">{{ $page }}</a>
+                                        </li>
+                                    @else
+                                        <li class="page-item"><a class="page-link"
+                                                href="{{ route('news', ['page' => $page, 'q' => request()->q]) }}">{{ $page }}</a>
+                                        </li>
+                                    @endif
+                                @endforeach
+
+                                @if ($end < $list_news->lastPage())
+                                    <!-- Menampilkan tanda elipsis jika halaman terakhir tidak termasuk dalam tampilan -->
+                                    <li class="page-item">
+                                        <a class="page-link">...</a>
+                                    </li>
+                                @endif
+
+                                @if ($list_news->hasMorePages())
+                                    <li class="page-item">
+                                        <a class="page-link"
+                                            href="{{ route('news', ['page' => $list_news->currentPage() + 1, 'q' => request()->q]) }}" aria-label="Next">
+                                            <i class="ti-angle-right"></i>
+                                        </a>
+                                    </li>
+                                @else
+                                    <li class="page-item disabled">
+                                        <a href="#" class="page-link" aria-label="Next">
+                                            <i class="ti-angle-right"></i>
+                                        </a>
+                                    </li>
+                                @endif
                             </ul>
                         </nav>
                     </div>
