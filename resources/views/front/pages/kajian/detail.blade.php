@@ -26,10 +26,14 @@
                         <div class="blog_details">
                             <h2>{{ $kajian->title }}</h2>
                             <ul class="blog-info-link mt-3 mb-4">
-                                <li><a href="#"><i class="fa fa-user"></i> {{ $kajian->user->name }}</a></li>
+                                <li><a href="{{ route("keanggotaan.detail", $kajian->user?->id) }}"><i class="fa fa-user"></i> {{ $kajian->user->name }}</a></li>
                                 </li>
                                 <li><a href="#"><i class="fa fa-comments"></i> {{ $kajian->kajianComment->count() }}
                                         Komentar</a></li>
+                                        <li><a href="#"><i class="fa fa-eye"></i>
+                                            {{ $kajian->kajianViewer->count() }}
+                                            Kali Dilihat</a>
+                                    </li>
                             </ul>
 
                             <p>
@@ -39,17 +43,18 @@
                     </div>
                     <div class="navigation-top">
                         <div class="d-sm-flex justify-content-between text-center">
-                            <p class="like-info"><span class="align-middle"><i class="fa fa-heart"></i></span> Lily and 4
-                                people like this</p>
+                            <p class="like-info"><span class="align-middle"><i class="fa fa-eye"></i></span>
+                                {{ $kajian->kajianViewer->count() }} orang telah melihat kajian ini
+                            </p>
                             <div class="col-sm-4 text-center my-2 my-sm-0">
                                 <!-- <p class="comment-count"><span class="align-middle"><i class="fa fa-comment"></i></span> 06 Comments</p> -->
                             </div>
                             <ul class="social-icons">
                                 <li>Share:</li>
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-dribbble"></i></a></li>
-                                <li><a href="#"><i class="fab fa-behance"></i></a></li>
+                                <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ route('kajian.detail', $kajian->slug) }}&t={{ $kajian->title }}"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href= "https://twitter.com/intent/tweet?text={{ $kajian->title }}&url={{ route('kajian.detail', $kajian->slug) }}&via=twitter_handle"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="https://wa.me/?text={{ route('kajian.detail', $kajian->slug) }}"><i class="fab fa-whatsapp"></i></a></li>
+                                <li><a href="https://www.linkedin.com/shareArticle?mini=true&url={{ route('kajian.detail', $kajian->slug) }}&title={{ $kajian->title }}&summary=&source=" target="_new"><i class="fab fa-linkedin-in"></i></a></li>
                             </ul>
                         </div>
                         <div class="navigation-area">

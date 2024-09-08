@@ -52,7 +52,7 @@
                                                 </a>
                                                 <ul class="blog-info-link">
                                                     <li>
-                                                        <a href="#"><i class="fa fa-user"></i>
+                                                        <a href="{{ route("keanggotaan.detail", $kajian->user?->id) }}"><i class="fa fa-user"></i>
                                                             {{ $kajian->user->name }}</a>
                                                     </li>
 

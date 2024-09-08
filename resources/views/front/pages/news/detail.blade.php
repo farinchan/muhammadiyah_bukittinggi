@@ -27,10 +27,10 @@
                         <div class="blog_details">
                             <h2>{{ $news->title }}</h2>
                             <ul class="blog-info-link mt-3 mb-4">
-                                <li><a href="#"><i class="fa fa-user"></i> {{ $news->user->name }}</a></li>
-                                <li><a href="#"><i class="fas fa-tags"></i> {{ $news->category->name }}</a>
+                                <li><a href="{{ route('keanggotaan.detail', $news->user?->id) }}"><i class="fa fa-user"></i> {{ $news->user?->name }}</a></li>
+                                <li><a href="{{ route('news.category', $news->category?->slug) }}"><i class="fas fa-tags"></i> {{ $news->category?->name }}</a>
                                 </li>
-                                <li><a href="#"><i class="fa fa-comments"></i> {{ $news->comments->count() }}
+                                <li><a href="#"><i class="fa fa-comments"></i> {{ $news->comments?->count() }}
                                         Komentar</a></li>
                                         <li><a href="#"><i class="fa fa-eye"></i>
                                             {{ $news->viewers->count() }}
@@ -45,17 +45,18 @@
                     </div>
                     <div class="navigation-top">
                         <div class="d-sm-flex justify-content-between text-center">
-                            <p class="like-info"><span class="align-middle"><i class="fa fa-heart"></i></span> Lily and 4
-                                people like this</p>
+                            <p class="like-info"><span class="align-middle"><i class="fa fa-eye"></i></span>
+                                {{ $news->viewers->count() }} orang telah melihat berita ini
+                            </p>
                             <div class="col-sm-4 text-center my-2 my-sm-0">
                                 <!-- <p class="comment-count"><span class="align-middle"><i class="fa fa-comment"></i></span> 06 Comments</p> -->
                             </div>
                             <ul class="social-icons">
                                 <li>Share:</li>
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-dribbble"></i></a></li>
-                                <li><a href="#"><i class="fab fa-behance"></i></a></li>
+                                <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ route('news.detail', $news->slug) }}&t={{ $news->title }}"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href= "https://twitter.com/intent/tweet?text={{ $news->title }}&url={{ route('news.detail', $news->slug) }}&via=twitter_handle"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="https://wa.me/?text={{ route('news.detail', $news->slug) }}"><i class="fab fa-whatsapp"></i></a></li>
+                                <li><a href="https://www.linkedin.com/shareArticle?mini=true&url={{ route('news.detail', $news->slug) }}&title={{ $news->title }}&summary=&source=" target="_new"><i class="fab fa-linkedin-in"></i></a></li>
                             </ul>
                         </div>
                         <div class="navigation-area">
@@ -112,16 +113,16 @@
                     </div>
                     <div class="blog-author">
                         <div class="media align-items-center">
-                            <img src=" @if ($news->user->photo) {{ Storage::url($news->user->photo) }} @else
-                                https://ui-avatars.com/api/?name={{ $news->user->name }} @endif
+                            <img src=" @if ($news->user?->photo) {{ Storage::url($news->user?->photo) }} @else
+                                https://ui-avatars.com/api/?name={{ $news->user?->name }} @endif
                             "
                                 alt="">
                             <div class="media-body">
-                                <a href="#">
-                                    <h4>{{ $news->user->name }}&nbsp; <span class="badge badge-primary">Admin</span></h4>
+                                <a href="{{ route('keanggotaan.detail', $news->user?->id) }}">
+                                    <h4>{{ $news->user?->name }}&nbsp; <span class="badge badge-primary">Admin</span></h4>
                                 </a>
                                 <p>
-                                    {{ $news->user->keanggotaan }}
+                                    {{ $news->user?->keanggotaan }}
                                 </p>
                             </div>
                         </div>
@@ -134,7 +135,7 @@
                                 <div class="single-comment justify-content-between d-flex">
                                     <div class="user justify-content-between d-flex">
                                         <div class="thumb">
-                                            <img src="@if ($comment->user_id) {{ $comment->user->photo ? Storage::url($comment->user->photo) : 'https://ui-avatars.com/api/?background=000C32&color=fff&name=' . $comment->user->name }} @else https://ui-avatars.com/api/?background=000C32&color=fff&name={{ $comment->name }} @endif"
+                                            <img src="@if ($comment->user_id) {{ $comment->user?->photo ? Storage::url($comment->user?->photo) : 'https://ui-avatars.com/api/?background=000C32&color=fff&name=' . $comment->user?->name }} @else https://ui-avatars.com/api/?background=000C32&color=fff&name={{ $comment->name }} @endif"
                                                 alt="">
                                         </div>
                                         <div class="desc">
@@ -164,7 +165,7 @@
                                                             <div class="user justify-content-between d-flex">
                                                                 <div class="thumb">
                                                                     {{-- @dd($comment->user()) --}}
-                                                                    <img src="@if ($children->user_id) {{ $children->user->photo ? Storage::url($children->user->photo) : 'https://ui-avatars.com/api/?background=000C32&color=fff&name=' . $children->user->name }} @else https://ui-avatars.com/api/?background=000C32&color=fff&name={{ $children->name }} @endif"
+                                                                    <img src="@if ($children->user_id) {{ $children->user?->photo ? Storage::url($children->user?->photo) : 'https://ui-avatars.com/api/?background=000C32&color=fff&name=' . $children->user?->name }} @else https://ui-avatars.com/api/?background=000C32&color=fff&name={{ $children->name }} @endif"
                                                                         alt="">
                                                                 </div>
                                                                 <div class="desc">

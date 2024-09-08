@@ -46,8 +46,8 @@
                                     </a>
                                     <p>{{ Str::limit(strip_tags($news->content), 170, '...') }}</p>
                                     <ul class="blog-info-link">
-                                        <li><a href="#"><i class="fa fa-user"></i> {{ $news->user->name }}</a></li>
-                                        <li><a href="#"><i class="fas fa-tags"></i> {{ $news->category->name }}</a>
+                                        <li><a href="{{ route('keanggotaan.detail', $news->user?->id) }}"><i class="fa fa-user"></i> {{ $news->user?->name }}</a></li>
+                                        <li><a href="{{ route('news.category', $news->category?->slug) }}"><i class="fas fa-tags"></i> {{ $news->category?->name }}</a>
                                         </li>
                                         <li><a href="#"><i class="fa fa-comments"></i> {{ $news->comments->count() }}
                                                 Komentar</a></li>
