@@ -64,6 +64,10 @@
                                     {{ Auth::user()->name }}
                                 </a>
                             @else
+                                <a href="{{ route('register') }}" class="genric-btn primary-border circle">
+                                    <i class="fa-solid fa-user-plus"></i></i> &nbsp; &nbsp;
+                                    Register
+                                </a>&nbsp;&nbsp;
                                 <a href="{{ route('login') }}" class="genric-btn primary-border circle">
                                     <i class="fa-regular fa-right-to-bracket"></i> &nbsp; &nbsp;
                                     Login

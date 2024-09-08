@@ -46,16 +46,18 @@
                                     </a>
                                     <p>{{ Str::limit(strip_tags($news->content), 170, '...') }}</p>
                                     <ul class="blog-info-link">
-                                        <li><a href="{{ route('keanggotaan.detail', $news->user?->id) }}"><i class="fa fa-user"></i> {{ $news->user?->name }}</a></li>
-                                        <li><a href="{{ route('news.category', $news->category?->slug) }}"><i class="fas fa-tags"></i> {{ $news->category?->name }}</a>
+                                        <li><a href="{{ route('keanggotaan.detail', $news->user?->id) }}"><i
+                                                    class="fa fa-user"></i> {{ $news->user?->name }}</a></li>
+                                        <li><a href="{{ route('news.category', $news->category?->slug) }}"><i
+                                                    class="fas fa-tags"></i> {{ $news->category?->name }}</a>
                                         </li>
                                         <li><a href="#"><i class="fa fa-comments"></i> {{ $news->comments->count() }}
                                                 Komentar</a></li>
-                                                
-                                                    <li><a href="#"><i class="fa fa-eye"></i>
-                                                        {{ $news->viewers->count() }}
-                                                        Kali Dilihat</a>
-                                                </li>
+
+                                        <li><a href="#"><i class="fa fa-eye"></i>
+                                                {{ $news->viewers->count() }}
+                                                Kali Dilihat</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </article>
@@ -64,11 +66,22 @@
 
                         <nav class="blog-pagination justify-content-center d-flex">
                             <ul class="pagination">
-                                <li class="page-item">
-                                    <a href="#" class="page-link" aria-label="Previous">
-                                        <i class="ti-angle-left"></i>
-                                    </a>
-                                </li>
+
+                                @if ($list_news->onFirstPage())
+                                    <li class="page-item">
+                                        <a href="#" class="page-link" aria-label="Previous">
+                                            <i class="ti-angle-left"></i>
+                                        </a>
+                                    </li>
+                                @else
+                                    <li class="page-item">
+                                        <a href="{{ route("news", ['page' => $list_news->currentPage() - 1, 'q' => request()->q]) }}" class="page-link" aria-label="Previous">
+                                            <i class="ti-angle-left"></i>
+                                        </a>
+                                    </li>
+                                @endif
+
+
                                 <li class="page-item">
                                     <a href="#" class="page-link">1</a>
                                 </li>
@@ -166,12 +179,12 @@
 
                         <aside class="single_sidebar_widget newsletter_widget">
                             <h4 class="widget_title">Subscribe</h4>
-                            <form action="{{ route("subscribe") }}" method="POST" >
+                            <form action="{{ route('subscribe') }}" method="POST">
                                 @csrf
                                 <div class="form-group">
-                                    <input type="email" name="email" class="form-control" onfocus="this.placeholder = ''"
-                                        onblur="this.placeholder = 'Enter email'" placeholder="Enter email"
-                                        required="">
+                                    <input type="email" name="email" class="form-control"
+                                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email'"
+                                        placeholder="Enter email" required="">
                                 </div>
                                 <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
                                     type="submit">Subscribe</button>
