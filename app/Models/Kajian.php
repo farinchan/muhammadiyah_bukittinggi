@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Kajian extends Model
 {
@@ -25,5 +26,14 @@ class Kajian extends Model
     public function kajianComment()
     {
         return $this->hasMany(KajianComment::class, 'kajian_id');
+    }
+
+    public function getThumbnail()
+    {
+        if ($this->thumbnail) {
+            return Storage::url($this->thumbnail);
+        }
+
+        return asset('images/default.png');
     }
 }

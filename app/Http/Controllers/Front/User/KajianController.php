@@ -78,7 +78,7 @@ class KajianController extends Controller
         $kajian->title = $request->title;
         $kajian->slug = Str::slug($request->title).'-'.rand(1000, 9999);
         $kajian->content = $request->content;
-        $kajian->tags = $request->tags ? implode(", ", array_column(json_decode($request->tags), 'value')) : null;
+        $kajian->tags = $request->tags ? implode(", ", array_column(json_decode($request->tags??"['content']"), 'value')) : null;
 
         if ($request->hasFile('thumbnail')) {
             $thumbnail = $request->file('thumbnail');
@@ -145,7 +145,7 @@ class KajianController extends Controller
         $kajian->title = $request->title;
         $kajian->slug = Str::slug($request->title).'-'.rand(1000, 9999);
         $kajian->content = $request->content;
-        $kajian->tags = $request->tags ? implode(", ", array_column(json_decode($request->tags), 'value')) : null;
+        $kajian->tags = $request->tags ? implode(", ", array_column(json_decode($request->tags??"['content']"), 'value')) : null;
 
         if ($request->hasFile('thumbnail')) {
             $thumbnail = $request->file('thumbnail');

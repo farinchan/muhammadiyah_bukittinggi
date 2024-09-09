@@ -89,17 +89,17 @@
                                                     <small style="color: #6c757d; margin-bottom: 10px;">
                                                         <i class="fa-regular fa-comments"></i>
                                                         {{ $kajian->kajianComment->count() }} Komentar |
-                                                        <i class="fa-regular fa-eye"></i> Dilihat |
+                                                        <i class="fa-regular fa-eye"></i> {{ $kajian->kajianViewer->count() }} Dilihat |
                                                         <i class="fa-regular fa-calendar"></i>
                                                         {{ $kajian->created_at->format('d M Y') }}
                                                     </small>
                                                     <p>{{ Str::limit(strip_tags($kajian->content), 200) }}</p>
                                                 </td>
                                                 <td>
-                                                    <a style="padding: 0 15px;" href="#"
+                                                    <a style="padding: 0 15px;" href="{{ route('user.kajian.edit', $kajian->id) }}"
                                                         class="genric-btn warning-border circle"><i
                                                             class="fa-regular fa-pen-to-square"></i></a>
-                                                    <a style="padding: 0 15px;" href="#"
+                                                    <a style="padding: 0 15px;" href="#" data-toggle="modal" data-target="#deleteModal{{ $kajian->id }}"
                                                         class="genric-btn danger-border circle"><i
                                                             class="fa-solid fa-trash-can"></i></a>
                                                 </td>
@@ -115,6 +115,31 @@
         </div>
 
     </main>
+
+    @foreach ($list_kajian as $kajian)
+        <div class="modal fade" id="deleteModal{{ $kajian->id }}" tabindex="-1" aria-labelledby="deleteModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h6 class="modal-title" id="deleteModalLabel">Hapus Kajian</h6>
+                    </div>
+                    <div class="modal-body text-start">
+                        Apakah Anda yakin ingin menghapus kajian ini? <br>
+                        <strong>{{ $kajian->title }}</strong>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="genric-btn info-border " data-dismiss="modal">Batal</button>
+                        <form action="{{ route('user.kajian.destroy', $kajian->id) }}" method="POST">
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit" class="genric-btn danger-border radius">Hapus</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
 @endsection
 
 @section('scripts')

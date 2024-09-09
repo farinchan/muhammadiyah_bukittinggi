@@ -93,9 +93,9 @@
     <script>
         
         if ($(window).width() < 768) {
-            $('#login_mobile').show();
+            $('#login_mobile').css('display', 'block');
         } else {
-            $('#login_mobile').hide();
+            $('#login_mobile').css('display', 'none');
         }
     </script>
 

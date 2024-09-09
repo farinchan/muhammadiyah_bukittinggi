@@ -133,7 +133,7 @@
                                         </li>
                                         <li><a href="{{ route('contact') }}">Kontak</a></li>
 
-                                        <li id="login_mobile">
+                                        <li id="login_mobile" style="display: none;">
                                             @auth
                                                 <a href="
                                                 @if (Auth::user()->hasRole('admin')) {{ route('admin.dashboard') }}
