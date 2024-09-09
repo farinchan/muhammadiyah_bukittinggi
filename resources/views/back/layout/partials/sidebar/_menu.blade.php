@@ -200,7 +200,7 @@
                             class="menu-heading fw-bold text-uppercase fs-7">Administrasi</span>
                     </div>
                 </div>
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                <div data-kt-menu-trigger="click" class="menu-item menu-accordion @if(request()->routeIs('admin.letter.*')) here show @endif">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <i class="ki-duotone ki-directbox-default fs-2">
@@ -215,7 +215,7 @@
                     </span>
                     <div class="menu-sub menu-sub-accordion">
                         <div class="menu-item">
-                            <a class="menu-link" href="{{ route('admin.user.index') }}">
+                            <a class="menu-link @if ( request()->routeIs('admin.letter.in') ) active @endif" href="{{ route('admin.letter.in') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -223,7 +223,7 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="{{ route('admin.user.register') }}">
+                            <a class="menu-link @if ( request()->routeIs('admin.letter.out') ) active @endif" href="{{ route('admin.letter.out') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>

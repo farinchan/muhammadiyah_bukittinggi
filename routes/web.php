@@ -24,6 +24,7 @@ use App\Http\Controllers\Back\PengumumanController as BackPengumumanController;
 use App\Http\Controllers\Back\KajianController as BackKajianController;
 use App\Http\Controllers\Back\GalleryController as BackGalleryController;
 use App\Http\Controllers\Back\AssetController as BackAssetController;
+use App\Http\Controllers\Back\LetterController as BackLetterController;
 use App\Http\Controllers\Back\inboxController as BackInboxController;
 use App\Http\Controllers\Back\SettingController as BackSettingController;
 use App\Http\Controllers\Back\ProfileController as BackProfileController;
@@ -170,6 +171,22 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->grou
         Route::put('/edit/{id}', [BackAssetController::class, 'assetUpdate'])->name('update');
         Route::delete('/delete/{id}', [BackAssetController::class, 'assetDestroy'])->name('destroy');
 
+    });
+
+    Route::prefix('letter')->name('letter.')->group(function () {
+        Route::get('/in', [BackLetterController::class, 'letterIn'])->name('in');
+        Route::get('/in/create', [BackLetterController::class, 'letterInCreate'])->name('in.create');
+        Route::post('/in/create', [BackLetterController::class, 'letterInStore'])->name('in.store');
+        Route::get('/in/edit/{id}', [BackLetterController::class, 'letterInEdit'])->name('in.edit');
+        Route::put('/in/edit/{id}', [BackLetterController::class, 'letterInUpdate'])->name('in.update');
+        Route::delete('/in/delete/{id}', [BackLetterController::class, 'letterInDelete'])->name('in.destroy');
+
+        Route::get('/out', [BackLetterController::class, 'letterOut'])->name('out');
+        Route::get('/out/create', [BackLetterController::class, 'letterOutCreate'])->name('out.create');
+        Route::post('/out/create', [BackLetterController::class, 'letterOutStore'])->name('out.store');
+        Route::get('/out/edit/{id}', [BackLetterController::class, 'letterOutEdit'])->name('out.edit');
+        Route::put('/out/edit/{id}', [BackLetterController::class, 'letterOutUpdate'])->name('out.update');
+        Route::delete('/out/delete/{id}', [BackLetterController::class, 'letterOutDelete'])->name('out.destroy');
     });
 
     Route::prefix('setting')->name('setting.')->group(function () {

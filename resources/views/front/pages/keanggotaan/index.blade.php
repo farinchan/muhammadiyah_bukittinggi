@@ -16,12 +16,12 @@
 @section('styles')
     <style>
         /* .card {
-                    margin-bottom: 20px;
-                    border: none;
-                    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
-                    transition: all 0.3s;
-                    border: none;
-                } */
+                        margin-bottom: 20px;
+                        border: none;
+                        box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+                        transition: all 0.3s;
+                        border: none;
+                    } */
 
         .card {
             border: none;
@@ -143,22 +143,68 @@
 
                         <nav class="blog-pagination justify-content-center d-flex">
                             <ul class="pagination">
-                                <li class="page-item">
-                                    <a href="#" class="page-link" aria-label="Previous">
-                                        <i class="ti-angle-left"></i>
-                                    </a>
-                                </li>
-                                <li class="page-item">
-                                    <a href="#" class="page-link">1</a>
-                                </li>
-                                <li class="page-item active">
-                                    <a href="#" class="page-link">2</a>
-                                </li>
-                                <li class="page-item">
-                                    <a href="#" class="page-link" aria-label="Next">
-                                        <i class="ti-angle-right"></i>
-                                    </a>
-                                </li>
+                                @if ($users->onFirstPage())
+                                    <li class="page-item disabled">
+                                        <a href="#" class="page-link" aria-label="Previous">
+                                            <i class="ti-angle-left"></i>
+                                        </a>
+                                    </li>
+                                @else
+                                    <li class="page-item">
+                                        <a href="{{ route('keanggotaan', ['page' => $users->currentPage() - 1, 'nama' => request()->nama, 'keanggotaan' => request()->keanggotaan]) }}"
+                                            class="page-link" aria-label="Previous">
+                                            <i class="ti-angle-left"></i>
+                                        </a>
+                                    </li>
+                                @endif
+
+                                @php
+                                    // Menghitung halaman pertama dan terakhir yang akan ditampilkan
+                                    $start = max($users->currentPage() - 2, 1);
+                                    $end = min($start + 4, $users->lastPage());
+                                @endphp
+
+                                @if ($start > 1)
+                                    <!-- Menampilkan tanda elipsis jika halaman pertama tidak termasuk dalam tampilan -->
+                                    <li class="page-item">
+                                        <a class="page-link">...</a>
+                                    </li>
+                                @endif
+
+                                @foreach ($users->getUrlRange($start, $end) as $page => $url)
+                                    @if ($page == $users->currentPage())
+                                        <li class="page-item active">
+                                            <a href="#" class="page-link">{{ $page }}</a>
+                                        </li>
+                                    @else
+                                        <li class="page-item"><a class="page-link"
+                                                href="{{ route('keanggotaan', ['page' => $page, 'nama' => request()->nama, 'keanggotaan' => request()->keanggotaan]) }}">{{ $page }}</a>
+                                        </li>
+                                    @endif
+                                @endforeach
+
+                                @if ($end < $users->lastPage())
+                                    <!-- Menampilkan tanda elipsis jika halaman terakhir tidak termasuk dalam tampilan -->
+                                    <li class="page-item">
+                                        <a class="page-link">...</a>
+                                    </li>
+                                @endif
+
+                                @if ($users->hasMorePages())
+                                    <li class="page-item">
+                                        <a class="page-link"
+                                            href="{{ route('keanggotaan', ['page' => $users->currentPage() + 1, 'nama' => request()->nama, 'keanggotaan' => request()->keanggotaan]) }}"
+                                            aria-label="Next">
+                                            <i class="ti-angle-right"></i>
+                                        </a>
+                                    </li>
+                                @else
+                                    <li class="page-item disabled">
+                                        <a href="#" class="page-link" aria-label="Next">
+                                            <i class="ti-angle-right"></i>
+                                        </a>
+                                    </li>
+                                @endif
                             </ul>
                         </nav>
 
@@ -222,12 +268,12 @@
 
                             <aside class="single_sidebar_widget newsletter_widget">
                                 <h4 class="widget_title">Subscribe</h4>
-                                <form action="{{ route("subscribe") }}" method="POST" >
+                                <form action="{{ route('subscribe') }}" method="POST">
                                     @csrf
                                     <div class="form-group">
-                                        <input type="email" name="email" class="form-control" onfocus="this.placeholder = ''"
-                                            onblur="this.placeholder = 'Enter email'" placeholder="Enter email"
-                                            required="">
+                                        <input type="email" name="email" class="form-control"
+                                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email'"
+                                            placeholder="Enter email" required="">
                                     </div>
                                     <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
                                         type="submit">Subscribe</button>
