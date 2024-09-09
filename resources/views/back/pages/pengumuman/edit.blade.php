@@ -103,6 +103,19 @@
                                     <div class="text-danger fs-7">{{ $message }}</div>
                                 @enderror
                             </div>
+                            <div class="mb-10">
+                                <label class="form-label">File</label>
+                                <input type="file" name="file" class="form-control mb-2" accept=".pdf" />
+                                @error('file')
+                                    <div class="text-danger fs-7">{{ $message }}</div>
+                                @enderror
+                                @if ($pengumuman->file)
+                                    file saat ini: <a href="{{ Storage::url($pengumuman->file) }}" target="_blank">{{ $pengumuman->file }}</a>, kosongkan jika tidak ingin mengubah file
+                                @endif
+                                <div class="text-muted fs-7">
+                                    File yang diupload harus berupa file PDF
+                                </div>
+                            </div>
                             <div>
                                 <label class="form-label">Meta Tag Keywords</label>
                                 <input id="keyword_tagify" name="meta_keywords"

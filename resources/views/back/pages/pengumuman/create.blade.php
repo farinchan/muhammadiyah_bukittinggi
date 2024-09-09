@@ -96,7 +96,7 @@
                                 @enderror
                             </div>
                             <div class="mb-10">
-                                <label class="form-label">Content</label>
+                                <label class="form-label required">Content</label>
                                 <div id="quill_content" name="kt_ecommerce_add_category_description"
                                     class="min-h-300px mb-2">
                                     {!! old('content') !!}
@@ -105,6 +105,16 @@
                                 @error('content')
                                     <div class="text-danger fs-7">{{ $message }}</div>
                                 @enderror
+                            </div>
+                            <div class="mb-10">
+                                <label class="form-label">File</label>
+                                <input type="file" name="file" class="form-control mb-2" accept=".pdf" />
+                                @error('file')
+                                    <div class="text-danger fs-7">{{ $message }}</div>
+                                @enderror
+                                <div class="text-muted fs-7">
+                                    File yang diupload harus berupa file PDF
+                                </div>
                             </div>
                             <div>
                                 <label class="form-label">Meta Tag Keywords</label>

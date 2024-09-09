@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Pengumuman;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Str;
@@ -42,6 +43,7 @@ class PengumumanController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'title' => 'required',
             'content' => 'required',
+            'file' => 'nullable|file|mimes:pdf',
             'meta_keywords' => 'nullable',
             'is_active' => 'required',
         ], [
@@ -49,6 +51,7 @@ class PengumumanController extends Controller
             'image' => 'File harus berupa gambar',
             'mimes' => 'File harus berupa gambar',
             'max' => 'Ukuran file maksimal 2MB',
+            'file' => 'File harus berupa pdf',
         ]);
 
         if ($validator->fails()) {
@@ -62,7 +65,7 @@ class PengumumanController extends Controller
         $pengumuman->content = $request->content;
         $pengumuman->meta_title = $request->title;
         $pengumuman->meta_description = Str::limit(strip_tags($request->content), 150);
-        $pengumuman->meta_keywords = implode(", ", array_column(json_decode($request->meta_keywords), 'value'));
+        $pengumuman->meta_keywords = implode(", ", array_column(json_decode($request->meta_keywords??"[]"), 'value'));
         $pengumuman->is_active = $request->is_active;
         $pengumuman->user_id = Auth::user()->id;
 
@@ -70,6 +73,12 @@ class PengumumanController extends Controller
             $image = $request->file('image');
             $imagePath = $image->storeAs('public/pengumuman', date('YmdHis') . '_' . Str::slug($request->title) . '.' . $image->getClientOriginalExtension());
             $pengumuman->image = str_replace('public/', '', $imagePath);
+        }
+
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $filePath = $file->storeAs('public/pengumuman', date('YmdHis') . '_' . Str::slug($request->title) . '.' . $file->getClientOriginalExtension());
+            $pengumuman->file = str_replace('public/', '', $filePath);
         }
 
         $pengumuman->save();
@@ -96,6 +105,7 @@ class PengumumanController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'title' => 'required',
             'content' => 'required',
+            'file' => 'nullable|file|mimes:pdf',
             'meta_keywords' => 'nullable',
             'is_active' => 'required',
         ], [
@@ -103,6 +113,7 @@ class PengumumanController extends Controller
             'image' => 'File harus berupa gambar',
             'mimes' => 'File harus berupa gambar',
             'max' => 'Ukuran file maksimal 2MB',
+            'file' => 'File harus berupa file pdf',
         ]);
 
         if ($validator->fails()) {
@@ -116,7 +127,7 @@ class PengumumanController extends Controller
         $pengumuman->content = $request->content;
         $pengumuman->meta_title = $request->title;
         $pengumuman->meta_description = Str::limit(strip_tags($request->content), 150);
-        $pengumuman->meta_keywords = implode(", ", array_column(json_decode($request->meta_keywords), 'value'));
+        $pengumuman->meta_keywords = implode(", ", array_column(json_decode($request->meta_keywords??"[]"), 'value'));
         $pengumuman->is_active = $request->is_active;
         $pengumuman->user_id = Auth::user()->id;
 
@@ -124,6 +135,12 @@ class PengumumanController extends Controller
             $image = $request->file('image');
             $imagePath = $image->storeAs('public/pengumuman', date('YmdHis') . '_' . Str::slug($request->title) . '.' . $image->getClientOriginalExtension());
             $pengumuman->image = str_replace('public/', '', $imagePath);
+        }
+
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $filePath = $file->storeAs('public/pengumuman', date('YmdHis') . '_' . Str::slug($request->title) . '.' . $file->getClientOriginalExtension());
+            $pengumuman->file = str_replace('public/', '', $filePath);
         }
 
         $pengumuman->save();
@@ -136,6 +153,13 @@ class PengumumanController extends Controller
     {
         $pengumuman = Pengumuman::find($id);
         $pengumuman->delete();
+
+        if ($pengumuman->image) {
+            Storage::delete('public/' . $pengumuman->image);
+        }
+        if ($pengumuman->file) {
+            Storage::delete('public/' . $pengumuman->file);
+        }
 
         Alert::success('Sukses', 'Pengumuman berhasil dihapus');
         return redirect()->route('admin.pengumuman.index');

@@ -33,7 +33,8 @@
                                     </div>
                                 </th>
                                 <th class="min-w-250px">Kategori</th>
-                                <th class="min-w-150px">Status</th>
+                                <th class="min-w-100px text-center">File</th>
+                                <th class="min-w-50px">Status</th>
                                 <th class="min-w-150px">Dibuat Oleh</th>
                                 <th class="text-end min-w-70px">Actions</th>
                             </tr>
@@ -59,6 +60,21 @@
                                                     {{ Str::limit(strip_tags($pengumuman->content), 100) }}...</div>
                                             </div>
                                         </div>
+                                    </td>
+                                    <td class="text-center">
+                                        @if ($pengumuman->file)
+                                            <a href="{{ asset('storage/' . $pengumuman->file) }}" target="_blank">
+                                                <i class="ki-duotone ki-file-added text-primary fs-3x" data-bs-toggle="tooltip" data-bs-placement="right" title="Lihat File">
+                                                    <span class="path1"></span>
+                                                    <span class="path2"></span>
+                                                </i>
+                                            </a>
+                                        @else
+                                            <i class="ki-duotone ki-file-deleted text-danger fs-3x" data-bs-toggle="tooltip" data-bs-placement="right" title="File Tidak Ada">
+                                                <span class="path1"></span>
+                                                <span class="path2"></span>
+                                            </i>
+                                        @endif
                                     </td>
                                     <td>
                                         @if ($pengumuman->is_active == 1)
