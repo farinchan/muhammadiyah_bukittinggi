@@ -70,7 +70,7 @@
                                     </td>
                                     <td>
                                         @if ($letter->file)
-                                            <a href="{{ asset('storage/' . $letter->lampiran) }}" target="_blank">
+                                            <a href="{{ asset('storage/' . $letter->file) }}" target="_blank">
                                                 <i class="ki-duotone ki-file-added text-primary fs-3x" data-bs-toggle="tooltip" data-bs-placement="right" title="Lihat File">
                                                     <span class="path1"></span>
                                                     <span class="path2"></span>
