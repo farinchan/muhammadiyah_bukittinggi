@@ -40,6 +40,12 @@
                                 <p>
                                     {!! $pengumuman->content !!}
                                 </p>
+                                @if ($pengumuman->file)
+                                    <object data="{{ Storage::url($pengumuman->file) }}" type="application/pdf"
+                                        width="100%" height="800px">
+                                        <embed src="{{ Storage::url($pengumuman->file) }}" type="application/pdf" />
+                                    </object>
+                                @endif
                             </div>
                         </div>
                     </div>
