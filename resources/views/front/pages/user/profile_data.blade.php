@@ -101,6 +101,22 @@
                                         <td>{{ $user->phone }}</td>
                                     </tr>
                                     <tr>
+                                        <th scope="row">Provinsi</th>
+                                        <td>{{ $user->province }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Kota/Kabupaten</th>
+                                        <td>{{ $user->city }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Kecamatan</th>
+                                        <td>{{ $user->district }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Kelurahan/Kenagarian</th>
+                                        <td>{{ $user->village }}</td>
+                                    </tr>
+                                    <tr>
                                         <th scope="row">Alamat</th>
                                         <td>{{ $user->address }}</td>
                                     </tr>
