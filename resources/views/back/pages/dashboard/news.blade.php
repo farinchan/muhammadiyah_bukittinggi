@@ -193,11 +193,14 @@
                 }
             },
             dataLabels: {
-                enabled: false
+                enabled: true
             },
             xaxis: {
                 categories: [],
-            }
+            },
+            legend: {
+				show: true,
+			}
         });
         chart_2.render();
 
@@ -217,11 +220,14 @@
                 }
             },
             dataLabels: {
-                enabled: false
+                enabled: true
             },
             xaxis: {
                 categories: [],
-            }
+            },
+            legend: {
+				show: true,
+			}
         });
         chart_3.render();
 
@@ -229,7 +235,7 @@
             url: "{{ route('admin.dashboard.news.stat') }}",
             type: "GET",
             success: function(response) {
-                console.log(response.news_viewer_monthly);
+                console.log(response);
 
                 chart_1.updateSeries([{
                     data: response.news_viewer_monthly.map(function(item) {
@@ -244,11 +250,6 @@
                     }
                 });
 
-                chart_2.updateSeries([{
-                    data: response.news_viewer_platfrom.map(function(item) {
-                        return item.total;
-                    })
-                }]);
                 chart_2.updateOptions({
                     xaxis: {
                         categories: response.news_viewer_platfrom.map(function(item) {
@@ -258,14 +259,14 @@
                                 return item.platform;
                             }
                         })
-                    }
+                    },
+                    series: [{
+                        name: 'Jumlah',
+                        data: response.news_viewer_platfrom.map(function(item) {
+                            return item.total;
+                        })
+                    }]
                 });
-
-                chart_3.updateSeries([{
-                    data: response.news_viewer_browser.map(function(item) {
-                        return item.total;
-                    })
-                }]);
 
                 chart_3.updateOptions({
                     xaxis: {
@@ -276,7 +277,13 @@
                                 return item.browser;
                             }
                         })
-                    }
+                    },
+                    series: [{
+                        name: 'Jumlah',
+                        data: response.news_viewer_browser.map(function(item) {
+                            return item.total;
+                        })
+                    }]
                 });
             }
         });
