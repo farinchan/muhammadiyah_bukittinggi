@@ -252,7 +252,11 @@
                 chart_2.updateOptions({
                     xaxis: {
                         categories: response.news_viewer_platfrom.map(function(item) {
-                            return item.platform;
+                            if (item.platform == '0') {
+                                return 'Unknown';
+                            } else{
+                                return item.platform;
+                            }
                         })
                     }
                 });
@@ -266,7 +270,11 @@
                 chart_3.updateOptions({
                     xaxis: {
                         categories: response.news_viewer_browser.map(function(item) {
-                            return item.browser;
+                            if (item.browser == '0') {
+                                return 'Unknown';
+                            } else{
+                                return item.browser;
+                            }
                         })
                     }
                 });
