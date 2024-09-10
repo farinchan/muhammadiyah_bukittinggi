@@ -42,7 +42,7 @@ class DashboardController extends Controller
             'news_new' => News::with(['comments', 'viewers'])->latest()->limit(5)->get(),
             'comment_new' => NewsComment::orderBy('created_at', 'desc')->limit(5)->get(),
         ];
-        return view('back.pages.dashboard.berita', $data);
+        return view('back.pages.dashboard.news', $data);
     }
 
     public function stat()
