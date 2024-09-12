@@ -387,7 +387,7 @@
                                     <div class="input-group-icon">
                                         <div class="icon"><i class="fa-regular fa-brain-circuit"></i></div>
                                         <select name="kepakaran[]" id="kepakaran_select2" class="reset-style select2"
-                                            multiple="multiple" required>
+                                            multiple="multiple">
                                             <option value="Tafsir">Tafsir</option>
                                             <option value="Hadist">Hadist</option>
                                             <option value="Fiqih">Fiqih</option>
