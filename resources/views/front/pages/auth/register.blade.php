@@ -395,6 +395,9 @@
                                             <option value="Tarikh">Tarikh</option>
                                             <option value="Akhlak">Akhlak</option>
                                             <option value="Tasawuf">Tasawuf</option>
+                                            <option value="Ekonomi Syariah">Ekonomi Syariah</option>
+                                            <option value="Keislamaan">Keislamaan</option>
+                                            <option value="Filsafat Islam">Filsafat Islam</option>
                                         </select>
                                     </div>
                                     @error('kepakaran')
