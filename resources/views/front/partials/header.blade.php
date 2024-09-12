@@ -133,24 +133,31 @@
                                         </li>
                                         <li><a href="{{ route('contact') }}">Kontak</a></li>
 
-                                        <li id="login_mobile" style="display: none;">
+                                        <div id="login_mobile" >
                                             @auth
-                                                <a href="
-                                                @if (Auth::user()->hasRole('admin')) {{ route('admin.dashboard') }}
-                                @else
-                                    {{ route('user.profile') }} @endif
-                                "
-                                                    class="genric-btn primary-border circle">
-                                                    <i class="far fa-user"></i> &nbsp; &nbsp;
-                                                    {{ Auth::user()->name }}
-                                                </a>
+                                                <li>
+                                                    <a
+                                                        href="@if (Auth::user()->hasRole('admin')) {{ route('admin.dashboard') }}@else{{ route('user.profile') }} @endif">
+                                                        <i class="far fa-user"></i> &nbsp; &nbsp;
+                                                        {{ Auth::user()->name }}
+                                                    </a>
+                                                </li>
                                             @else
-                                                <a href="{{ route('login') }}" class="genric-btn primary-border circle">
-                                                    <i class="fa-regular fa-right-to-bracket"></i> &nbsp; &nbsp;
-                                                    Login
-                                                </a>
+                                                <li>
+                                                    <a href="{{ route('register') }}"><i
+                                                            class="fa-solid fa-user-plus"></i>&nbsp; &nbsp;
+                                                        Register
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('login') }}"><i
+                                                            class="fa-regular fa-right-to-bracket"></i>&nbsp; &nbsp;
+                                                        Login
+                                                    </a>
+                                                </li>
+
                                             @endauth
-                                        </li>
+                                        </div>
                                     </ul>
                                 </nav>
                             </div>

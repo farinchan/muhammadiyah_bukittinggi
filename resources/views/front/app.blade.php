@@ -91,11 +91,15 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <script>
-        
+        $('#login_mobile').hide();
+
+
         if ($(window).width() < 768) {
-            $('#login_mobile').css('display', 'block');
+            $('#login_mobile').show();
+            console.log('mobile');
         } else {
-            $('#login_mobile').css('display', 'none');
+            $('#login_mobile').hide();
+            console.log('desktop');
         }
     </script>
 
