@@ -16,10 +16,11 @@
 
 @section('styles')
     <style>
-        .content img {
+         img {
             max-width: 200px;
             height: auto;
         }
+
     </style>
 @endsection
 
