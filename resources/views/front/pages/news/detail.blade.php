@@ -16,7 +16,7 @@
 
 @section('styles')
     <style>
-         img {
+        p img {
             max-width: 100%;
             height: auto;
         }
