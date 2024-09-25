@@ -35,6 +35,7 @@ class HomeController extends Controller
             'list_album' => GalleryAlbum::latest()->limit(6)->get(),
 
         ];
+        // return response()->json($data);
         return view('front.pages.home.index', $data);
     }
 

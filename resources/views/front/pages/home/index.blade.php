@@ -35,8 +35,8 @@
         }
 
         /* .carousel-caption{
-                                            background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
-                                        } */
+                                                        background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+                                                    } */
         .carousel-item::before {
             content: '';
             position: absolute;
@@ -96,6 +96,54 @@
             </div>
         </div>
 
+        {{-- <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="mt-3" style="font-weight: bold; color: #333;">Jadwal Shalat Hari ini</h4>
+                    <p style="font-size: 14px; color: #333;">
+                        Waktu shalat hari ini di Kota Bukittinggi
+                    </p>
+                    <img src="{{ asset('images/sholat.png') }}" alt="Orang Sholat" class="img-fluid">
+                    <h5 class="mt-3" style="font-weight: bold; color: #333;">{{ date('d F Y H:i') }}</h5>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Subuh</th>
+                                    <th>Dzuhur</th>
+                                    <th>Ashar</th>
+                                    <th>Maghrib</th>
+                                    <th>Isya</th>
+                                </tr>
+                            </thead>
+                            <tbody id="jadwal-sholat-hari-ini">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4 style="font-weight: bold; color: #333;">Jadwal shalat bulan ini</h4>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Tanggal</th>
+                                    <th>Subuh</th>
+                                    <th>Dzuhur</th>
+                                    <th>Ashar</th>
+                                    <th>Maghrib</th>
+                                    <th>Isya</th>
+                                </tr>
+                            </thead>
+                            <tbody id="jadwal-sholat-bulan-ini">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div> --}}
+
         <!-- Trending Area Start -->
         <div class="trending-area fix">
             <div class="container">
@@ -135,10 +183,10 @@
                                             <li><a class="text-white" href="#"><i class="fa fa-comments"></i>
                                                     {{ $news->first()->comments->count() }}
                                                     Komentar</a></li>
-                                                    <li><a class="text-white" href="#"><i class="fa fa-eye"></i>
-                                                        {{ $news->first()->viewers->count() }}
-                                                        Kali Dilihat</a>
-                                                </li>
+                                            <li><a class="text-white" href="#"><i class="fa fa-eye"></i>
+                                                    {{ $news->first()->viewers->count() }}
+                                                    Kali Dilihat</a>
+                                            </li>
                                         </ul>
                                         <h2><a class="mr-5" href="{{ route('news.detail', $news->first()->slug) }}">
                                                 {{ $news->first()->title }}
@@ -165,10 +213,10 @@
                                                             <li><a href="#"><i class="fa fa-comments"></i>
                                                                     {{ $item->comments->count() }}
                                                                     Komentar</a></li>
-                                                                    <li><a href="#"><i class="fa fa-eye"></i>
-                                                                        {{ $item->viewers->count() }}
-                                                                        Kali Dilihat</a>
-                                                                </li>
+                                                            <li><a href="#"><i class="fa fa-eye"></i>
+                                                                    {{ $item->viewers->count() }}
+                                                                    Kali Dilihat</a>
+                                                            </li>
                                                         </ul>
                                                         <h4><a href="{{ route('news.detail', $item->slug) }}">
                                                                 {{ Str::limit($item->title, 60) }}
@@ -201,7 +249,8 @@
                                         {{-- <span class="color4">Pengumuman</span> --}}
                                         <div style="font-size: 12px; color: #333;">
                                             {{ $pengumuman->created_at->diffForHumans() }} </div>
-                                        <h4 style=" font-size: 16px;"><a href="{{ route("pengumuman.detail",$pengumuman->slug ) }}">
+                                        <h4 style=" font-size: 16px;"><a
+                                                href="{{ route('pengumuman.detail', $pengumuman->slug) }}">
                                                 {{ Str::limit($pengumuman->title, 80) }}
                                             </a></h4>
                                     </div>
@@ -308,14 +357,14 @@
                                                                 <li><a href="#"><i class="fa fa-comments"></i>
                                                                         {{ $kajian->kajianComment->count() }}
                                                                         Komentar</a>
-                                                                    </li>
-                                                                    <li><a href="#"><i class="fa fa-eye"></i>
+                                                                </li>
+                                                                <li><a href="#"><i class="fa fa-eye"></i>
                                                                         {{ $kajian->kajianViewer->count() }}
                                                                         Kali Dilihat</a>
                                                                 </li>
-                                                                    
+
                                                             </ul>
-                                                            <h4><a href="{{ route("kajian.detail", $kajian->slug) }}">
+                                                            <h4><a href="{{ route('kajian.detail', $kajian->slug) }}">
                                                                     {{ Str::limit($kajian->title, 60) }}
                                                                 </a></h4>
                                                         </div>
@@ -391,12 +440,12 @@
 
                             <aside class="single_sidebar_widget newsletter_widget">
                                 <h4 class="widget_title">Subscribe</h4>
-                                <form action="{{ route("subscribe") }}" method="POST" >
+                                <form action="{{ route('subscribe') }}" method="POST">
                                     @csrf
                                     <div class="form-group">
-                                        <input type="email" name="email" class="form-control" onfocus="this.placeholder = ''"
-                                            onblur="this.placeholder = 'Enter email'" placeholder="Enter email"
-                                            required="">
+                                        <input type="email" name="email" class="form-control"
+                                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email'"
+                                            placeholder="Enter email" required="">
                                     </div>
                                     <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
                                         type="submit">Subscribe</button>
@@ -466,7 +515,7 @@
                             <div class="card" style="border-radius: 20px; border: none;">
                                 <div class="card-body p-5">
                                     <h5 class="card-title mb-5" style="font-weight: bold; color: #333;">Hubungi Kami</h5>
-                                    <form  method="POST" action="{{ route('message') }}">
+                                    <form method="POST" action="{{ route('message') }}">
                                         @csrf
                                         <div class="row">
                                             <div class="col-md-7">
@@ -516,4 +565,57 @@
         <!-- End Weekly-News -->
 
     </main>
+@endsection
+@section('scripts')
+    <script>
+        $.ajax({
+            url: "https://api.myquran.com/v2/sholat/jadwal/0119/2024/1",
+            type: "GET",
+            success: function(response) {
+                let data = response.data.jadwal;
+                console.log(data);
+                
+                let html = '';
+                data.forEach((item, index) => {
+                    html += `
+                        <tr>
+                            <td>${item.tanggal}</td>
+                            <td>${item.subuh}</td>
+                            <td>${item.dzuhur}</td>
+                            <td>${item.ashar}</td>
+                            <td>${item.maghrib}</td>
+                            <td>${item.isya}</td>
+                        </tr>
+                    `;
+                });
+                $('#jadwal-sholat-bulan-ini').html(html);
+            },
+            error: function(xhr) {
+                console.log(xhr);
+            },
+        });
+        $.ajax({
+            url: "https://api.myquran.com/v2/sholat/jadwal/0119/2024/1/1",
+            type: "GET",
+            success: function(response) {
+                let data = response.data.jadwal;
+                console.log(data);
+                
+                let html = '';
+                html += `
+                        <tr>
+                            <td>${data.subuh}</td>
+                            <td>${data.dzuhur}</td>
+                            <td>${data.ashar}</td>
+                            <td>${data.maghrib}</td>
+                            <td>${data.isya}</td>
+                        </tr>
+                    `;
+                $('#jadwal-sholat-hari-ini').html(html);
+            },
+            error: function(xhr) {
+                console.log(xhr);
+            },
+        });
+    </script>
 @endsection

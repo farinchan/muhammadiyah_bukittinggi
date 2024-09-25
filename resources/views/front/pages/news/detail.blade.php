@@ -14,6 +14,15 @@
 
 @endsection
 
+@section('styles')
+    <style>
+        .content img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+@endsection
+
 @section('content')
     <!--================Blog Area =================-->
     <section class="blog_area single-post-area section-padding">
@@ -38,7 +47,7 @@
                                     </li>
                             </ul>
 
-                            <p>
+                            <p class="content">
                                 {!! $news->content !!}
                             </p>
                         </div>
