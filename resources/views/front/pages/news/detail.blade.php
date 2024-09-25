@@ -17,7 +17,7 @@
 @section('styles')
     <style>
         .content img {
-            max-width: 100%;
+            max-width: 200px;
             height: auto;
         }
     </style>
