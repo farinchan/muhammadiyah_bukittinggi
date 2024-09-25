@@ -17,7 +17,7 @@
 @section('styles')
     <style>
          img {
-            max-width: 200px;
+            max-width: 100%;
             height: auto;
         }
 
