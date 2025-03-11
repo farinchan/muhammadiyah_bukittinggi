@@ -28,7 +28,7 @@ class UsersExport implements FromCollection, WithHeadings, WithStyles, WithEvent
                 $user->phone,
                 $user->address,
                 $user->keanggotaan,
-                implode(', ', json_decode($user->pekerjaan) ?? []),
+                implode(', ', json_decode($user->job) ?? []),
                 implode(', ', json_decode($user->kepakaran) ?? []),
                 $user->email,
                 $user->nbm,
