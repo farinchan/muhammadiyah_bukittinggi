@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Back;
 
+use App\Exports\UsersExport;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -10,6 +11,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Str;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -98,7 +100,7 @@ class UserController extends Controller
                 $message->to($user->email);
                 $message->subject('Anda telah terdaftar sebagai anggota');
             });
-            
+
         } catch (\Exception $e) {
             // Alert::error('Error', 'Gagal mengirim email');
             // return redirect()->back();
@@ -116,7 +118,7 @@ class UserController extends Controller
             'sub_menu' => '',
             'user' => User::find($id)
         ];
-        
+
         return view('back.pages.user.edit', $data);
     }
 
@@ -182,7 +184,7 @@ class UserController extends Controller
             $user->removeRole("admin");
         }
 
-        
+
         Alert::success('Success', 'Anggota berhasil diubah');
         return redirect()->route('admin.user.index');
     }
@@ -220,7 +222,7 @@ class UserController extends Controller
                 $message->to($user->email);
                 $message->subject('Permintaan Pendaftaran anda diterima');
             });
-            
+
         } catch (\Exception $e) {
             // Alert::error('Error', 'Gagal mengirim email');
             // return redirect()->back();
@@ -228,5 +230,10 @@ class UserController extends Controller
 
         Alert::success('Success', 'Pendaftar berhasil diaktifkan');
         return redirect()->route('admin.user.register');
+    }
+
+    public function export()
+    {
+        return Excel::download(new UsersExport, 'Keanggotaan.xlsx');
     }
 }

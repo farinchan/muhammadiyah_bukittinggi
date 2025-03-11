@@ -109,7 +109,7 @@ class NewsController extends Controller
                 $query->where('slug', $slug);
             });
         $setting_web = SettingWebsite::first();
- 
+
 
         $data = [
             'title' => "News - " . $newsCategory->where('slug', $slug)->first()->name ." | " . $setting_web->name,

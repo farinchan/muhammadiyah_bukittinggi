@@ -102,6 +102,8 @@
 
                             <a href="{{ route("admin.user.create") }}" class="btn btn-primary">
                                 <i class="ki-duotone ki-plus fs-2"></i>Tambah Anggota</a>
+                            <a href="{{ route("admin.user.export") }}" class=" ms-2 btn btn-light">
+                                <i class="ki-duotone ki-plus fs-2"></i>Export</a>
                         </div>
                         <div class="d-flex justify-content-end align-items-center d-none" {{-- data-kt-user-table-toolbar="selected" --}}>
                             <div class="fw-bold me-5">

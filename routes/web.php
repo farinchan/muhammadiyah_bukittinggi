@@ -78,7 +78,7 @@ Route::prefix('user')->middleware(['auth', 'role:user'])->name('user.')->group(f
     Route::get('/kajian/edit/{id}', [UserKajianController::class, 'kajianEdit'])->name('kajian.edit');
     Route::put('/kajian/edit/{id}', [UserKajianController::class, 'kajianUpdate'])->name('kajian.update');
     Route::delete('/kajian/delete/{id}', [UserKajianController::class, 'kajianDestroy'])->name('kajian.destroy');
-    
+
 
     Route::get('/profile', [UserProfileController::class, 'profile'])->name('profile');
     Route::get('/profile/edit', [UserProfileController::class, 'profileEdit'])->name('profile.edit');
@@ -90,7 +90,7 @@ Route::prefix('user')->middleware(['auth', 'role:user'])->name('user.')->group(f
 
 Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->group(function () {
     Route::get('/dashboard', [BackDashboardController::class, 'index'])->name('dashboard');
-    
+
     Route::prefix('dashboard')->name('dashboard.')->group(function () {
         Route::get('/news', [BackDashboardController::class, 'news'])->name('news');
         Route::get('/stat', [BackDashboardController::class, 'stat'])->name('news.stat');
@@ -108,6 +108,8 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->grou
         Route::get('/edit/{id}', [BackUserController::class, 'edit'])->name('edit');
         Route::put('/edit/{id}', [BackUserController::class, 'update'])->name('update');
         Route::delete('/delete/{id}', [BackUserController::class, 'destroy'])->name('destroy');
+
+        Route::get('/export', [BackUserController::class, 'export'])->name('export');
 
         Route::get('/register', [BackUserController::class, 'register'])->name('register');
         Route::post('/register/approve/{id}', [BackUserController::class, 'registerApprove'])->name('register.approve');

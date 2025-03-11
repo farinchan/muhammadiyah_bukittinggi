@@ -115,7 +115,7 @@
                             <div class="card-footer d-flex justify-content-end py-6 px-9">
                                 @if ($list_banner->count() > 1)
                                     <a href="{{ route('admin.setting.banner.destroy', $banner->id) }}" class="btn btn-danger btn-active-light-danger me-2">Hapus</a>
-                                      
+
                                 @endif
 
                                 <button type="submit" class="btn btn-primary">Simpan Perubahan</button>

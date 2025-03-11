@@ -42,18 +42,18 @@ class NewsSeeder extends Seeder
             'meta_keywords' => 'putusan, putusan pdm, putusan pdm kota bukittinggi',
         ]);
 
-        News::create([
-            'title' => 'Muhammadiyah Tetapkan Idul Adha 1445 Jatuh Pada Senin, 17 Juni 2024. inilah Penjelasannya',
-            'slug' => 'muhammadiyah-tetapkan-idul-adha-1445-jatuh-pada-senin-17-juni-2024-inilah-penjelasannya',
-            'content' => 'Pimpinan Pusat Muhammadiyah telah menetapkan Idul Adha 1445 jatuh pada Senin, 17 Juni 2024. Penetapan ini berdasarkan hasil hisab dan rukyat yang dilakukan oleh Pimpinan Pusat Muhammadiyah.',
-            'thumbnail' => 'news/example.png',
-            'category_id' => 3,
-            'user_id' => 1,
-            'status' => 'published',
-            'meta_title' => 'Muhammadiyah Tetapkan Idul Adha 1445 Jatuh Pada Senin, 17 Juni 2024. inilah Penjelasannya',
-            'meta_description' => 'Pimpinan Pusat Muhammadiyah telah menetapkan Idul Adha 1445 jatuh pada Senin, 17 Juni 2024',
-            'meta_keywords' => 'muhammadiyah, idul adha, 1445, senin, 17 juni 2024',
-        ]);
+            News::create([
+                'title' => 'Muhammadiyah Tetapkan Idul Adha 1445 Jatuh Pada Senin, 17 Juni 2024. inilah Penjelasannya',
+                'slug' => 'muhammadiyah-tetapkan-idul-adha-1445-jatuh-pada-senin-17-juni-2024-inilah-penjelasannya',
+                'content' => 'Pimpinan Pusat Muhammadiyah telah menetapkan Idul Adha 1445 jatuh pada Senin, 17 Juni 2024. Penetapan ini berdasarkan hasil hisab dan rukyat yang dilakukan oleh Pimpinan Pusat Muhammadiyah.',
+                'thumbnail' => 'news/example.png',
+                'category_id' => 3,
+                'user_id' => 1,
+                'status' => 'published',
+                'meta_title' => 'Muhammadiyah Tetapkan Idul Adha 1445 Jatuh Pada Senin, 17 Juni 2024. inilah Penjelasannya',
+                'meta_description' => 'Pimpinan Pusat Muhammadiyah telah menetapkan Idul Adha 1445 jatuh pada Senin, 17 Juni 2024',
+                'meta_keywords' => 'muhammadiyah, idul adha, 1445, senin, 17 juni 2024',
+            ]);
 
         News::create([
             'title' => 'Pimpinan Daerah Muhammadiyah (PDM) Kota Bukittinggi Gelar Rapat Kerja Tahunan',
@@ -94,7 +94,7 @@ class NewsSeeder extends Seeder
             'meta_keywords' => 'pemuda muhammadiyah kota bukittinggi, kemanusiaan, daerah terpencil',
         ]);
 
-        
+
 
         NewsComment::create([
             'name' => 'User Test 1',
