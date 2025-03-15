@@ -105,7 +105,7 @@
                     </p>
                     <img src="{{ asset('images/sholat.png') }}" alt="Orang Sholat" class="img-fluid">
                     <h5 class="mt-3" style="font-weight: bold; color: #333;">{{ date('d F Y H:i') }}</h5>
-                    
+
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead>
@@ -505,6 +505,19 @@
         </div>
         <!-- End Weekly-News -->
 
+
+        <!--   Instagram start -->
+        <div class="weekly-news-area pt-50">
+            <div class="container">
+                <div class="weekly-wrapper">
+                    <div class="row">
+                        <div class="tagembed-widget" style="width:100%;height:100%" data-widget-id="2159172" data-tags="false"  view-url="https://widget.tagembed.com/2159172"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Instagram -->
+
         <!--   Weekly2-News start -->
         <div class="weekly2-news-area  weekly2-pading gray-bg">
             <div class="container">
@@ -567,6 +580,7 @@
     </main>
 @endsection
 @section('scripts')
+<script src="https://widget.tagembed.com/embed.min.js" type="text/javascript"></script>
     <script>
         $.ajax({
             url: "https://api.myquran.com/v2/sholat/jadwal/0119/2024/1",
@@ -574,7 +588,7 @@
             success: function(response) {
                 let data = response.data.jadwal;
                 console.log(data);
-                
+
                 let html = '';
                 data.forEach((item, index) => {
                     html += `
@@ -600,7 +614,7 @@
             success: function(response) {
                 let data = response.data.jadwal;
                 console.log(data);
-                
+
                 let html = '';
                 html += `
                         <tr>
