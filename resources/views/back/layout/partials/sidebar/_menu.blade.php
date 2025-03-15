@@ -165,6 +165,18 @@
                     </div>
                 </div>
 
+                @role('admin')
+                    <div class= "menu-item">
+                        <a class="menu-link @if (request()->routeIs('admin.welcomeSpeech.index')) active @endif"
+                            href="{{ route('admin.welcomeSpeech.index') }}">
+                            <span class="menu-icon">
+                                <i class="ki-duotone ki-star fs-2"></i>
+                            </span>
+                            <span class="menu-title">Kata Sambutan</span>
+                        </a>
+                    </div>
+                @endrole
+
                 <div class="menu-item pt-5">
                     <div class="menu-content"><span class="menu-heading fw-bold text-uppercase fs-7">Asset</span>
                     </div>

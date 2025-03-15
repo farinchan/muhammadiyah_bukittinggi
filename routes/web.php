@@ -23,6 +23,7 @@ use App\Http\Controllers\Back\NewsController as BackNewsController;
 use App\Http\Controllers\Back\PengumumanController as BackPengumumanController;
 use App\Http\Controllers\Back\KajianController as BackKajianController;
 use App\Http\Controllers\Back\GalleryController as BackGalleryController;
+use App\Http\Controllers\Back\WelcomeSpeechController as BackWelcomeSpeechController;
 use App\Http\Controllers\Back\AssetController as BackAssetController;
 use App\Http\Controllers\Back\LetterController as BackLetterController;
 use App\Http\Controllers\Back\inboxController as BackInboxController;
@@ -163,6 +164,11 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->grou
         Route::post('/create', [BackGalleryController::class, 'store'])->name('store');
         Route::put('/edit/{id}', [BackGalleryController::class, 'update'])->name('update');
         Route::delete('/delete/{id}', [BackGalleryController::class, 'destroy'])->name('destroy');
+    });
+
+    Route::prefix('welcomeSpeech')->name('welcomeSpeech.')->group(function () {
+        Route::get('/', [BackWelcomeSpeechController::class, 'index'])->name('index');
+        Route::put('/edit', [BackWelcomeSpeechController::class, 'update'])->name('update');
     });
 
     Route::prefix('asset')->name('asset.')->group(function () {
