@@ -84,6 +84,38 @@
                             </div>
                         </div>
                     </div>
+                    <div class="card card-flush py-4">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <h2>Ustadz/Anggota</h2>
+                            </div>
+                            <div class="card-toolbar">
+                                <i class="ki-duotone ki-profile-user fs-2">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                    <span class="path3"></span>
+                                    <span class="path4"></span>
+                                </i>
+
+                            </div>
+                        </div>
+                        <div class="card-body pt-0">
+                            <select name="user_id" class="form-select mb-2" data-control="select2" data-hide-search="true"
+                                data-placeholder="Select an option" id="kt_ecommerce_add_category_user_id_select" required>
+                                <option></option>
+                                @foreach ($users as $user)
+                                    <option value="{{ $user->id }}" {{ old('user_id', auth()->user()->id) == $user->id ? 'selected' : '' }}>
+                                        {{ $user->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('user_id')
+                                <div class="text-danger fs-7">{{ $message }}</div>
+                            @enderror
+                            <div class="text-muted fs-7">
+                                Set Ustadz/Anggota yang akan mengisi Kajian ini
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
                     <div class="card card-flush py-4">

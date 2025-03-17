@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Back;
 use App\Http\Controllers\Controller;
 use App\Models\Kajian;
 use App\Models\KajianComment;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -20,7 +21,7 @@ class KajianController extends Controller
             'title' => 'Kajian',
             'menu' => 'kajian',
             'sub_menu' => 'kajian',
-            'list_kajian' => Kajian::all(),
+            'list_kajian' => Kajian::latest()->get(),
         ];
 
         return view('back.pages.kajian.index', $data);
@@ -32,6 +33,7 @@ class KajianController extends Controller
             'title' => 'Tambah Kajian',
             'menu' => 'kajian',
             'sub_menu' => 'kajian',
+            'users' => User::all(),
         ];
 
         return view('back.pages.kajian.create', $data);
@@ -43,13 +45,16 @@ class KajianController extends Controller
             'title' => 'required',
             'content' => 'required',
             'tags' => 'nullable',
-            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:4248',
             'status' => 'required|in:draft,published,archived',
+            'user_id' => 'required',
         ], [
             'required' => ':attribute wajib diisi',
             'image' => ':attribute harus berupa gambar',
             'mimes' => ':attribute harus berupa gambar dengan format jpeg, png, jpg, gif, atau svg',
             'max' => ':attribute tidak boleh lebih dari 2MB',
+            'in' => ':attribute harus draft, published, atau archived',
+            'user_id.required' => 'Penulis wajib diisi',
         ]);
 
         if ($validator->fails()) {
@@ -67,7 +72,7 @@ class KajianController extends Controller
         $kajian->meta_title = $request->title;
         $kajian->meta_description = Str::limit(strip_tags($request->content), 160);
         $kajian->meta_keywords = $request->tags ? implode(", ", array_column(json_decode($request->tags), 'value')) : null;
-        $kajian->user_id = Auth::user()->id;
+        $kajian->user_id = $request->user_id;
 
         if ($request->hasFile('thumbnail')) {
             $thumbnail = $request->file('thumbnail');
@@ -88,6 +93,7 @@ class KajianController extends Controller
             'menu' => 'kajian',
             'sub_menu' => 'kajian',
             'kajian' => Kajian::findOrFail($id),
+            'users' => User::all(),
         ];
 
         return view('back.pages.kajian.edit', $data);
@@ -101,11 +107,16 @@ class KajianController extends Controller
             'tags' => 'nullable',
             'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'status' => 'required|in:draft,published,archived',
+            'user_id' => 'required|exists:users,id',
         ], [
             'required' => ':attribute wajib diisi',
             'image' => ':attribute harus berupa gambar',
             'mimes' => ':attribute harus berupa gambar dengan format jpeg, png, jpg, gif, atau svg',
             'max' => ':attribute tidak boleh lebih dari 2MB',
+            'in' => ':attribute harus draft, published, atau archived',
+            'user_id.required' => 'Penulis wajib diisi',
+            'user_id.exists' => 'Penulis tidak ditemukan',
+
         ]);
 
         if ($validator->fails()) {
@@ -123,7 +134,7 @@ class KajianController extends Controller
         $kajian->meta_title = $request->title;
         $kajian->meta_description = Str::limit(strip_tags($request->content), 160);
         $kajian->meta_keywords = $request->tags ? implode(", ", array_column(json_decode($request->tags), 'value')) : null;
-        $kajian->user_id = Auth::user()->id;
+        $kajian->user_id = $request->user_id;
 
         if ($request->hasFile('thumbnail')) {
             $thumbnail = $request->file('thumbnail');
