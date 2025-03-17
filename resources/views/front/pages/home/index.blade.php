@@ -234,15 +234,15 @@
                         <!-- Riht content -->
                         <div class="col-lg-4">
                             <h4
-                                style="font-weight: bold; color: #333; background-color: #e7ffe6; padding: 10px; border-radius: 5px;">
+                                style="font-weight: bold; color: #333; background-color: #e7ffe6; padding: 10px; border-radius: 5px; margin-bottom: 30px;">
                                 Pengumuman
                             </h4>
-                            <hr>
+                            {{-- <hr> --}}
                             @foreach ($pengumumans as $pengumuman)
                                 <div class="trand-right-single d-flex">
                                     <div class="trand-right-img ">
                                         <img src="{{ $pengumuman->image ? Storage::url($pengumuman->image) : 'https://file.iainpare.ac.id/wp-content/uploads/2019/07/pengumuman.png' }}"
-                                            height="70px" alt="">
+                                             alt="" style="height: 70px; width: 70px; object-fit: cover;">
                                     </div>
 
                                     <div class="trand-right-cap">
@@ -268,32 +268,40 @@
         </div>
         <!-- Trending Area End -->
 
-        <!--   Weekly2-News start -->
-        <div class="weekly2-news-area  weekly2-pading gray-bg">
-            <div class="container">
-                <div class="weekly2-wrapper">
-                    <!-- section Tittle -->
-                    <div class="row">
-                        <div class="col-md-4">
-                            <img src="{{ asset('front/img/logo/logo_muhammadiyah.png') }}" alt=""
-                                class="img-fluid">
-                        </div>
-                        <div class="col-md-8 mt-sm-20">
-                            <h1 style="color: #08652F; font-weight: bold;">
-                                Pimpinan Daerah Muhammadiyah (PDM)
-                            </h1>
-                            <h2 style="color: #08652F; ">Kota Bukittinggi</h2>
-                            <div class="mt-3 about">
-                                <p>
-                                    {!! $setting_web->about !!}
-                                </p>
-                            </div>
+       <!--   Weekly2-News start -->
+       <div class="weekly2-news-area  weekly2-pading gray-bg">
+        <div class="container">
+            <h1 style="color: #08652F; font-weight: bold;" class="text-center mb-5">
+                Kata Sambutan <br>
+                Ketua Pimpinan Daerah Muhammadiyah (PDM) Bukittinggi
+            </h1>
+            <div class="weekly2-wrapper">
+                <!-- section Tittle -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="{{ $welcome_speech?->getImage() ?? '-' }}" alt="" style="height: 400px;"
+                            class="img-fluid">
+                    </div>
+                    <div class="col-md-8 mt-sm-20">
+
+                        <h2 style="color: #08652F; font-size: 26px;" class="mt-2">
+                            {{ $welcome_speech?->name ?? '-' }}</h2>
+                        <div class="mt-3 about">
+                            <p>
+                                Assalamu’alaikum Warahmatullahi Wabarakatuh,
+                            </p>
+                            <p>
+                                {{ Str::limit(strip_tags($welcome_speech?->content ?? '-'), 500, '...') }}
+                            </p>
+                            <a href="{{ route("welcome.speech") }}" class="button rounded-0 primary-bg text-white  btn_1 boxed-btn"
+                                type="submit">Lihat selengkapnya</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- End Weekly-News -->
+    </div>
+    <!-- End Weekly-News -->
 
         <!-- Kajian Start -->
         <section class="whats-news-area pt-50 pb-20">
@@ -483,7 +491,7 @@
                                         </div>
                                         <div class="weekly-caption">
                                             {{-- <span class="color1">Travel</span> --}}
-                                            <h4><a href="">{{ $album->title }}</a></h4>
+                                            <h4><a href="{{ route('gallery.detail', $album->slug) }}">{{ $album->title }}</a></h4>
                                             <p style="margin-top: -10px; margin-bottom: 0;">
                                                 {{ $album->created_at->diffForHumans() }}
                                             </p>
@@ -630,6 +638,18 @@
             error: function(xhr) {
                 console.log(xhr);
             },
+        });
+    </script>
+     <script>
+        $.ajax({
+            url: "{{ route('visit.ajax') }}",
+            type: "GET",
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(error) {
+                console.log(error);
+            }
         });
     </script>
 @endsection
