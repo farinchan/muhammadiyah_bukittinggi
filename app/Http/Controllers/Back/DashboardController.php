@@ -9,6 +9,7 @@ use App\Models\News;
 use App\Models\NewsComment;
 use App\Models\NewsViewer;
 use App\Models\Pengumuman;
+use App\Models\Visitor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -29,6 +30,26 @@ class DashboardController extends Controller
 
         ];
         return view('back.pages.dashboard.index', $data);
+    }
+
+    public function visistorStat()
+    {
+
+
+        $data = [
+            'visitor_monthly' => Visitor::select(DB::raw('Date(created_at) as date'), DB::raw('count(*) as total'))
+                ->orderBy('date', 'desc')
+                ->limit(30)
+                ->groupBy('date')
+                ->get(),
+            'visitor_platfrom' => Visitor::select('platform', DB::raw('count(*) as total'))
+                ->groupBy('platform')
+                ->get(),
+            'visitor_browser' => Visitor::select('browser', DB::raw('count(*) as total'))
+                ->groupBy('browser')
+                ->get(),
+        ];
+        return response()->json($data);
     }
 
     public function news()

@@ -96,6 +96,7 @@ Route::prefix('user')->middleware(['auth', 'role:user'])->name('user.')->group(f
 
 Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->group(function () {
     Route::get('/dashboard', [BackDashboardController::class, 'index'])->name('dashboard');
+    Route::get('/visitor-stat', [BackDashboardController::class, 'visistorStat'])->name('visitor.stat');
 
     Route::prefix('dashboard')->name('dashboard.')->group(function () {
         Route::get('/news', [BackDashboardController::class, 'news'])->name('news');
