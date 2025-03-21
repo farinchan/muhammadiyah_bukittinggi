@@ -28,7 +28,7 @@
                                 <img class="img-fluid" src="{{ Storage::url($welcome?->image) }}" alt="">
                             </div> --}}
                             <div class="blog_details">
-                                <h1>Kata Sambutan Ketua MUI Kab. Agam</h1>
+                                <h1>Kata Sambutan Ketua Pimpinan Daerah Muhammadiyah (PDM) Bukittinggi</h1>
                                 <h4>{{ $welcome?->name }}</h4>
                                 <br>
                                 <p>

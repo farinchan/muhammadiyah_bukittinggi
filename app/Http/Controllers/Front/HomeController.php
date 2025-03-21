@@ -128,7 +128,7 @@ class HomeController extends Controller
         $welcome = WelcomeSpeech::first();
 
         $data = [
-            'title' => "Sambutan Ketua MUI Kab.Agam | " . $welcome?->name??"-",
+            'title' => "Sambutan Ketua Pimpinan Daerah Muhammadiyah (PDM) Bukittinggi | " . $welcome?->name??"-",
             'meta_description' => strip_tags($welcome?->content),
             'meta_keywords' => $welcome?->name,
             'favicon' => $welcome?->image,
