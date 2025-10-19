@@ -39,7 +39,7 @@
                                     <div class="col-md-3 text-md-end">
                                         <label class="fs-6 fw-semibold form-label mt-3">
                                             <span class="required">Nama Website</span>
-                                            
+
                                         </label>
                                     </div>
                                     <div class="col-md-9">
@@ -149,7 +149,7 @@
                                     <div class="col-md-3 text-md-end">
                                         <label class="fs-6 fw-semibold form-label mt-3">
                                             <span class="required">Email</span>
-                                           
+
                                         </label>
                                     </div>
                                     <div class="col-md-9">
@@ -307,6 +307,28 @@
                                     <div class="col-md-9">
                                         <input type="url" class="form-control form-control-solid" name="linkedin"
                                             value="{{ $setting->linkedin }}" />
+                                    </div>
+                                </div>
+                                <div class="row fv-row mb-7">
+                                    <div class="col-md-3 text-md-end">
+                                        <label class="fs-6 fw-semibold form-label mt-3">
+                                            <span>Buka Form Registrasi</span>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-9 d-flex align-items-center">
+                                        <div class="form-check form-check-solid form-switch">
+                                            <input class="form-check-input" type="checkbox" name="register_page" value="1" {{ $setting->register_page ? 'checked' : '' }}>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row fv-row mb-18">
+                                    <div class="col-md-3 text-md-end">
+                                        <label class="fs-6 fw-semibold form-label mt-3">
+                                            <span>Pesan Jika Registrasi Tutup</span>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <textarea class="form-control form-control-solid" name="register_page_content" rows="5">{{ $setting->register_page_content }}</textarea>
                                     </div>
                                 </div>
                                 <div class="row py-10">
