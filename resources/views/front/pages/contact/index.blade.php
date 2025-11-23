@@ -30,7 +30,10 @@
     <section class="contact-section">
         <div class="container">
             <div class="d-none d-sm-block mb-5 pb-4">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14217.899744230352!2d100.38151331598215!3d-0.3014266340436995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2fd5389cf1e72cab%3A0xbb5d0a65083a1cbb!2sPanti%20Asuhan%20Aisyiah%20Putra!5e0!3m2!1sid!2sid!4v1725587482668!5m2!1sid!2sid" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14217.899744230352!2d100.38151331598215!3d-0.3014266340436995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2fd5389cf1e72cab%3A0xbb5d0a65083a1cbb!2sPanti%20Asuhan%20Aisyiah%20Putra!5e0!3m2!1sid!2sid!4v1725587482668!5m2!1sid!2sid"
+                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
 
 
@@ -70,6 +73,15 @@
                                         placeholder="Enter Subject">
                                 </div>
                             </div>
+                            <div class="col-12">
+                                {!! NoCaptcha::renderJs() !!}
+                                {!! NoCaptcha::display() !!}
+
+                                @error('g-recaptcha-response')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+
                         </div>
                         <div class="form-group mt-3">
                             <button type="submit" class="button button-contactForm boxed-btn">Send</button>
@@ -106,10 +118,9 @@
 @endsection
 
 @section('scripts')
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="">
-    </script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script>
-
         var data = @json($setting_web);
 
         var mymap = L.map('map').setView([data.latitude, data.longitude], 13);
@@ -121,6 +132,5 @@
         var marker = L.marker([data.latitude, data.longitude]).addTo(mymap);
 
         marker.bindPopup("<b>{{ $setting_web->name }}</b><br>{{ $setting_web->address }}").openPopup();
-
     </script>
 @endsection
