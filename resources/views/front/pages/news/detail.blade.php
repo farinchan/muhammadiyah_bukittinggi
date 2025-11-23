@@ -1,17 +1,16 @@
 @extends('front.app')
 
 @section('seo')
-<title>{{ $title }}</title>
-<meta name="description" content="{{ $meta_description }}">
-<meta name="keywords" content="{{ $meta_keywords }}">
+    <title>{{ $title }}</title>
+    <meta name="description" content="{{ $meta_description }}">
+    <meta name="keywords" content="{{ $meta_keywords }}">
 
-<meta property="og:title" content="{{ $title }}">
-<meta property="og:description" content="{{ $meta_description }}">
-<meta property="og:type" content="website">
-<meta property="og:url" content="{{ route('news.detail', $news->slug) }}">
-<link rel="canonical" href="{{ route('news.detail', $news->slug) }}">
-<meta property="og:image" content="{{ Storage::url($image) }}">
-
+    <meta property="og:title" content="{{ $title }}">
+    <meta property="og:description" content="{{ $meta_description }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ route('news.detail', $news->slug) }}">
+    <link rel="canonical" href="{{ route('news.detail', $news->slug) }}">
+    <meta property="og:image" content="{{ Storage::url($image) }}">
 @endsection
 
 @section('styles')
@@ -20,7 +19,6 @@
             max-width: 100%;
             height: auto;
         }
-
     </style>
 @endsection
 
@@ -37,15 +35,17 @@
                         <div class="blog_details">
                             <h2>{{ $news->title }}</h2>
                             <ul class="blog-info-link mt-3 mb-4">
-                                <li><a href="{{ route('keanggotaan.detail', $news->user?->id) }}"><i class="fa fa-user"></i> {{ $news->user?->name }}</a></li>
-                                <li><a href="{{ route('news.category', $news->category?->slug) }}"><i class="fas fa-tags"></i> {{ $news->category?->name }}</a>
+                                <li><a href="{{ route('keanggotaan.detail', $news->user?->id) }}"><i
+                                            class="fa fa-user"></i> {{ $news->user?->name }}</a></li>
+                                <li><a href="{{ route('news.category', $news->category?->slug) }}"><i
+                                            class="fas fa-tags"></i> {{ $news->category?->name }}</a>
                                 </li>
                                 <li><a href="#"><i class="fa fa-comments"></i> {{ $news->comments?->count() }}
                                         Komentar</a></li>
-                                        <li><a href="#"><i class="fa fa-eye"></i>
-                                            {{ $news->viewers->count() }}
-                                            Kali Dilihat</a>
-                                    </li>
+                                <li><a href="#"><i class="fa fa-eye"></i>
+                                        {{ $news->viewers->count() }}
+                                        Kali Dilihat</a>
+                                </li>
                             </ul>
 
                             <p class="content">
@@ -63,10 +63,16 @@
                             </div>
                             <ul class="social-icons">
                                 <li>Share:</li>
-                                <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ route('news.detail', $news->slug) }}&t={{ $news->title }}"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href= "https://twitter.com/intent/tweet?text={{ $news->title }}&url={{ route('news.detail', $news->slug) }}&via=twitter_handle"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="https://wa.me/?text={{ route('news.detail', $news->slug) }}"><i class="fab fa-whatsapp"></i></a></li>
-                                <li><a href="https://www.linkedin.com/shareArticle?mini=true&url={{ route('news.detail', $news->slug) }}&title={{ $news->title }}&summary=&source=" target="_new"><i class="fab fa-linkedin-in"></i></a></li>
+                                <li><a
+                                        href="https://www.facebook.com/sharer/sharer.php?u={{ route('news.detail', $news->slug) }}&t={{ $news->title }}"><i
+                                            class="fab fa-facebook-f"></i></a></li>
+                                <li><a
+                                        href= "https://twitter.com/intent/tweet?text={{ $news->title }}&url={{ route('news.detail', $news->slug) }}&via=twitter_handle"><i
+                                            class="fab fa-twitter"></i></a></li>
+                                <li><a href="https://wa.me/?text={{ route('news.detail', $news->slug) }}"><i
+                                            class="fab fa-whatsapp"></i></a></li>
+                                <li><a href="https://www.linkedin.com/shareArticle?mini=true&url={{ route('news.detail', $news->slug) }}&title={{ $news->title }}&summary=&source="
+                                        target="_new"><i class="fab fa-linkedin-in"></i></a></li>
                             </ul>
                         </div>
                         <div class="navigation-area">
@@ -236,6 +242,15 @@
                                     </div>
                                 @endguest
 
+                                <div class="col-12 mb-3">
+                                    {!! NoCaptcha::renderJs() !!}
+                                    {!! NoCaptcha::display() !!}
+
+                                    @error('g-recaptcha-response')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="button button-contactForm btn_1 boxed-btn">Kirim
@@ -324,19 +339,19 @@
                 </aside> --}}
 
 
-                <aside class="single_sidebar_widget newsletter_widget">
-                    <h4 class="widget_title">Subscribe</h4>
-                    <form action="{{ route("subscribe") }}" method="POST" >
-                        @csrf
-                        <div class="form-group">
-                            <input type="email" name="email" class="form-control" onfocus="this.placeholder = ''"
-                                onblur="this.placeholder = 'Enter email'" placeholder="Enter email"
-                                required="">
-                        </div>
-                        <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-                            type="submit">Subscribe</button>
-                    </form>
-                </aside>
+                        <aside class="single_sidebar_widget newsletter_widget">
+                            <h4 class="widget_title">Subscribe</h4>
+                            <form action="{{ route('subscribe') }}" method="POST">
+                                @csrf
+                                <div class="form-group">
+                                    <input type="email" name="email" class="form-control"
+                                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email'"
+                                        placeholder="Enter email" required="">
+                                </div>
+                                <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                                    type="submit">Subscribe</button>
+                            </form>
+                        </aside>
                     </div>
                 </div>
             </div>

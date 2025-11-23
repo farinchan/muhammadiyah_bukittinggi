@@ -35,8 +35,8 @@
         }
 
         /* .carousel-caption{
-                                                        background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
-                                                    } */
+                                                                background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+                                                            } */
         .carousel-item::before {
             content: '';
             position: absolute;
@@ -242,7 +242,7 @@
                                 <div class="trand-right-single d-flex">
                                     <div class="trand-right-img ">
                                         <img src="{{ $pengumuman->image ? Storage::url($pengumuman->image) : 'https://file.iainpare.ac.id/wp-content/uploads/2019/07/pengumuman.png' }}"
-                                             alt="" style="height: 70px; width: 70px; object-fit: cover;">
+                                            alt="" style="height: 70px; width: 70px; object-fit: cover;">
                                     </div>
 
                                     <div class="trand-right-cap">
@@ -268,40 +268,41 @@
         </div>
         <!-- Trending Area End -->
 
-       <!--   Weekly2-News start -->
-       <div class="weekly2-news-area  weekly2-pading gray-bg">
-        <div class="container">
-            <h1 style="color: #08652F; font-weight: bold;" class="text-center mb-5">
-                Kata Sambutan <br>
-                Ketua Pimpinan Daerah Muhammadiyah (PDM) Bukittinggi
-            </h1>
-            <div class="weekly2-wrapper">
-                <!-- section Tittle -->
-                <div class="row">
-                    <div class="col-md-4">
-                        <img src="{{ $welcome_speech?->getImage() ?? '-' }}" alt="" style="height: 400px;"
-                            class="img-fluid">
-                    </div>
-                    <div class="col-md-8 mt-sm-20">
+        <!--   Weekly2-News start -->
+        <div class="weekly2-news-area  weekly2-pading gray-bg">
+            <div class="container">
+                <h1 style="color: #08652F; font-weight: bold;" class="text-center mb-5">
+                    Kata Sambutan <br>
+                    Ketua Pimpinan Daerah Muhammadiyah (PDM) Bukittinggi
+                </h1>
+                <div class="weekly2-wrapper">
+                    <!-- section Tittle -->
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="{{ $welcome_speech?->getImage() ?? '-' }}" alt="" style="height: 400px;"
+                                class="img-fluid">
+                        </div>
+                        <div class="col-md-8 mt-sm-20">
 
-                        <h2 style="color: #08652F; font-size: 26px;" class="mt-2">
-                            {{ $welcome_speech?->name ?? '-' }}</h2>
-                        <div class="mt-3 about">
-                            <p>
-                                Assalamu’alaikum Warahmatullahi Wabarakatuh,
-                            </p>
-                            <p>
-                                {{ Str::limit(strip_tags($welcome_speech?->content ?? '-'), 500, '...') }}
-                            </p>
-                            <a href="{{ route("welcome.speech") }}" class="button rounded-0 primary-bg text-white  btn_1 boxed-btn"
-                                type="submit">Lihat selengkapnya</a>
+                            <h2 style="color: #08652F; font-size: 26px;" class="mt-2">
+                                {{ $welcome_speech?->name ?? '-' }}</h2>
+                            <div class="mt-3 about">
+                                <p>
+                                    Assalamu’alaikum Warahmatullahi Wabarakatuh,
+                                </p>
+                                <p>
+                                    {{ Str::limit(strip_tags($welcome_speech?->content ?? '-'), 500, '...') }}
+                                </p>
+                                <a href="{{ route('welcome.speech') }}"
+                                    class="button rounded-0 primary-bg text-white  btn_1 boxed-btn" type="submit">Lihat
+                                    selengkapnya</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- End Weekly-News -->
+        <!-- End Weekly-News -->
 
         <!-- Kajian Start -->
         <section class="whats-news-area pt-50 pb-20">
@@ -491,7 +492,9 @@
                                         </div>
                                         <div class="weekly-caption">
                                             {{-- <span class="color1">Travel</span> --}}
-                                            <h4><a href="{{ route('gallery.detail', $album->slug) }}">{{ $album->title }}</a></h4>
+                                            <h4><a
+                                                    href="{{ route('gallery.detail', $album->slug) }}">{{ $album->title }}</a>
+                                            </h4>
                                             <p style="margin-top: -10px; margin-bottom: 0;">
                                                 {{ $album->created_at->diffForHumans() }}
                                             </p>
@@ -519,7 +522,8 @@
             <div class="container">
                 <div class="weekly-wrapper">
                     <div class="row">
-                        <div class="tagembed-widget" style="width:100%;height:100%" data-widget-id="2159172" data-tags="false"  view-url="https://widget.tagembed.com/2159172"></div>
+                        <div class="tagembed-widget" style="width:100%;height:100%" data-widget-id="2159172"
+                            data-tags="false" view-url="https://widget.tagembed.com/2159172"></div>
                     </div>
                 </div>
             </div>
@@ -564,6 +568,14 @@
                                                     <textarea name="message" class="single-textarea" placeholder="Message" onfocus="this.placeholder = ''"
                                                         onblur="this.placeholder = 'Message'" required="" style="height: 200px;"></textarea>
                                                 </div>
+                                                <div class="mb-3">
+                                                    {!! NoCaptcha::renderJs() !!}
+                                                    {!! NoCaptcha::display() !!}
+
+                                                    @error('g-recaptcha-response')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
                                                 <button type="submit" class="btn btn-success">Kirim</button>
                                             </div>
 
@@ -588,7 +600,7 @@
     </main>
 @endsection
 @section('scripts')
-<script src="https://widget.tagembed.com/embed.min.js" type="text/javascript"></script>
+    <script src="https://widget.tagembed.com/embed.min.js" type="text/javascript"></script>
     <script>
         $.ajax({
             url: "https://api.myquran.com/v2/sholat/jadwal/0119/2024/1",
@@ -640,7 +652,7 @@
             },
         });
     </script>
-     <script>
+    <script>
         $.ajax({
             url: "{{ route('visit.ajax') }}",
             type: "GET",

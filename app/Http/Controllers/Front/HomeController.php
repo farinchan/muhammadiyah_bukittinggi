@@ -51,9 +51,12 @@ class HomeController extends Controller
             'email' => 'required|email',
             'subject' => 'required',
             'message' => 'required',
+            'g-recaptcha-response' => 'required|captcha',
         ],[
             'required' => 'Kolom :attribute harus diisi',
             'email' => 'Format email tidak valid',
+            'g-recaptcha-response.required' => 'Captcha harus diisi',
+            'g-recaptcha-response.captcha' => 'Captcha tidak valid',
         ]);
 
         if ($validator->fails()) {

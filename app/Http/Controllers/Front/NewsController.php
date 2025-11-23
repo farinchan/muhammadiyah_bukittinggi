@@ -148,11 +148,14 @@ class NewsController extends Controller
                 'name' => 'required',
                 'email' => 'required|email',
                 'comment' => 'required',
+                'g-recaptcha-response' => 'required|captcha',
             ], [
                 'name.required' => 'Nama harus diisi',
                 'email.required' => 'Email harus diisi',
                 'email.email' => 'Email tidak valid',
                 'comment.required' => 'Komentar harus diisi',
+                'g-recaptcha-response.required' => 'Captcha harus diisi',
+                'g-recaptcha-response.captcha' => 'Captcha tidak valid',
             ]);
 
             if ($validator->fails()) {
